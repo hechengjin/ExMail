@@ -1,0 +1,40 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH		= @DEPTH@
+topsrcdir	= @top_srcdir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+include $(topsrcdir)/config/config.mk
+
+# app is always last as it packages up the built files on mac
+DIRS += base locales extensions steel themes jquery app
+
+# add components for external linkage build
+ifdef MOZ_INCOMPLETE_EXTERNAL_LINKAGE
+DIRS += components
+endif
+
+ifeq ($(OS_ARCH),WINNT)
+# though some lasts are more last than others
+DIRS += installer/windows
+endif
+
+ifdef ENABLE_TESTS
+DIRS += test/mozmill
+endif
+
+include $(topsrcdir)/config/rules.mk
+
+ifeq ($(OS_ARCH),WINNT)
+# For Windows build the uninstaller during the application build since the
+# uninstaller is included with the application for mar file generation.
+libs::
+	$(MAKE) -C installer/windows uninstaller
+ifdef MOZ_MAINTENANCE_SERVICE
+	$(MAKE) -C installer/windows maintenanceservice_installer
+endif
+endif

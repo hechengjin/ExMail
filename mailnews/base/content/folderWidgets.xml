@@ -1,0 +1,764 @@
+<?xml version="1.0"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<bindings id="mailFolderBindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <binding id="folder-menupopup"
+           extends="chrome://global/content/bindings/popup.xml#popup">
+    <implementation>
+      <constructor><![CDATA[
+        // If we are a child of a menulist, and we aren't in a wrapper, we
+        // need to build our content right away, otherwise the menulist
+        // won't have proper sizing.
+        let inWrapper = false;
+        let node = this;
+        while (node) {
+          if (/wrapper-.*/.test(node.id)) {
+            inWrapper = true;
+            break;
+          }
+          node = node.parentNode;
+        }
+        if (this.parentNode && this.parentNode.localName == "menulist" &&
+            !inWrapper)
+          this._ensureInitialized();
+
+        // But if we're in a wrapper, remove our children, because we're
+        // getting re-created when the toolbar customization closes.
+        if (inWrapper)
+          this._teardown();
+      ]]></constructor>
+      <!-- 
+         - Make sure we remove our listener when the window is being destroyed
+        -->
+      <destructor><![CDATA[
+        if (!this._initialized)
+          return;
+
+        const Cc = Components.classes;
+        const Ci = Components.interfaces;
+        var session = Cc["@mozilla.org/messenger/services/session;1"].
+                      getService(Ci.nsIMsgMailSession);
+        session.RemoveFolderListener(this._listener);
+      ]]></destructor>
+
+      <!--
+         - If non-null, the subFolders of this nsIMsgFolder will be used to
+         - populate this menu.  If this is null, the menu will be populated
+         - using the root-folders for all accounts
+        -->
+      <field name="_parentFolder">null</field>
+      <property name="parentFolder"
+                onget="return this._parentFolder;"
+                onset="return this._parentFolder = val;"/>
+
+      <!--
+         - Various filtering modes can be used with this menu-binding.  To use
+         - one of them, append the mode="foo" attribute to the element.  When
+         - building the menu, we will then use this._filters[mode] as a filter
+         - function to eliminate folders that should not be shown.
+         -
+         - Note that extensions should feel free to plug in here!
+        -->
+      <field name="_filters"><![CDATA[({
+        // Returns true if messages can be filed in the folder
+        filing: function filter_filing(aFolder) {
+          if (!aFolder.server.canFileMessagesOnServer)
+            return false;
+
+          return (aFolder.canFileMessages || aFolder.hasSubFolders);
+        },
+
+        // Returns true if we can get mail for this folder. (usually this just
+        // means the "root" fake folder)
+        getMail: function filter_getMail(aFolder) {
+          if (aFolder.isServer && aFolder.server.type != "none")
+            return true;
+          if (aFolder.server.type == "nntp" || aFolder.server.type == "rss")
+            return true;
+          return false;
+        },
+
+        // Returns true if we can add filters to this folder/account
+        filters: function filter_filter(aFolder) {
+          // We can always filter news
+          if (aFolder.server.type == "nntp")
+            return true;
+
+          return aFolder.server.canHaveFilters;
+        },
+
+        subscribe: function filter_subscribe(aFolder) {
+          return aFolder.canSubscribe;
+        },
+
+        newFolder: function filter_newFolder(aFolder) {
+          return aFolder.canCreateSubfolders &&
+                 aFolder.server.canCreateFoldersOnServer;
+        },
+
+        defered: function filter_defered(aFolder) {
+          return aFolder.server.canCreateFoldersOnServer &&
+                 !aFolder.supportsOffline;
+        },
+
+        // Folders that can subscribe feeds.
+        feeds: function filter_feeds(aFolder) {
+          if (aFolder.server.type != "rss" ||
+              aFolder.getFlag(Components.interfaces.nsMsgFolderFlags.Trash) ||
+              aFolder.getFlag(Components.interfaces.nsMsgFolderFlags.Virtual))
+            return false;
+          return true;
+        },
+
+        junk: function filter_junk(aFolder) {
+          // Don't show servers (nntp & any others) which do not allow search or filing
+          // I don't really understand why canSearchMessages is needed, but it was included in
+          // earlier code, so I include it as well.
+          if (!aFolder.server.canFileMessagesOnServer || !aFolder.server.canSearchMessages)
+            return false;
+          // show parents that might have usable subfolders, or usable folders
+          return aFolder.hasSubFolders || aFolder.canFileMessages;
+        }
+      })]]></field>
+
+      <!--
+         - The maximum number of entries in the "Recent" menu
+        -->
+      <field name="_MAXRECENT">15</field>
+
+      <!--
+         - Our listener to let us know when folders change/appear/disappear so
+         - we can know to rebuild ourselves.
+        -->
+      <field name="_listener">
+          <![CDATA[({
+        _menu: this,
+        _clearMenu: function(aMenu) {
+          if (aMenu._teardown)
+            aMenu._teardown();
+        },
+        OnItemAdded: function act_add(aRDFParentItem, aItem) {
+          if (!(aItem instanceof Components.interfaces.nsIMsgFolder))
+            return;
+          if (this._filterFunction && !this._filterFunction(aItem)) {
+            return;
+          }
+          //xxx we can optimize this later
+          //xxx I'm not quite sure why this isn't always a function
+          if (this._menu._teardown)
+            this._menu._teardown();
+        },
+  
+        OnItemRemoved: function act_remove(aRDFParentItem, aItem) {
+          if (!(aItem instanceof Components.interfaces.nsIMsgFolder))
+            return;
+          if (this._filterFunction && !this._filterFunction(aItem)) {
+            return;
+          }
+          //xxx we can optimize this later
+          if (this._menu._teardown)
+            this._menu._teardown();
+        },
+
+        //xxx I stole this listener list from nsMsgFolderDatasource.cpp, but
+        //    someone should really document what events are fired when, so that
+        //    we make sure we're updating at the right times.
+        OnItemPropertyChanged: function(aItem, aProperty, aOld, aNew) {},
+        OnItemIntPropertyChanged: function(aItem, aProperty, aOld, aNew) {
+          var child = this._getChildForItem(aItem);
+          if (child)
+            this._menu._setCssSelectors(child._folder, child);
+        },
+        OnItemBoolPropertyChanged: function(aItem, aProperty, aOld, aNew) {
+          var child = this._getChildForItem(aItem);
+          if (child)
+            this._menu._setCssSelectors(child._folder, child);
+        },
+        OnItemUnicharPropertyChanged: function(aItem, aProperty, aOld, aNew) {
+          var child = this._getChildForItem(aItem);
+          if (child)
+            this._menu._setCssSelectors(child._folder, child);
+        },
+        OnItemPropertyFlagChanged: function(aItem, aProperty, aOld, aNew) {},
+        OnItemEvent: function(aFolder, aEvent) {
+          if (aEvent.toString() == "MRMTimeChanged") {
+            if (this._menu.getAttribute("showRecent") != "true" ||
+                !this._menu.firstChild || !this._menu.firstChild.firstChild)
+              return;
+            // if this folder is already in the recent menu, return.
+            if (this._getChildForItem(aFolder,
+                                      this._menu.firstChild.firstChild))
+              return;
+          }
+          // Special casing folder renames here, since they require more work
+          // since sort-order may have changed.
+          else if (aEvent.toString() == "RenameCompleted") {
+            if (!this._getChildForItem(aFolder))
+              return;
+          }
+          else
+            return;
+          // folder renamed, or new recent folder, so rebuild.
+          setTimeout(this._clearMenu, 0, this._menu);
+        },
+
+        /**
+         * Helper function to check and see whether we have a menuitem for this
+         * particular nsIMsgFolder
+         *
+         * @param aItem  the nsIMsgFolder to check
+         * @param aMenu  (optional) menu to look in, defaults to this._menu.
+         * @returns      null if no child for that folder exists, otherwise the
+         *               menuitem for that child
+         */
+        _getChildForItem: function act__itemIsChild(aItem, aMenu) {
+          aMenu = aMenu || this._menu;
+          if (!aMenu || !aMenu.childNodes)
+            return null;
+
+           if (!(aItem instanceof Components.interfaces.nsIMsgFolder))
+             return null;
+           for (let i = 0; i < aMenu.childNodes.length; i++) {
+             let folder = aMenu.childNodes[i]._folder;
+             if (folder && folder.URI == aItem.URI)
+               return aMenu.childNodes[i];
+           }
+           return null;
+        }
+      })]]></field>
+
+      <!-- 
+         - True if we have already built our menu-items and are now just
+         - listening for changes
+        -->
+      <field name="_initialized">false</field>
+
+      <!--
+         - Call this if you are unsure whether the menu-items have been built,
+         - but know that they need to be built now if they haven't.
+        -->
+      <method name="_ensureInitialized">
+        <body><![CDATA[
+          if (this._initialized)
+            return;
+
+          // I really wish they'd just make this global...
+          const Cc = Components.classes;
+          const Ci = Components.interfaces;
+
+          let folders = [];
+
+          // Figure out which folders to build.  If we don't have a parent, then
+          // we assume we should build the top-level accounts.  (Actually we
+          // build the fake root folders for those accounts.)
+          if (!this._parentFolder) {
+            let acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].
+                          getService(Ci.nsIMsgAccountManager);
+            let count = acctMgr.accounts.Count();
+
+            // Sadly, the accountMgr doesn't provide us we a sorted list of
+            // accounts.  We have to get them in the right order on our own. To
+            // Do this, we'll stick them in an array, and then sort that array.
+            let accounts = [];
+            for (let i = 0; i < count; i++) {
+              let acct = acctMgr.accounts.GetElementAt(i).QueryInterface(Ci.nsIMsgAccount);
+
+              // This is a HACK to work around bug 41133. If we have one of the
+              // dummy "news" accounts there, that account won't have an
+              // incomingServer attached to it, and everything will blow up.
+              if (acct.incomingServer && acct.incomingServer.type != "im")
+                accounts.push(acct);
+            }
+
+            /**
+             * This is our actual function for sorting accounts.  Accounts go
+             * in the following order: (1) default account (2) other mail
+             * accounts (3) Local Folders (4) news
+             */
+            var defaultAccountKey = acctMgr.defaultAccount.key;
+            function accountCompare(a, b) {
+              if (a.key == defaultAccountKey)
+                return -1;
+              if (b.key == defaultAccountKey)
+                return 1;
+
+              let aIsNews = a.incomingServer.type == "nntp";
+              let bIsNews = b.incomingServer.type == "nntp";
+              if (aIsNews && !bIsNews)
+                return 1;
+              if (bIsNews && !aIsNews)
+                return -1;
+
+              let aIsLocal = a.incomingServer.type == "none";
+              let bIsLocal = b.incomingServer.type == "none";
+              if (aIsLocal && !bIsLocal)
+                return 1;
+              if (bIsLocal && !aIsLocal)
+                return -1;
+              return 0;
+            }
+            accounts = accounts.sort(accountCompare);
+
+            // Now generate our folder-list.  Note that we'll special case this
+            // situation below, to avoid destroying the sort order we just made
+            folders = accounts.map(function(acct) acct.incomingServer.rootFolder);
+          } else {
+            // If we do have a parent folder, then we just build based on those
+            // subFolders for that parent
+            let myenum = this._parentFolder.subFolders;
+            while (myenum.hasMoreElements()) {
+              folders.push(myenum.getNext().QueryInterface(Ci.nsIMsgFolder));
+            }
+          }
+
+          this._build(folders);
+
+          // Lastly, we add a listener to get notified of changes in the folder
+          // structure.
+          var session = Cc["@mozilla.org/messenger/services/session;1"].
+                        getService(Ci.nsIMsgMailSession);
+          session.AddFolderListener(this._listener, Ci.nsIFolderListener.all);
+
+          this._initialized = true;
+        ]]></body>
+      </method>
+
+      <!--
+         - Actually constructs the menu-items based on the folders given
+         -
+         - @param aFolders  an array of nsIMsgFolders to use for building
+        -->
+      <method name="_build">
+        <parameter name="aFolders"/>
+        <body><![CDATA[
+          var folders;
+          Components.utils.import("resource:///modules/MailUtils.js");
+          // Extensions and other consumers can add to these modes too, see the
+          // above note on the _filters field.
+          var mode = this.getAttribute("mode");
+          if (mode && mode != "") {
+            var filterFunction = this._filters[mode];
+            folders = aFolders.filter(filterFunction);
+            this._listener._filterFunction = filterFunction;
+          } else {
+            folders = aFolders;
+          }
+
+          /* This code block will do the following: Add a menu item that refers
+             back to the parent folder when there is a showFileHereLabel
+             attribute or no mode attribute. However the code won't add such a
+             menu item if one of the following conditions is met:
+             (*) There is no parent folder
+             (*) Current folder has a mode, the parent folder can be selected,
+                 no messages can be filed into the parent folder (e.g. when the
+                 parent folder is a news group or news server) and the folder
+                 mode is not equal to newFolder
+
+             The menu item will have the value of the fileHereLabel attribute as
+             label or if the attribute does not exist the name of the parent
+             folder instead.
+          */
+          if (this._parentFolder && (!mode ||
+              (this.getAttribute("showFileHereLabel") == "true" &&
+               (this._parentFolder.noSelect ||
+                this._parentFolder.canFileMessages || mode == "newFolder" ||
+                this.getAttribute("showAccountsFileHere") == "true")))) {
+            var menuitem = document.createElement("menuitem");
+            menuitem._folder = this._parentFolder;
+            menuitem.setAttribute("generated", "true");
+            if (this.hasAttribute("fileHereLabel")) {
+              menuitem.setAttribute("label", this.getAttribute("fileHereLabel"));
+              menuitem.setAttribute("accesskey", this.getAttribute("fileHereAccessKey"));
+            } else {
+              menuitem.setAttribute("label", this._parentFolder.prettyName);
+              menuitem.setAttribute("class", "folderMenuItem menuitem-iconic");
+              this._setCssSelectors(this._parentFolder, menuitem);
+            }
+            // Eww. have to support some legacy code here...
+            menuitem.setAttribute("id", this._parentFolder.URI);
+            this.appendChild(menuitem);
+
+            if (this._parentFolder.noSelect)
+              menuitem.setAttribute("disabled", "true");
+
+            var sep= document.createElement("menuseparator");
+            sep.setAttribute("generated", "true");
+            this.appendChild(sep);
+          }
+          // Some menus want a "Recent" option, but that should only be on our
+          // top-level menu
+          if (!this._parentFolder && this.getAttribute("showRecent") == "true")
+            this._buildRecentMenu();
+
+          /**
+           * Sorts the list of folders. We give first priority to the sortKey
+           * property, and then via a case-insensitive comparison of names
+           */
+          function nameCompare(a, b) {
+            var sortKey = a.compareSortKeys(b);
+            if (sortKey)
+              return sortKey;
+            return a.prettyName.toLowerCase() > b.prettyName.toLowerCase();
+          }
+
+          /**
+           * If we're the root of the folder hierarchy, then we actually don't
+           * want to sort the folders, but rather the accounts to which the
+           * folders belong.  Since that sorting was already done, we don't need
+           * to do anything for that case here
+           */
+          if (this._parentFolder)
+            folders = folders.sort(nameCompare);
+
+          /* In some cases, the user wants to have a list of subfolders for only
+           * some account types (or maybe all of them). So we use this to
+           * determine what the user wanted.
+           */
+           var shouldExpand;
+           var labels = null;
+           if (this.getAttribute("expandFolders") == "true" ||
+               !this.hasAttribute("expandFolders")) {
+             shouldExpand = function (e) { return true; };
+           } else if (this.getAttribute("expandFolders") == "false") {
+             shouldExpand = function (e) { return false; };
+           } else {
+             /* We want a subfolder list for only some servers. We also may need
+              * to create headers to select the servers. If so, then headlabels
+              * is a comma-delimited list of labels corresponding to the server
+              * types specified in expandFolders.
+              */
+             var types = this.getAttribute("expandFolders").split(/ *, */);
+             // Set the labels. labels[type] = label
+             if (this.hasAttribute("headlabels")) {
+               var labelNames = this.getAttribute("headlabels").split(/ *, */);
+               labels = {};
+               // If the length isn't equal, don't give them any of the labels,
+               // since any combination will probably be wrong.
+               if (labelNames.length == types.length) {
+                 for (var index in types)
+                   labels[types[index]] = labelNames[index];
+               }
+             }
+             shouldExpand = function (e) { return types.indexOf(e) != -1; };
+           }
+
+          // We need to call this, or hasSubFolders will always return false.
+          // Remove this workaround when Bug 502900 is fixed.
+          MailUtils.discoverFolders();
+
+          for each (var folder in folders) {
+            var node;
+            // If we're going to add subFolders, we need to make menus, not
+            // menuitems.
+            if (!folder.hasSubFolders || !shouldExpand(folder.server.type)) {
+              node = document.createElement("menuitem");
+              // Grumble, grumble, legacy code support
+              node.setAttribute("id", folder.URI);
+              node.setAttribute("class", "folderMenuItem menuitem-iconic");
+              node.setAttribute("generated", "true");
+              this.appendChild(node);
+            } else {
+              //xxx this is slightly problematic in that we haven't confirmed
+              //    whether any of the subfolders will pass the filter
+              node = document.createElement("menu");
+              node.setAttribute("class", "folderMenuItem menu-iconic");
+              node.setAttribute("generated", "true");
+              this.appendChild(node);
+
+              // Create the submenu
+              // (We must use cloneNode here because on OS X the native menu
+              // functionality and very sad limitations of XBL1 cause the bindings
+              // to never get created for popup if we create a new element.  We
+              // perform a shallow clone to avoid picking up any of our children.)
+              var popup = this.cloneNode(false);
+              popup._parentFolder = folder;
+              popup.setAttribute("class", this.getAttribute("class"));
+              popup.setAttribute("type", this.getAttribute("type"));
+              if (this.hasAttribute("fileHereLabel"))
+                popup.setAttribute("fileHereLabel",
+                                   this.getAttribute("fileHereLabel"));
+              popup.setAttribute("showFileHereLabel",
+                                 this.getAttribute("showFileHereLabel"));
+              popup.setAttribute("oncommand",
+                                 this.getAttribute("oncommand"));
+              popup.setAttribute("mode",
+                                 this.getAttribute("mode"));
+              if (this.hasAttribute("position"))
+                popup.setAttribute("position",
+                                   this.getAttribute("position"));
+
+              // If there are labels, add the labels now
+              if (labels) {
+                var serverNode = document.createElement("menuitem");
+                serverNode.setAttribute("label", labels[folder.server.type]);
+                serverNode._folder = folder;
+                serverNode.setAttribute("generated", "true");
+                popup.appendChild(serverNode);
+                var sep = document.createElement("menuseparator");
+                sep.setAttribute("generated", "true");
+                popup.appendChild(sep);
+              }
+
+              popup.setAttribute("generated", "true");
+              node.appendChild(popup);
+            }
+            node._folder = folder;
+            node.setAttribute("label", folder.prettyName);
+
+            this._setCssSelectors(folder, node);
+
+            //xxx for later optimization
+            //builtFolders.push(folder);
+          }
+        ]]></body>
+      </method>
+
+      <!--
+         - Builds a submenu with all of the recently used folders in it, to
+         - allow for easy access.
+        -->
+      <method name="_buildRecentMenu">
+        <body>
+            <![CDATA[
+          const Cc = Components.classes;
+          const Ci = Components.interfaces;
+          // Iterate through all folders in all accounts, and check MRM_Time,
+          // then take the most current 15.
+          /**
+           * This function will iterate through any existing sub-folders and
+           * (1) check if they're recent and (2) recursively call this function
+           * to iterate through any sub-sub-folders.
+           *
+           * @param aFolder  the folder to check
+           */
+          function checkSubFolders(aFolder) {
+            if (!aFolder.hasSubFolders)
+              return;
+
+            var myenum = aFolder.subFolders;
+            while (myenum.hasMoreElements()) {
+              var folder = myenum.getNext().QueryInterface(Ci.nsIMsgFolder);
+              addIfRecent(folder);
+              checkSubFolders(folder);
+            }
+          }
+
+          var recentFolders = [];
+          var oldestTime = 0;
+
+          /**
+           * This function will add a folder to the recentFolders array if it
+           * is among the 15 most recent.  If we exceed 15 folders, it will pop
+           * the oldest folder, ensuring that we end up with the right number
+           *
+           * @param aFolder the folder to check
+           */
+          var menu = this;
+          function addIfRecent(aFolder) {
+            if (!aFolder.canFileMessages)
+              return;
+
+            var time = 0;
+            try {
+              time = aFolder.getStringProperty("MRMTime");
+            } catch(ex) {}
+            if (time <= oldestTime)
+              return;
+
+            if (recentFolders.length == menu._MAXRECENT) {
+              recentFolders.sort(sorter);
+              recentFolders.pop();
+              oldestTime = recentFolders[recentFolders.length-1].getStringProperty("MRMTime");
+            }
+            recentFolders.push(aFolder);
+          }
+
+          // Start iterating at the top of the hierarchy, that is, with the root
+          // folders for each incoming server.
+          var servers = Cc["@mozilla.org/messenger/account-manager;1"].
+                        getService(Ci.nsIMsgAccountManager).allServers;
+          var count = servers.Count();
+          for (var i = 0; i < count; i++) {
+            var incomingServer = servers.QueryElementAt(i, Ci.nsIMsgIncomingServer);
+            addIfRecent(incomingServer.rootFolder);
+            checkSubFolders(incomingServer.rootFolder);
+          }
+
+          function sorter(a, b) {
+             return a.getStringProperty("MRMTime") < b.getStringProperty("MRMTime");
+          }
+          recentFolders.sort(sorter);
+
+          // Because we're scanning across multiple accounts, we can end up with
+          // two folders with the same name.  In this case, we append the name
+          // of the account as well, to distingiush.
+          var dupeNames = [];
+          for (var i = 0; i < recentFolders.length; i++) {
+            for (var j = i + 1; j < recentFolders.length; j++) {
+              // We can end up with the same name in dupeNames more than once,
+              // but that's ok.
+              if (recentFolders[i].prettyName == recentFolders[j].prettyName)
+                dupeNames.push(recentFolders[i].prettyName);
+            }
+          }
+          // Now create the Recent folder and its children
+          var menu = document.createElement("menu");
+          menu.setAttribute("label", this.getAttribute("recentLabel"));
+          menu.setAttribute("accesskey", this.getAttribute("recentAccessKey"));
+          var popup = document.createElement("menupopup");
+          popup.setAttribute("generated", "true");
+          menu.appendChild(popup);
+
+          // Make sure the entries are sorted alphabetically.
+          recentFolders.sort(function rf_sort(a, b){
+            var aLabel = a.prettyName;
+            if (dupeNames.indexOf(aLabel) != -1)
+              aLabel += " - " + a.server.prettyName;
+            var bLabel = b.prettyName;
+            if (dupeNames.indexOf(bLabel) != -1)
+              bLabel += " - " + b.server.prettyName;
+            return aLabel.toLocaleLowerCase() > bLabel.toLocaleLowerCase();
+          });
+
+          // Create entries for each of the recent folders.
+          for each (var folder in recentFolders) {
+            var node = document.createElement("menuitem");
+
+            var label = folder.prettyName;
+            if (dupeNames.indexOf(label) != -1)
+              label += " - " + folder.server.prettyName;
+            node.setAttribute("label", label);
+            node._folder = folder;
+
+            node.setAttribute("class", "folderMenuItem menuitem-iconic");
+            this._setCssSelectors(folder, node);
+            node.setAttribute("generated", "true");
+            popup.appendChild(node);
+          }
+          menu.setAttribute("generated", "true");
+          this.appendChild(menu);
+          var sep = document.createElement("menuseparator");
+          sep.setAttribute("generated", "true");
+          this.appendChild(sep);
+        ]]></body>
+      </method>
+
+      <!--
+         - This function adds attributes on menu/menuitems to make it easier for
+         - css to style them.
+         -
+         - @param aFolder    the folder that corresponds to the menu/menuitem
+         - @param aMenuNode  the actual DOM node to set attributes on
+        -->
+      <method name="_setCssSelectors">
+        <parameter name="aFolder"/>
+        <parameter name="aMenuNode"/>
+        <body><![CDATA[
+          Components.utils.import("resource:///modules/folderUtils.jsm");
+          // First set the SpecialFolder attribute
+          aMenuNode.setAttribute("SpecialFolder", getSpecialFolderString(aFolder));
+
+          // Now set the biffState
+          let biffStates = ["NewMail", "NoMail", "UnknownMail"];
+          for each (let state in biffStates) {
+            if (aFolder.biffState ==
+                Components.interfaces.nsIMsgFolder["nsMsgBiffState_" + state]) {
+              aMenuNode.setAttribute("BiffState", state);
+              break;
+            }
+          }
+
+          aMenuNode.setAttribute("IsServer", aFolder.isServer);
+          aMenuNode.setAttribute("IsSecure", aFolder.server.isSecure);
+          aMenuNode.setAttribute("ServerType", aFolder.server.type);
+        ]]></body>
+      </method>
+
+      <!--
+         - Makes a given folder selected.
+         -
+         - @param aFolder  the folder to select
+         - @note If aFolder is not in this popup, but is instead a descendant of
+         -       a member of the popup, that ancestor will be selected.
+        -->
+      <method name="selectFolder">
+        <parameter name="aFolder"/>
+        <body><![CDATA[
+          for (var i in this.childNodes) {
+            var child = this.childNodes[i];
+            if (!child || !child._folder)
+              continue;
+            // Is this the folder in question or subfolder of the folder?
+            if ((child._folder.URI == aFolder.URI) ||
+                (child.tagName == "menu" &&
+                 child._folder.isAncestorOf(aFolder))) {
+              if (child._folder.URI == aFolder.URI) {
+                // Making an assumption about our DOM positioning here.
+                this.parentNode.selectedIndex = i;
+              }
+              // If this is a subfolder of what's in question, we merely appear
+              // to select this node.
+              this.parentNode.setAttribute("label", aFolder.name);
+              this.parentNode.setAttribute("IsServer", aFolder.isServer);
+              this.parentNode.setAttribute("IsSecure", aFolder.server.isSecure);
+              this.parentNode.setAttribute("ServerType", aFolder.server.type);
+              return;
+            }
+          }
+          throw "unable to find folder to select!";
+        ]]></body>
+      </method>
+
+      <!--
+         - Removes all menu-items for this popup, resets all fields, and
+         - removes the listener.  This function is invoked when a change
+         - that affects this menu is detected by our listener.
+        -->
+      <method name="_teardown">
+        <body><![CDATA[
+          for (let i = this.childNodes.length - 1; i >= 0; i--) {
+            let child = this.childNodes[i];
+            if (child.getAttribute("generated") != "true")
+              continue;
+            if ("_teardown" in child)
+              child._teardown();
+            this.removeChild(child);
+          }
+
+          if (this._initialized) {
+            const Cc = Components.classes;
+            const Ci = Components.interfaces;
+            var session = Cc["@mozilla.org/messenger/services/session;1"].
+                          getService(Ci.nsIMsgMailSession);
+            session.RemoveFolderListener(this._listener);
+          }
+
+          this._folders = null;
+          this._initialized = false;
+        ]]></body>
+      </method>
+    </implementation>
+
+    <handlers>
+      <!--
+         - In order to improve performance, we're not going to build any of the
+         - menu until we're shown (unless we're the child of a menulist, see
+         - note in the constructor).
+         -
+         - @note _ensureInitialized can be called repeatedly without issue, so
+         -       don't worry about it here.
+        -->
+      <handler event="popupshowing" phase="capturing">
+        this._ensureInitialized();
+      </handler>
+    </handlers>
+  </binding>
+</bindings>

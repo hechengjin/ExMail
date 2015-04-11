@@ -1,0 +1,125 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH		= @DEPTH@
+topsrcdir	= @top_srcdir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+include $(DEPTH)/config/autoconf.mk
+
+MODULE		= addrbook
+LIBRARY_NAME	= addrbook_s
+ifndef MOZ_INCOMPLETE_EXTERNAL_LINKAGE
+MOZILLA_INTERNAL_API = 1
+LIBXUL_LIBRARY = 1
+endif
+
+CPPSRCS		= \
+		nsAbManager.cpp \
+		nsAbCardProperty.cpp \
+		nsDirPrefs.cpp \
+		nsAddrDatabase.cpp \
+		nsAbDirProperty.cpp \
+		nsAbAddressCollector.cpp \
+		nsAddbookProtocolHandler.cpp  \
+		nsAbMDBDirProperty.cpp \
+		nsAbMDBDirectory.cpp \
+		nsAbMDBCard.cpp \
+		nsAbBSDirectory.cpp \
+		nsAddbookUrl.cpp    \
+		nsAbDirFactoryService.cpp	\
+		nsAbMDBDirFactory.cpp	\
+                nsAbDirectoryQuery.cpp    \
+                nsAbDirectoryQueryProxy.cpp    \
+                nsAbBooleanExpression.cpp \
+                nsAbQueryStringToExpression.cpp \
+                nsAbView.cpp \
+                nsVCard.cpp \
+                nsVCardObj.cpp \
+                nsMsgVCardService.cpp \
+                nsAbLDIFService.cpp \
+                nsAbContentHandler.cpp \
+		$(NULL)
+
+EXTRA_COMPONENTS += \
+		nsAbLDAPAttributeMap.js \
+		nsAbAutoCompleteMyDomain.js \
+		nsAbAutoCompleteSearch.js \
+		$(NULL)
+
+EXTRA_PP_COMPONENTS += \
+		nsAddrbook.manifest \
+		$(NULL)
+
+EXPORTS		= \
+                nsVCardObj.h \
+		$(NULL)
+
+ifeq ($(OS_ARCH),WINNT)
+ifndef GNU_CC
+
+CPPSRCS		+= \
+		nsAbOutlookDirFactory.cpp \
+		nsAbOutlookDirectory.cpp \
+		nsAbWinHelper.cpp \
+		nsMapiAddressBook.cpp \
+		nsWabAddressBook.cpp \
+		$(NULL)
+
+endif
+endif
+
+ifdef MOZ_LDAP_XPCOM
+DEFINES += -DMOZ_LDAP_XPCOM
+
+CPPSRCS		+= \
+		nsAbLDAPDirectory.cpp \
+		nsAbLDAPDirFactory.cpp	\
+		nsAbLDAPCard.cpp \
+		nsAbLDAPListenerBase.cpp \
+		nsAbLDAPDirectoryQuery.cpp \
+		nsAbLDAPDirectoryModify.cpp \
+		nsAbBoolExprToLDAPFilter.cpp \
+		nsAbLDAPReplicationService.cpp \
+		nsAbLDAPReplicationQuery.cpp \
+		nsAbLDAPReplicationData.cpp \
+		$(NULL)
+
+ifndef MOZ_INCOMPLETE_TOOLKIT_LDAP_AUTOCOMPLETE
+CPPSRCS		+= \
+		nsAbLDAPAutoCompFormatter.cpp \
+		nsLDAPAutoCompleteSession.cpp \
+		$(NULL)
+else
+DEFINES += -DMOZ_INCOMPLETE_TOOLKIT_LDAP_AUTOCOMPLETE
+EXTRA_COMPONENTS += \
+		nsAbLDAPAutoCompleteSearch.js \
+		$(NULL)
+endif
+
+# XXX These files are not being built as they don't work. Bug 311632 should
+# fix them.
+# nsAbLDAPChangeLogQuery.cpp
+# nsAbLDAPChangeLogData.cpp
+endif
+
+ifeq ($(OS_ARCH),Darwin)
+CPPSRCS		+= \
+		nsAbOSXDirFactory.cpp \
+		$(NULL)
+
+CMMSRCS		+= \
+		nsAbOSXCard.mm \
+		nsAbOSXDirectory.mm \
+		nsAbOSXUtils.mm \
+		$(NULL)
+endif
+
+# we don't want the shared lib, but we want to force the creation of a static lib.
+FORCE_STATIC_LIB = 1
+
+include $(topsrcdir)/config/rules.mk
+

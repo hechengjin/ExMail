@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<?xml-stylesheet href="chrome://messenger/skin/filterDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderPane.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+
+<?xul-overlay href="chrome://messenger/content/searchTermOverlay.xul"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://messenger/locale/FilterEditor.dtd">
+
+<dialog id="FilterEditor"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  title="&window.title;"
+  style="&filterEditorDialog.dimensions;"
+  windowtype="mailnews:filtereditor"
+  persist="width height screenX screenY"
+  buttons="accept,cancel"
+  onload="filterEditorOnLoad();"
+  onunload="filterEditorOnUnload();"
+  ondialogaccept="return onAccept();">
+
+  <dummy class="usesMailWidgets"/>
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="bundle_messenger" src="chrome://messenger/locale/messenger.properties"/>
+    <stringbundle id="bundle_filter" src="chrome://messenger/locale/filter.properties"/>
+    <stringbundle id="bundle_search" src="chrome://messenger/locale/search.properties"/>
+  </stringbundleset>
+
+  <script type="application/javascript" src="chrome://messenger/content/mailWindowOverlay.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/mailCommands.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/FilterEditor.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/widgetglue.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/msgFolderPickerOverlay.js"/>
+
+  <vbox>
+    <hbox align="center">
+      <label value="&filterName.label;" accesskey="&filterName.accesskey;" control="filterName"/>
+      <textbox flex="1" id="filterName"/>
+      <spacer flex="1"/>
+    </hbox>
+  </vbox>
+
+  <separator/>
+
+  <vbox flex="1">
+    <hbox align="center">
+      <label value="&contextDesc.label;"
+             accesskey="&contextDesc.accesskey;"
+             control="contextMenuList"/>
+      <menulist id="contextMenuList"
+                value="both" oncommand="updateFilterType();">
+        <menupopup>
+          <menuitem label="&contextIncoming.label;"
+                    value="incoming"/>
+          <menuitem label="&contextManual.label;"
+                    value="manual"/>
+          <menuitem label="&contextBoth.label;"
+                    value="both"/>
+          <menuitem label="&contextPostPlugin.label;"
+                    value="postPlugin"
+                    id="contextMenuListPostPlugin"/>
+          <menuitem label="&contextPostPluginBoth.label;"
+                    value="postPluginBoth"
+                    id="contextMenuListPostPluginBoth"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+
+    <vbox id="searchTermListBox" flex="1"/>
+
+  </vbox>
+
+  <splitter id="gray_horizontal_splitter" persist="state"/>
+
+  <vbox flex="1">
+    <label value="&filterActionDesc.label;" accesskey="&filterActionDesc.accesskey;" control="filterActionList"/>
+    <listbox id="filterActionList" flex="1" rows="4" minheight="35%">
+      <listcols>
+        <listcol flex="&filterActionTypeFlexValue;"/>
+        <listcol flex="&filterActionTargetFlexValue;"/>
+        <listcol class="filler"/>
+      </listcols>
+    </listbox>
+  </vbox>
+
+</dialog>

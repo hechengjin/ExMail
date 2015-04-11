@@ -1,0 +1,43 @@
+/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+#include "nsISupports.idl"
+#include "nsMsgSearchCore.idl"
+#include "nsIMsgSearchScopeTerm.idl"
+
+[ptr] native nsMsgResultElement(nsMsgResultElement);
+
+%{C++
+class nsMsgResultElement;
+%}
+
+[scriptable, uuid(B9F49D4C-A494-41f6-9D70-AB6CB5670485)]
+interface nsIMsgSearchAdapter : nsISupports {
+    void ValidateTerms();
+    void Search(out boolean done);
+    void SendUrl();
+    void CurrentUrlDone(in long exitCode);
+
+    void AddHit(in nsMsgKey key);
+    void AddResultElement(in nsIMsgDBHdr aHdr);
+
+    [noscript] void OpenResultElement(in nsMsgResultElement element);
+    [noscript] void ModifyResultElement(in nsMsgResultElement element,
+                                        in nsMsgSearchValue value);
+
+    readonly attribute string encoding;
+    
+    [noscript] nsIMsgFolder FindTargetFolder([const] in nsMsgResultElement
+                                             element);
+    void Abort();
+    void getSearchCharsets(out AString srcCharset, out AString destCharset);
+    /*
+     * Clear the saved scope reference. This is used when deleting scope, which is not
+     * reference counted in nsMsgSearchSession
+     */
+    void clearScope();
+};
+

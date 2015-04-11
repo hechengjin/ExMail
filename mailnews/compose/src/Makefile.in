@@ -1,0 +1,70 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH		= @DEPTH@
+topsrcdir	= @top_srcdir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+include $(DEPTH)/config/autoconf.mk
+
+MODULE		= msgcompose
+LIBRARY_NAME	= msgcompose_s
+ifndef MOZ_INCOMPLETE_EXTERNAL_LINKAGE
+MOZILLA_INTERNAL_API = 1
+LIBXUL_LIBRARY = 1
+endif
+
+EXTRA_COMPONENTS = \
+		nsSMTPProtocolHandler.js \
+		nsSMTPProtocolHandler.manifest \
+		$(NULL)
+
+CPPSRCS		= \
+		nsMsgCompFields.cpp \
+		nsSmtpUrl.cpp \
+		nsSmtpProtocol.cpp \
+		nsMsgSend.cpp \
+		nsMsgSendPart.cpp \
+		nsMsgSendReport.cpp \
+		nsSmtpService.cpp \
+		nsMsgCopy.cpp \
+		nsMsgSendLater.cpp \
+		nsMsgEncoders.cpp \
+		nsMsgCompUtils.cpp \
+		nsMsgAttachment.cpp \
+		nsMsgAttachmentHandler.cpp \
+		nsMsgPrompts.cpp \
+		nsMsgComposeService.cpp \
+		nsMsgComposeParams.cpp \
+		nsMsgComposeProgressParams.cpp \
+		nsMsgComposeContentHandler.cpp \
+		nsMsgCompose.cpp \
+		nsMsgQuote.cpp \
+		nsURLFetcher.cpp \
+		nsSmtpServer.cpp \
+		$(NULL)
+
+EXPORTS		= \
+		nsComposeStrings.h \
+		$(NULL)
+
+ifeq (cocoa,$(MOZ_WIDGET_TOOLKIT))
+CPPSRCS += \
+	nsMsgAppleDoubleEncode.cpp \
+	nsMsgAppleEncode.cpp \
+	$(NULL)
+endif
+
+# we don't want the shared lib, but we want to force the creation of a static lib.
+FORCE_STATIC_LIB = 1
+
+include $(topsrcdir)/config/rules.mk
+
+ifeq ($(OS_ARCH),WINNT)
+ifdef MOZ_UNICODE
+DEFINES		+= -DMOZ_UNICODE
+endif
+endif

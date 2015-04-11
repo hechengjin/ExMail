@@ -1,0 +1,30 @@
+/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#include "nsISupports.idl"
+#include "nsrootidl.idl"
+
+%{C++
+#define NS_IMIMEHEADERS_CONTRACTID \
+  "@mozilla.org/messenger/mimeheaders;1"
+// {9C4DA772-07EB-11d3-8EE5-00A024669799}
+#define NS_IMIMEHEADERS_CID \
+    { 0x13e16677, 0x6648, 0x11d3, \
+    { 0xa7, 0x2f, 0x0, 0x60, 0xb0, 0xeb, 0x39, 0xb5 } }
+%}
+
+/* 
+ * nsIMimeHeaders Interface declaration 
+ */ 
+[scriptable, uuid(13E16676-6648-11d3-A72F-0060B0EB39B5)]
+interface nsIMimeHeaders : nsISupports {
+  void initialize([const] in string allHeaders, in long allHeadersSize);
+  string extractHeader ([const] in string headerName, in boolean getAllOfThem);
+  readonly attribute string allHeaders;
+};
+
+%{C++
+nsresult NS_NewMimeHeaders(const nsIID &aIID, void ** aInstancePtrResult);
+%}

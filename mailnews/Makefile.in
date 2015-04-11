@@ -1,0 +1,77 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH		= @DEPTH@
+topsrcdir	= @top_srcdir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+include $(DEPTH)/config/autoconf.mk
+
+MODULE       = mailnews
+
+# If adding to these, consider if you need to add to XPCSHELL_TEST_DIRS below.
+PARALLEL_DIRS	+= \
+	addrbook \
+	base/search/src \
+	compose \
+	db/gloda \
+	db/msgdb \
+	extensions\
+	imap \
+	local \
+	mime \
+	news \
+	$(NULL)
+
+ifdef ENABLE_TESTS
+PARALLEL_DIRS += \
+  test/performance/bloat \
+  $(NULL)
+endif
+
+ifeq ($(OS_ARCH),WINNT)
+ifndef GNU_CC
+PARALLEL_DIRS += mapi/mapiDLL mapi/mapihook
+endif
+endif
+
+DIRS += import build
+
+PREF_JS_EXPORTS = $(srcdir)/mailnews.js
+
+DEFINES += -DOS_ARCH=$(OS_ARCH) \
+           -DMOZ_WIDGET_TOOLKIT=$(MOZ_WIDGET_TOOLKIT) \
+           $(NULL)
+
+include $(topsrcdir)/config/rules.mk
+
+ifdef ENABLE_TESTS
+libs::
+	$(INSTALL) $(wildcard $(srcdir)/test/resources/*.js) $(MOZDEPTH)/_tests/xpcshell/mailnews/resources
+	$(DIR_INSTALL) $(wildcard $(srcdir)/test/data/*) $(MOZDEPTH)/_tests/xpcshell/mailnews/data
+	$(INSTALL) $(wildcard $(srcdir)/test/fakeserver/*.js) $(MOZDEPTH)/_tests/xpcshell/mailnews/fakeserver
+
+# We provide an xpcshell-tests target here because the top-level target acts
+# differently to the specific directory one. We want our developers to be able
+# to run "make -C mailnews xpcshell-tests" so we do this short-cut here. This
+# list is kept in the same order as the effective DIRS just so things turn up
+# in the same order as the build.
+
+XPCSHELL_TEST_DIRS = addrbook base compose db/gloda db/msgdb extensions/bayesian-spam-filter extensions/mdn imap import local mime news
+
+xpcshell-tests::
+	$(PYTHON) -u $(MOZILLA_DIR)/config/pythonpath.py \
+	  -I$(MOZILLA_DIR)/build -I$(MOZDEPTH)/_tests/mozbase/mozinfo \
+	  $(MOZILLA_SRCDIR)/testing/xpcshell/runxpcshelltests.py \
+	  --symbols-path=$(DIST)/crashreporter-symbols \
+	  --build-info-json=$(MOZDEPTH)/mozinfo.json \
+	  --tests-root-dir=$(testxpcobjdir) \
+	  --xunit-file=$(testxpcobjdir)/mailnews/results.xml \
+	  --xunit-suite-name=xpcshell \
+	  $(EXTRA_TEST_ARGS) \
+	  $(LIBXUL_DIST)/bin/xpcshell \
+	  $(foreach dir,$(XPCSHELL_TEST_DIRS),$(testxpcobjdir)/mailnews/$(dir)/test/unit)
+endif

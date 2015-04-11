@@ -1,0 +1,63 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH		= @DEPTH@
+topsrcdir	= @top_srcdir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+include $(DEPTH)/config/autoconf.mk
+
+MODULE		= addrbook
+
+XPIDLSRCS	= \
+		nsIAbListener.idl \
+		nsIAbItem.idl \
+		nsIAbCollection.idl \
+		nsIAbCard.idl \
+		nsIAbDirectory.idl \
+		nsIAbMDBDirectory.idl \
+		nsIAddrDBAnnouncer.idl \
+		nsIAddrDBListener.idl \
+		nsIAddrDatabase.idl \
+		nsIAbManager.idl \
+		nsIAbAddressCollector.idl \
+		nsIAddbookUrl.idl \
+		nsIAbDirFactory.idl	\
+		nsIAbDirFactoryService.idl	\
+                nsIAbDirectoryQueryProxy.idl \
+		nsIAbDirectoryQuery.idl	\
+		nsIAbBooleanExpression.idl \
+		nsIAbDirectorySearch.idl \
+		nsIAbView.idl \
+		nsIMsgVCardService.idl \
+		nsIAbLDIFService.idl \
+		nsIAbLDAPAttributeMap.idl \
+		nsIAbDirSearchListener.idl \
+		nsIAbAutoCompleteResult.idl \
+		$(NULL)
+
+ifdef MOZ_LDAP_XPCOM
+ifndef MOZ_INCOMPLETE_TOOLKIT_LDAP_AUTOCOMPLETE
+XPIDLSRCS       += \
+		nsILDAPAutoCompleteSession.idl \
+		nsILDAPAutoCompFormatter.idl \
+		nsIAbLDAPAutoCompFormatter.idl \
+		$(NULL)
+endif
+XPIDLSRCS       += \
+                nsIAbLDAPReplicationService.idl \
+                nsIAbLDAPReplicationQuery.idl \
+                nsIAbLDAPReplicationData.idl \
+		nsIAbLDAPDirectory.idl \
+		nsIAbLDAPCard.idl \
+		$(NULL)
+endif
+
+EXPORTS		= \
+		nsAbBaseCID.h \
+		$(NULL)
+
+include $(topsrcdir)/config/rules.mk

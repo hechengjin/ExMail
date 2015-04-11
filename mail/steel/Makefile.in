@@ -1,0 +1,33 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH     = @DEPTH@
+topsrcdir = @top_srcdir@
+srcdir    = @srcdir@
+VPATH     = @srcdir@
+relativesrcdir = @relativesrcdir@
+
+include $(DEPTH)/config/autoconf.mk
+
+XPIDL_MODULE  = steel
+
+XPIDLSRCS = steelIApplication.idl
+
+EXTRA_PP_COMPONENTS = steelApplication.js \
+                      steelApplication.manifest
+
+ifdef ENABLE_TESTS
+# These tests directories are explicitly done this way to ensure that we get
+# the correct result for platformIsMac.
+ifeq ($(MOZ_WIDGET_TOOLKIT),cocoa)
+XPCSHELL_TESTS = mac
+else
+XPCSHELL_TESTS = notmac
+endif
+
+# Uncomment this when we need it for more general tests.
+#XPCSHELL_TESTS += unit
+endif
+
+include $(topsrcdir)/config/rules.mk

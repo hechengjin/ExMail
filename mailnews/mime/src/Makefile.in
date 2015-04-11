@@ -1,0 +1,102 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH		= @DEPTH@
+topsrcdir	= @top_srcdir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+include $(DEPTH)/config/autoconf.mk
+
+ifdef MOZ_PSM
+BUILD_SMIME=1
+endif
+
+ifdef BUILD_SMIME
+DEFINES		+= -DENABLE_SMIME
+endif
+
+MODULE		= mime
+LIBRARY_NAME	= mime_s
+ifndef MOZ_INCOMPLETE_EXTERNAL_LINKAGE
+MOZILLA_INTERNAL_API = 1
+LIBXUL_LIBRARY = 1
+endif
+
+CPPSRCS		= \
+		nsMimeObjectClassAccess.cpp \
+		nsMimeConverter.cpp \
+		nsSimpleMimeConverterStub.cpp \
+		mimecont.cpp \
+		mimeebod.cpp \
+		mimeenc.cpp \
+		mimeeobj.cpp \
+		mimehdrs.cpp \
+		mimei.cpp \
+		mimeiimg.cpp \
+		mimeleaf.cpp \
+		mimemalt.cpp \
+		mimemapl.cpp \
+		mimemdig.cpp \
+		mimemmix.cpp \
+		mimempar.cpp \
+		mimemrel.cpp \
+		mimemsg.cpp \
+		mimemsig.cpp \
+		mimemult.cpp \
+		mimeobj.cpp \
+		mimepbuf.cpp \
+		mimesun.cpp \
+		mimetenr.cpp \
+		mimetext.cpp \
+		mimethtm.cpp \
+		mimethpl.cpp \
+		mimethsa.cpp \
+		mimetpla.cpp \
+		mimetpfl.cpp \
+		mimetric.cpp \
+		mimeunty.cpp \
+		mimecth.cpp \
+		mimebuf.cpp \
+		mimecom.cpp \
+		mimemoz2.cpp \
+		comi18n.cpp \
+		nsMsgHeaderParser.cpp \
+		nsStreamConverter.cpp \
+		mimedrft.cpp \
+		nsMimeHeaders.cpp \
+                mimecryp.cpp
+
+ifdef BUILD_SMIME
+CPPSRCS += \
+                mimecms.cpp \
+                mimemcms.cpp
+endif
+
+EXPORTS		= \
+		nsMimeStringResources.h \
+		nsStreamConverter.h \
+		mimecryp.h \
+		mimemoz2.h \
+		mimetext.h \
+		mimeleaf.h \
+		mimecth.h \
+		mimeobj.h \
+		mimei.h \
+		modmimee.h \
+		mimecont.h \
+		mimemult.h \
+		mimemsig.h \
+		mimehdrs.h \
+		mimepbuf.h \
+		modlmime.h \
+		comi18n.h \
+		$(NULL)
+
+FORCE_STATIC_LIB = 1
+
+include $(topsrcdir)/config/rules.mk
+
+
