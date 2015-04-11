@@ -1,0 +1,2 @@
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj_xulrunner
+ac_add_options --enable-application=xulrunner
