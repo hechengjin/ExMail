@@ -1,0 +1,13 @@
+messenger.jar:
+% content branding %content/branding/
+  content/branding/about-background.png             (content/about-background.png)
+  content/branding/about-logo.png                   (content/about-logo.png)
+#ifdef MOZ_ESR
+  content/branding/about-wordmark.png               (content/about-esr-wordmark.png)
+#else
+  content/branding/about-wordmark.png               (content/about-wordmark.png)
+#endif
+  content/branding/about.png                        (content/about.png)
+  content/branding/icon48.png                       (content/icon48.png)
+  content/branding/icon64.png                       (content/icon64.png)
+  content/branding/aboutDialog.css                  (content/aboutDialog.css)

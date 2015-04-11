@@ -1,0 +1,72 @@
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+DEPTH		= @DEPTH@
+topsrcdir	= @top_srcdir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@
+
+include $(DEPTH)/config/autoconf.mk
+
+MODULE		= mork
+LIBRARY_NAME	= msgmork_s
+FORCE_STATIC_LIB=1
+
+ifndef MOZ_INCOMPLETE_EXTERNAL_LINKAGE
+MOZILLA_INTERNAL_API = 1
+LIBXUL_LIBRARY	= 1
+endif
+
+CPPSRCS		= \
+		orkinHeap.cpp \
+		morkArray.cpp \
+		morkAtom.cpp \
+		morkAtomMap.cpp \
+		morkAtomSpace.cpp \
+		morkBlob.cpp \
+		morkBuilder.cpp \
+		morkCell.cpp \
+		morkCellObject.cpp \
+		morkCh.cpp \
+		morkConfig.cpp \
+		morkCursor.cpp \
+		morkDeque.cpp \
+		morkEnv.cpp \
+		morkFactory.cpp \
+		morkFile.cpp \
+		morkHandle.cpp \
+		morkIntMap.cpp \
+		morkMap.cpp \
+		morkNode.cpp \
+		morkNodeMap.cpp \
+		morkObject.cpp \
+		morkParser.cpp \
+		morkPool.cpp \
+		morkRow.cpp \
+		morkRowCellCursor.cpp \
+		morkRowMap.cpp \
+		morkRowObject.cpp \
+		morkRowSpace.cpp \
+		morkSink.cpp \
+		morkSpace.cpp \
+		morkStore.cpp \
+		morkStream.cpp \
+		morkTable.cpp \
+		morkPortTableCursor.cpp \
+		morkTableRowCursor.cpp \
+		morkThumb.cpp \
+		morkWriter.cpp \
+		morkYarn.cpp \
+		morkBead.cpp \
+		morkProbeMap.cpp \
+		morkZone.cpp \
+		$(NULL)
+
+ifeq ($(OS_ARCH),WINNT)
+CPPSRCS		+= morkSearchRowCursor.cpp
+endif
+
+include $(topsrcdir)/config/rules.mk
+
