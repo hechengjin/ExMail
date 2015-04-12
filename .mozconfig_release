@@ -1,0 +1,4 @@
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj_ExMail
+ac_add_options --with-l10n-base=$topsrcdir/mail/locales/zh-CN
+ac_add_options --enable-ui-locale=zh-CN
+ac_add_options --disable-tests
