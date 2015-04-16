@@ -12,6 +12,7 @@ messenger.jar:
     content/messenger/messengercompose/cloudAttachmentLinkManager.js (content/cloudAttachmentLinkManager.js)
     content/messenger/messengercompose/EdImageOverlayOverlay.xul   (content/EdImageOverlayOverlay.xul)
     content/messenger/messengercompose/addressingWidgetOverlay.js  (content/addressingWidgetOverlay.js)
+	content/messenger/messengercompose/HtmlInsertion.js		        (content/HtmlInsertion.js)
 
 comm.jar:
 +   content/editor/editorOverlay.xul                               (content/editorOverlay.xul) 
