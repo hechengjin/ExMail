@@ -9,11 +9,11 @@ if "%1"=="da" (
 	if "%input%"=="y" (
 		rd /q /s "C:\Documents and Settings\hecj\Application Data\Thunderbird"
 	)
+        del "C:\Documents and Settings\hecj\Application Data\Thunderbird\profiles.ini"
 	goto startup
 	
 :delini
 	for /d %%i in ("C:\Documents and Settings\hecj\Application Data\Thunderbird\Profiles\*") do (del "%%i\compatibility.ini")
-	del "C:\Documents and Settings\hecj\Application Data\Thunderbird\profiles.ini"
 	goto startup
 	
 :startup

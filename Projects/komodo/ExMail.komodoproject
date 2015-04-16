@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="28ca9ed0-0b99-4378-a5ea-985a20d901a6" kpf_version="5" name="ExMail.komodoproject">
+<file id="ffd1a118-e5b8-4b5f-96f5-1c970f328487" idref="16953234-79bb-4ba6-9c8d-804962f5adbc" name="all-thunderbird.js" url="file:///E:/githubsrc/ExMail/mail/app/profile/all-thunderbird.js">
+</file>
+<file id="2f25bbcb-50aa-4e9d-ab14-a584da331057" idref="22b04f43-fdf0-4b94-badd-cf4623ae9b62" name="aboutDialog.dtd" url="file:///E:/githubsrc/ExMail/mail/locales/zh-CN/zh-CN/mail/chrome/messenger/aboutDialog.dtd">
+</file>
+<file id="6b1b8f74-e0d9-4188-a871-025459a4f858" idref="22b04f43-fdf0-4b94-badd-cf4623ae9b62" name="messenger.dtd" url="file:///E:/githubsrc/ExMail/mail/locales/zh-CN/zh-CN/mail/chrome/messenger/messenger.dtd">
+</file>
+<file id="76771e44-2723-4aab-826f-cc06253d0e00" idref="22b04f43-fdf0-4b94-badd-cf4623ae9b62" name="brand.properties" url="file:///E:/githubsrc/ExMail/mail/locales/zh-CN/zh-CN/other-licenses/branding/thunderbird/brand.properties">
+</file>
+<file id="a7ced302-1467-46de-9fb0-5a7560d0944a" idref="22b04f43-fdf0-4b94-badd-cf4623ae9b62" name="abMainWindow.dtd" url="file:///E:/githubsrc/ExMail/mail/locales/zh-CN/zh-CN/mail/chrome/messenger/addressbook/abMainWindow.dtd">
+</file>
+<file id="ce1c882e-908b-4e53-a9e3-262357119e7a" idref="22b04f43-fdf0-4b94-badd-cf4623ae9b62" name="viewSource.dtd" url="file:///E:/githubsrc/ExMail/mail/locales/zh-CN/zh-CN/toolkit/chrome/global/viewSource.dtd">
+</file>
+<file id="f7f699bd-9c92-4789-9676-437daa69b6e6" idref="22b04f43-fdf0-4b94-badd-cf4623ae9b62" name="baseMenuOverlay.dtd" url="file:///E:/githubsrc/ExMail/mail/locales/zh-CN/zh-CN/mail/chrome/messenger/baseMenuOverlay.dtd">
+</file>
+<folder id="aad1b549-6ad9-4783-a790-ea8be2180760" idref="28ca9ed0-0b99-4378-a5ea-985a20d901a6" name="mail">
+</folder>
+<folder id="e28ed9bc-ac75-4911-b1d8-7593b411cc7e" idref="28ca9ed0-0b99-4378-a5ea-985a20d901a6" name="mailnews">
+</folder>
+<folder id="16953234-79bb-4ba6-9c8d-804962f5adbc" idref="2ed95730-f33e-400a-9058-7fd3ddf49c0e" name="profile">
+</folder>
+<file id="5af07dc1-fc67-4f4d-bba8-b46b2538fc32" idref="2ed95730-f33e-400a-9058-7fd3ddf49c0e" name="startwithdel.bat" url="file:///E:/githubsrc/ExMail/mail/app/startwithdel.bat">
+</file>
+<file id="91883c96-204f-4fe2-83e7-9e0cfa901d4b" idref="2ed95730-f33e-400a-9058-7fd3ddf49c0e" name="startwithlog.bat" url="file:///E:/githubsrc/ExMail/mail/app/startwithlog.bat">
+</file>
+<file id="acfc54e7-d092-478d-9f18-c3282151e17e" idref="2ed95730-f33e-400a-9058-7fd3ddf49c0e" name="module.ver" url="file:///E:/githubsrc/ExMail/mail/app/module.ver">
+</file>
+<file id="ec09ce9e-03cb-4de3-9dd1-e3ff959e8479" idref="2ed95730-f33e-400a-9058-7fd3ddf49c0e" name="application.ini" url="file:///E:/githubsrc/ExMail/mail/app/application.ini">
+</file>
+<file id="9923550d-93b2-4bea-8ded-a870dfe6467d" idref="31c65ce0-c707-4b1b-952d-11cb4bfb4f99" name="HtmlInsertion.js" url="file:///E:/githubsrc/ExMail/mail/components/compose/content/HtmlInsertion.js">
+</file>
+<file id="09c37b38-445e-44f2-9bae-4eb87f8861a4" idref="8274b388-56f1-4ccb-8010-45486a60d383" name="emailWizard.js" url="file:///E:/githubsrc/ExMail/mailnews/base/prefs/content/accountcreation/emailWizard.js">
+</file>
+<file id="a86f3ca6-976c-469c-9ddd-bc6211e6a9aa" idref="8274b388-56f1-4ccb-8010-45486a60d383" name="accountConfig.js" url="file:///E:/githubsrc/ExMail/mailnews/base/prefs/content/accountcreation/accountConfig.js">
+</file>
+<file id="e8e7bddd-5650-4523-b976-aac5444b172f" idref="8274b388-56f1-4ccb-8010-45486a60d383" name="guessConfig.js" url="file:///E:/githubsrc/ExMail/mailnews/base/prefs/content/accountcreation/guessConfig.js">
+</file>
+<file id="00c28ea7-7ca0-44ce-8cc1-d1de63468e8e" idref="9b6529e0-d3d4-4688-922a-28324657cd1a" name="Makefile.in" url="file:///E:/githubsrc/ExMail/mail/installer/windows/Makefile.in">
+</file>
+<file id="05c4f2b4-adc5-45ad-bda1-61065786b1f9" idref="9b6529e0-d3d4-4688-922a-28324657cd1a" name="defines.nsi.in" url="file:///E:/githubsrc/ExMail/mail/installer/windows/nsis/defines.nsi.in">
+</file>
+<file id="5a6d99ce-3bc4-45f3-af07-441381164729" idref="9b6529e0-d3d4-4688-922a-28324657cd1a" name="uninstaller.nsi" url="file:///E:/githubsrc/ExMail/mail/installer/windows/nsis/uninstaller.nsi">
+</file>
+<file id="7c38a914-7b9d-498f-85e5-9fd5875031e2" idref="9b6529e0-d3d4-4688-922a-28324657cd1a" name="installer.nsi" url="file:///E:/githubsrc/ExMail/mail/installer/windows/nsis/installer.nsi">
+</file>
+<folder id="22b04f43-fdf0-4b94-badd-cf4623ae9b62" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="locales">
+</folder>
+<folder id="2ed95730-f33e-400a-9058-7fd3ddf49c0e" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="app">
+</folder>
+<file id="36f7496d-8d33-4e4e-9442-4b75ae6f6628" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="confvars.sh" url="file:///E:/githubsrc/ExMail/mail/confvars.sh">
+</file>
+<folder id="9b6529e0-d3d4-4688-922a-28324657cd1a" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="installer">
+</folder>
+<folder id="cf93e8cf-1a82-45a6-bbb8-f7a0711ccc81" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="base">
+</folder>
+<folder id="e9a7935f-b06b-4149-b51a-c846a0cf51aa" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="components">
+</folder>
+<folder id="ff0961c5-1270-4456-b0fc-3a63faf88993" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="branding">
+</folder>
+<file id="b52c6f1a-5922-4f37-b865-a4b87718e2ee" idref="cf93e8cf-1a82-45a6-bbb8-f7a0711ccc81" name="msgMail3PaneWindow.js" url="file:///E:/githubsrc/ExMail/mail/base/content/msgMail3PaneWindow.js">
+</file>
+<file id="e6790021-6f4a-4c28-99dd-dbebfdbf7927" idref="cf93e8cf-1a82-45a6-bbb8-f7a0711ccc81" name="mailWindowOverlay.js" url="file:///E:/githubsrc/ExMail/mail/base/content/mailWindowOverlay.js">
+</file>
+<folder id="8274b388-56f1-4ccb-8010-45486a60d383" idref="e28ed9bc-ac75-4911-b1d8-7593b411cc7e" name="base">
+</folder>
+<file id="b8446b76-c244-4b45-ab51-e2b80dae72eb" idref="e28ed9bc-ac75-4911-b1d8-7593b411cc7e" name="mailnews.js" url="file:///E:/githubsrc/ExMail/mailnews/mailnews.js">
+</file>
+<folder id="31c65ce0-c707-4b1b-952d-11cb4bfb4f99" idref="e9a7935f-b06b-4149-b51a-c846a0cf51aa" name="compose">
+</folder>
+<file id="86f458bf-da29-49f2-9d81-43515419ab38" idref="ff0961c5-1270-4456-b0fc-3a63faf88993" name="configure.sh" url="file:///E:/githubsrc/ExMail/mail/branding/richinfo/configure.sh">
+</file>
+<file id="b37577e1-333c-4c37-bb68-47ff42ee930f" idref="ff0961c5-1270-4456-b0fc-3a63faf88993" name="branding.nsi" url="file:///E:/githubsrc/ExMail/mail/branding/richinfo/branding.nsi">
+</file>
+<file id="b3d1453c-1bfa-4478-85aa-0d9772aca619" idref="ff0961c5-1270-4456-b0fc-3a63faf88993" name="brand.dtd" url="file:///E:/githubsrc/ExMail/mail/branding/richinfo/locales/en-US/brand.dtd">
+</file>
+<file id="f2e09270-06a6-486e-bbf9-87a505c1ce6b" idref="ff0961c5-1270-4456-b0fc-3a63faf88993" name="brand.properties" url="file:///E:/githubsrc/ExMail/mail/branding/richinfo/locales/en-US/brand.properties">
+</file>
+</project>
