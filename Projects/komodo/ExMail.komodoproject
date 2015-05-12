@@ -15,6 +15,8 @@
 </file>
 <file id="f7f699bd-9c92-4789-9676-437daa69b6e6" idref="22b04f43-fdf0-4b94-badd-cf4623ae9b62" name="baseMenuOverlay.dtd" url="file:///E:/githubsrc/ExMail/mail/locales/zh-CN/zh-CN/mail/chrome/messenger/baseMenuOverlay.dtd">
 </file>
+<folder id="3a72df42-da1b-4429-a7ab-7b720b22e043" idref="28ca9ed0-0b99-4378-a5ea-985a20d901a6" name="mozilla">
+</folder>
 <folder id="aad1b549-6ad9-4783-a790-ea8be2180760" idref="28ca9ed0-0b99-4378-a5ea-985a20d901a6" name="mail">
 </folder>
 <folder id="e28ed9bc-ac75-4911-b1d8-7593b411cc7e" idref="28ca9ed0-0b99-4378-a5ea-985a20d901a6" name="mailnews">
@@ -30,6 +32,14 @@
 <file id="ec09ce9e-03cb-4de3-9dd1-e3ff959e8479" idref="2ed95730-f33e-400a-9058-7fd3ddf49c0e" name="application.ini" url="file:///E:/githubsrc/ExMail/mail/app/application.ini">
 </file>
 <file id="9923550d-93b2-4bea-8ded-a870dfe6467d" idref="31c65ce0-c707-4b1b-952d-11cb4bfb4f99" name="HtmlInsertion.js" url="file:///E:/githubsrc/ExMail/mail/components/compose/content/HtmlInsertion.js">
+</file>
+<folder id="b7ce81f8-15c0-4cc8-a827-b70d604a4b29" idref="39de246b-7dd1-48fd-9f6f-5f6dcb90563c" name="mozapps">
+</folder>
+<folder id="39de246b-7dd1-48fd-9f6f-5f6dcb90563c" idref="3a72df42-da1b-4429-a7ab-7b720b22e043" name="toolkit">
+</folder>
+<folder id="c2900ac6-6010-4462-b605-c1a93bac615b" idref="3a72df42-da1b-4429-a7ab-7b720b22e043" name="uriloader">
+</folder>
+<file id="18169df1-6757-42e6-808a-fab8a39c65a9" idref="69d29718-c160-4bb8-b02d-7bda6ba76254" name="nsHandlerService.js" url="file:///E:/githubsrc/ExMail/mozilla/uriloader/exthandler/nsHandlerService.js">
 </file>
 <file id="09c37b38-445e-44f2-9bae-4eb87f8861a4" idref="8274b388-56f1-4ccb-8010-45486a60d383" name="emailWizard.js" url="file:///E:/githubsrc/ExMail/mailnews/base/prefs/content/accountcreation/emailWizard.js">
 </file>
@@ -59,9 +69,21 @@
 </folder>
 <folder id="ff0961c5-1270-4456-b0fc-3a63faf88993" idref="aad1b549-6ad9-4783-a790-ea8be2180760" name="branding">
 </folder>
+<folder id="bfb5eafc-8cf2-4b47-9d2d-552a3fe4b18b" idref="b7ce81f8-15c0-4cc8-a827-b70d604a4b29" name="downloads">
+</folder>
+<file id="7be70fea-a9b1-484e-8060-ff95eb3948b8" idref="bfb5eafc-8cf2-4b47-9d2d-552a3fe4b18b" name="nsHelperAppDlg.js" url="file:///E:/githubsrc/ExMail/mozilla/toolkit/mozapps/downloads/nsHelperAppDlg.js">
+</file>
+<folder id="ea3dba68-28d6-46ac-849f-104caa996d7a" idref="bfb5eafc-8cf2-4b47-9d2d-552a3fe4b18b" name="content">
+</folder>
+<folder id="69d29718-c160-4bb8-b02d-7bda6ba76254" idref="c2900ac6-6010-4462-b605-c1a93bac615b" name="exthandler">
+</folder>
 <file id="b52c6f1a-5922-4f37-b865-a4b87718e2ee" idref="cf93e8cf-1a82-45a6-bbb8-f7a0711ccc81" name="msgMail3PaneWindow.js" url="file:///E:/githubsrc/ExMail/mail/base/content/msgMail3PaneWindow.js">
 </file>
 <file id="e6790021-6f4a-4c28-99dd-dbebfdbf7927" idref="cf93e8cf-1a82-45a6-bbb8-f7a0711ccc81" name="mailWindowOverlay.js" url="file:///E:/githubsrc/ExMail/mail/base/content/mailWindowOverlay.js">
+</file>
+<file id="d456bdbf-08d1-49d9-9ee7-7d5f23a30d66" idref="d8d71109-c1ce-4af9-9850-61d80bf7399a" name="applications.js" url="file:///E:/githubsrc/ExMail/mail/components/preferences/applications.js">
+</file>
+<file id="f11dd3a5-ea34-43a6-85e9-69ed1ac0e8e9" idref="d8d71109-c1ce-4af9-9850-61d80bf7399a" name="applications.xul" url="file:///E:/githubsrc/ExMail/mail/components/preferences/applications.xul">
 </file>
 <folder id="8274b388-56f1-4ccb-8010-45486a60d383" idref="e28ed9bc-ac75-4911-b1d8-7593b411cc7e" name="base">
 </folder>
@@ -69,6 +91,12 @@
 </file>
 <folder id="31c65ce0-c707-4b1b-952d-11cb4bfb4f99" idref="e9a7935f-b06b-4149-b51a-c846a0cf51aa" name="compose">
 </folder>
+<folder id="d8d71109-c1ce-4af9-9850-61d80bf7399a" idref="e9a7935f-b06b-4149-b51a-c846a0cf51aa" name="preferences">
+</folder>
+<file id="544cb711-9760-4ce0-9eee-3c5c0e396f9a" idref="ea3dba68-28d6-46ac-849f-104caa996d7a" name="unknownContentType.xul" url="file:///E:/githubsrc/ExMail/mozilla/toolkit/mozapps/downloads/content/unknownContentType.xul">
+</file>
+<file id="fd4310ed-5ce2-4934-9477-21528a8313b8" idref="ea3dba68-28d6-46ac-849f-104caa996d7a" name="helperApps.js" url="file:///E:/githubsrc/ExMail/mozilla/toolkit/mozapps/downloads/content/helperApps.js">
+</file>
 <file id="86f458bf-da29-49f2-9d81-43515419ab38" idref="ff0961c5-1270-4456-b0fc-3a63faf88993" name="configure.sh" url="file:///E:/githubsrc/ExMail/mail/branding/richinfo/configure.sh">
 </file>
 <file id="b37577e1-333c-4c37-bb68-47ff42ee930f" idref="ff0961c5-1270-4456-b0fc-3a63faf88993" name="branding.nsi" url="file:///E:/githubsrc/ExMail/mail/branding/richinfo/branding.nsi">

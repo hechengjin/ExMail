@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "thunderbird", "..\..\obj_ExMail\mozilla\dist\bin\thunderbird.exe", "{73FA672B-2DC6-452D-B81C-EE294257D88B}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = E:\githubsrc\ExMail\obj_ExMail\mozilla\dist\bin\thunderbird.exe
+		RemoteMachine = RICHINFO-4A7225
+		StartingDirectory = E:\githubsrc\ExMail\obj_ExMail\mozilla\dist\bin
+		Environment = 默认值
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mozilla", "mozilla", "{DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "uriloader", "uriloader", "{2A7BE594-F591-4672-B664-E97DF3D64F05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "exthandler", "exthandler", "{A926617E-762A-4B8D-94B2-7382DF5CE25B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\mozilla\uriloader\exthandler\nsExternalHelperAppService.cpp = ..\..\mozilla\uriloader\exthandler\nsExternalHelperAppService.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rdf", "rdf", "{B3AB45C6-898C-4DBB-97A6-B12C042DC08D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base", "base", "{2A587BC8-1843-471E-B03B-2D193CC2A47E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{689CD3A9-8157-4D0F-A3FA-A66282853601}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\mozilla\rdf\base\src\nsRDFService.cpp = ..\..\mozilla\rdf\base\src\nsRDFService.cpp
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73FA672B-2DC6-452D-B81C-EE294257D88B}.Debug|x86.ActiveCfg = Debug|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2A7BE594-F591-4672-B664-E97DF3D64F05} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
+		{B3AB45C6-898C-4DBB-97A6-B12C042DC08D} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
+		{A926617E-762A-4B8D-94B2-7382DF5CE25B} = {2A7BE594-F591-4672-B664-E97DF3D64F05}
+		{2A587BC8-1843-471E-B03B-2D193CC2A47E} = {B3AB45C6-898C-4DBB-97A6-B12C042DC08D}
+		{689CD3A9-8157-4D0F-A3FA-A66282853601} = {2A587BC8-1843-471E-B03B-2D193CC2A47E}
+	EndGlobalSection
+EndGlobal
