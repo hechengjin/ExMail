@@ -1,0 +1,42 @@
+<RDF:RDF xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mimetype:handler:application/vnd.ms-excel"
+                   NC:alwaysAsk="false"
+                   NC:useSystemDefault="true">
+    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:application/vnd.ms-excel"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:image/png"
+                   NC:value="image/png"
+                   NC:editable="true"
+                   NC:fileExtensions="png"
+                   NC:description="PNG Image">
+    <NC:handlerProp RDF:resource="urn:mimetype:handler:image/png"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:handler:image/png"
+                   NC:alwaysAsk="false"
+                   NC:useSystemDefault="true">
+    <NC:externalApplication RDF:resource="urn:mimetype:externalApplication:image/png"/>
+  </RDF:Description>
+  <RDF:Seq RDF:about="urn:schemes:root">
+  </RDF:Seq>
+  <RDF:Seq RDF:about="urn:mimetypes:root">
+    <RDF:li RDF:resource="urn:mimetype:application/vnd.ms-excel"/>
+    <RDF:li RDF:resource="urn:mimetype:image/png"/>
+  </RDF:Seq>
+  <RDF:Description RDF:about="urn:schemes">
+    <NC:Protocol-Schemes RDF:resource="urn:schemes:root"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetypes">
+    <NC:MIME-types RDF:resource="urn:mimetypes:root"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:mimetype:application/vnd.ms-excel"
+                   NC:value="application/vnd.ms-excel"
+                   NC:editable="true"
+                   NC:description="Microsoft Office Excel 97-2003 工作表">
+    <NC:fileExtensions>csv</NC:fileExtensions>
+    <NC:fileExtensions>xls</NC:fileExtensions>
+    <NC:handlerProp RDF:resource="urn:mimetype:handler:application/vnd.ms-excel"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="urn:root"
+                   NC:zh-CN_defaultHandlersVersion="-1" />
+</RDF:RDF>

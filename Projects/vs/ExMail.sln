@@ -31,6 +31,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{689CD3A9-815
 		..\..\mozilla\rdf\base\src\nsRDFService.cpp = ..\..\mozilla\rdf\base\src\nsRDFService.cpp
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "editor", "editor", "{A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libeditor", "libeditor", "{E48CFA03-047A-4124-877C-C15F29AD9880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "html", "html", "{E9FED215-5A02-40C2-94A0-E8729613F1B0}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\mozilla\editor\libeditor\html\nsHTMLDataTransfer.cpp = ..\..\mozilla\editor\libeditor\html\nsHTMLDataTransfer.cpp
+		..\..\mozilla\editor\libeditor\html\nsHTMLEditor.cpp = ..\..\mozilla\editor\libeditor\html\nsHTMLEditor.cpp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -44,8 +54,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2A7BE594-F591-4672-B664-E97DF3D64F05} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
 		{B3AB45C6-898C-4DBB-97A6-B12C042DC08D} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
+		{A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
 		{A926617E-762A-4B8D-94B2-7382DF5CE25B} = {2A7BE594-F591-4672-B664-E97DF3D64F05}
 		{2A587BC8-1843-471E-B03B-2D193CC2A47E} = {B3AB45C6-898C-4DBB-97A6-B12C042DC08D}
 		{689CD3A9-8157-4D0F-A3FA-A66282853601} = {2A587BC8-1843-471E-B03B-2D193CC2A47E}
+		{E48CFA03-047A-4124-877C-C15F29AD9880} = {A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9}
+		{E9FED215-5A02-40C2-94A0-E8729613F1B0} = {E48CFA03-047A-4124-877C-C15F29AD9880}
 	EndGlobalSection
 EndGlobal

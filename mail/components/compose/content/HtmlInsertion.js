@@ -10,6 +10,104 @@
  * 通知，并处理传来的元素样式，因为两个窗口都注册了通知。但经测试并没有问题，因为通知过来的元素
  * 对象在另一个窗口的HTML编辑器中是不存在的，虽然它也在处理元素的样式，但并没有生效，生效的是真
  * 正粘贴的那个目标编写窗口。这种每个编写窗口都响应的处理方法不太合理，以后想办法改善。
+
+ 
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 12">
+<link id=Main-File rel=Main-File
+href="file:///C:\DOCUME~1\hecj\LOCALS~1\Temp\msohtmlclip1\01\clip.htm">
+<link rel=File-List
+href="file:///C:\DOCUME~1\hecj\LOCALS~1\Temp\msohtmlclip1\01\clip_filelist.xml">
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+.font5
+	{color:windowtext;
+	font-size:9.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+tr
+	{mso-height-source:auto;
+	mso-ruby-visibility:none;}
+col
+	{mso-width-source:auto;
+	mso-ruby-visibility:none;}
+br
+	{mso-data-placement:same-cell;}
+td
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:black;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:middle;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:nowrap;
+	mso-rotate:0;}
+.xl65
+	{border:.5pt solid windowtext;}
+.xl66
+	{border:.5pt solid windowtext;
+	background:#92D050;
+	mso-pattern:black none;}
+.xl67
+	{border:.5pt solid windowtext;}
+ruby
+	{ruby-align:left;}
+rt
+	{color:windowtext;
+	font-size:9.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-char-type:none;
+	display:none;}
+-->
+</style>
+</head>
+
+<body link=blue vlink=purple>
+
+<table border=0 cellpadding=0 cellspacing=0 width=441 style='border-collapse:
+ collapse;width:331pt'>
+<!--_moz_Insert Here_moz_-->
+</table>
+
+</body>
+
+</html>
+
  */
 
 var styleProcesser = {

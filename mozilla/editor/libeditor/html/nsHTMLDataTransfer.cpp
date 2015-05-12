@@ -92,6 +92,8 @@
 #include "plbase64.h"
 #include "prmem.h"
 #include "prtypes.h"
+#include "nsIMutableArray.h"
+#include "nsIObserverService.h"
 
 class nsIAtom;
 class nsILoadContext;
@@ -485,6 +487,8 @@ nsHTMLEditor::DoInsertHTMLWithContext(const nsAString & aInputString,
     else
       parentBlock = GetBlockNodeParent(parentNode);
 
+	nsCOMPtr<nsIMutableArray> nodesArray(do_CreateInstance(NS_ARRAY_CONTRACTID));
+
     for (j=0; j<listCount; j++)
     {
       bool bDidInsert = false;
@@ -499,7 +503,14 @@ nsHTMLEditor::DoInsertHTMLWithContext(const nsAString & aInputString,
         // if we had to insert something higher up in the paste hierarchy, we want to 
         // skip any further paste nodes that descend from that.  Else we will paste twice.
         if (nsEditorUtils::IsDescendantOf(curNode, insertedContextParent))
+		{
           continue;
+		}
+		else
+		{
+			nodesArray->AppendElement(curNode, false);
+		}
+		
       }
 
       // give the user a hand on table element insertion.  if they have
@@ -613,6 +624,8 @@ nsHTMLEditor::DoInsertHTMLWithContext(const nsAString & aInputString,
               bDidInsert = true;
               insertedContextParent = parent;
               lastInsertNode = GetChildAt(parentNode, offsetOfNewNode);
+
+			  nodesArray->AppendElement(insertedContextParent, false);
             }
           }
           curNode = parent;
@@ -712,6 +725,13 @@ nsHTMLEditor::DoInsertHTMLWithContext(const nsAString & aInputString,
         selection->Collapse(selNode, selOffset+1);
       }
     }
+
+	nsCOMPtr<nsIObserverService> observerService = mozilla::services::GetObserverService();
+	if (observerService)
+	{
+		observerService->NotifyObservers(nodesArray, "InsertHTMLContent", aContextStr.BeginReading());
+	}
+
   }
 
   return mRules->DidDoAction(selection, &ruleInfo, rv);
@@ -1331,6 +1351,7 @@ NS_IMETHODIMP nsHTMLEditor::InsertFromTransferable(nsITransferable *transferable
           textDataObj->GetData(text);
           NS_ASSERTION(text.Length() <= len, "Invalid length!");
           stuffToPaste.Assign(NS_ConvertUTF8toUTF16(Substring(text, 0, len)));
+		  //stuffToPaste.ReplaceSubstring(NS_LITERAL_STRING("border=0"),NS_LITERAL_STRING("border=1 hasExcelTable=1"));
         }
       }
 
