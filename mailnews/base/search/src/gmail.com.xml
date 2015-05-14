@@ -1,0 +1,28 @@
+<clientConfig version="1.1">
+  <emailProvider id="gmail.com">
+    <domain>gmail.com</domain>
+    <displayName>gmail.com</displayName>
+    <displayShortName>gmail.com</displayShortName>
+    <incomingServer type="imap">
+      <hostname>imap.googlemail.com</hostname>
+      <port>993</port>
+      <socketType>SSL</socketType>
+      <authentication>plain</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </incomingServer>
+    <incomingServer type="pop3">
+      <hostname>pop.googlemail.com</hostname>
+      <port>995</port>
+      <socketType>SSL</socketType>
+      <authentication>plain</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </incomingServer>    
+    <outgoingServer type="smtp">
+      <hostname>smtp.googlemail.com</hostname>
+      <port>465</port>
+      <socketType>SSL</socketType>
+      <username>%EMAILADDRESS%</username>
+      <authentication>plain</authentication>
+    </outgoingServer>
+  </emailProvider>
+</clientConfig>

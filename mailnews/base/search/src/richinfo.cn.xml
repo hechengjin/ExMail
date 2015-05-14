@@ -1,0 +1,28 @@
+<clientConfig version="1.1">
+  <emailProvider id="richinfo.cn">
+    <domain>richinfo.cn</domain>
+    <displayName>richinfo.cn</displayName>
+    <displayShortName>richinfo.cn</displayShortName>
+    <incomingServer type="imap">
+      <hostname>imap.richinfo.cn</hostname>
+      <port>143</port>
+      <socketType>plain</socketType>
+      <authentication>plain</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </incomingServer>
+    <incomingServer type="pop3">
+      <hostname>pop3.richinfo.cn</hostname>
+      <port>110</port>
+      <socketType>plain</socketType>
+      <authentication>plain</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </incomingServer>    
+    <outgoingServer type="smtp">
+      <hostname>smtp.richinfo.cn</hostname>
+      <port>25</port>
+      <socketType>plain</socketType>
+      <username>%EMAILADDRESS%</username>
+      <authentication>plain</authentication>
+    </outgoingServer>
+  </emailProvider>
+</clientConfig>

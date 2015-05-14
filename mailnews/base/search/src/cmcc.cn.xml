@@ -1,0 +1,28 @@
+<clientConfig version="1.1">
+  <emailProvider id="cmcc.cn">
+    <domain>cmcc.cn</domain>
+    <displayName>cmcc.cn</displayName>
+    <displayShortName>cmcc.cn</displayShortName>
+    <incomingServer type="imap">
+      <hostname>imap.cmcc.cn</hostname>
+      <port>143</port>
+      <socketType>plain</socketType>
+      <authentication>plain</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </incomingServer>
+    <incomingServer type="pop3">
+      <hostname>pop3.cmcc.cn</hostname>
+      <port>110</port>
+      <socketType>plain</socketType>
+      <authentication>plain</authentication>
+      <username>%EMAILLOCALPART%</username>
+    </incomingServer>    
+    <outgoingServer type="smtp">
+      <hostname>smtp.cmcc.cn</hostname>
+      <port>25</port>
+      <socketType>plain</socketType>
+      <username>%EMAILADDRESS%</username>
+      <authentication>plain</authentication>
+    </outgoingServer>
+  </emailProvider>
+</clientConfig>
