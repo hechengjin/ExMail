@@ -4364,6 +4364,8 @@ NS_IMETHODIMP nsImapMailFolder::GetMsgHdrsToDownload(bool *aMoreToDownload,
   if (session)
     session->IsFolderOpenInWindow(this, &folderOpen);
 
+  folderOpen = true;
+
   int32_t hdrChunkSize = 200;
   if (folderOpen)
   {

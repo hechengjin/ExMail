@@ -740,6 +740,48 @@ var gViewController = {
       }
     },
 
+    cmd_goToTest: {
+      isEnabled: function cmd_goToTest_isEnabled() true,
+      doCommand: function cmd_goToTest_doCommand() {
+
+        //alert(11);
+      //   AddonManager.getAddonByID("calendar-timezones@mozilla.org", function(addon) {
+      //   var addonLocation = addon.getResourceURI("").QueryInterface(Components.interfaces.nsIFileURL).file.path;
+      //   alert(addonLocation)
+      // });
+
+    AddonManager.getAllAddons(function(aAddons) {
+      // Here aAddons is an array of Addon objects
+      for (var i = aAddons.length - 1; i >= 0; i--) {
+        
+      };
+    });
+      ///////////////////
+     //  var types = AddonManager.addonTypes;
+     // for (var type in types)
+     //  this.onTypeAdded(types[type]);
+     //AddonManager.getAddonsByTypes
+
+     AddonManager.getAddonsByTypes(["plugin"], function(aAddons) {
+    //alert(aAddons.length);
+    let pluinfos;
+    aAddons.forEach(function(aAddon) {
+      if (aAddon.id == "{24fb0ca3-39c4-0c1b-ef1f-583dc792b10b}" || aAddon.id == "{23ce58e2-9bef-6052-28e8-555ff3a9719c}") 
+      { 
+        //https://developer.mozilla.org/en-US/Add-ons/Add-on_Manager/Addon
+        alert(aAddon.name);
+        //aAddon.description
+        //aAddon.id
+        pluinfos += aAddon.name + " "+aAddon.id + "--";
+      }
+      
+      
+    });
+  });
+
+      }
+    },
+
     cmd_showItemDetails: {
       isEnabled: function cmd_showItemDetails_isEnabled(aAddon) {
         return !!aAddon && (gViewController.currentViewObj != gDetailView);

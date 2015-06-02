@@ -19,7 +19,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "uriloader", "uriloader", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "exthandler", "exthandler", "{A926617E-762A-4B8D-94B2-7382DF5CE25B}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\mozilla\uriloader\exthandler\ExternalHelperAppChild.cpp = ..\..\mozilla\uriloader\exthandler\ExternalHelperAppChild.cpp
+		..\..\mozilla\uriloader\exthandler\ExternalHelperAppChild.h = ..\..\mozilla\uriloader\exthandler\ExternalHelperAppChild.h
+		..\..\mozilla\uriloader\exthandler\ExternalHelperAppParent.cpp = ..\..\mozilla\uriloader\exthandler\ExternalHelperAppParent.cpp
+		..\..\mozilla\uriloader\exthandler\ExternalHelperAppParent.h = ..\..\mozilla\uriloader\exthandler\ExternalHelperAppParent.h
+		..\..\mozilla\uriloader\exthandler\nsContentHandlerApp.cpp = ..\..\mozilla\uriloader\exthandler\nsContentHandlerApp.cpp
+		..\..\mozilla\uriloader\exthandler\nsContentHandlerApp.h = ..\..\mozilla\uriloader\exthandler\nsContentHandlerApp.h
+		..\..\mozilla\uriloader\exthandler\nsDBusHandlerApp.cpp = ..\..\mozilla\uriloader\exthandler\nsDBusHandlerApp.cpp
+		..\..\mozilla\uriloader\exthandler\nsDBusHandlerApp.h = ..\..\mozilla\uriloader\exthandler\nsDBusHandlerApp.h
 		..\..\mozilla\uriloader\exthandler\nsExternalHelperAppService.cpp = ..\..\mozilla\uriloader\exthandler\nsExternalHelperAppService.cpp
+		..\..\mozilla\uriloader\exthandler\nsExternalHelperAppService.h = ..\..\mozilla\uriloader\exthandler\nsExternalHelperAppService.h
+		..\..\mozilla\uriloader\exthandler\nsExternalProtocolHandler.cpp = ..\..\mozilla\uriloader\exthandler\nsExternalProtocolHandler.cpp
+		..\..\mozilla\uriloader\exthandler\nsExternalProtocolHandler.h = ..\..\mozilla\uriloader\exthandler\nsExternalProtocolHandler.h
+		..\..\mozilla\uriloader\exthandler\nsLocalHandlerApp.cpp = ..\..\mozilla\uriloader\exthandler\nsLocalHandlerApp.cpp
+		..\..\mozilla\uriloader\exthandler\nsLocalHandlerApp.h = ..\..\mozilla\uriloader\exthandler\nsLocalHandlerApp.h
+		..\..\mozilla\uriloader\exthandler\nsMIMEInfoImpl.cpp = ..\..\mozilla\uriloader\exthandler\nsMIMEInfoImpl.cpp
+		..\..\mozilla\uriloader\exthandler\nsMIMEInfoImpl.h = ..\..\mozilla\uriloader\exthandler\nsMIMEInfoImpl.h
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rdf", "rdf", "{B3AB45C6-898C-4DBB-97A6-B12C042DC08D}"
@@ -41,6 +56,61 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "html", "html", "{E9FED215-5
 		..\..\mozilla\editor\libeditor\html\nsHTMLEditor.cpp = ..\..\mozilla\editor\libeditor\html\nsHTMLEditor.cpp
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mailnews", "mailnews", "{9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "imap", "imap", "{50EFCC3B-AD28-45DF-8E02-4B629E28A923}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{168082D2-357A-401F-9A93-2D0E88119F05}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\mailnews\imap\src\nsAutoSyncManager.cpp = ..\..\mailnews\imap\src\nsAutoSyncManager.cpp
+		..\..\mailnews\imap\src\nsAutoSyncManager.h = ..\..\mailnews\imap\src\nsAutoSyncManager.h
+		..\..\mailnews\imap\src\nsAutoSyncState.cpp = ..\..\mailnews\imap\src\nsAutoSyncState.cpp
+		..\..\mailnews\imap\src\nsAutoSyncState.h = ..\..\mailnews\imap\src\nsAutoSyncState.h
+		..\..\mailnews\imap\src\nsIMAPBodyShell.cpp = ..\..\mailnews\imap\src\nsIMAPBodyShell.cpp
+		..\..\mailnews\imap\src\nsIMAPBodyShell.h = ..\..\mailnews\imap\src\nsIMAPBodyShell.h
+		..\..\mailnews\imap\src\nsImapCore.h = ..\..\mailnews\imap\src\nsImapCore.h
+		..\..\mailnews\imap\src\nsImapFlagAndUidState.cpp = ..\..\mailnews\imap\src\nsImapFlagAndUidState.cpp
+		..\..\mailnews\imap\src\nsImapFlagAndUidState.h = ..\..\mailnews\imap\src\nsImapFlagAndUidState.h
+		..\..\mailnews\imap\src\nsIMAPGenericParser.cpp = ..\..\mailnews\imap\src\nsIMAPGenericParser.cpp
+		..\..\mailnews\imap\src\nsIMAPGenericParser.h = ..\..\mailnews\imap\src\nsIMAPGenericParser.h
+		..\..\mailnews\imap\src\nsIMAPHostSessionList.cpp = ..\..\mailnews\imap\src\nsIMAPHostSessionList.cpp
+		..\..\mailnews\imap\src\nsIMAPHostSessionList.h = ..\..\mailnews\imap\src\nsIMAPHostSessionList.h
+		..\..\mailnews\imap\src\nsImapIncomingServer.cpp = ..\..\mailnews\imap\src\nsImapIncomingServer.cpp
+		..\..\mailnews\imap\src\nsImapIncomingServer.h = ..\..\mailnews\imap\src\nsImapIncomingServer.h
+		..\..\mailnews\imap\src\nsImapMailFolder.cpp = ..\..\mailnews\imap\src\nsImapMailFolder.cpp
+		..\..\mailnews\imap\src\nsImapMailFolder.h = ..\..\mailnews\imap\src\nsImapMailFolder.h
+		..\..\mailnews\imap\src\nsIMAPNamespace.cpp = ..\..\mailnews\imap\src\nsIMAPNamespace.cpp
+		..\..\mailnews\imap\src\nsIMAPNamespace.h = ..\..\mailnews\imap\src\nsIMAPNamespace.h
+		..\..\mailnews\imap\src\nsImapOfflineSync.cpp = ..\..\mailnews\imap\src\nsImapOfflineSync.cpp
+		..\..\mailnews\imap\src\nsImapOfflineSync.h = ..\..\mailnews\imap\src\nsImapOfflineSync.h
+		..\..\mailnews\imap\src\nsImapProtocol.cpp = ..\..\mailnews\imap\src\nsImapProtocol.cpp
+		..\..\mailnews\imap\src\nsImapProtocol.h = ..\..\mailnews\imap\src\nsImapProtocol.h
+		..\..\mailnews\imap\src\nsImapSearchResults.cpp = ..\..\mailnews\imap\src\nsImapSearchResults.cpp
+		..\..\mailnews\imap\src\nsImapSearchResults.h = ..\..\mailnews\imap\src\nsImapSearchResults.h
+		..\..\mailnews\imap\src\nsImapServerResponseParser.cpp = ..\..\mailnews\imap\src\nsImapServerResponseParser.cpp
+		..\..\mailnews\imap\src\nsImapServerResponseParser.h = ..\..\mailnews\imap\src\nsImapServerResponseParser.h
+		..\..\mailnews\imap\src\nsImapService.cpp = ..\..\mailnews\imap\src\nsImapService.cpp
+		..\..\mailnews\imap\src\nsImapService.h = ..\..\mailnews\imap\src\nsImapService.h
+		..\..\mailnews\imap\src\nsImapStringBundle.cpp = ..\..\mailnews\imap\src\nsImapStringBundle.cpp
+		..\..\mailnews\imap\src\nsImapStringBundle.h = ..\..\mailnews\imap\src\nsImapStringBundle.h
+		..\..\mailnews\imap\src\nsImapUndoTxn.cpp = ..\..\mailnews\imap\src\nsImapUndoTxn.cpp
+		..\..\mailnews\imap\src\nsImapUndoTxn.h = ..\..\mailnews\imap\src\nsImapUndoTxn.h
+		..\..\mailnews\imap\src\nsImapUrl.cpp = ..\..\mailnews\imap\src\nsImapUrl.cpp
+		..\..\mailnews\imap\src\nsImapUrl.h = ..\..\mailnews\imap\src\nsImapUrl.h
+		..\..\mailnews\imap\src\nsImapUtils.cpp = ..\..\mailnews\imap\src\nsImapUtils.cpp
+		..\..\mailnews\imap\src\nsImapUtils.h = ..\..\mailnews\imap\src\nsImapUtils.h
+		..\..\mailnews\imap\src\nsSyncRunnableHelpers.cpp = ..\..\mailnews\imap\src\nsSyncRunnableHelpers.cpp
+		..\..\mailnews\imap\src\nsSyncRunnableHelpers.h = ..\..\mailnews\imap\src\nsSyncRunnableHelpers.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "win", "win", "{7B04FECD-F1A2-4009-AC20-1F05863B4A3F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\mozilla\uriloader\exthandler\win\nsMIMEInfoWin.cpp = ..\..\mozilla\uriloader\exthandler\win\nsMIMEInfoWin.cpp
+		..\..\mozilla\uriloader\exthandler\win\nsMIMEInfoWin.h = ..\..\mozilla\uriloader\exthandler\win\nsMIMEInfoWin.h
+		..\..\mozilla\uriloader\exthandler\win\nsOSHelperAppService.cpp = ..\..\mozilla\uriloader\exthandler\win\nsOSHelperAppService.cpp
+		..\..\mozilla\uriloader\exthandler\win\nsOSHelperAppService.h = ..\..\mozilla\uriloader\exthandler\win\nsOSHelperAppService.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -56,9 +126,12 @@ Global
 		{B3AB45C6-898C-4DBB-97A6-B12C042DC08D} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
 		{A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
 		{A926617E-762A-4B8D-94B2-7382DF5CE25B} = {2A7BE594-F591-4672-B664-E97DF3D64F05}
+		{7B04FECD-F1A2-4009-AC20-1F05863B4A3F} = {A926617E-762A-4B8D-94B2-7382DF5CE25B}
 		{2A587BC8-1843-471E-B03B-2D193CC2A47E} = {B3AB45C6-898C-4DBB-97A6-B12C042DC08D}
 		{689CD3A9-8157-4D0F-A3FA-A66282853601} = {2A587BC8-1843-471E-B03B-2D193CC2A47E}
 		{E48CFA03-047A-4124-877C-C15F29AD9880} = {A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9}
 		{E9FED215-5A02-40C2-94A0-E8729613F1B0} = {E48CFA03-047A-4124-877C-C15F29AD9880}
+		{50EFCC3B-AD28-45DF-8E02-4B629E28A923} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
+		{168082D2-357A-401F-9A93-2D0E88119F05} = {50EFCC3B-AD28-45DF-8E02-4B629E28A923}
 	EndGlobalSection
 EndGlobal
