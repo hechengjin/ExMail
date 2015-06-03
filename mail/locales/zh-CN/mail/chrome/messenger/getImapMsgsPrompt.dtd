@@ -1,0 +1,12 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY titledefault.label    "收取邮件">
+<!ENTITY getMsgsPromptTitle.label "请选择每个邮件夹要收取的邮件数：">
+<!ENTITY promptMsgNumOnServerTitle.label "服务器无邮件">
+<!ENTITY promptRecvAll.label "全部收取">
+<!ENTITY promptBeginFix.label "收取最近的">
+<!ENTITY promptEndFix.label "封邮件">
+<!ENTITY promptRecvLeftAll.label "是否全部收取 ?">
+

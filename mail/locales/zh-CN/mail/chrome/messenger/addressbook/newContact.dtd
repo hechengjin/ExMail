@@ -1,0 +1,29 @@
+
+
+<!-- Labels -->
+<!ENTITY newContactMail.label         					"邮件地址">
+<!ENTITY newContactCellPhone.label         				"移动号码">
+<!ENTITY newContactHomePhone.label         				"固定电话">
+<!ENTITY newContactOffficePhone.label         			"办公电话">
+<!ENTITY newContactCompany.label         				"公司名称">
+<!ENTITY newContactPosition.label         				"职位">
+<!ENTITY newContactBelongTo.label         				"所属分组">
+<!ENTITY newContactMore.label         					"更多选项">
+<!ENTITY newContactSex.label         					"性别">
+<!ENTITY newContactQQ.label         					"QQ">
+<!ENTITY newContactGtalk.label         					"GTalk">
+<!ENTITY newContactSinaWebbo.label         				"新浪微博">
+<!ENTITY newContactFacebook.label         				"facebook">
+<!ENTITY newContactBirthday.label         				"生日">
+<!ENTITY newContactCustom.label         				"自定义">
+<!ENTITY newContactRemark.label         				"备注">
+<!ENTITY newContactTitle.label							"新建联系人">
+
+<!ENTITY newContactOk.label         					"确定">
+<!ENTITY newContactCancel.label         				"取消">
+
+<!ENTITY newContactUploadPhoto.label         			"上传自定义头像">
+
+
+
+

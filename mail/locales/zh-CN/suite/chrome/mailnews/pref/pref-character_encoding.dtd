@@ -1,0 +1,16 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY pref.character.encoding.title   "字符编码">
+<!ENTITY messageDisplay.caption          "显示信息">
+<!ENTITY viewDefaultCharset.label        "默认字符编码:">
+<!ENTITY viewDefaultCharset.accesskey    "D">
+
+<!ENTITY composingMessages.caption       "撰写邮件">
+<!ENTITY useMIME.label                   "对于包含8-位字符的信件来说，最好使用‘可打印的’MIME编码。按照原样发送邮件。">
+<!ENTITY useMIME.accesskey               "F">
+<!ENTITY sendDefaultCharset.label        "默认字符编码:">
+<!ENTITY sendDefaultCharset.accesskey    "C">
+<!ENTITY replyInDefaultCharset2.label    "在回复中尽量使用默认编码（如果没有选，只有在新信件中使用默认编码）">
+<!ENTITY replyInDefaultCharset2.accesskey "W">

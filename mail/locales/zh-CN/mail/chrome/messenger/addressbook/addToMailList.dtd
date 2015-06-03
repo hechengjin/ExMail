@@ -1,0 +1,17 @@
+
+
+<!-- Labels -->
+<!ENTITY addToMailListName.label         			"通讯录">
+<!ENTITY addToMailListListName.label         		"联系人列表">
+<!ENTITY addToMailListTitle.label         			"选择联系人">
+
+<!ENTITY addToMailListOk.label         				"确定">
+<!ENTITY addToMailListCancel.label         			"取消">
+<!ENTITY addToMailListNameOrEMail.label         	"姓名或邮件地址">
+
+<!ENTITY to.label         							"收件人">
+<!ENTITY cc.label         							"抄送人">
+<!ENTITY bcc.label         							"密送人">
+
+
+

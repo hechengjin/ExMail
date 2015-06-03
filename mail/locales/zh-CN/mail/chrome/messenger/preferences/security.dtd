@@ -1,0 +1,67 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY itemJunk.label          "垃圾">
+<!ENTITY itemPhishing.label      "电子邮件欺诈">
+<!ENTITY itemPasswords.label     "密码">
+<!ENTITY itemAntiVirus.label     "防病毒">
+<!ENTITY itemCookies.label       "网页内容">
+
+<!-- Junk Mail Controls -->
+<!ENTITY junkMail.intro "设定您默认的垃圾邮件设置。
+可以在“帐户设置”中设定特定于帐户的垃圾邮件设置。">
+<!ENTITY manualMark.label "当我将邮件标记为垃圾邮件时：">
+<!ENTITY manualMark.accesskey "W">
+<!ENTITY manualMarkModeMove.label "将它们移动至帐户的 &quot;垃圾&quot; 邮件夹">
+<!ENTITY manualMarkModeMove.accesskey "o">
+<!ENTITY manualMarkModeDelete.label "删除它们">
+<!ENTITY manualMarkModeDelete.accesskey "D">
+<!ENTITY markAsReadOnSpam.label "将垃圾邮件自动标记为已读">
+<!ENTITY markAsReadOnSpam.accesskey "M">
+<!ENTITY enableAdaptiveJunkLogging.label "启用自适应垃圾邮件过滤日志">
+<!ENTITY enableAdaptiveJunkLogging.accesskey "E">
+<!ENTITY openJunkLog.label "显示日志">
+<!ENTITY openJunkLog.accesskey "S">
+<!ENTITY resetTrainingData.label "重置训练数据">
+<!ENTITY resetTrainingData.accesskey "R">
+
+<!-- Phishing Detector -->
+<!ENTITY phishingDetector1.intro  "&brandShortName; 可以识别一些常见欺诈伎俩，分析检测是否为欺诈邮件。">
+<!ENTITY enablePhishingDetector1.label    "告诉我正在阅读的邮件是否是欺诈邮件">
+<!ENTITY enablePhishingDetector1.accesskey  "T">
+<!ENTITY useDownloadedList.label "使用下载的欺诈邮件列表">
+<!ENTITY useDownloadedList.accesskey "U">
+
+<!-- Passwords -->
+<!ENTITY savedPasswords.intro           "&brandShortName; 能记住您所有帐户的密码信息，因此您不必在每次登录时重复输入密码。">
+<!ENTITY useMasterPassword.label        "启用锁屏密码以锁定客户端保护重要信息">
+<!ENTITY useMasterPassword.accesskey    "U">
+<!ENTITY masterPassword.intro           "设置主密码可以保护您所有的密码 - 但是您必须对每次会话输入一次主密码。">
+<!ENTITY changeMasterPassword.label     "更换锁屏密码">
+<!ENTITY changeMasterPassword.accesskey "C">
+<!ENTITY savedPasswords.label           "已保存密码…">
+<!ENTITY savedPasswords.accesskey       "S">
+
+<!-- Anti Virus -->
+<!ENTITY antiVirus.intro      "&brandShortName; 可在将邮件保存到本地之前，让防病毒软件分析扫描它接收到的电子邮件。">
+<!ENTITY antiVirus.label      "允许防病毒软件隔离单个接收到的邮件">
+<!ENTITY antiVirus.accesskey  "A">
+
+<!-- Cookies -->
+<!ENTITY cookies.intro                  "&brandShortName; 允许你指定哪些博客，收取点和其他网站可以设置 cookie 。">
+<!ENTITY acceptCookies.label            "接受站点的 cookie">
+<!ENTITY acceptCookies.accesskey        "c">
+<!ENTITY keepUntil.label                "保存，直到：">
+<!ENTITY keepUntil.accesskey            "K">
+<!ENTITY expire.label                   "它们过期">
+<!ENTITY close.label                    "我退出 &brandShortName;">
+<!ENTITY askEachTime.label              "每次均询问">
+<!ENTITY cookieExceptions.label         "例外…">
+<!ENTITY cookieExceptions.accesskey     "E">
+<!ENTITY showCookies.label              "显示 Cookie…">
+<!ENTITY showCookies.accesskey          "S">
+
+<!-- Do Not Track -->
+<!ENTITY doNotTrack.label               "告诉网站我不想被追踪">
+<!ENTITY doNotTrack.accesskey           "d">

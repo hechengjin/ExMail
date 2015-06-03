@@ -1,0 +1,8 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY recall.title        "请选择要召回的邮件地址">
+<!ENTITY recall.prompt        "仅支持召回发往本系统内的邮件">
+<!ENTITY recall.recall        "召回">
+<!ENTITY recall.ok        	  "确定">

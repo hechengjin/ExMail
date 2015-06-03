@@ -1,0 +1,8 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY inputPwd.title        "邮件加密">
+<!ENTITY inputPwd.prompt        "收件人输入以下密码，才能查看邮件：">
+<!ENTITY inputPwd.ok        "确定">
+<!ENTITY inputPwd.cancel        	  "取消">

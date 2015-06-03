@@ -1,0 +1,39 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY pref.formatting.title        "发送格式">
+<!ENTITY sendMaildesc.label           "当发送格式化（HTML）信件，而且收件人没有设置接收HTML:">
+<!ENTITY askMe.label                  "询问我如何做(邮件程序会提示您选择一个格式)">
+<!ENTITY askMe.accesskey              "k">
+<!ENTITY convertPlain.label           "转换信息为普通文本(一些格式可能会丢失)">
+<!ENTITY convertPlain.accesskey       "C">
+<!ENTITY sendHTML.label               "将信件作为格式化文件（HTML）发送（即使一些邮件程序不支持）">
+<!ENTITY sendHTML.accesskey           "S">
+<!ENTITY sendBoth.label               "以文本和HTML格式发送邮件（比较大的信件）">
+<!ENTITY sendBoth.accesskey           "n">
+<!ENTITY override.label               "在写信件时，您可以点击选项菜单为单独的信件重新设置。">
+
+<!-- Html and Plain Text Domains  -->
+<!ENTITY domain.title                 "超文本域和普通文本域">
+<!ENTITY domaindesc.label             "如果您向属于下面列举的域名的地址发送信件，Mail会自动以首选格式（格式化文本或者普通文本）来发送信件。">
+<!ENTITY HTMLdomaintitle.label        "HTML 域">
+<!ENTITY HTMLdomaintitle.accesskey    "M">
+<!ENTITY PlainTexttitle.label         "纯文本域">
+<!ENTITY PlainTexttitle.accesskey     "P">
+<!ENTITY AddButton.label              "添加…">
+<!ENTITY AddHtmlDomain.accesskey      "A">
+<!ENTITY AddPlainText.accesskey       "d">
+<!ENTITY DeleteButton.label           "删除">
+<!ENTITY DeleteHtmlDomain.accesskey   "e">
+<!ENTITY DeletePlainText.accesskey    "t">
+
+<!-- Add Domain Name -->
+<!ENTITY add.htmltitle                "添加 HTML 域名">
+<!ENTITY add.htmldomain               "HTML 域名：">
+<!ENTITY add.plaintexttitle           "添加纯文本域名：">
+<!ENTITY add.plaintextdomain          "纯文本域名称：">
+
+<!ENTITY domainnameError.title        "域名错误">
+<!-- LOCALIZATION NOTE: do not translate @string@ -->
+<!ENTITY invalidEntryError.label      "@string@ 是不可用的域名并且会被忽略。一个有效的域名，必须包含至少'.'，在'.'任何一侧会有多个字符">

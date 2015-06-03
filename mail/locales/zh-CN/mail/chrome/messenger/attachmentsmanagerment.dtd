@@ -1,0 +1,14 @@
+﻿<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY titledefault.label    "附件管理">
+<!ENTITY at.name.label    "附件名">
+<!ENTITY at.subject.label    "邮件主题">
+<!ENTITY at.from.label    "发件人">
+<!ENTITY at.size.label    "大小">
+<!ENTITY at.date.label    "发信日期">
+<!ENTITY at.openmailattach.label    "打开">
+<!ENTITY at.downmailattach.label    "下载">
+<!ENTITY at.openmail.label    "所在邮件">
+<!ENTITY at.search.byattname.label    "按附件名搜索">

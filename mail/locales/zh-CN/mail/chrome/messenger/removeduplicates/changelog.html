@@ -1,0 +1,251 @@
+<html>
+  <head>
+    <link rel="stylesheet" media="screen" href="style.css">
+  </head>
+<body>
+
+
+
+<h1>ToDo</h1>
+<ul>
+  <li>Dialog with duplicate messages: Really delete messages, do not move to trash.</li>
+  <li>If messages do not have a message ID then thunderbird calculates a md5 hash which is most propably not the right one to compare messages.</li>
+  <li>Undo delete/move messages to given folder.</li>
+</ul>
+
+
+
+<h1>Changelog</h1>
+
+<p>
+<h2>22.05.2012: Version 0.1.13</h2>
+<ul>
+  <li>Bugfix: Double click did not work with latest Thunderbird versions
+  anymore. As an alternative it is now possible to use a middle click to
+  toggle the message state between DEL and KEEP.</li>
+  </ul>
+</p> 
+      
+
+<p>
+<h2>20.03.2012: Version 0.1.12</h2>
+<ul>
+  <li>Bugfix: Code cleanup and compatibility changes for Thunderbird 13 API.</li>       
+ </ul>
+</p>
+ 
+<p>
+<h2>07.03.2012: Version 0.1.11</h2>
+ <ul>
+  <li>Bugfix: Messages are shown again in the main window when left clicked
+  in the duplicate messages dialog.</li>
+  <li>Bugfix: Comparison of message body is working again. Now even better
+  then before. During comparison also attachements are regarde.
+  Unfortunately this option is very time consuming.</li>
+  <li>Bugfix: A little bit more duplicates are found now.</li>
+  <li>Feature: Compare recipient list. This is useful to remove duplicate
+  sent messages.</li>
+  <li>Feature: Added an option to show the duplicate message dilog even if
+  no duplicates were found.</li>
+  <li>Feature: Added an option to compare messages by date (not time).</li>
+  <li>Feature: Brazilian localisation: pt-BR.</li>
+ </ul>
+</p> 
+
+<p>
+<h2>06.05.2010: Version 0.1.10</h2>
+ <ul>
+  <li>Bugfix: In Thunderbird 2.0 search failed if subfolders were present.</li>
+ </ul>
+</p> 
+
+<p>
+<h2>04.05.2010: Version 0.1.09</h2>
+ <ul>
+  <li>Feature: Use md5 hash so safe memory and increase speed.</li>
+  <li>Other: Change code to use object oriented JavaScript to prevent conflicts (interactions) with other AddOns.</li>
+  <li>Other: Add file chrome.manifest (installer for TB3.0+</li>
+ </ul>
+</p> 
+
+<p>
+<h2>30.03.2010: Version 0.1.08</h2>
+ <ul>
+  <li>Remove "-" from file name</li>
+  <li>If not duplicate messages are found only a small information window is shown instead of the message selection dialog.</li>
+  <li>Compatible with Thunderbird 2.0+ and 3.0+</li>
+ </ul>
+</p> 
+
+<p>
+<h2>24.01.2010: Version 0.1.07</h2>
+ <ul>
+  <li>Adopt Thunderbird 3.0 API</li>
+  <li>When a process is running, it can be terminated by starting a new search for duplicate messages.</li>
+ </ul>
+</p> 
+
+<p>
+<h2>29.12.2008: Version 0.1.06</h2>
+ <ul>
+  <li>Version changes in installer. No code changes.</li>
+ </ul>
+</p> 
+
+<p>
+<h2>09.07.2007: Version 0.1.05</h2>
+ <ul>
+  <li>Addon works now under windows in Thunderbird 2.0+</li>
+ </ul>
+</p> 
+
+<p>
+<h2>08.07.2007: Version 0.1.04</h2>
+ <ul>
+  <li>Update to version 2 of Thunderbird</li>
+ </ul>
+</p> 
+
+
+<p>
+<h2>31.03.2006: Version 0.1.03</h2>  
+ <ul>
+  <li>Minor fixes</li>
+ </ul>
+</p>
+
+
+<p>
+<h2>29.01.2006: Version 0.1.02</h2>  
+ <ul>
+  <li>Bugfixes</li>
+  <li>Localisation: ja-JP</li>
+ </ul>
+</p>
+
+
+<p>
+<h2>08.12.2005: Version 0.1.01</h2>  
+ <ul>
+  <li>Bugfixes</li>
+ </ul>
+</p>
+  
+  
+<p>
+<h2>18.09.2005: Version 0.0.10</h2>
+ <ul>
+  <li>Again, a change in the Thunderbird API prevented the plugin from running.</li>
+ </ul>
+</p> 
+
+
+<p>
+<h2>12.09.2005: Version 0.0.10</h2>
+<ul>
+  <li>A change in the Thunderbird API prevented the plugin from running.</li>
+</ul>
+</p> 
+
+
+<p>
+<h2>23.08.2005: Version 0.0.9</h2>
+<ul>
+  <li>Bugfix for RSS: prefere to delete unread messages.</li>
+  <li>Option to ignore the sent messages.</li>
+  <li>Dutch localisation: nl-NL</li>
+</ul>
+</p>
+    
+
+
+<p>
+<h2>15.08.2005: Version 0.0.8</h2>     
+<ul>
+  <li>Smaller bug fixes.</li>
+  <li>Restore standard (keep one message and delete all other duplicates).</li>
+  <li>If two messages are duplicates prefere to keep the bigger, smaller, unread or first/last found one.</li>
+</ul>
+</p> 
+<p>  
+
+
+
+<p>
+<h2>29.07.2005: Version 0.0.7</h2>
+<ul>
+  <li>Spanish and french localisation</li>
+  <li>Automatic delete (no dialog showing the duplicates)<li>
+  <li>Bug fixed when the displaying double imap messages ("Unknown message format: image message").</li>
+  <li>Button to mark all messages as delete (DEL) or keep (KEEP).  This is of advantage, if you like to delete only few message or keep only few messages.</ul>
+</p>
+
+
+
+<p>
+<h2>26.07.2005: Version 0.0.6</h2>
+<ul>
+  <li>Folders with more than 149000 messages can be scanned.  This was reached by a selfmade implemented memory management. The border is now at approx. 400,000 messages.</li>
+  <li>Dialogue does not freeze and it appears no more the message "Script warning" that a Script consumes too much computing time. This was made possible with an any-time Quick-Sort algorithm.</li>
+  <li>Italian (it-IT) localisation.</li>
+</ul>
+</p>
+<p>
+
+
+
+<p>
+<h2>17.07.2005: Version 0.0.5</h2>
+<ul>
+  <li>Speed up search function</li>
+  <li>If many double messages are found, Thunderbird does not freeze during the dialog setup.
+  <li>MessageID was not used while comparing.</li>
+  <li>Search and delete in IMAP is possible.</li>
+</ul>
+</p>
+<p>
+
+
+
+<h2>17.07.2005: Version 0.0.4</h2>
+<ul>
+  <li>Bugfixes in german language packs (prevented deleting).</li>
+</ul>
+</p>
+
+
+
+<p>
+<h2>14.07.2005: Version 0.0.3</h2>
+<ul>
+  <li>Significant increase of speed. A scan for 20000 messaged took one hour. Now only 20 seconds.</li>
+  <li>All similar duplicate messages grouped together.</li>
+  <li>Show duplicate message in main window by left clicking them in the duplicate message view.</li>
+</ul>
+</p>
+
+
+
+<p>
+<h2>10.07.2005: Version 0.0.2</h2>
+<ul>
+  <li>Show duplicate messages dialog: Drag columns, resize columns, date human readable</li>
+  <li>More localisations: de-CH, de-LI, de-LU, de-CH.</li>
+  <li>Setting to ignore trashcan during search for duplicate messages. This is the default option.</li>
+  <li>Manual / Help</li>
+</ul>
+</p>
+
+
+
+<p>
+<h2>08.07.2005: Version 0.0.1</h2>
+<ul>
+  <li>First public release.</li>
+</ul>
+</p>
+
+
+
+</body>
+</html>

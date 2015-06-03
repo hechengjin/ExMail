@@ -1,0 +1,30 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY addressbookPicker.label            "通讯录：">
+<!ENTITY addressbookPicker.accesskey        "k">
+<!ENTITY searchInput.label                  "搜索：">
+<!ENTITY searchInput.accesskey              "o">
+<!ENTITY SearchNameOrEmail.label            "名称或者电子邮件">
+
+<!ENTITY deleteAddrBookCard.label           "删除">
+<!ENTITY deleteAddrBookCard.accesskey       "D">
+<!ENTITY addrBookCardProperties.label       "属性">
+<!ENTITY addrBookCardProperties.accesskey   "P">
+<!ENTITY addtoToFieldMenu.label             "添加至收件人">
+<!ENTITY addtoToFieldMenu.accesskey         "A">
+<!ENTITY addtoCcFieldMenu.label             "添加至抄送">
+<!ENTITY addtoCcFieldMenu.accesskey         "C">
+<!ENTITY addtoBccFieldMenu.label            "添加至密送">
+<!ENTITY addtoBccFieldMenu.accesskey        "B">
+
+<!ENTITY toButton.label                     "添加至收件人：">
+<!ENTITY toButton.accesskey                 "A">
+<!ENTITY ccButton.label                     "添加至抄送：">
+<!ENTITY ccButton.accesskey                 "C">
+<!ENTITY bccButton.label                    "添加至密件抄送:">
+<!ENTITY bccButton.accesskey                "B">
+
+<!ENTITY title.label            "通讯录">
+<!ENTITY searchTextboxHolder.labeld "姓名或邮件地址">

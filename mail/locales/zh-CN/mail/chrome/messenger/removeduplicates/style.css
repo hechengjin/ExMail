@@ -1,0 +1,8 @@
+body    { background-color:#303030 }
+p       { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #bbbbbb; text-align:justify; margin-left:0px; }
+h1      { font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: #009966; font-weight: bold; text-decoration: none; margin-top: 0px; margin-left: 16px; margin-bottom: 8px; padding: 0px; display: list-item; list-style-image:url(quadrat3.gif); text-transform: uppercase; }
+h2      { font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #009966; font-weight: bold; text-decoration: none; margin-top: 0px; margin-left: 0px;  margin-bottom: 8px; padding: 0px; background-color: #404040;}
+a       { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #777777; font-weight: bold; text-decoration: none; }
+a:hover { text-decoration: underline; }
+li      { list-style-image: url(aufzahlung_hoch_off.gif); margin-left:16px; padding-left: 0px; }
+ul      { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #bbbbbb; margin-left:0px; padding: 0px; }

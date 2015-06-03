@@ -1,0 +1,18 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY setPassword.title                 "设置锁屏密码">
+<!ENTITY setPassword.tokenName.label       "安全设备">
+<!ENTITY setPassword.oldPassword.label     "原密码：">
+<!ENTITY setPassword.newPassword.label     "新密码：">
+<!ENTITY setPassword.reenterPassword.label "密码确认">
+<!ENTITY setPassword.meter.label           "密码质量标尺">
+<!ENTITY setPassword.meter.loading         "正在载入">
+<!ENTITY masterPasswordDescription.label   "主密码用于保护敏感的数据，如站点密码等。如果您创建了主密码，那么每次会话  &brandShortName;  读取已保存的敏感信息时都要再次输入新密码以确认。">
+<!ENTITY masterPasswordDescription2.label   "锁屏密码用于锁定客户端以保护重要信息。">
+<!ENTITY masterPasswordWarning.label       "请确信您记住了刚才设置的主密码。如果您忘记了您的主密码，您将无法访问任何受到该密码保护的信息。">
+
+
+<!ENTITY setPassword.EnterPassword.label     "新密码：">
+<!ENTITY setFitPassword.EnterPassword.label     "请输入20位以内的密码">

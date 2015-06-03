@@ -1,0 +1,57 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY window.title "过滤器规则">
+<!ENTITY filterEditorDialog.dimensions "width: 100ch;">
+<!ENTITY filterName.label "过滤器名称:">
+<!ENTITY filterName.accesskey "i">
+
+<!ENTITY junk.label "垃圾">
+<!ENTITY notJunk.label "非垃圾">
+
+<!ENTITY lowestPriorityCmd.label "最低">
+<!ENTITY lowPriorityCmd.label "低">
+<!ENTITY normalPriorityCmd.label "正常">
+<!ENTITY highPriorityCmd.label "高">
+<!ENTITY highestPriorityCmd.label "最高">
+
+<!ENTITY contextDesc.label "执行过滤器，当：">
+<!ENTITY contextDesc.accesskey "w">
+<!ENTITY contextIncoming.label "获取新邮件时">
+<!ENTITY contextManual.label "手动运行">
+<!ENTITY contextBoth.label "获取新邮件时或者手动运行">
+<!ENTITY contextPostPlugin.label "正在检查邮件（分类后）">
+<!ENTITY contextPostPluginBoth.label "正在检查邮件（分类后）或手动运行">
+<!ENTITY filterActionDesc.label "执行动作:">
+<!ENTITY filterActionDesc.accesskey "P">
+
+<!-- New Style Filter Rule Actions -->
+<!ENTITY moveMessage.label "移动邮件至">
+<!ENTITY copyMessage.label "复制邮件至">
+<!ENTITY forwardTo.label "转发邮件至">
+<!ENTITY replyWithTemplate.label "使用模板回复">
+<!ENTITY markMessageRead.label "标记为已读">
+<!ENTITY markMessageUnread.label "标记为未读">
+<!ENTITY markMessageStarred.label "添加星标">
+<!ENTITY setPriority.label "设置优先级为">
+<!ENTITY addTag.label "为邮件添加标签">
+<!ENTITY setJunkScore.label "设置垃圾状态为">
+<!ENTITY deleteMessage.label "删除邮件">
+<!ENTITY deleteFromPOP.label "从 POP 服务器删除">
+<!ENTITY fetchFromPOP.label "从 POP 服务器下载">
+<!ENTITY ignoreThread.label "忽略话题">
+<!ENTITY ignoreSubthread.label "忽略子话题">
+<!ENTITY watchThread.label "关注话题">
+<!ENTITY stopExecution.label "停止执行过滤器">
+
+<!ENTITY addAction.tooltip "添加新动作">
+<!ENTITY removeAction.tooltip "移除此动作">
+
+<!-- LOCALIZATION NOTE
+  The values below are used to control the widths of the filter action widgets.
+  Change the values only when the localized strings in the popup menus
+  are truncated in the widgets.
+ -->
+<!ENTITY filterActionTypeFlexValue "1">
+<!ENTITY filterActionTargetFlexValue "4">

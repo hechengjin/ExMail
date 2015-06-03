@@ -1,0 +1,15 @@
+
+
+<!-- Labels -->
+<!ENTITY importContactTitle.label         				"导入文件">
+<!ENTITY importContactSelGroup.label         				"选择存放的分组：">
+<!ENTITY importContactSelFile.label        				"请选择导入的文件：">
+<!ENTITY importContact.browse.label         				"浏览">
+<!ENTITY importContact.Step.label         				"上一步">
+<!ENTITY importContact.forward.label 					"下一步">
+<!ENTITY importContact.finish.label 					"完成">
+<!ENTITY importContact.Cancel.label         				"取消">
+<!ENTITY importContact.AdfieldTitle.label         				"通讯录字段">
+<!ENTITY importContact.dataTitle.label         				"文本字段">
+<!ENTITY importContact.mapAbfield.label         				"映射联系人字段：">
+<!ENTITY importContact.selAllorNone.label         				"全选/清除">

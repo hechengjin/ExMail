@@ -1,0 +1,10 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+
+<!ENTITY getMsgsPromptTitle.label "您想收取多少封邮件">
+
+<!ENTITY prompt_begin_fix.label "收取最新">
+<!ENTITY prompt_end_fix.label "封邮件">
+

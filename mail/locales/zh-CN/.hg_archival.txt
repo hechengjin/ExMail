@@ -1,0 +1,6 @@
+repo: fc0432a2e7948549d2369bdce352d14a1944ef0b
+node: 262d3713b6ff6cc8be83cf7ab19ff67d52335e94
+branch: default
+latesttag: CALENDAR_2_0b1_BUILD1
+latesttag: CALENDAR_2_0b1_RELEASE
+latesttagdistance: 52

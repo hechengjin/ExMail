@@ -1,0 +1,48 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY messengerStartPage.label         "&brandShortName; 起始页">
+<!ENTITY enableStartPage.label            "&brandShortName; 启动时在邮件区域显示起始页">
+<!ENTITY enableStartPage.accesskey        "W">
+<!ENTITY location.label                   "地址：">
+<!ENTITY location1.accesskey               "o">
+<!ENTITY useDefault.label                 "恢复默认值">
+<!ENTITY useDefault.accesskey             "R">
+
+<!ENTITY bounceSystemDockIcon.label       "显示 dock 图标动画">
+<!ENTITY bounceSystemDockIcon.accesskey   "i">
+
+<!ENTITY newMessagesArrive.label          "新邮件提醒">
+<!ENTITY playSound.label                  "播放声音">
+<!ENTITY playSound1.accesskey              "d">
+<!ENTITY showAnimatedAlert.label          "弹窗提示">
+<!ENTITY showAnimatedAlert.accesskey      "S">
+<!ENTITY customizeMailAlert.label         "自定义…">
+<!ENTITY customizeMailAlert.accesskey     "C">
+
+<!ENTITY play.label                       "播放">
+<!ENTITY play.accesskey                   "P">
+<!ENTITY systemsound.label                "默认的系统新邮件提示声">
+<!ENTITY systemsoundMac.label             "系统警告声">
+<!ENTITY systemsoundMac.accesskey         "y">
+<!ENTITY systemsound.accesskey            "y">
+<!ENTITY customsound.label                "使用下列声音文件">
+<!ENTITY customsound.accesskey            "U">
+<!ENTITY browse.label                     "浏览…">
+<!ENTITY browse.accesskey                 "B">
+
+<!ENTITY skin.label                       "皮肤">
+<!ENTITY skin.default                	  "默认">
+<!ENTITY skin.skin1                       "皮肤1">
+<!ENTITY skin.needRestart                 "(应用新皮肤须重启程序)">
+
+<!ENTITY lang.label                       "语言">
+<!ENTITY lang.zhCN                        "简体中文">
+<!ENTITY lang.enUS                        "英语">
+<!ENTITY lang.needRestart                 "(应用新语言须重启程序)">
+
+<!ENTITY tray.label                       "程序设置">
+<!ENTITY tray.minToTray                   "最小化时，不在任务栏显示">
+<!ENTITY tray.closeDirectly               "关闭主窗口时，退出程序">
+

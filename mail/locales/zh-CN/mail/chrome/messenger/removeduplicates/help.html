@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <link rel="stylesheet" media="screen" href="style.css">
+  </head>
+<body>
+
+<h1>Help</h1>
+
+<h2>Usage</h2>
+<p>
+<i>Rightclick on a folder</i> you want to search for duplicate messages. In
+the folder context menu choose <i>Remove Duplicate Messages</i>. Now
+information about the e-mails in the folders are being collected. The
+algorithm has a linear complexity! This means, it needs for the tenth amount of
+messages about ten times as long. In contrary, most compare algorithms have
+quadratic complexity and need for the tenth amount about onehundred times as
+long.<br>
+After the search all duplicate messages are shown in a list. All exemplars
+of a duplicate messare are shown. The first one is marked with "KEEP" by
+default while all other copies are marked with DEL (delete). When you close the
+dialog now by clicking on Ok from each duplicate one will be kept and all
+copies are moved to the trashcan.<br>
+If you <i>double click (or middle click)</i> on a message the status flas is changed from
+"KEEP" to "DEL" or "DEL" to "KEEP". With a <i>leftclick</i> the message is
+shown in the main window and the folder of the message is chosen in the
+folder view. A <i>rightclick</i> on a message gives you additional
+information about a message. When <i>clicking on Ok</i> all messages in the
+list marked with "DEL" will be moved to the trashcan.
+</p>
+
+<h2>Settings</h2>
+<p>
+<u>compare Message ID:</u> The message ID is intended to be a unique number,
+but tests have shown that this does not hold true in all cases. Sometimes
+messages have the same message ID or no message ID at all. This happens for
+example when you import messages from other mail cliens. So you should not
+rely on the message ID.
+<br>
+
+<u>Compare date in seconds:</u> Depending on the number of messages you
+receive, this compare criterium is almost unique. Exceptions are wrong
+configured sender that claim to send the message on 1/1/1970 or sender that
+do not include a date at all.
+<br>
+
+<u>Compare subject:</u> A subject compare is very seldom unique, because
+most of the time subjects are similar to "Newsletter from ..." or "Hi". So
+you should always use this setting with others together.
+<br>
+
+<u>Compare sender:</u> 
+See subject.
+<br>
+
+<u>Compare line count:</u> 
+All other compare methods just compared the message by its headers. But this
+one compares the message bodies with each other. To be precise, it only
+compares the number of lines and this is not very reliable. For example,
+when you imported messages from different mail client, they might have a
+diferent line count, because every mail client stores different information
+in the header. So it could happen that identical messages seems to be
+differen.
+<br>
+
+<u>Compare message body (slow):</u> 
+Compares the content of the messages. This option is significantly slower
+than all others, but since it is implemented with fast algorithms, it is
+still fast.
+<br>
+
+<u>Search in subfolder first:</u> 
+If this option is on subfolders are searched first for messages. After
+searching subfolders, the folder content is searched. With this option you
+decide, which duplicate message you want to remove. If search in subfolder
+first is on, the duplicate message in the subfolder will be removed th eone
+in the parent folder ist being kept. If you want to keep the message in the
+subfolder and prefere to delete the one in the parent folder turn this
+option off (default).
+<br>
+
+<u>Ignore trashcan for the message search:</u> 
+If you have removed duplicate messages, these were moved to the trashcan.
+Now, if you start a new search without emtying the trashcan, the duplicate
+messages are still there an the algorithm will find again duplicate
+messages. Depending on the search order the messages in the trashcan will be
+deleted again (nothing happens) or the duplicates not being in the trashcan
+will be moved into the trashcan. So all messages are now in the trashcan.
+Since this is not what is usually intended, you can turn searching the
+trashcan off (default).
+<br>
+
+
+<u>Print debug info:</u> 
+Only use this option when searching few messages.
+<br>
+</p>
+
+</body>
+</html>

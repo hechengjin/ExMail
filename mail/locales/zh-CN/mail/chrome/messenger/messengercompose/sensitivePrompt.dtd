@@ -1,0 +1,8 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY sensitivePrompt.title        "提示">
+<!ENTITY sensitivePrompt.prompt        "该邮件含有敏感信息，如果继续发送，此邮件将在后台进行审计，是否继续发送？">
+<!ENTITY sensitivePrompt.delete        "删除涉密信息">
+<!ENTITY sensitivePrompt.encryptSend    "加密发送">

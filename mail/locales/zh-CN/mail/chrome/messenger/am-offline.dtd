@@ -1,0 +1,58 @@
+﻿<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY doNotDownloadPop3Movemail.label "为了节省磁盘空间，请不要下载：">
+<!ENTITY doNotDownloadNntp.label "为了节省磁盘空间，请不要下载供脱机使用：">
+<!ENTITY doNotDownloadImap.label "要节省磁盘空间，可对从服务器下载并保存到本地供离线使用的邮件进行大小或时间上的限制。">
+<!ENTITY allFoldersOffline.label "在此计算机中保留本帐号的邮件">
+<!ENTITY allFoldersOffline.accesskey "o">
+<!ENTITY offlineNotDownload.label "不下载邮件大小超过">
+<!ENTITY offlineNotDownload.accesskey "M">
+<!ENTITY autosyncNotDownload.label "不下载大小超过">
+<!ENTITY autosyncNotDownload.accesskey "m">
+<!ENTITY kb.label "兆">
+<!ENTITY daysOld.label "天">
+<!ENTITY message.label "邮件">
+<!ENTITY nntpNotDownloadRead.label "已读">
+<!ENTITY nntpNotDownloadRead.accesskey "d">
+<!ENTITY nntpDownloadMsg.label "邮件超过">
+<!ENTITY nntpDownloadMsg.accesskey "e">
+<!ENTITY retentionCleanup.label "将旧邮件永久删除可释放更多的磁盘空间">
+<!ENTITY retentionCleanupImap.label "要回收磁盘空间，可以永久删除本地副本和远程服务器上的原始旧邮件。">
+<!ENTITY retentionCleanupPop.label "要回收磁盘空间，可以永久删除旧邮件，包括远程服务器上的原文。">
+<!ENTITY retentionKeepMsg.label "删除超过">
+<!ENTITY retentionKeepMsg.accesskey "t">
+<!ENTITY retentionKeepAll.label "不要删除任何邮件">
+<!ENTITY retentionKeepAll.accesskey "n">
+<!ENTITY retentionKeepRecent.label "除最近使用的全部删除">
+<!ENTITY retentionKeepRecent.accesskey "b">
+<!-- LOCALIZATION NOTE: Unhide with .keepUnreadOnly { display: -moz-box; } -->
+<!ENTITY retentionKeepUnreadHidden.label "总是删除已读邮件（忽略邮件年龄设置）">
+<!ENTITY retentionApplyToFlagged.label "总是保留已加星标之邮件">
+<!ENTITY retentionApplyToFlagged.accesskey "k">
+<!ENTITY nntpRemoveMsgBody.label "移除邮件体，当邮件超过">
+<!ENTITY nntpRemoveMsgBody.accesskey "o">
+<!ENTITY offlineSelectNntp.label "选择用于脱机工作的新闻组…">
+<!ENTITY offlineSelectNntp.accesskey "S">
+<!ENTITY offlineImapAdvancedOffline.label "高级…">
+<!ENTITY offlineImapAdvancedOffline.accesskey "v">
+<!ENTITY syncGroupTitle.label "邮件同步">
+<!ENTITY diskspaceGroupTitle.label "磁盘空间">
+
+<!-- LOCALIZATION NOTE: (ageAutosyncBefore.label, ageAutosyncMiddle.label, ageAutosyncAfter.label):
+  The entities ageAutosyncBefore.label, ageAutosyncMiddle.label, and ageAutosyncAfter.label appear
+  on a single line within the scope of useAutosync.ByAge as follows:
+
+  &ageAutosyncBefore.label [textbox for autosync value] &ageAutosyncMiddle.label; [dropdown for autosync interval] &ageAutosyncAfter.label;
+-->
+<!ENTITY allAutosync.label               "同步所有邮件至本地">
+<!ENTITY allAutosync.accesskey           "c">
+<!ENTITY ageAutosyncBefore.label         "同步最近">
+<!ENTITY ageAutosync.accesskey           "z">
+<!ENTITY ageAutosyncMiddle.label         "">
+<!ENTITY dayAgeInterval.label            "天">
+<!ENTITY weekAgeInterval.label           "周">
+<!ENTITY monthAgeInterval.label          "月">
+<!ENTITY yearAgeInterval.label           "年">
+<!ENTITY ageAutosyncAfter.label          "">

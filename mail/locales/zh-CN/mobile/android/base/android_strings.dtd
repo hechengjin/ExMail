@@ -1,0 +1,328 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+
+<!ENTITY  splash_settingup "设置您的 &brandShortName;">
+<!ENTITY  splash_bookmarks_history "我们正在更新您的书签和历史纪录，这可能需要一分钟左右。">
+
+<!ENTITY  no_space_to_start_error "无足够的空间以启动 &brandShortName;。">
+<!ENTITY  error_loading_file "载入运行 &brandShortName; 所需的文件时发生错误">
+
+<!ENTITY  awesomebar_all_pages_title "热门网站">
+<!ENTITY  awesomebar_bookmarks_title "书签">
+<!ENTITY  awesomebar_history_title "历史">
+<!ENTITY  awesomebar_switch_to_tab "切换到标签页">
+
+<!ENTITY  crash_reporter_title "&brandShortName; 崩溃报告器">
+<!ENTITY  crash_message2 "&brandShortName; 因一个问题而崩溃。您的标签页将在 &brandShortName; 下次启动时的开始页面中列出。">
+<!ENTITY  crash_send_report_message3 "告知 &vendorShortName; 有关此次崩溃的情况，以便修复此问题">
+<!ENTITY  crash_include_url2 "包含当时访问页面的地址">
+<!ENTITY  crash_sorry "我们很抱歉">
+<!ENTITY  crash_comment "添加说明（说明是公开可见的）">
+<!ENTITY  crash_allow_contact2 "允许 &vendorShortName; 就此报告与我联系">
+<!ENTITY  crash_email "您的电子邮箱">
+<!ENTITY  crash_closing_alert "不发送崩溃报告并退出？">
+<!ENTITY  sending_crash_report "发送崩溃报告\u2026">
+<!ENTITY  crash_close_label "关闭">
+<!ENTITY  crash_restart_label "重启 &brandShortName;">
+<!ENTITY  exit_label "退出">
+
+<!ENTITY  launcher_shortcuts_title "&brandShortName; 网页应用">
+<!ENTITY  launcher_shortcuts_empty "没有发现任何网页应用程序">
+
+<!ENTITY choose_file "选择文件">
+
+<!ENTITY awesomebar_default_text "输入搜索或地址">
+
+<!ENTITY remote_tabs "已同步的标签页">
+<!ENTITY remote_tabs_show_all "显示所有标签页">
+
+<!ENTITY bookmark "书签">
+<!ENTITY bookmark_added "书签已添加">
+<!ENTITY bookmark_removed "书签已移除">
+<!ENTITY bookmark_updated "书签已更新">
+<!ENTITY bookmark_options "选项">
+
+<!ENTITY history_today_section "今天">
+<!ENTITY history_yesterday_section "昨天">
+<!ENTITY history_week_section "七天前">
+<!ENTITY history_older_section "早于七天">
+
+<!ENTITY go "转到">
+<!ENTITY search "搜索">
+<!ENTITY reload "重新加载">
+<!ENTITY forward "前进">
+<!ENTITY menu "菜单">
+<!ENTITY back "后退">
+<!ENTITY stop "停止">
+<!ENTITY site_security "网站安全">
+
+<!ENTITY close_tab "关闭标签页">
+<!ENTITY one_tab "1 个标签页">
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one.
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs2 "&formatD; 标签页">
+<!ENTITY new_tab_opened "已打开新标签页">
+
+<!ENTITY settings "设置">
+<!ENTITY settings_title "设置">
+<!ENTITY pref_category_general "常规">
+<!ENTITY pref_category_privacy "隐私和安全">
+<!ENTITY pref_category_content "内容">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "数据选择">
+<!ENTITY pref_about_firefox "关于 &brandShortName;">
+<!ENTITY pref_remember_signons "记住密码">
+
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+<!ENTITY pref_header_general "常规">
+<!ENTITY pref_header_privacy "隐私和安全">
+<!ENTITY pref_header_content "内容">
+
+<!ENTITY pref_cookies_menu "Cookie">
+<!ENTITY pref_cookies_accept_all "已启用">
+<!ENTITY pref_cookies_not_accept_foreign "已启用，不包括第三方的">
+<!ENTITY pref_cookies_disabled "已停用">
+
+<!ENTITY pref_donottrack_menu "跟踪">
+<!ENTITY pref_donottrack_disallow_tracking "告诉网站我不想被跟踪">
+<!ENTITY pref_donottrack_allow_tracking "告诉网站我想被跟踪">
+<!ENTITY pref_donottrack_no_pref "不要告诉网站我对跟踪的任何偏好">
+
+<!ENTITY pref_char_encoding "显示字符编码">
+<!ENTITY pref_char_encoding_on "显示菜单">
+<!ENTITY pref_char_encoding_off "不显示菜单">
+<!ENTITY pref_clear_private_data "清除隐私数据">
+<!ENTITY pref_plugins "插件">
+<!ENTITY pref_plugins_enabled "已启用">
+<!ENTITY pref_plugins_tap_to_play "轻击即可播放">
+<!ENTITY pref_plugins_disabled "已禁用">
+<!ENTITY pref_text_size "文字大小">
+<!ENTITY pref_reflow_on_zoom3 "双击重构文本">
+<!ENTITY pref_font_size_tiny "极小">
+<!ENTITY pref_font_size_small "小">
+<!ENTITY pref_font_size_medium "中">
+<!ENTITY pref_font_size_large "大">
+<!ENTITY pref_font_size_xlarge "超大">
+<!ENTITY pref_font_size_set "设置">
+<!-- Localization note (pref_font_size_adjust_char): A button with a small version of this character
+(or combination of characters) is used to decrease the preview font size; a larger version of the
+same character/combination is used to increase the preview font size. It should be a concise
+representation of the language it is used in that will help show the text in the preview will change
+size. -->
+<!ENTITY pref_font_size_adjust_char "A">
+
+<!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
+    demonstrate the font size setting.  It is meant to be whimsical and fun. -->
+<!ENTITY pref_font_size_preview_text "敏捷的橙色小狐狸以超越预期的速度，灵活度以及安全性跳跃着。作为非营利机构，我们没有任何妥协的压力，能真正以您的名义进行自由的创新。这意味着更好的体验，为您和您的网络创造更加美好的未来。">
+
+<!ENTITY pref_use_master_password "使用主密码">
+<!ENTITY pref_show_product_announcements "显示产品公告">
+<!ENTITY pref_sync "同步">
+<!ENTITY pref_search_suggestions "显示搜索建议">
+<!ENTITY pref_import_android "从 Android 导入">
+<!ENTITY pref_private_data_history "浏览和下载历史">
+<!ENTITY pref_private_data_formdata "表单和搜索历史">
+<!ENTITY pref_private_data_cookies2 "Cookie 以及活动登录会话">
+<!ENTITY pref_private_data_passwords "已保存密码">
+<!ENTITY pref_private_data_cache "高速缓存">
+<!ENTITY pref_private_data_offlineApps "离线站点数据">
+<!ENTITY pref_private_data_siteSettings2 "站点设置">
+<!ENTITY pref_private_data_downloadFiles "已下载文件">
+
+<!ENTITY datareporting_notification_title "&brandShortName; 统计数据">
+<!ENTITY datareporting_notification_action_long "选择想分享的信息">
+<!ENTITY datareporting_notification_action "选择想分享什么">
+<!ENTITY datareporting_notification_summary "为了改善您的体验，&brandShortName; 会自动发送一些信息到 &vendorShortName;。">
+<!ENTITY datareporting_notification_summary_short "为了改善您的体验，&brandShortName;…">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
+
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary2,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     en-US/chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+<!ENTITY datareporting_fhr_title "&brandShortName; 健康报告">
+<!ENTITY datareporting_fhr_summary2 "帮助您了解浏览器的工作性能，并与 &vendorShortName; 分享您的浏览器健康状况。">
+<!ENTITY datareporting_abouthr_title "查看我的健康报告">
+<!ENTITY datareporting_telemetry_title "遥测技术">
+<!ENTITY datareporting_telemetry_summary "与 &vendorShortName; 分享您浏览器的工作性能、使用方式、硬件设备和有关定制的数据，帮助我们改进 &brandShortName; 让它变得更好。">
+<!ENTITY datareporting_crashreporter_summary "&brandShortName; 提交崩溃报告可以帮助 &vendorShortName; 改进浏览器，让他变得更稳定和安全">
+<!-- Localization note (datareporting_crashreporter_title_short) : This string matches
+     (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "崩溃报告器">
+<!ENTITY datareporting_wifi_title "&vendorShortName; 位置服务">
+<!ENTITY datareporting_wifi_summary "允许 &brandShortName; 收集并发送匿名的蜂窝基站数据以帮助改善开放网络的地理定位服务">
+
+<!ENTITY pref_update_autodownload "自动更新">
+<!ENTITY pref_update_autodownload_wifi "仅通过 Wi-Fi">
+<!ENTITY pref_update_autodownload_disabled "已停用">
+<!ENTITY pref_update_autodownload_enabled "已启用">
+
+<!ENTITY quit "退出">
+
+<!ENTITY addons "附加组件">
+<!ENTITY downloads "下载">
+<!ENTITY apps "应用">
+<!ENTITY char_encoding "字符编码">
+
+<!ENTITY share "共享">
+<!ENTITY share_title "分享，通过">
+<!ENTITY share_image_failed "无法分享这个图像">
+<!ENTITY save_as_pdf "另存为 PDF">
+<!ENTITY find_in_page "在页面中查找">
+<!ENTITY desktop_mode "要求桌面版网站">
+<!ENTITY tools "工具">
+<!ENTITY new_tab "新标签页">
+<!ENTITY new_private_tab "新建隐私浏览标签页">
+<!ENTITY close_all_tabs "关闭所有标签">
+<!ENTITY tabs_normal "标签页">
+<!ENTITY tabs_private "私人">
+<!ENTITY tabs_synced "已同步">
+<!ENTITY wallpaper_success "已更新壁纸">
+<!ENTITY wallpaper_progress "正在设置壁纸">
+<!ENTITY wallpaper_fail "无法设置壁纸">
+
+<!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY find_text "在页面中查找">
+<!ENTITY find_prev "上一个">
+<!ENTITY find_next "下一个">
+<!ENTITY find_close "关闭">
+
+<!ENTITY contextmenu_open_new_tab "在新标签页中打开">
+<!ENTITY contextmenu_open_private_tab "在隐私浏览标签页打开">
+<!ENTITY contextmenu_open_in_reader "在阅读器中打开">
+<!ENTITY contextmenu_remove_history "移除">
+<!ENTITY contextmenu_remove_bookmark "移除">
+<!ENTITY contextmenu_add_to_launcher "添加到主屏幕">
+<!ENTITY contextmenu_share "共享">
+<!ENTITY contextmenu_pasteandgo "粘贴并转到">
+<!ENTITY contextmenu_paste "粘贴">
+<!ENTITY contextmenu_copyurl "复制地址">
+<!ENTITY contextmenu_edit_bookmark "编辑">
+<!ENTITY contextmenu_subscribe "订阅页面">
+<!ENTITY contextmenu_site_settings "编辑站点设置">
+
+<!ENTITY pref_titlebar_mode "标题栏">
+<!ENTITY pref_titlebar_mode_title "显示页面标题">
+<!ENTITY pref_titlebar_mode_url "显示页面地址">
+
+<!ENTITY history_removed "页面已移除">
+
+<!ENTITY bookmark_edit_title "编辑书签">
+<!ENTITY bookmark_edit_name "名称">
+<!ENTITY bookmark_edit_location "地址">
+<!ENTITY bookmark_edit_keyword "关键字">
+
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
+<!ENTITY site_settings_title3       "站点设置">
+<!ENTITY site_settings_cancel       "取消">
+<!ENTITY site_settings_clear        "清除">
+<!ENTITY site_settings_no_settings  "无需要清空的设置。">
+
+<!ENTITY reading_list "正在读取列表">
+<!ENTITY reading_list_added "页面已添加到您的阅读列表">
+<!ENTITY reading_list_removed "页面已从您的阅读列表中移除">
+<!ENTITY reading_list_failed "添加页面到您的阅读列表失败">
+<!ENTITY reading_list_duplicate "页面已在您的阅读列表中">
+<!ENTITY reader "阅读器">
+
+<!ENTITY masterpassword_create_title "创建主密码">
+<!ENTITY masterpassword_remove_title "移除主密码">
+<!ENTITY masterpassword_password "密码">
+<!ENTITY masterpassword_confirm "确认密码">
+
+<!ENTITY button_ok "确定">
+<!ENTITY button_cancel "取消">
+<!ENTITY button_yes "是">
+<!ENTITY button_no "否">
+<!ENTITY button_clear_data "清除数据">
+<!ENTITY button_set "设置">
+<!ENTITY button_clear "清空">
+
+<!ENTITY abouthome_addons_title "您的 &brandShortName; 附加组件">
+<!ENTITY abouthome_addons_browse "浏览所有 &brandShortName; 附加组件">
+<!ENTITY abouthome_last_tabs_title "上次打开的标签页">
+<!ENTITY abouthome_last_tabs_open "打开上一次的所有标签页">
+<!ENTITY abouthome_top_sites_title "热门网站">
+<!ENTITY abouthome_topsites_edit "编辑">
+<!ENTITY abouthome_topsites_pin "固定网站">
+<!ENTITY abouthome_topsites_unpin "解除网站固定">
+
+<!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
+     chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
+     clicking this text in the promotions box will perform some action. Note
+     that a non-breaking space (unicode= U+00A0) should be used between this
+     character and the remainder of the string to prevent word wrap. -->
+<!ENTITY abouthome_about_sync3 "设置 Firefox 同步 以访问你的其他设备上的书签、历史记录和标签页&#x00A0;»">
+<!ENTITY abouthome_about_apps3 "从火狐市场获取应用，去探索发现网络中的瑰宝 &#x00A0;»">
+<!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
+     These strings are accentuated as bold text in the "abouthome_about_..."
+     strings above. These strings should be a subset of the strings above and
+     generally be the name of the product the string describes. -->
+<!ENTITY abouthome_sync_bold_name "Firefox 同步">
+<!ENTITY abouthome_apps_bold_name2 "火狐市场">
+
+<!ENTITY filepicker_title "选择文件">
+<!ENTITY filepicker_audio_title "选择或者录制一段声音">
+<!ENTITY filepicker_image_title "选择或者拍摄一张图片">
+<!ENTITY filepicker_video_title "选择或者录制一段视频">
+
+<!-- Site identity popup -->
+<!ENTITY identity_connected_to "您已连接至">
+<!-- Localization note (identity_run_by) : This string appears between a
+domain name (above) and an organization name (below). E.g.
+
+example.com
+which is run by
+Example Enterprises, Inc.
+
+The layout of the identity dialog prevents combining this into a single string with
+substitution variables.  If it is difficult to translate the sense of the string
+with that structure, consider a translation which ignores the preceding domain and
+just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_run_by "它的经营者为">
+
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "此页面显示的内容无法保证安全性。">
+<!ENTITY blocked_mixed_content_message_top "&brandShortName; 已阻止非安全传输的内容。">
+<!ENTITY blocked_mixed_content_message_bottom "即使此类内容被屏蔽，大多数网站仍能正常工作。">
+<!ENTITY learn_more "详细了解">
+<!ENTITY enable_protection "启用保护">
+<!ENTITY disable_protection "禁用保护">
+<!ENTITY keep_blocking "保持屏蔽">
+
+<!ENTITY private_data_success "私人数据已清除">
+<!ENTITY private_data_fail "一些私人数据不能被清除">
+
+<!ENTITY bookmarkhistory_button_import "导入">
+<!ENTITY bookmarkhistory_import_both "从 Android 导入书签和历史记录">
+<!ENTITY bookmarkhistory_import_bookmarks "正在从 Android 导入书签">
+<!ENTITY bookmarkhistory_import_history "正在从 Android 导入历史纪录">
+<!ENTITY bookmarkhistory_import_wait "请稍候...">
+
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+<!ENTITY suggestions_prompt2 "是否希望启用 &formatS; 搜索建议？">
+
+<!ENTITY webapp_generic_name "应用">
+
+<!ENTITY searchable_description "书签及历史">
+
+ <!-- Updater notifications -->
+<!ENTITY updater_start_title2 "&brandShortName; 有可用更新">
+<!ENTITY updater_start_select2 "点按下载">
+
+<!ENTITY updater_downloading_title2 "正在下载 &brandShortName;">
+<!ENTITY updater_downloading_title_failed2 "下载失败">
+<!ENTITY updater_downloading_select2 "点按选择下载完毕时应用更新">
+<!ENTITY updater_downloading_retry2 "点按以重试">
+
+<!ENTITY updater_apply_title2 "&brandShortName; 有可用更新">
+<!ENTITY updater_apply_select2 "点按更新">

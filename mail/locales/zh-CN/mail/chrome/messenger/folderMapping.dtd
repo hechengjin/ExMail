@@ -1,0 +1,12 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- extracted from AccountManager.xul -->
+
+<!ENTITY folderMappingTitle.label "邮件文件夹映射">
+
+<!ENTITY sent.label "已发送邮件保存到：">
+<!ENTITY draft.label "草稿邮件保存到：">
+<!ENTITY trash.label "已删除邮件保存到：">
+<!ENTITY junk.label "垃圾邮件邮件保存到：">

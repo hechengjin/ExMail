@@ -1,0 +1,9 @@
+
+
+<!-- Labels -->
+<!ENTITY exportContactTitle.label         				"导出联系人">
+<!ENTITY exportContactSel.label         				"选择要导出的联系人：">
+<!ENTITY exportContactSaveAs.label        				"导出文件保存为：">
+<!ENTITY exportContact.browse.label         				"浏览">
+<!ENTITY exportContact.Export.label         				"导出">
+<!ENTITY exportContact.Cancel.label         				"取消">

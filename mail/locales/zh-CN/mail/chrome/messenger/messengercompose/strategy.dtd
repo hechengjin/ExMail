@@ -1,0 +1,9 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY strategy.title        				"提示">
+<!ENTITY strategy.prompt        			"以下收件人可能在办公区内，将收不到该封邮件，是否继续发送？">
+<!ENTITY strategy.promptOnBottom        	"建议您在办公区内尽量使用内网邮箱发信">
+<!ENTITY strategy.send    					"继续发信">
+<!ENTITY strategy.cancel    				"取消">

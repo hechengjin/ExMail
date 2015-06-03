@@ -1,0 +1,14 @@
+
+
+<!-- Labels -->
+<!ENTITY newContactListListName.label         			"组名">
+<!ENTITY newContactListMember.label         			"成员">
+<!ENTITY newContactListAddMember.label         			"添加成员">
+<!ENTITY newContactListTitle.label         				"新建组">
+
+<!ENTITY newContactListOk.label         				"确定">
+<!ENTITY newContactListCancel.label         			"取消">
+
+
+
+

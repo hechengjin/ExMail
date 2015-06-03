@@ -1,0 +1,8 @@
+
+
+<!ENTITY sender.label 		"发件人">
+<!ENTITY recipient.label 	"收件人">
+<!ENTITY subject.label 		"主题">
+<!ENTITY wholeContent.label "全文">
+<!ENTITY attachment.label 	"附件名">
+<!ENTITY searchMails.label	"搜索邮件">
