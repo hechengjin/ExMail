@@ -29,6 +29,8 @@ void CBackDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_CHECK_SAVEPATH, m_SavePathBtn);
 	DDX_Control(pDX, IDC_LIST_LOG, m_LogList);
 	DDX_Control(pDX, IDC_PROGRESS, m_ProgCtrl);
+	DDX_Control(pDX, IDC_DATETIMEPICKER_DATE, m_DTDate);
+	DDX_Control(pDX, IDC_DATETIMEPICKER_TIME, m_DTTime);
 }
 
 
@@ -43,6 +45,7 @@ BEGIN_MESSAGE_MAP(CBackDlg, CSAPrefsSubDlg)
 	ON_BN_CLICKED(IDC_BUTTON_SETFILENAME, &CBackDlg::OnBnClickedButtonSetfilename)
 	ON_BN_CLICKED(IDC_RADIO_VALID, &CBackDlg::OnBnClickedRadioValid)
 	ON_BN_CLICKED(IDC_RADIO_NOVALID, &CBackDlg::OnBnClickedRadioNovalid)
+	ON_BN_CLICKED(IDC_BUTTON_QUERY, &CBackDlg::OnBnClickedButtonQuery)
 END_MESSAGE_MAP()
 
 
@@ -241,6 +244,7 @@ void CBackDlg::OnBnClickedButtonApp()
 
 void CBackDlg::OnBnClickedButtonStartback()
 {
+	m_curTime = 0;
 	m_LogList.DeleteAllItems();
 	if ( m_Profile.m_strSourcePath.IsEmpty() || m_Profile.m_strTargetPath.IsEmpty() ) 
 	{
@@ -324,4 +328,41 @@ void CBackDlg::OnBnClickedRadioValid()
 void CBackDlg::OnBnClickedRadioNovalid()
 {
 	OnBnClickedButtonApp();
+}
+
+
+void CBackDlg::OnBnClickedButtonQuery()
+{
+	CTime startDay=CTime::GetCurrentTime(); //获取系统日期;
+	m_DTDate.GetTime(startDay);
+	CTime startDate(startDay.GetYear(),startDay.GetMonth(),startDay.GetDay(),0,0,0);
+	CString csStartDate;
+	csStartDate.Format(L"%d",startDate.GetTime());
+	//MessageBox(csStartDate);
+
+	CTime startTime=CTime::GetCurrentTime(); //获取系统日期;
+	m_DTTime.GetTime(startTime);
+	//CTime startTime2(1970,1,1,8,0,0);  //相对这个时间的秒数
+	CTime startDateTime(startDay.GetYear(),startDay.GetMonth(),startDay.GetDay(),startTime.GetHour(),startTime.GetMinute(),startTime.GetSecond());  //相对这个时间的秒数
+	CString csStartTime;
+	csStartTime.Format(L"%d",startDateTime.GetTime());
+	//MessageBox(csStartTime);
+
+	m_curTime = startDateTime.GetTime();
+
+	m_LogList.DeleteAllItems();
+	if ( m_Profile.m_strSourcePath.IsEmpty()  ) 
+	{
+		MessageBox(_T("请先选择相应来源或目标目录！"), _T("提示"), MB_OK|MB_ICONINFORMATION);
+		return;
+	}
+	
+	if ( !Util::IsFileExist(m_Profile.m_strSourcePath) )//源目录则提示
+	{
+		MessageBox(_T("源目录不存在！"), _T("提示"), MB_OK|MB_ICONINFORMATION);
+		return;
+	}
+
+	CWinThread *pTread = AfxBeginThread(ScanAndBackFunc, this);
+	
 }

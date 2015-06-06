@@ -5,6 +5,7 @@
 #include "afxcmn.h"
 #include "MyListCtrl.h"
 #include "resource.h"
+#include "afxdtctl.h"
 
 // CBackDlg ¶Ô»°¿ò
 
@@ -36,6 +37,8 @@ public:
 	// progress ctrl;
 	DWORD dwPos;
 
+	__time64_t m_curTime;
+
 	afx_msg void OnBnClickedButtonApp();
 	CProfileInfo  m_Profile;
 	CMyListCtrl m_LogList;
@@ -53,4 +56,7 @@ public:
 	afx_msg void OnBnClickedButtonSetfilename();
 	afx_msg void OnBnClickedRadioValid();
 	afx_msg void OnBnClickedRadioNovalid();
+	CDateTimeCtrl m_DTDate;
+	CDateTimeCtrl m_DTTime;
+	afx_msg void OnBnClickedButtonQuery();
 };

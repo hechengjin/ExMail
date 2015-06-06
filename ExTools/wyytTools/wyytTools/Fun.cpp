@@ -78,6 +78,89 @@ BOOL IsCopyFile(CString strPath, vector<FileSuffix_Struct>* pFileSuffixMap,vecto
 	//	return FALSE;
 	//}
 }
+void BackStart_Change(vector<FileSuffix_Struct>* pFileSuffixMap,vector<FileName_Struct>* pFileNamesMap, CString strSrcPath, CString strTarPath/*, BOOL bDelToRecycle*/, __time64_t setedDateTime)
+{
+	BOOL bRet = FALSE;
+	CFileFind finder;
+	ADD_ENDER(strSrcPath, '\\');
+	BOOL bfinder = finder.FindFile(strSrcPath + _T("*.*"), 0);
+	while(bfinder)
+	{
+		bfinder = finder.FindNextFile();
+		if (finder.IsDots())
+		{
+			continue;
+		}
+		else
+		{
+			if (finder.IsDirectory())
+			{
+				CString csCurSrcFullPath = finder.GetFilePath();
+				CString csCurTarFullPath = strTarPath + finder.GetFileName();
+				m_gpMainWnd->dwPos++;
+				dwTotal++;
+				dwFolders++;
+				//strTarPath += finder.GetFileName();
+				//strSrcPath += finder.GetFileName();
+				/*if (!Util::IsFileExist(csCurTarFullPath))
+				{
+					bRet = Util::MkDir(csCurTarFullPath);
+				}*/
+				m_gpMainWnd->ShowLogMsg(csCurTarFullPath, TRUE, 0 == bRet);
+				BackStart_Change(pFileSuffixMap, pFileNamesMap,csCurSrcFullPath, csCurTarFullPath,setedDateTime);
+			}
+			else
+			{
+				m_gpMainWnd->dwPos++;				
+				CString strCurSrcFilePath = finder.GetFilePath();
+				//CString strCurTarFilePath = strTarPath + finder.GetFileName();
+				if ( IsCopyFile(finder.GetFilePath(), pFileSuffixMap, pFileNamesMap,eOT_Valid) ) 
+				{
+					dwTotal++;
+					dwFiles++;
+					//strTarPath += finder.GetFileName();
+					//bRet = CShellFileOp::RemoveFile(finder.GetFilePath(), bDelToRecycle);
+					//bRet = Util::CopyFile(strCurSrcFilePath,strCurTarFilePath);
+					WIN32_FIND_DATA ffd ;
+					HANDLE hFind = FindFirstFile(strCurSrcFilePath,&ffd);
+					SYSTEMTIME stUTC, stLocal;
+					FileTimeToSystemTime(&(ffd.ftLastWriteTime), &stUTC);
+					SystemTimeToTzSpecificLocalTime(NULL, &stUTC, &stLocal);
+					CTime startDateTime(stLocal.wYear,stLocal.wMonth,stLocal.wDay,stLocal.wHour,stLocal.wMinute,stLocal.wSecond);
+					__time64_t curfilmod = startDateTime.GetTime();
+					if (  curfilmod > setedDateTime ) 
+					{
+						dwSucceed++;
+						m_gpMainWnd->ShowLogMsg(strCurSrcFilePath, TRUE, bRet);
+					}
+					else
+					{
+						dwFailed++;
+					}
+					
+				}
+			}
+		}
+	}
+	finder.Close();
+	// if the folder is empty, delete it ;
+	//m_gpMainWnd->dwPos++;
+	//if ( IsDeleteFolder(strPath, pTreeList) && CShellFileOp::FolderIsEmpty(strPath) ) 
+	//{
+	//	dwTotal++;
+	//	dwFolders++;
+	//	bRet = CShellFileOp::RemoveFolder(strPath);
+	//	if ( bRet == TRUE ) 
+	//	{
+	//		dwSucceed++;
+	//	}
+	//	else
+	//	{
+	//		dwFailed++;
+	//	}
+	//	m_gpMainWnd->ShowLogMsg(strPath, TRUE, bRet);
+	//}
+}
 
 void BackStart(vector<FileSuffix_Struct>* pFileSuffixMap,vector<FileName_Struct>* pFileNamesMap, CString strSrcPath, CString strTarPath/*, BOOL bDelToRecycle*/, int nCurOperType)
 {
@@ -159,48 +242,87 @@ void BackStart(vector<FileSuffix_Struct>* pFileSuffixMap,vector<FileName_Struct>
 UINT __cdecl ScanAndBackFunc(LPVOID pParam)
 {
 	CBackDlg *m_pBackWnd = (CBackDlg *)pParam;
-	ASSERT(m_pBackWnd != NULL);
-	dwTotal = 0, dwFiles = 0, dwFolders = 0, dwSucceed = 0, dwFailed = 0;
-	m_gpMainWnd = m_pBackWnd;
-	m_pBackWnd->EnableWindow(IDC_BUTTON_SOURCE, FALSE);
-	m_pBackWnd->EnableWindow(IDC_BUTTON_TARGET, FALSE);
-	m_pBackWnd->EnableWindow(IDC_BUTTON_SETCOPYFILE, FALSE);
-	CString strSrcPath=m_pBackWnd->m_Profile.m_strSourcePath;
-	CString strTarPath=m_pBackWnd->m_Profile.m_strTargetPath;
-	LONG nCount = 0;
-	nCount += CShellFileOp::GetSubFilesFolderNums(strSrcPath);
-	//for the progress ctrl;
-	m_pBackWnd->m_ProgCtrl.SetRange32(0, nCount);
-	m_pBackWnd->m_ProgCtrl.SetStep(1);
-	m_pBackWnd->SetTimer(1, 50, NULL);
-	// end;
-	//for( int idx = 0; idx < m_pBackWnd->m_PathList.GetCount(); idx++ ) {
-	//	m_pBackWnd->m_PathList.GetText(idx, strPath);
-	//	CleanStart(m_pBackWnd->GetTreeList(), strPath, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0));
-	//}
-	//全备份　增量备份(根据最新时间比较)/ 是否覆盖(新旧，存在)
-	if ( m_pBackWnd->m_Profile.m_nOperType ==  eOT_Valid )
+	if ( m_pBackWnd->m_curTime <= 0 )
 	{
-		BackStart(&theApp.m_vecFileSuffix,&theApp.m_vecFileNames,strSrcPath,strTarPath/*, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0)*/,eOT_Valid);
+		ASSERT(m_pBackWnd != NULL);
+		dwTotal = 0, dwFiles = 0, dwFolders = 0, dwSucceed = 0, dwFailed = 0;
+		m_gpMainWnd = m_pBackWnd;
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SOURCE, FALSE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_TARGET, FALSE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SETCOPYFILE, FALSE);
+		CString strSrcPath=m_pBackWnd->m_Profile.m_strSourcePath;
+		CString strTarPath=m_pBackWnd->m_Profile.m_strTargetPath;
+		LONG nCount = 0;
+		nCount += CShellFileOp::GetSubFilesFolderNums(strSrcPath);
+		//for the progress ctrl;
+		m_pBackWnd->m_ProgCtrl.SetRange32(0, nCount);
+		m_pBackWnd->m_ProgCtrl.SetStep(1);
+		m_pBackWnd->SetTimer(1, 50, NULL);
+		// end;
+		//for( int idx = 0; idx < m_pBackWnd->m_PathList.GetCount(); idx++ ) {
+		//	m_pBackWnd->m_PathList.GetText(idx, strPath);
+		//	CleanStart(m_pBackWnd->GetTreeList(), strPath, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0));
+		//}
+		//全备份　增量备份(根据最新时间比较)/ 是否覆盖(新旧，存在)
+		if ( m_pBackWnd->m_Profile.m_nOperType ==  eOT_Valid )
+		{
+			BackStart(&theApp.m_vecFileSuffix,&theApp.m_vecFileNames,strSrcPath,strTarPath/*, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0)*/,eOT_Valid);
+		}
+		else
+		{
+			BackStart(&theApp.m_vecFileSuffix_NoValid,&theApp.m_vecFileNames,strSrcPath,strTarPath/*, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0)*/,eOT_NoValid);
+		}
+
+		m_pBackWnd->KillTimer(1);
+		m_pBackWnd->m_ProgCtrl.SetPos(0);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SOURCE, TRUE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_TARGET, TRUE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SETCOPYFILE, TRUE);
+		CString strT;
+		strT.Format(_T("共复制文件和目录：%ld 个， 文件夹：%ld 个、文件：%ld 个；成功：%ld 个、失败：%ld 个；"), dwTotal, dwFolders, dwFiles, dwSucceed, dwFailed);
+		m_pBackWnd->ShowLogMsg(_T(""), -1);
+		m_pBackWnd->ShowLogMsg(strT, -1);
+		//if ( RegReadWriteDword(_T("EndClose"), TRUE) == TRUE )
+		//{
+		//	m_pBackWnd->OnCancel();
+		//}
 	}
 	else
 	{
-		BackStart(&theApp.m_vecFileSuffix_NoValid,&theApp.m_vecFileNames,strSrcPath,strTarPath/*, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0)*/,eOT_NoValid);
+		ASSERT(m_pBackWnd != NULL);
+		dwTotal = 0, dwFiles = 0, dwFolders = 0, dwSucceed = 0, dwFailed = 0;
+		m_gpMainWnd = m_pBackWnd;
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SOURCE, FALSE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_TARGET, FALSE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SETCOPYFILE, FALSE);
+		CString strSrcPath=m_pBackWnd->m_Profile.m_strSourcePath;
+		CString strTarPath=m_pBackWnd->m_Profile.m_strTargetPath;
+		LONG nCount = 0;
+		nCount += CShellFileOp::GetSubFilesFolderNums(strSrcPath);
+		//for the progress ctrl;
+		m_pBackWnd->m_ProgCtrl.SetRange32(0, nCount);
+		m_pBackWnd->m_ProgCtrl.SetStep(1);
+		m_pBackWnd->SetTimer(1, 50, NULL);
+		// end;
+		//for( int idx = 0; idx < m_pBackWnd->m_PathList.GetCount(); idx++ ) {
+		//	m_pBackWnd->m_PathList.GetText(idx, strPath);
+		//	CleanStart(m_pBackWnd->GetTreeList(), strPath, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0));
+		//}
+		//只过滤合法文件
+		BackStart_Change(&theApp.m_vecFileSuffix,&theApp.m_vecFileNames,strSrcPath,strTarPath/*, RegReadWriteDword(_T("DeleteToRecycle"), TRUE, 0)*/,m_pBackWnd->m_curTime);
+
+
+		m_pBackWnd->KillTimer(1);
+		m_pBackWnd->m_ProgCtrl.SetPos(0);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SOURCE, TRUE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_TARGET, TRUE);
+		m_pBackWnd->EnableWindow(IDC_BUTTON_SETCOPYFILE, TRUE);
+		CString strT;
+		strT.Format(_T("共复制文件和目录：%ld 个， 文件夹：%ld 个、文件：%ld 个；成功：%ld 个、失败：%ld 个；"), dwTotal, dwFolders, dwFiles, dwSucceed, dwFailed);
+		m_pBackWnd->ShowLogMsg(_T(""), -1);
+		m_pBackWnd->ShowLogMsg(strT, -1);
 	}
 	
-	m_pBackWnd->KillTimer(1);
-	m_pBackWnd->m_ProgCtrl.SetPos(0);
-	m_pBackWnd->EnableWindow(IDC_BUTTON_SOURCE, TRUE);
-	m_pBackWnd->EnableWindow(IDC_BUTTON_TARGET, TRUE);
-	m_pBackWnd->EnableWindow(IDC_BUTTON_SETCOPYFILE, TRUE);
-	CString strT;
-	strT.Format(_T("共复制文件和目录：%ld 个， 文件夹：%ld 个、文件：%ld 个；成功：%ld 个、失败：%ld 个；"), dwTotal, dwFolders, dwFiles, dwSucceed, dwFailed);
-	m_pBackWnd->ShowLogMsg(_T(""), -1);
-	m_pBackWnd->ShowLogMsg(strT, -1);
-	//if ( RegReadWriteDword(_T("EndClose"), TRUE) == TRUE )
-	//{
-	//	m_pBackWnd->OnCancel();
-	//}
 
 	return TRUE;
 }
