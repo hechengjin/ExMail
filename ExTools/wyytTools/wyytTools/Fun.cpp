@@ -106,7 +106,7 @@ void BackStart_Change(vector<FileSuffix_Struct>* pFileSuffixMap,vector<FileName_
 				{
 					bRet = Util::MkDir(csCurTarFullPath);
 				}*/
-				m_gpMainWnd->ShowLogMsg(csCurTarFullPath, TRUE, 0 == bRet);
+				//m_gpMainWnd->ShowLogMsg(csCurTarFullPath, TRUE, 0 == bRet);
 				BackStart_Change(pFileSuffixMap, pFileNamesMap,csCurSrcFullPath, csCurTarFullPath,setedDateTime);
 			}
 			else
