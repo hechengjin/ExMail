@@ -46,6 +46,8 @@ BEGIN_MESSAGE_MAP(CBackDlg, CSAPrefsSubDlg)
 	ON_BN_CLICKED(IDC_RADIO_VALID, &CBackDlg::OnBnClickedRadioValid)
 	ON_BN_CLICKED(IDC_RADIO_NOVALID, &CBackDlg::OnBnClickedRadioNovalid)
 	ON_BN_CLICKED(IDC_BUTTON_QUERY, &CBackDlg::OnBnClickedButtonQuery)
+	ON_NOTIFY(DTN_DATETIMECHANGE, IDC_DATETIMEPICKER_DATE, &CBackDlg::OnDtnDatetimechangeDatetimepickerDate)
+	ON_NOTIFY(DTN_DATETIMECHANGE, IDC_DATETIMEPICKER_TIME, &CBackDlg::OnDtnDatetimechangeDatetimepickerTime)
 END_MESSAGE_MAP()
 
 
@@ -86,6 +88,30 @@ void CBackDlg::OnBnClickedButtonTarget()
 	}
 }
 
+void CBackDlg::LoadStartTime()
+{
+	CIni ini(thePrefs.GetConfigFile(), _T("StartTime"));
+	m_nStartDate = ini.GetUInt64(_T("Day"),0);
+	//CString csStartDate;
+	//csStartDate.Format(L"%ld",m_nStartDate);
+	//MessageBox(csStartDate);
+	CTime startDay(m_nStartDate); 
+	if ( m_nStartDate > 0 )
+	{
+		m_DTDate.SetTime(&startDay);
+	}
+	
+
+
+	m_nStartTime = ini.GetUInt64(_T("Time"),0);
+
+	CTime startTime(m_nStartTime); 
+	if ( m_nStartDate > 0 )
+		m_DTTime.SetTime(&startTime);
+
+
+
+}
 
 void CBackDlg::LoadFileNamesFromFile()
 {
@@ -180,6 +206,8 @@ BOOL CBackDlg::OnInitDialog()
 		((CButton *)GetDlgItem(IDC_RADIO_VALID))->SetCheck(TRUE);
 		GetDlgItem(IDC_BUTTON_SETFILENAME)->EnableWindow(TRUE);//FALSE
 	}
+
+	LoadStartTime();
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
@@ -365,4 +393,39 @@ void CBackDlg::OnBnClickedButtonQuery()
 
 	CWinThread *pTread = AfxBeginThread(ScanAndBackFunc, this);
 	
+}
+
+
+void CBackDlg::OnDtnDatetimechangeDatetimepickerDate(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMDATETIMECHANGE pDTChange = reinterpret_cast<LPNMDATETIMECHANGE>(pNMHDR);
+	{
+		CTime startDay=CTime::GetCurrentTime(); //获取系统日期;
+		m_DTDate.GetTime(startDay);
+		CTime startDate(startDay.GetYear(),startDay.GetMonth(),startDay.GetDay(),0,0,0);
+		/*CString csStartDate;
+		csStartDate.Format(L"%d",startDate.GetTime());
+		MessageBox(csStartDate);*/
+		CIni ini(thePrefs.GetConfigFile(), _T("StartTime"));
+		ini.WriteUInt64(_T("Day"), startDate.GetTime());	
+
+	}
+	*pResult = 0;
+}
+
+
+void CBackDlg::OnDtnDatetimechangeDatetimepickerTime(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMDATETIMECHANGE pDTChange = reinterpret_cast<LPNMDATETIMECHANGE>(pNMHDR);
+	CTime startTime=CTime::GetCurrentTime(); //获取系统日期;
+		m_DTTime.GetTime(startTime);
+		//CTime startTime2(startTime.GetYear(),startTime.GetMonth(),startTime.GetDay(),startTime.GetHour(),startTime.GetMinute(),startTime.GetSecond());
+		
+		/*CString csStartDate;
+		csStartDate.Format(L"%d",startDate.GetTime());
+		MessageBox(csStartDate);*/
+		CIni ini(thePrefs.GetConfigFile(), _T("StartTime"));
+		ini.WriteUInt64(_T("Time"), startTime.GetTime());	
+
+	*pResult = 0;
 }

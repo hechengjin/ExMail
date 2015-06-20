@@ -51,12 +51,17 @@ public:
 	void LoadFileSufixxFromFile();
 	void LoadFileSufixxFromFile_NoVaild();
 	void LoadFileNamesFromFile();
+	void LoadStartTime();
 	BOOL EnableWindow(UINT uID, BOOL bEnable = TRUE);
 
 	afx_msg void OnBnClickedButtonSetfilename();
 	afx_msg void OnBnClickedRadioValid();
 	afx_msg void OnBnClickedRadioNovalid();
 	CDateTimeCtrl m_DTDate;
+	__int64 m_nStartDate;
 	CDateTimeCtrl m_DTTime;
+	__int64 m_nStartTime;
 	afx_msg void OnBnClickedButtonQuery();
+	afx_msg void OnDtnDatetimechangeDatetimepickerDate(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnDtnDatetimechangeDatetimepickerTime(NMHDR *pNMHDR, LRESULT *pResult);
 };

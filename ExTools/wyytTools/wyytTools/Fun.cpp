@@ -100,6 +100,19 @@ void BackStart_Change(vector<FileSuffix_Struct>* pFileSuffixMap,vector<FileName_
 				m_gpMainWnd->dwPos++;
 				dwTotal++;
 				dwFolders++;
+				bool bhuludir = false;
+				for (vector<FileName_Struct>::iterator it = pFileNamesMap->begin(); it != pFileNamesMap->end(); it++ )
+				{
+					if ( it->bEnable == 1 && it->FileName == finder.GetFileName() )
+					{
+						bhuludir = true;
+						break;
+					}
+				}
+				if (bhuludir)
+				{
+					continue;
+				}
 				//strTarPath += finder.GetFileName();
 				//strSrcPath += finder.GetFileName();
 				/*if (!Util::IsFileExist(csCurTarFullPath))
