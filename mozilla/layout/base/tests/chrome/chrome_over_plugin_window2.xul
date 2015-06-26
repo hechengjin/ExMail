@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin"?>
+<window title="Content/chrome integration subwindow"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        >
+  <!-- We're mainly testing that a) translucent chrome elements cause the plugin to be clipped away and
+       b) translucent content elements do NOT cause the plugin to be clipped away -->
+  <stack style="height:300px; width:550px;">
+    
+    
+  </stack>
+  <button onclick="runTests2()" label="tttt" />
+  <embed id="plugin1" type="application/x-richinfo-cxdnd3" width="300" height="300"></embed>
+<button onclick="runTests3()" label="rrrrr" />
+<html:input type="file" value="上传" id="btnUpload" name="btnUpload"  />
+<button onclick="runTests4()" label="html5" />
+  <script type="application/javascript">
+    <![CDATA[
+    var imports = [ "SimpleTest", "is", "isnot", "ok", "todo" ];
+    for each (var name in imports) {
+      window[name] = window.opener.wrappedJSObject[name];
+    }
+
+    var plugin;
+    var plugin_dfj;
+    function waitForPaint() {
+      if (plugin.getPaintCount() < 1) {
+        setTimeout(waitForPaint, 0);
+        return;
+      }
+
+      if (plugin.hasWidget()) {
+        is(plugin.getClipRegionRectCount(), 1, "plugin clip rect count");
+        var left = plugin.getEdge(0);
+        var top = plugin.getEdge(1);
+        is(plugin.getClipRegionRectEdge(0,0) - left, 0, "plugin clip rect left");
+        // our two vboxes with backgrounds should cause the top of the plugin to be clipped
+        is(plugin.getClipRegionRectEdge(0,1) - top, 50, "plugin clip rect top");
+        is(plugin.getClipRegionRectEdge(0,2) - left, 100, "plugin clip rect right");
+        // of the two content DIVs, the first one should not cause the plugin to be clipped because
+        // it's transparent. The second one should cause the plugin to be clipped.
+        is(plugin.getClipRegionRectEdge(0,3) - top, 90, "plugin clip rect bottom");
+      } else {
+        todo(false, "Test only tests windowed plugins");
+      }
+
+      var tester = window.SimpleTest;
+      window.close();
+      tester.finish();
+    }
+
+    function runTests() {
+      plugin = document.getElementById("f").contentDocument.getElementById("e").wrappedJSObject;
+      waitForPaint();
+    }
+     function runTests2() {
+      plugin_dfj = document.getElementById("f").contentDocument.getElementById("e").wrappedJSObject;
+      alert(plugin_dfj);
+      //plugin_dfj.getopenfilename("*.*", "C:\\"); //选择文件
+    }
+    function runTests3() {
+     var pluginElement1 = document.getElementById("plugin1");
+          try {
+        rv = pluginElement1..getopenfilename("*.*", "C:\\");
+      } catch (e) {
+        alert(e)
+      }
+    }
+    function runTests4() {
+     var file = document.getElementById("btnUpload");//[0].files[0];
+     //alert(filepath.value);
+    // var fileup = (Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile));
+     // fileup.initWithPath(file.value);
+        if(file){
+        //alert(file.size);
+        try{
+         var fd = new FormData;
+     
+       //  var slice = filewwww.slice(0, filewwww.size);
+            fd.append("fileToUpload", file.files[0]);
+            var xhr = new XMLHttpRequest();
+             xhr.addEventListener("error", function(evt){
+          alert(evt)
+        }, false);
+        xhr.addEventListener("abort",function(evt){
+          alert("abort "+evt)
+        } , false);
+        xhr.addEventListener("load", function(evt){
+          alert("load "+evt.target.responseText)
+        }, false);
+        xhr.upload.addEventListener("progress", function(evt){
+          alert("progress "+evt.target.responseText)
+        }, false);
+            xhr.open("POST", "http:/192.168.31.247/test/");
+            
+            xhr.send(fd);
+
+           
+
+               }
+               catch(e)
+               {
+               alert(e)
+               }
+        }
+    }
+
+    ]]>
+  </script>
+</window>

@@ -740,6 +740,15 @@ var gViewController = {
       }
     },
 
+    cmd_goToPlugTest: {
+      isEnabled: function cmd_goToPlugTest_isEnabled() true,
+      doCommand: function cmd_goToPlugTest_doCommand() {
+
+         var features = "chrome,centerscreen,dependent";
+        window.openDialog("chrome://messenger/content/chrome_over_plugin_window2.xul", "ptest", features);
+      }
+    },
+
     cmd_goToTest: {
       isEnabled: function cmd_goToTest_isEnabled() true,
       doCommand: function cmd_goToTest_doCommand() {

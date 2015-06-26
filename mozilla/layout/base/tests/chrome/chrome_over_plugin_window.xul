@@ -28,6 +28,7 @@
 
     var plugin;
     function waitForPaint() {
+   // alert(plugin.getPaintCount())
       if (plugin.getPaintCount() < 1) {
         setTimeout(waitForPaint, 0);
         return;
