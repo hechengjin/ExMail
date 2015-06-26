@@ -55,7 +55,7 @@ BOOL CBackInOrValidSetDlg::OnInitDialog()
 	m_listFileSuffix.InsertColumn(0, _T("文件说明")/*GetResString(IDS_TITLE)*/, LVCFMT_LEFT, 260);// X: [RUL] - [Remove Useless Localize]
 	if ( m_sft == SFT_FileFullName )
 	{
-		m_listFileSuffix.InsertColumn(1, _T("完整文件名")/*GetResString(IDS_S_DAYS)*/, LVCFMT_LEFT, 80);
+		m_listFileSuffix.InsertColumn(1, _T("完整文件[夹]名")/*GetResString(IDS_S_DAYS)*/, LVCFMT_LEFT, 80);
 		m_listFileSuffix.InsertColumn(2, _T("生效标记")/*GetResString(IDS_S_DAYS)*/, LVCFMT_LEFT, 70);
 		LoadFileNamesInfos();
 		SetWindowText(L"设置文件全名");
@@ -136,7 +136,7 @@ void CBackInOrValidSetDlg::OnBnClickedButtonNew()
 	{
 		FileName_Struct newFileName;
 		newFileName.FileNote=L"文件说明";
-		newFileName.FileName=L"完整文件名";
+		newFileName.FileName=L"完整文件[夹]名";
 		newFileName.bEnable = 1;
 		theApp.m_vecFileNames.push_back(newFileName);
 		index = theApp.m_vecFileNames.size()-1;
