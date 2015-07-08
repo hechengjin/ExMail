@@ -75,6 +75,8 @@ var gOkCallback = null;
 var gHideABPicker = false;
 var gPhotoHandlers = {};
 
+const kDefaultSelItem="pleaseselect";
+
 function OnLoadNewCard()
 {
   InitEditCard();
@@ -165,6 +167,38 @@ function OnLoadNewCard()
     // XXX Using the setTimeout hack until bug 103197 is fixed
     setTimeout( function(firstTextBox) { firstTextBox.focus(); }, 0, focus );
   }
+
+  initMailLists();
+}
+
+function initMailLists()
+{
+    let selMailList = document.getElementById("selMailList");
+    selMailList.removeAllItems();
+
+    selMailList.appendItem(gAddressBookBundle.getString("defaultItem"),kDefaultSelItem,"");
+
+    var abPopup = document.getElementById('abPopup');
+    var directory = GetDirectoryFromURI(abPopup.value);
+
+
+
+    let names = new Array();
+    let cards = directory.childCards;
+    while(cards.hasMoreElements()) {
+        let card = cards.getNext();
+        card = card.QueryInterface(Components.interfaces.nsIAbCard);
+        //let listName = card.getProperty("locorginfo", null);
+        if (card.isMailList ) {
+            names.push(card.displayName);
+        }
+    }
+
+   for (let i = 0; i < names.length; i++) {
+        selMailList.appendItem(names[i],names[i],"");
+    }
+    selMailList.selectedIndex = 0;
+
 }
 
 function EditCardOKButton()
@@ -432,6 +466,19 @@ function NewCardOKButton()
       // the card that got created.
       var directory = GetDirectoryFromURI(uri);
       gEditCard.card = directory.addCard(gEditCard.card);
+        ////////////////////////////////////////
+      let targetList = this.GetMailListDirectory();
+        // 加入新的组
+        if ( targetList != null )
+        {
+            let cardToList = Components.classes["@mozilla.org/addressbook/cardproperty;1"].createInstance();
+            cardToList = cardToList.QueryInterface(Components.interfaces.nsIAbCard);
+            cardToList.primaryEmail = gEditCard.card.getProperty("PrimaryEmail", null);
+            targetList.addressLists.appendElement(cardToList, false);
+            targetList.editMailListToDatabase(null);
+        }
+
+        /////////////////////////////////////////
       NotifySaveListeners(directory);
       if ("arguments" in window && window.arguments[0] &&
           "allowRemoteContent" in window.arguments[0]) {
@@ -444,7 +491,23 @@ function NewCardOKButton()
 
   return true;  // close the window
 }
-
+function GetMailListDirectory(rootUri){
+    var selMailList = document.getElementById('selMailList');
+    var popup = document.getElementById('abPopup');
+    if ( popup )
+    {
+        var uri = popup.value;
+        let rootDir = GetDirectoryFromURI(uri);
+        let mailLists = rootDir.addressLists.enumerate();
+        while(mailLists.hasMoreElements()){
+            let list = mailLists.getNext();
+            list = list.QueryInterface(Components.interfaces.nsIAbDirectory);
+            if (list.dirName == selMailList.value)
+                return list;
+        }
+    }
+    return null;
+}
 // Move the data from the cardproperty to the dialog
 function GetCardValues(cardproperty, doc)
 {
