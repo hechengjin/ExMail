@@ -167,12 +167,18 @@ var sessionStoreManager =
     // XXX we'd like to support other window types in future, but for now
     // only get the 3pane windows.
     let enumerator = windowMediator.getEnumerator("mail:3pane");
-    while (enumerator.hasMoreElements()) {
+    /*while (enumerator.hasMoreElements()) {
       let win = enumerator.getNext();
       if (win && "complete" == win.document.readyState &&
           win.getWindowStateForSessionPersistence)
         state.windows.push(win.getWindowStateForSessionPersistence());
-    }
+    }*/
+
+    let win = enumerator.getLast();
+      if (win && "complete" == win.document.readyState &&
+          win.getWindowStateForSessionPersistence)
+        state.windows.push(win.getWindowStateForSessionPersistence());
+
 
     this._saveStateObject(state);
   },
