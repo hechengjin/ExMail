@@ -7,16 +7,16 @@ if "%1"=="da" (
 :delall
 	set /p input="del all files?(y/n)"
 	if "%input%"=="y" (
-		rd /q /s "C:\Documents and Settings\hecj\Application Data\Thunderbird"
+		rd /q /s "C:\Users\Administrator\AppData\Roaming\Firemail"
 	)
-        del "C:\Documents and Settings\hecj\Application Data\Thunderbird\profiles.ini"
+        del "C:\Users\Administrator\AppData\Roaming\Firemail\profiles.ini"
 	goto startup
 	
 :delini
-	for /d %%i in ("C:\Documents and Settings\hecj\Application Data\Thunderbird\Profiles\*") do (del "%%i\compatibility.ini")
+	for /d %%i in ("C:\Users\Administrator\AppData\Roaming\Firemail\Profiles\*") do (del "%%i\compatibility.ini")
 	goto startup
 	
 :startup
-	E:\githubsrc\ExMail\obj_ExMail\mozilla\dist\bin\Thunderbird.exe
+	E:\github\ExMail\obj_Firemail\mozilla\dist\bin\Firemail.exe
 
 :end

@@ -12,7 +12,7 @@ include $(DEPTH)/config/autoconf.mk
 include $(MOZILLA_SRCDIR)/toolkit/mozapps/installer/package-name.mk
 
 CONFIG_DIR = instgen
-SFX_MODULE = $(topsrcdir)/other-licenses/7zstub/thunderbird/7zSD.sfx
+SFX_MODULE = $(topsrcdir)/other-licenses/7zstub/firemail/7zSD.sfx
 
 DEFINES += -DMOZ_APP_VERSION=$(MOZ_APP_VERSION)
 PRE_RELEASE_SUFFIX := ""

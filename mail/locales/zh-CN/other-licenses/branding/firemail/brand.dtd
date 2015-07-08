@@ -3,6 +3,8 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <!ENTITY  brandShortName        "Firemail">
-<!ENTITY  brandFullName         "Firemail">
-<!ENTITY  vendorShortName       "mozilla.org">
-<!ENTITY  trademarkInfo.part1   " ">
+<!ENTITY  brandFullName         "wyyt Firemail">
+<!ENTITY  vendorShortName       "Mozilla">
+<!ENTITY  trademarkInfo.part1   "Mozilla Firemail 以及 Firemail 标志
+                                 均为 Mozilla 基金会所有的注册商标。">
+

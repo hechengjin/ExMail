@@ -132,7 +132,7 @@ because displayed names don't have the comma in between. -->
 <!ENTITY newContactButton.accesskey                     "C">
 <!ENTITY newlistButton.label                            "新建组">
 <!ENTITY newlistButton.accesskey                        "L">
-<!ENTITY editButton2.label                              "属性">
+<!ENTITY editButton2.label                              "编辑">
 <!ENTITY editButton2.accesskey                          "P">
 <!ENTITY newmsgButton.label                             "写邮件">
 <!ENTITY newmsgButton.accesskey                         "W">
@@ -231,7 +231,7 @@ because displayed names don't have the comma in between. -->
 <!ENTITY sysmenu.accountSetting.label                        "帐户设置">
 <!ENTITY sysmenu.systemSetting.label                        "系统设置">
 <!ENTITY sysmenu.help.label                        "帮助">
-<!ENTITY sysmenu.help.about.label                        "关于ExMail">
+<!ENTITY sysmenu.help.about.label                        "关于&brandShortName; ">
 <!ENTITY sysmenu.exit.label                        "退出">
 <!ENTITY toolbarbutton.menu.label                               "菜单">
 <!ENTITY contactsListTitle.label                               "排序：标准">

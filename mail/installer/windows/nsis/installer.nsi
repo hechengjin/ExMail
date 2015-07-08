@@ -197,7 +197,7 @@ Section "-InstallStartCleanup"
   ${EndIf}
 
   ; Delete two files installed by Kaspersky Anti-Spam extension that are only
-  ; compatible with Thunderbird 2 (bug 533692).
+  ; compatible with Firemail 2 (bug 533692).
   ${If} ${FileExists} "$INSTDIR\components\klthbplg.dll"
     Delete /REBOOTOK "$INSTDIR\components\klthbplg.dll"
   ${EndIf}
@@ -206,7 +206,7 @@ Section "-InstallStartCleanup"
   ${EndIf}
 
   ; Remove the updates directory for Vista and above
-  ${CleanUpdatesDir} "Thunderbird"
+  ${CleanUpdatesDir} "Firemail"
 
   ${InstallStartCleanupCommon}
 SectionEnd
@@ -329,21 +329,21 @@ Section "-Application" APP_IDX
   ; it doesn't cause problems always add them.
   ${SetUninstallKeys}
 
-  ; On install always add the ThunderbirdEML, Thunderbird.Url.mailto, and
-  ; Thunderbird.Url.news keys.
+  ; On install always add the FiremailEML, Firemail.Url.mailto, and
+  ; Firemail.Url.news keys.
   ${GetLongPath} "$INSTDIR\${FileMainEXE}" $8
   StrCpy $0 "SOFTWARE\Classes"
   StrCpy $1 "$\"$8$\" $\"%1$\""
   StrCpy $2 "$\"$8$\" -osint -compose $\"%1$\""
   StrCpy $3 "$\"$8$\" -osint -mail $\"%1$\""
 
-  ; An empty string is used for the 5th param because ThunderbirdEML is not a
+  ; An empty string is used for the 5th param because FiremailEML is not a
   ; protocol handler
-  ${AddHandlerValues} "$0\ThunderbirdEML"  "$1" "$8,0" \
+  ${AddHandlerValues} "$0\FiremailEML"  "$1" "$8,0" \
                       "${AppRegNameMail} Document" "" ""
-  ${AddHandlerValues} "$0\Thunderbird.Url.mailto"  "$2" "$8,0" \
+  ${AddHandlerValues} "$0\Firemail.Url.mailto"  "$2" "$8,0" \
                       "${AppRegNameMail} URL" "true" ""
-  ${AddHandlerValues} "$0\Thunderbird.Url.news" "$3" "$8,0" \
+  ${AddHandlerValues} "$0\Firemail.Url.news" "$3" "$8,0" \
                       "${AppRegNameNews} URL" "true" ""
 
   ; The following keys should only be set if we can write to HKLM

@@ -7,8 +7,8 @@
 
 # BrandFullNameInternal is used for some registry and file system values
 # instead of BrandFullName and typically should not be modified.
-!define BrandFullNameInternal "Earlybird"
+!define BrandFullNameInternal "Firemail"
 !define CompanyName           "mozilla.org"
 !define URLInfoAbout          "http://www.mozilla.org/"
-!define URLUpdateInfo         "http://www.mozilla.org/products/thunderbird/"
+!define URLUpdateInfo         "http://www.mozilla.org/products/Firemail/"
 !define SurveyURL             "http://live.mozillamessaging.com/survey/uninstall/?locale=${AB_CD}&version=${AppVersion}"

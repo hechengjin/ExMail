@@ -3,8 +3,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-MOZ_APP_BASENAME=Thunderbird
-MOZ_APP_NAME=thunderbird
+MOZ_APP_BASENAME=Firemail
+MOZ_APP_NAME=Firemail
 MOZ_UPDATER=1
 MOZ_THUNDERBIRD=1
 MOZ_CHROME_FILE_FORMAT=omni
@@ -34,7 +34,7 @@ MOZ_APP_VERSION=`cat $MOZ_APP_VERSION_TXT`
 THUNDERBIRD_VERSION=$MOZ_APP_VERSION
 
 MOZ_BRANDING_DIRECTORY=mail/branding/aurora
-MOZ_OFFICIAL_BRANDING_DIRECTORY=other-licenses/branding/thunderbird
+MOZ_OFFICIAL_BRANDING_DIRECTORY=other-licenses/branding/firemail
 
 if [ "$MOZ_ESR" ]; then
   # This should usually be the same as the value MAR_CHANNEL_ID.
