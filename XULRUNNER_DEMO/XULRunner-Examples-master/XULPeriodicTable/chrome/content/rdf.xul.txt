@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="XUL Buttons"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+   
+<script>
+<![CDATA[
+
+function setText(textID,val)
+{
+  document.getElementById(textID).value=val;
+}
+
+]]>
+</script>
+
+<description><html:h1>XUL Buttons</html:h1></description>
+
+<vbox flex="1" style="overflow: auto">
+
+ <tree flex="1" width="200" height="200"
+      datasources="animals.rdf" ref="http://www.some-fictitious-zoo.com/all-animals">
+
+  <treecols>
+    <treecol id="name" label="Name" primary="true" flex="1"/>
+    <treecol id="species" label="Species" flex="1"/>
+  </treecols>
+
+  <template>
+    <rule>
+      <treechildren>
+       <treeitem uri="rdf:*">
+         <treerow>
+           <treecell label="rdf:http://www.some-fictitious-zoo.com/rdf#name"/>
+           <treecell label="rdf:http://www.some-fictitious-zoo.com/rdf#species"/>
+         </treerow>
+       </treeitem>
+      </treechildren>
+    </rule>
+
+  </template>
+</tree>
+
+</vbox>
+
+</window>

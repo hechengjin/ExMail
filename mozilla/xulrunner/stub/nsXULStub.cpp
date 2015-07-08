@@ -274,11 +274,32 @@ main(int argc, char **argv)
   *(++lastSlash) = '\0';
 
   // On Linux/Win, look for XULRunner in appdir/xulrunner
-
+  char xulrunnerDir[MAXPATHLEN];
+#ifdef XP_WIN
+	snprintf(greDir, sizeof(greDir),
+           "%sxulrunner" XPCOM_FILE_PATH_SEPARATOR XPCOM_DLL,
+           iniPath);
+  greFound = FolderExists(greDir);
+ if (!greFound) {
+ 		char drive[_MAX_DRIVE];
+   char dir[_MAX_DIR];
+   char fname[_MAX_FNAME];
+   char ext[_MAX_EXT];
+ ::GetSystemDirectory(xulrunnerDir, MAX_PATH);
+ 	_splitpath( xulrunnerDir, drive, dir, fname, ext ); 
+ 	snprintf(greDir, sizeof(greDir),
+           "%s\\xulrunner" XPCOM_FILE_PATH_SEPARATOR XPCOM_DLL,
+           drive);
+            //  Output(false, drive);
+           
+}
+		
+  
+#else
   snprintf(greDir, sizeof(greDir),
            "%sxulrunner" XPCOM_FILE_PATH_SEPARATOR XPCOM_DLL,
            iniPath);
-
+#endif
   greFound = FolderExists(greDir);
 
 #ifdef XP_UNIX

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="RDF"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+   
+<script>
+<![CDATA[
+
+function setText(textID,val)
+{
+  document.getElementById(textID).value=val;
+}
+
+]]>
+</script>
+
+<description><html:h1>RDF (Resource Description Framework) </html:h1></description>
+
+
+<vbox flex="1" style="overflow: auto">
+<hbox>
+  <html:a class="unsupportedLearnMoreLink" href="https://developer.mozilla.org/en-US/docs/RDF_in_Mozilla_FAQ" target="_blank">RDF_in_Mozilla_FAQ</html:a>
+  <label value="RDF_in_Mozilla_FAQ" href="https://developer.mozilla.org/en-US/docs/RDF_in_Mozilla_FAQ" class="text-link"  target="_blank"/>
+</hbox>
+ <tree flex="1" width="200" height="200"
+      datasources="animals.rdf" ref="http://www.some-fictitious-zoo.com/all-animals">
+
+  <treecols>
+    <treecol id="name" label="Name" primary="true" flex="1"/>
+    <treecol id="species" label="Species" flex="1"/>
+  </treecols>
+
+  <template>
+    <rule>
+      <treechildren>
+       <treeitem uri="rdf:*">
+         <treerow>
+           <treecell label="rdf:http://www.some-fictitious-zoo.com/rdf#name"/>
+           <treecell label="rdf:http://www.some-fictitious-zoo.com/rdf#species"/>
+         </treerow>
+       </treeitem>
+      </treechildren>
+    </rule>
+
+  </template>
+</tree>
+
+
+<button label="Click here to see the mammals the zoo has" type="menu"
+        datasources="animals.rdf" ref="http://www.some-fictitious-zoo.com/mammals">
+  <template>
+    
+    <rule>
+      <menupopup>
+        <menuitem uri="rdf:*" label="rdf:http://www.some-fictitious-zoo.com/rdf#name"/>
+      </menupopup>
+    </rule>
+  </template>
+</button>
+
+</vbox>
+
+</window>
