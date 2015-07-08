@@ -16,26 +16,41 @@ print_usage() {
   notice "Usage: $(basename $0) [OPTIONS] ARCHIVE DIRECTORY"
 }
 
-if [ $# = 0 ]; then
-  print_usage
-  exit 1
-fi
-
-if [ $1 = -h ]; then
-  print_usage
-  notice ""
-  notice "The contents of DIRECTORY will be stored in ARCHIVE."
-  notice ""
-  notice "Options:"
-  notice "  -h  show this help text"
-  notice ""
-  exit 1
-fi
 
 # -----------------------------------------------------------------------------
 
-archive="$1"
-targetdir="$2"
+#从cfgfile中读取obj目录，根据目录位置，查找mar.exe位置，指定complete.mar生成位置和目标文件夹位置
+CFGFILENAME="$(dirname "$0")/updatecfg"
+
+echo cfg file path:${CFGFILENAME}
+count=1
+
+exec 3<> $CFGFILENAME
+while read LINE <&3
+do {
+
+	if [ $count -gt 1 ]; then
+		break
+	fi
+
+	count=$[ $count + 1 ]
+	
+	srcdir=$LINE
+}
+done
+exec 3>&-
+
+targetdir=${srcdir}/installer-stage/core
+archive=${srcdir}/installer-stage/update.mar
+mardir=${srcdir}/mozilla/dist/host/bin/mar.exe
+
+echo targetdir:${srcdir}
+echo archive:${archive}
+echo mardir:${mardir}
+
+#----------------------------------------------------------------------------------
+
+
 # Prevent the workdir from being inside the targetdir so it isn't included in
 # the update mar.
 if [ $(echo "$targetdir" | grep -c '\/$') = 1 ]; then
@@ -106,7 +121,7 @@ append_remove_instructions "$targetdir" "$updatemanifestv1" "$updatemanifestv2"
 $BZIP2 -z9 "$updatemanifestv1" && mv -f "$updatemanifestv1.bz2" "$updatemanifestv1"
 $BZIP2 -z9 "$updatemanifestv2" && mv -f "$updatemanifestv2.bz2" "$updatemanifestv2"
 
-eval "$MAR -C \"$workdir\" -c output.mar $targetfiles"
+eval "$mardir -C \"$workdir\" -c output.mar $targetfiles"
 mv -f "$workdir/output.mar" "$archive"
 
 # cleanup
@@ -114,3 +129,11 @@ rm -fr "$workdir"
 
 notice ""
 notice "Finished"
+
+echo "--------------------------"
+echo "filesize:"
+ls -al $archive | awk '{print $5}'
+echo "--------------------------"
+echo "sha512:"
+openssl dgst -sha512 $archive | awk '{print $2}'
+echo "--------------------------"
