@@ -1039,6 +1039,12 @@ nsresult nsImapService::GetMessageFromUrl(nsIImapUrl *aImapUrl,
   // and the provided stream listener....
   
   nsCOMPtr<nsIDocShell> docShell(do_QueryInterface(aDisplayConsumer, &rv));
+  if ( aDisplayConsumer && docShell && NS_SUCCEEDED(rv) )
+  {
+	  //printf("open double----\n");
+	  nsImapAction actionPriority = nsIImapUrl::ImapPriorityOne;
+	  rv = aImapUrl->SetImapPriority(actionPriority);
+  }
   if (aImapMailFolder && docShell)
   {
     nsCOMPtr<nsIMsgIncomingServer> aMsgIncomingServer;

@@ -106,6 +106,7 @@ protected:
   // event sinks
   imapMessageFlagsType  m_flags;
   nsImapAction  m_imapAction;
+  nsImapAction  m_imapPriority;
 
   nsWeakPtr m_imapFolder;
   nsWeakPtr m_imapMailFolderSink;

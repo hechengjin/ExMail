@@ -68,6 +68,7 @@ nsImapUrl::nsImapUrl() : mLock("nsImapUrl.mLock")
   m_imapMessageSink = nullptr;
   m_addDummyEnvelope = false;
   m_canonicalLineEnding = false;
+  m_imapPriority = ImapPriorityZero;//0;
 }
 
 nsImapUrl::~nsImapUrl()
@@ -117,6 +118,17 @@ NS_IMETHODIMP nsImapUrl::GetImapAction(nsImapAction * aImapAction)
 NS_IMETHODIMP nsImapUrl::SetImapAction(nsImapAction aImapAction)
 {
   m_imapAction = aImapAction;
+  return NS_OK;
+}
+
+nsresult nsImapUrl::GetImapPriority(nsImapAction *aImapPriority)
+{
+  *aImapPriority = m_imapPriority;
+  return NS_OK;
+}
+nsresult nsImapUrl::SetImapPriority(nsImapAction aImapPriority)
+{
+  m_imapPriority = aImapPriority;
   return NS_OK;
 }
 

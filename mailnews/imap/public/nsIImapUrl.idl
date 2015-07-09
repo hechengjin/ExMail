@@ -42,6 +42,7 @@ interface nsIImapUrl : nsISupports
   // Getters and Setters for the imap url state
   ///////////////////////////////////////////////////////////////////////////////
   attribute nsImapAction imapAction;
+  attribute nsImapAction imapPriority;
   readonly attribute nsImapState requiredImapState;
   readonly attribute string imapPartToFetch;
   readonly attribute ACString customAttributeToFetch;
@@ -205,4 +206,7 @@ interface nsIImapUrl : nsISupports
 
   /// Constant for the default IMAP over ssl port number
   const int32_t DEFAULT_IMAPS_PORT = 993;
+  //The type of Priority
+  const long ImapPriorityZero = 0;
+  const long ImapPriorityOne = 1;
 };

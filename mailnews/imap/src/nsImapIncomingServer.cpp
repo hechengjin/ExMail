@@ -509,11 +509,27 @@ nsImapIncomingServer::LoadNextQueuedUrl(nsIImapProtocol *aProtocol, bool *aResul
 
   MutexAutoLock mon(mLock);
   int32_t cnt = m_urlQueue.Count();
+  int32_t procIndex = 0;
 
   while (cnt > 0 && !urlRun && keepGoing)
   {
-    nsCOMPtr<nsIImapUrl> aImapUrl(m_urlQueue[0]);
-    nsCOMPtr<nsIMsgMailNewsUrl> aMailNewsUrl(do_QueryInterface(aImapUrl, &rv));
+   
+
+	procIndex = 0;
+	for (int32_t i = cnt - 1; i >= 0; i--)
+	{
+		nsCOMPtr<nsIImapUrl> aImapUrl(m_urlQueue[i]);
+		nsImapAction imapActionPriority;
+		aImapUrl->GetImapPriority(&imapActionPriority);
+		if ( imapActionPriority == nsIImapUrl::ImapPriorityOne)
+		{
+			nsImapProtocol::LogImapUrl("PriorityOne queued url", aImapUrl);
+			procIndex = i;
+			break;
+		}
+	}
+	nsCOMPtr<nsIImapUrl> aImapUrl(m_urlQueue[procIndex]);
+	nsCOMPtr<nsIMsgMailNewsUrl> aMailNewsUrl(do_QueryInterface(aImapUrl, &rv));
 
     bool removeUrlFromQueue = false;
     if (aImapUrl)
@@ -524,7 +540,7 @@ nsImapIncomingServer::LoadNextQueuedUrl(nsIImapProtocol *aProtocol, bool *aResul
       // if we didn't doom the url, lets run it.
       if (!removeUrlFromQueue)
       {
-        nsISupports *aConsumer = (nsISupports*)m_urlConsumers.ElementAt(0);
+        nsISupports *aConsumer = (nsISupports*)m_urlConsumers.ElementAt(procIndex);
         NS_IF_ADDREF(aConsumer);
 
         nsImapProtocol::LogImapUrl("creating protocol instance to play queued url", aImapUrl);
@@ -553,8 +569,9 @@ nsImapIncomingServer::LoadNextQueuedUrl(nsIImapProtocol *aProtocol, bool *aResul
       }
       if (removeUrlFromQueue)
       {
-        m_urlQueue.RemoveObjectAt(0);
-        m_urlConsumers.RemoveElementAt(0);
+		  //nsImapProtocol::LogImapUrl("removeUrlFromQueue", aImapUrl);
+        m_urlQueue.RemoveObjectAt(procIndex);
+        m_urlConsumers.RemoveElementAt(procIndex);
       }
     }
     cnt = m_urlQueue.Count();
