@@ -45,7 +45,11 @@ EXPORT_RESOURCE_FILES	= \
 				  POPFile.sfd \
 				  SpamAssassin.sfd \
 				  SpamPal.sfd \
+				  gmail.com.xml \
+				  126.com.xml \
 				  outlook.com.xml \
+				  qq.com.xml \
+				  139.com.xml \
 			        $(NULL)
 
 # we don't want the shared lib, but we want to force the creation of a static lib.
