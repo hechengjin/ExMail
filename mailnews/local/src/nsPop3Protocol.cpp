@@ -1304,9 +1304,19 @@ nsPop3Protocol::Error(int32_t err_code)
             }
         }
     }
-    m_pop3ConData->next_state = POP3_ERROR_DONE;
-    m_pop3ConData->pause_for_read = false;
-    return -1;
+	if( 4012 == err_code )
+	{
+		m_pop3ConData->last_accessed_msg++; //收取下一封邮件
+		m_pop3ConData->next_state = POP3_GET_MSG;//POP3_ERROR_DONE;
+		m_pop3ConData->pause_for_read = false;
+		return 1;
+	}
+	else
+	{
+		m_pop3ConData->next_state = POP3_ERROR_DONE;
+		m_pop3ConData->pause_for_read = false;
+		return -1;
+	}
 }
 
 nsresult nsPop3Protocol::SendData(const char * dataBuffer, bool aSuppressLogging)
