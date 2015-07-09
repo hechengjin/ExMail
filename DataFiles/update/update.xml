@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<updates>
+	<update type="minor" displayVersion="1.0.1" appVersion="1.0.1" platformVersion="1.0.1" buildID="20130925141200" detailsURL="http://192.168.31.247/forum.php?mod=viewthread&tid=85&extra=page%3D1">
+		<patch type="complete" URL="http://192.168.31.247/update/update.mar" hashFunction="SHA512" hashValue="e01ee4da2e686ff69eedeea6e8867aea745ccd3bd74621ddb45378dbdb607959b60ee36fd66c1e77949ed2cc502e139ae65d87aea5a987ee723b446a009075a9" size="18540343"/>
+	</update>
+</updates>
