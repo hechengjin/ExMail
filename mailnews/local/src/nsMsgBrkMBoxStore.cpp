@@ -36,6 +36,14 @@
 #include "nsIPrefBranch.h"
 #include "prprf.h"
 
+#if defined(XP_WIN)
+#include <windows.h>
+#include <stdlib.h>
+#elif defined(XP_UNIX)
+#include <sys/time.h>
+#include <sys/resource.h>
+#endif
+
 nsMsgBrkMBoxStore::nsMsgBrkMBoxStore()
 {
   m_outputStreams.Init();
@@ -196,7 +204,49 @@ NS_IMETHODIMP nsMsgBrkMBoxStore::HasSpaceAvailable(nsIMsgFolder *aFolder,
   // ### I think we're allowing mailboxes > 4GB, so we should be checking
   // for disk space here, not total file size.
   // 0xFFC00000 = 4 GiB - 4 MiB.
-  *aResult = ((fileSize + aSpaceRequested) < 0xFFC00000);
+#if defined(XP_WIN)
+  nsCString mfilePath;
+  rv = pathFile->GetNativePath(mfilePath);
+  nsCString mfilePathofDrive;
+  PRUint32 nposofdrive = mfilePath.FindChar(':',0);
+  mfilePath.Left(mfilePathofDrive,nposofdrive + 1);
+  TCHAR szDrive[4] = TEXT("D:\\");
+
+  LPTSTR lpVolumeNameBuffer = new TCHAR[_MAX_FNAME];
+  DWORD nVolumeNameSize = _MAX_FNAME;
+  DWORD nVolumeSerialNumber = 0;//便于驱动器无效时做判断
+  DWORD nMaximumComponentLength;
+  DWORD nFileSystemFlags;
+  LPTSTR lpFileSystemNameBuffer = new TCHAR[20];//文件系统(NTFS,FAT)多大有定义好的宏吗
+  DWORD nFileSystemNameSize = 20;
+  GetVolumeInformation(
+	  szDrive,
+	  lpVolumeNameBuffer,
+	  nVolumeNameSize,
+	  &nVolumeSerialNumber, 
+	  &nMaximumComponentLength,
+	  &nFileSystemFlags,
+	  lpFileSystemNameBuffer,
+	  nFileSystemNameSize);
+  if (lpFileSystemNameBuffer != NULL)
+  {
+	  printf("mfilePathofDrive:%s \n",mfilePathofDrive.get());
+	   if (!strncmp(lpFileSystemNameBuffer, "NTFS", 4))
+	   {
+		   printf("lpFileSystemNameBuffer:%s\n",lpFileSystemNameBuffer);
+		   *aResult = 1 < 2;
+	   }
+	   else
+		   *aResult = ((fileSize + aSpaceRequested) < 0xFFC00000);
+	  
+  }
+#else
+   *aResult = ((fileSize + aSpaceRequested) < 0xFFC00000);
+#endif
+  //获取分区格式
+ 
+
+ 
   return NS_OK;
 }
 
