@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="mailtools"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         onload="gmainDialog.onLoad()"
+		width="900px"
+		height="600px">
+<script type="application/x-javascript"   src="main.js" />
+<script type="application/x-javascript"   src="utilities.js" />
+<script>
+<![CDATA[
+
+function setFrame()
+{
+  var listBox = document.getElementById("working-list");
+  var selectedItem = listBox.getSelectedItem(0);
+  var newPage = selectedItem.getAttribute("value");
+  document.getElementById("working-frame").setAttribute("src", newPage);
+ // var newSrc = newPage + ".txt";
+ // document.getElementById("source-frame").setAttribute("src", newSrc);
+ if(newPage == "funcs.xul") 
+ {
+    document.getElementById("source-frame").setAttribute("src", "funcs.txt");
+ }
+ else if (newPage == "config.xul")
+    document.getElementById("source-frame").setAttribute("src", "config_src.xul");
+}
+
+]]>
+</script>
+
+<vbox>
+  <hbox height="450px" flex="1">
+    <listbox id="working-list" style="width:10em" 
+             onselect="setFrame();">
+      <listitem value="version.xul"        label="版本控制" selected="true" />
+      <listitem value="config.xul"        label="配置选项" />
+      <listitem value="nameandskin.xul"      label="名称、皮肤、安装包" />      
+      <listitem value="funcs.xul"      label="常用功能写法" />
+
+    </listbox>
+
+    <splitter collapse="before" resizebefore="closest" resizeafter="grow">
+     <grippy />
+    </splitter>
+
+    <tabbox  flex="1" >
+      <tabs>
+         <tab label="obj" />
+         <tab label="src" />
+         <tab label="other" />
+      </tabs>
+      <tabpanels flex="1" >
+         <iframe id="working-frame" type="content-primary" src="layout.xul" />
+         <iframe id="source-frame"  type="content-primary" 
+                                                       src="layout.xul.txt"/>
+         <iframe type="content-primary" src="ChangeLog.txt" />
+      </tabpanels>
+    </tabbox>
+
+  </hbox>
+   <splitter collapse="after" resizebefore="closest" resizeafter="grow">
+     <grippy />
+    </splitter>
+ <vbox flex="1" >
+   <hbox>
+        <textbox style="width:10em" value="C:\Documents and Settings\hecj\Application Data\Atropa\mailtools\Profiles\xn99ll2i.default\compatibility.ini  清除jsm文件生效"   readonly="true"  flex="1"/>  
+   </hbox>
+  <hbox>
+        <label style="width:10em" value="操作结果状态"  />  <button id="gclearLog" oncommand="gmainDialog.clearLog();"  label="清空日志"/>
+   </hbox>
+  
+   
+   <hbox>
+      <textbox id="gresults" multiline="true" rows="10" cols="95" flex="1"/>
+   </hbox>
+ </vbox>
+
+</vbox>
+ 
+
+</window>

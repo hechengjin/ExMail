@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="Hello bChick"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="gConfigSrcDialog.onLoad()"
+        >
+
+
+   
+  <script type="application/x-javascript"
+	  src="chrome://global/content/dialogOverlay.js" />
+	  <script type="application/x-javascript"   src="config_src.js" />
+	  <script type="application/x-javascript"   src="utilities.js" />
+  		<description><html:h1>源码(mail\app\profile\all-thunderbird.js)和bin\defaults\pref\all-thunderbird.js下设置信息</html:h1></description>
+
+  		<broadcaster id="broadbuidverchange" newver="default"/>
+  		<observes id="observebuidverchange"
+				  element="broadbuidverchange"
+				  attribute="newver"
+				  onbroadcast="gConfigSrcDialog.consume_modobjver(this)"/>
+
+  <vbox flex="1" style="overflow: auto">
+  	<hbox class="indent">
+	 	 <textbox value="注：对all-thunderbird.js文件修改后，重新保存为UTF-8格式，而默认是UTF-8 with BOM(隐藏字符 即文件开头两个字节为FF FE) ??三个不可见的字符（0xEF 0xBB 0xBF，即BOM）是一串隐藏的字符，用于让记事本等编辑器识别这个文件是否以UTF-8编码"  readonly="true" flex="1"/> 
+	 </hbox>
+  	<hbox class="indent">
+	 	 <textbox value="接口文档地址：D:\svn\Client\ThinkMail_ClientWin_2013\trunk\Docs\接口文档  相关配置修改后到objdir\mail\app目录下执行make，以保证默认配置选项已经修改,最好使用文件对比工具，防止修改的文件没有合并，而覆盖。"  readonly="true" flex="1"/> 
+	 </hbox>
+
+	<hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>当前编译版本信息</html:h2></description>
+	 		<hbox class="indent">
+	 			<button  oncommand="gConfigSrcDialog.ch2binatjs();"  label="切换到bin下的all-thunderbird.js文件"/>
+		 	 <button  oncommand="gConfigSrcDialog.refcurverinfo();"  label="刷新"/><label id="labcurverinfo"/> <button  oncommand="gConfigSrcDialog.setcurverinfo();"  label="设置为当前版本信息"/> <button  oncommand="gConfigSrcDialog.modcurverinfo();"  label="统一修改为当前版本配置"/>
+			 </hbox>
+	 	
+	 	</vbox>	 	
+	 </hbox>
+
+	 <hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>公共邮箱功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="ddd" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	
+	 	</vbox>	 	
+	 </hbox>
+
+	 <hbox class="indent">
+	 	 <label value="*************公共邮箱开关*************"/> 
+	 </hbox>
+
+	 <hbox class="indent">
+		 <label value="(true:开启 false:关闭)公共邮箱功能 参考设置:" tooltiptext="账号添加向导中是否出现公共邮箱的入口"/>  <textbox id="func_sup_pubmail_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="func_sup_pubmail_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="func_sup_pubmail_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button  oncommand="gConfigSrcDialog.mod_func_sup_pubmail();"  label="修改"/>
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************公共邮箱请求地址*************"/> 
+	 </hbox>
+
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="publicEmail.request_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="publicEmail.request_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="publicEmail.request_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_pubemail_request();"  label="修改"/>
+	 </hbox>
+
+	<hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>通讯录功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="ddd" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	
+	 	</vbox>	 	
+	 </hbox>
+
+	 <hbox class="indent">
+	 	 <label value="*************中国移动企业通讯录请求地址*************"/> 
+	 </hbox>
+
+	  <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="cm.enterprise.dir.request_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="cm.enterprise.dir.request_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="cm.enterprise.dir.request_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button  oncommand="gConfigSrcDialog.mod_cm_enterprise_dir_request();"  label="修改"/>
+	 </hbox>
+
+	 <hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>存储功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="ddd" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	</vbox>	 	
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************邮件内容加密开关设置*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="mailbox.async.raw_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="mailbox.async.raw_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="mailbox.async.raw_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_mailbox_async_raw();"  label="修改"/>
+	 </hbox>
+
+
+	  <hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>专用域功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="如国网，只允许含有sgcc.com.cn域名的邮箱登录" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	</vbox>	 	
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************专用域是否支持开关设置*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="func.specialdomain.control_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="func.specialdomain.control_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="func.specialdomain.control_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_func_specialdomain_control();"  label="修改"/>
+	  </hbox>
+
+	  <hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>日程功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="是否启用日程模块" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	</vbox>	 	
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************本地日程支持开关设置*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="func.calendar.local_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="func.calendar.local_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="func.calendar.local_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_func_calendar_local();"  label="修改"/>
+	  </hbox>
+
+	   <hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>附件功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="是否启用附件管理模块" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	</vbox>	 	
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************附件管理支持开关设置*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="func.attach.manage_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="func.attach.manage_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="func.attach.manage_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_func_attach_manage();"  label="修改"/>
+	  </hbox>
+
+	  <hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>私有协议功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="启用smtp发信私有协议，则向导imap\smtp配置信息选项隐藏、设置中隐藏相关服务配置信息，并隐藏联网代理\回执设置" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	</vbox>	 	
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************smtp私有协议支持开关设置*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="func.protocol.private.smtp_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="func.protocol.private.smtp_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="func.protocol.private.smtp_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_func_protocol_private_smtp();"  label="修改"/>
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="version.sgcc_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="version.sgcc_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="version.sgcc_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_version_sgcc();"  label="修改"/>
+	  </hbox>
+
+
+	<hbox class="indent">
+	 	<vbox>
+	 		<description><html:h2>自动更新功能设置</html:h2></description>
+	 		<hbox class="indent">
+		 	 <label value="需求及实现原理描述"/> <textbox value="ddd" multiline="true" cols="100" flex="1"/>
+			 </hbox>
+	 	</vbox>	 	
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************程序新版本检测地址*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="update.thinkmail.url_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="update.thinkmail.url_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="update.thinkmail.url_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_update_thinkmail_url();"  label="修改"/>
+	 </hbox>
+	 <hbox class="indent">
+	 	 <label value="*************程序新版本检测渠道*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="参考设置：" tooltiptext="d"/>  <textbox id="update.thinkmail.url.channelName_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="update.thinkmail.url.channelName_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="update.thinkmail.url.channelName_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button oncommand="gConfigSrcDialog.mod_update_thinkmail_url_channelName();"  label="修改"/>
+	 </hbox>
+
+
+	 
+	
+  </vbox>
+  
+</window>

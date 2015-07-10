@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="version"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="gVersionDialog.onLoad()"
+        >
+   
+
+  <script type="application/x-javascript"	  src="chrome://global/content/dialogOverlay.js" />
+  <script type="application/x-javascript"   src="version.js" />
+  <script type="application/x-javascript"   src="main.js" />
+<!-- chrome://myapp/content/rdf.xul -->
+<description><html:h1>Version</html:h1></description>
+<vbox flex="1" style="overflow: auto">
+
+	<hbox class="indent">
+	   <label value="设置源码目录："/>        <filefield id="downloadFolder" flex="1"/>
+	  <button id="chooseFolder" oncommand="gVersionDialog.chooseFolder('src');"  label="浏览"/>
+	</hbox>
+
+	<hbox class="indent">
+	   <label value="设置目标目录："/>        <filefield id="objpath" flex="1"/>
+	  <button id="chooseobjFolder" oncommand="gVersionDialog.chooseFolder('obj');"  label="浏览"/>
+	</hbox>
+
+	 <vbox class="indent">
+	 <groupbox>
+		  <caption label="程序版本号" />
+				 <hbox class="indent">
+				   <label value="当前版本号："/> 
+				    <textbox id="curversion"  />
+				     <label value="目标版本号："/> 
+				    <textbox id="objversion"  />
+				    <button id="modVersion" oncommand="gVersionDialog.saveVer();"  label="保存"/>
+				 </hbox>
+		</groupbox>
+
+		<groupbox>
+		  <caption label="扩展版本号" />
+				 <hbox class="indent">
+				   <label value="当前版本号："/> 
+				    <textbox id="curversionEx"  />
+				     <label value="目标版本号："/> 
+				    <textbox id="objversionEx"  />
+				    <button id="modVersion" oncommand="gVersionDialog.saveVerEx();"  label="保存"/>
+				 </hbox>
+		</groupbox>
+	</vbox>
+
+	 <hbox class="indent">
+	   <button id="modVersion" oncommand="gVersionDialog.modVersion();"  label="修改版本号"/>
+	    <button id="modVersion" oncommand="gVersionDialog.modExVersion();"  label="修改扩展版本号"/>
+	 </hbox>
+
+
+	<hbox  hidden="true">
+	      <label style="width:10em" value="修改信息状态："  />  <button id="clearLog" oncommand="gVersionDialog.clearLog();"  label="清空日志"/>
+   </hbox>
+   <hbox hidden="true">
+      <textbox id="results_1" multiline="true" rows="10" cols="95" flex="1"/>
+   </hbox>
+	</vbox>
+
+	<label value="修改 在objdir\config\autoconf.mk--->在objdir/mail/base执行make生效" />
+
+</window>

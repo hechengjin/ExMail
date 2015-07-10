@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="Hello bChick"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="gConfigDialog.onLoad()"
+        >
+   
+  <script type="application/x-javascript"
+	  src="chrome://global/content/dialogOverlay.js" />
+	  <script type="application/x-javascript"   src="config.js" />
+	  <script type="application/x-javascript"   src="utilities.js" />
+  		<script type="application/x-javascript"   src="main.js" />
+  		<description><html:h1>个性化(profile/prefs.js的)设置信息</html:h1></description>
+  <vbox flex="1" style="overflow: auto">
+
+  	 <groupbox>
+		  <caption label="设置为Debug模式" />
+		  <vbox>
+		  <hbox class="indent">
+			 <label value="参考设置:(true:Release版 false:Deubg版本)"/>  <textbox id="version.release.flag_ref"  readonly="true" flex="1"/> 
+		  </hbox>
+		  <hbox class="indent">
+			 <label value="当前文件中的配置:"/>  <textbox id="version.release.flag_old" readonly="true" flex="1"/> 
+		  </hbox>
+		   <hbox class="indent">
+			 <label value="设置新的文件配置:"/>  <textbox id="version.release.flag_new"  flex="1"/> 
+		  </hbox>
+
+		 <hbox class="indent">
+		    <button id="toDebug" oncommand="gConfigDialog.settoDebug();"  label="设置"/>
+		 </hbox>
+		  </vbox>
+		  
+	</groupbox>
+
+
+	 <hbox class="indent">
+	 	<description><html:h2>公共邮箱功能设置</html:h2></description>
+	 </hbox>
+	  <hbox class="indent">
+	 	 <label value="*************公共邮箱开关*************"/> 
+	 </hbox>
+	 <hbox class="indent">
+		 <label value="(true:开启 false:关闭)公共邮箱功能 参考设置:" tooltiptext="账号添加向导中是否出现公共邮箱的入口"/>  <textbox id="func_sup_pubmail_ref"  readonly="true" flex="1"/> 
+	  </hbox>
+	  <hbox class="indent">
+		 <label value="当前文件中的配置:"/>  <textbox id="func_sup_pubmail_old" readonly="true" flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+		 <label value="设置新的文件配置:"/>  <textbox id="func_sup_pubmail_new"  flex="1"/> 
+	  </hbox>
+	   <hbox class="indent">
+	    <button id="toDebug" oncommand="gConfigDialog.mod_func_sup_pubmail();"  label="修改"/>
+	 </hbox>
+
+
+
+  </vbox>
+  
+</window>

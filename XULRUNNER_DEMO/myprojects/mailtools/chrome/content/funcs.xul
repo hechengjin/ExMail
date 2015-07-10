@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="XUL Broadcasters and Observers"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="gFuncDialog.onLoad()">
+    <script type="application/x-javascript"   src="funcs.js" />
+
+<description><html:h1>
+常用功能
+</html:h1></description>
+
+
+<vbox flex="1" style="overflow: auto">
+
+<groupbox>
+      <caption label="文件url转换" />
+         <hbox class="indent">
+          <label value="选择一个文件："/>
+                <filefield id="importFileUrlLocation" flex="1" aria-labelledby="custom"/>
+                <button id="browseForSel" label="浏览" class="lightButton"
+                        oncommand="gFuncDialog.browseForSelImFile();"/>
+         </hbox>
+
+    </groupbox>
+
+  <hbox>
+      <textbox id="results" multiline="true" rows="10" cols="95" flex="1"/>
+   </hbox>
+
+</vbox>
+
+</window>

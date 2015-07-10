@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<window title="version"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="gNameSkinDialog.onLoad()"
+        >
+   
+
+  <script type="application/x-javascript"	  src="chrome://global/content/dialogOverlay.js" />
+  <script type="application/x-javascript"   src="nameandskin.js" />
+  <script type="application/x-javascript"   src="main.js" />
+  <script type="application/x-javascript"   src="utilities.js" />
+<!-- chrome://myapp/content/rdf.xul -->
+<description><html:h1>名称</html:h1></description>
+<vbox flex="1" style="overflow: auto">
+	 <hbox>
+         <label value="当前目标版本配置:"/>  <textbox style="width:10em" id="MOZ_OBJDIR"   readonly="true"  flex="1"/>  
+ 	 </hbox>
+	 <hbox >
+	 	 <groupbox flex="1">
+		  <caption label="版本切换" />
+		    <hbox>
+		    	 <label value="支持的版本:"/> 
+		    	 <menulist id="supverlist" oncommand="gNameSkinDialog.selectChange();" />
+				 
+		    </hbox>
+		    <hbox>
+		    	<button id="verchange" oncommand="gNameSkinDialog.verSwitch();"  label="对应版本切换(编译配置文件)"/>
+				 <button id="upchange" oncommand="gNameSkinDialog.updateSwitch();"  label="对应升级包生成路径切换"/>
+				 <button oncommand="gNameSkinDialog.objPathSwitch();"  label="对应目标路径切换"/>
+				 <button oncommand="gNameSkinDialog.logoSwitch();"  label="logo切换"/>
+				 <button oncommand="gNameSkinDialog.iconSwitch();"  label="图标切换"/>
+				 <button oncommand="gNameSkinDialog.aboutfaceSwitch();"  label="关于界面切换"/>
+		    </hbox>
+		  	<hbox flex="1">
+		  		<textbox value="注：版本切换后，需要到all-thunderbird.js设置面板进行下相关设置,并到objdir\mail\app目录下执行make  Caixun_Beta Mobile_Beta Sgcc_Beta http://demo2.thinkcloud.cn/AppClientUpgrade/admin/  luoxudong/richinfo  mozilla\other-licenses\7zstub\src\7zip\Bundles\SFXSetup-moz\Release\7zSD.sfx 替换图标要重新替换这个文件(影响安装包图标)" multiline="true"  readonly="true" flex="1"/> 
+		  	</hbox>
+		  	<hbox flex="1">
+		  		<textbox id="allsupverjsonstring" multiline="true"  readonly="true" flex="1"/> 
+		  	</hbox>
+		       
+		 </groupbox>
+ 	 </hbox>
+
+	 <vbox class="indent">
+	 <groupbox>
+		  <caption label="软件名称" />
+				 <hbox class="indent">
+				   <label value="原名称："/> 
+				    <textbox id="oldname"  />
+				     <label value="新名称："/> 
+				    <textbox id="newname"  />
+				    <button id="modname" oncommand="gNameSkinDialog.saveName();"  label="保存"/>
+				 </hbox>
+				  <hbox class="indent">
+				   <button id="modVersion" oncommand="gNameSkinDialog.modName();"  label="修改名称"/>
+				   <textbox  style="width:10em" value="需要在objdir\mail\branding\richinfo 下make，以更新安装包图片"   readonly="true"  flex="1"/>  
+				  </hbox>
+		</groupbox>
+		<groupbox>
+		  <caption label="发行信息" />
+				 <hbox class="indent">
+				   <label value="原名称："/> 
+				    <textbox id="brandoldname"  />
+				     <label value="新名称："/> 
+				    <textbox id="brandnewname"  />
+				    <button id="modname" oncommand="gNameSkinDialog.savebrandName();"  label="保存"/>
+				 </hbox>
+				  <hbox class="indent">
+				   <button id="modbrandVersion" oncommand="gNameSkinDialog.modbrandName();"  label="修改发行信息"/>
+				  </hbox>
+		</groupbox>
+	</vbox>
+
+	<vbox class="indent">
+	 <groupbox>
+		  <caption label="安装包" />
+				 <hbox>
+			         <label value="安装包制作命令："/> <textbox id="setupcmdtext" style="width:10em" value="null"   readonly="true"  flex="1"/>  
+			 	 </hbox>
+			 	  <hbox>
+			         <label value="签名制作命令："/> <textbox id="signcmdtext" style="width:10em" value="null"   readonly="true"  flex="1"/>  
+			 	 </hbox>
+
+			 	  <hbox>
+			         <label value="升级包制作命令(默认根据.mozconfig的配置产生到相应目录下)："/> <textbox id="updatecmdtext" style="width:10em" value="./update.sh"   readonly="true"  flex="1"/>  
+			 	 </hbox>
+
+			 	 <hbox>
+			        <button  oncommand="gNameSkinDialog.installerReName();"  label="安装包重命名"/> 
+			 	 </hbox>
+
+		</groupbox>
+	</vbox>
+
+	
+
+	  <hbox>
+        <textbox style="width:10em" value=" 0A \n  0D \r confvars.sh等相关文件都采用的是\n,否则编译出错 error: --enable-chrome-format must be set to either jar, flat, "   readonly="true"  flex="1"/>  
+ 	 </hbox>
+</vbox>
+
+</window>

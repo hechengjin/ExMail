@@ -1,0 +1,126 @@
+﻿//对象包含元素遍历
+var allinfos="";
+  for(attribute in obs){
+   var objectValue = eval('obs.' + attribute);
+   allinfos += attribute +":" + objectValue +"\n";
+}
+alert(allinfos);
+
+直接打印对象看是什么类型 如：alert(obs) 然后找对应的接口定义文档，如　nsIMsgAttachment.idl
+
+
+//js增加打印日志的方法 
+
+var ac = Components.classes["@mozilla.org/steel/application;1"]
+          .getService(Components.interfaces.steelIApplication).console;
+ac.log("====addressbook load begin====");  
+
+
+///////////imap协议常用命令/////////////
+telnet imap.richinfo.cn 143
+1 capability 
+2 login "hechengjin" "xxxxx"
+3 noop
+4 close
+5 logout
+
+//LIST返回用户$HOME目录下所有的文件
+5 list "" *   ----- 参数： "邮箱路径名" "邮箱名(可使用通配符)"   
+6 list "/inbox" *   
+12 list "" "*5*"
+13 list "" "%5%"
+
+//LSUB只显示那些使用SUBSCRIBE(订阅)命令设置为活动邮箱的文件
+17 lsub "" *
+
+
+9 UID fetch 1:* (FLAGS)
+10 UID fetch 3069 (UID RFC822.SIZE FLAGS BODY.PEEK[HEADER.FIELDS (From To Cc Bcc Subject Date Message-ID Received Priority X-Priority References Newsgroups In-Reply-To Content-Type)])
+//IMAP fetch指令扩展RM_MID参数 返回 邮件的MID.
+11 fetch 4 (UID body[header.fields (from to)] RM_MID)
+
+
+a3 fetch 2264 full (先执行select命令，如：select inbox)
+a14 fetch 2264 fast  //根据UID获取
+a16 fetch 2264 body[header]
+a17 fetch 2264 internaldate  //自身的时间
+a18 fetch 5326BDD9.8010406 full  //根据邮件源码中的Message-ID: <5326BDD9.8010406@richinfo.cn>获取
+a19 fetch 5326BDD9.8010406 internaldate
+
+
+
+///AUTHENTICATE指令
+参数：验证机制的名称
+响应：能被请求的后续数据
+结果：
+      OK    –执行完成，进入认证状态
+      NO    - 认证失败：不支持的认真机制，资格被拒绝
+      BAD   –指令不能识别或参数错误，认证操作被取消
+认证协议由一系列的服务器提问及客户端响应构成。服务器提问由一组以“+”开头的BASE64编码字符串构成。客户端响应由一行BASE64编码的字符串构成。
+客户端提交“*”响应将取消认证交互过程。如果服务器接收到该响应，将拒绝客户端认证指令并响应BAD标签。
+
+* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready
+1 authenticate login (验证机制的名称)
++ VXNlciBOYW1lAA==     (User Name)
+MjU0NDUyMTE4           (254452118)
++ UGFzc3dvcmQA          (Password)
+Li5wcEloYXMjMTk4Mg==     (*****)
+1 OK [CAPABILITY IMAP4REV1 X-NETSCAPE NAMESPACE MAILBOX-REFERRALS SCAN SORT THREAD=REFERENCES THREAD=ORDEREDSUBJECT MULTIAPPEND ID UIDPLUS] User <login> authenticated
+
+///////////smtp协议常用命令/////////////
+telnet 192.168.31.151 25
+EHLO [192.168.31.247]
+AUTH PLAIN AHl5MwBhMWExYTE=  //AUTH PLAIN  yy3 a1a1a1
+MAIL FROM:<yy3@dd.cn>
+QUIT
+
+
+////////wireshark 使用////////////
+显示滤镜比较操作符
+English        C-linke        描述及范例
+eq       		 ==        		Equal       ip.addr==10.0.0.5
+ne        		!=        		Not equal   ip.addr!=10.0.0.5
+gt      		>        		Greate than frame.pkt_len>10
+lt        		<        		Less than   frame.pkt_len<128
+ge        		>=        		Greater than or equal to  frame.pkt_len ge 0x100
+le        		<=        		Equal        frame.pkt_len <= 0x20
+
+1.捕捉来自特定主机的telnet协议
+tcp.port == 23 and ip.host == 10.0.2.15
+
+2.https协议过滤
+tcp.port == 443 and ip.addr == 10.0.2.15
+
+//源 目的IP地址
+ip.src == 192.168.34.151
+ip.dst == 192.168.34.151
+
+//IP 地址
+ip.addr == 192.168.34.151
+
+//端口
+tcp.port == 143
+
+
+///获取打开的窗口///////////
+**js****
+let mailattamanaWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+            .getService(Components.interfaces.nsIWindowMediator)
+            .getMostRecentWindow("mail:attachmanage");
+        if( mailattamanaWindow != null )
+            dwi = mailattamanaWindow;
+**c++***
+#include "nsIWindowMediator.h"
+  nsresult rv2;
+   nsCOMPtr<nsIDOMWindow> winattachment;
+  nsCOMPtr<nsIWindowMediator> med( do_GetService( NS_WINDOWMEDIATOR_CONTRACTID, &rv2 ) );
+  if ( NS_SUCCEEDED( rv2 ) )
+  {   
+    if ( med )
+      med->GetMostRecentWindow( NS_LITERAL_STRING("mail:attachmanage").get(), getter_AddRefs( winattachment ) );
+  }  
+  if ( winattachment )
+  {
+    filePicker->Init(winattachment, saveAttachmentStr,
+      nsIFilePicker::modeSave);
+  }

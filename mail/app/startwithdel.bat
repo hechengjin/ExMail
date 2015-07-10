@@ -17,6 +17,6 @@ if "%1"=="da" (
 	goto startup
 	
 :startup
-	E:\github\ExMail\obj_Firemail\mozilla\dist\bin\Firemail.exe
+	E:\github\Firemail\ExMail\obj_Firemail\mozilla\dist\bin\Firemail.exe
 
 :end
