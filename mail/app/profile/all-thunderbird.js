@@ -46,19 +46,19 @@ pref("app.update.timerMinimumDelay", 120);
 // the branding files.
 
 // Enables some extra Application Update Logging (can reduce performance)
-pref("app.update.log", false);
+pref("app.update.log", true);
 
 // When |app.update.cert.requireBuiltIn| is true or not specified the
 // final certificate and all certificates the connection is redirected to before
 // the final certificate for the url specified in the |app.update.url|
 // preference must be built-in.
-pref("app.update.cert.requireBuiltIn", true);
+pref("app.update.cert.requireBuiltIn", false);
 
 // When |app.update.cert.checkAttributes| is true or not specified the
 // certificate attributes specified in the |app.update.certs.| preference branch
 // are checked against the certificate for the url specified by the
 // |app.update.url| preference.
-pref("app.update.cert.checkAttributes", true);
+pref("app.update.cert.checkAttributes", false);
 
 // The number of certificate attribute check failures to allow for background
 // update checks before notifying the user of the failure. User initiated update
@@ -89,7 +89,7 @@ pref("app.update.enabled", true);
 // This preference turns on app.update.mode and allows automatic download and
 // install to take place. We use a separate boolean toggle for this to make     
 // the UI easier to construct.
-pref("app.update.auto", true);
+pref("app.update.auto", false);
 
 // Defines how the Application Update Service notifies the user about updates:
 //
@@ -100,7 +100,7 @@ pref("app.update.auto", true);
 //
 // See chart in nsUpdateService.js.in for more details
 //
-pref("app.update.mode", 1);
+pref("app.update.mode", 2);
 
 // If set to true, the Update Service will present no UI for any event.
 pref("app.update.silent", false);
@@ -110,14 +110,14 @@ pref("app.update.silent", false);
 pref("app.update.staging.enabled", true);
 
 // Update service URL:
-pref("app.update.url", "111111111111");
+pref("app.update.url", "http://192.168.31.247/update/update.xml");
 
 // URL user can browse to manually if for some reason all update installation
 // attempts fail.
-pref("app.update.url.manual", "111111111111");
+pref("app.update.url.manual", "http://192.168.31.247/forum.php");
 // A default value for the "More information about this update" link
 // supplied in the "An update is available" page of the update wizard. 
-pref("app.update.url.details", "1111111111111");
+pref("app.update.url.details", "http://192.168.31.247/pingdao1/");
 // User-settable override to app.update.url for testing purposes.
 //pref("app.update.url.override", "");
 
@@ -131,7 +131,7 @@ pref("app.update.idletime", 60);
 // upgrade start page instead! Other apps may wish to show this UI, and supply
 // a whatsNewURL field in their brand.properties that contains a link to a page
 // which tells users what's new in this new update.
-pref("app.update.showInstalledUI", false);
+pref("app.update.showInstalledUI", true);
 
 // Whether or not to attempt using the service for updates.
 #ifdef MOZ_MAINTENANCE_SERVICE
@@ -139,7 +139,7 @@ pref("app.update.service.enabled", true);
 #endif
 
 // Base URL for web-based support pages.
-pref("app.support.baseURL", "http://support.live.mozillamessaging.com/%LOCALE%/%APP%/%APPBUILDID%/");
+pref("app.support.baseURL", "http://192.168.31.247/forum.php");
 
 // Controls enabling of the extension system logging (can reduce performance)
 pref("extensions.logging.enabled", false);
