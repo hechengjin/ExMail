@@ -1486,6 +1486,8 @@ EmailConfigWizard.prototype =
 
       var configFilledIn = this.getConcreteConfig();
       var self = this;
+      self.validateAndFinish(configFilledIn);
+      /*
       // If the dialog is not needed, it will go straight to OK callback
       gSecurityWarningDialog.open(this._currentConfig, configFilledIn, true,
         function() // on OK
@@ -1493,6 +1495,7 @@ EmailConfigWizard.prototype =
           self.validateAndFinish(configFilledIn);
         },
         function() {}); // on cancel, do nothing
+*/
     } catch (ex) {
       gEmailWizardLogger.error("Error creating account.  ex=" + ex +
                                ", stack=" + ex.stack);
