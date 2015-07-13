@@ -1572,7 +1572,14 @@ EmailConfigWizard.prototype =
   finish : function()
   {
     gEmailWizardLogger.info("creating account in backend");
-    createAccountInBackend(this.getConcreteConfig());
+    var curAccount;
+    curAccount = createAccountInBackend(this.getConcreteConfig());
+    let folder = curAccount.incomingServer.rootMsgFolder;
+    let server = curAccount.incomingServer;
+    //if ("imap" == server.type)
+    //else if  ("pop3" == server.type)
+     //get all folders mails
+    server.getNewMessages(folder, null, null);
     window.close();
   },
 };
