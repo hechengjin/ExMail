@@ -108,7 +108,7 @@ AccountConfig.prototype =
       useGlobalInbox : false,
       leaveMessagesOnServer : true,
       daysToLeaveMessagesOnServer : 14,
-      deleteByAgeFromServer : true,
+      deleteByAgeFromServer : false,
       // When user hits delete, delete from local store and from server
       deleteOnServerWhenLocalDelete : true,
       downloadOnBiff : true,
