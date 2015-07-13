@@ -4091,8 +4091,11 @@ void nsImapProtocol::ProcessMailboxUpdate(bool handlePossibleUndo)
       if (UseCondStore() && !highestRecordedUID)
         highestRecordedUID = mFolderHighestUID;
 
-      AppendUid(fetchStr, highestRecordedUID + 1);
-      fetchStr.Append(":*");
+      //AppendUid(fetchStr, highestRecordedUID + 1);
+      
+	  //fetch messages from RecordUID 1
+	  AppendUid(fetchStr, 1);
+	  fetchStr.Append(":*");
       FetchMessage(fetchStr, kFlags);      // only new messages please
     }
   }
