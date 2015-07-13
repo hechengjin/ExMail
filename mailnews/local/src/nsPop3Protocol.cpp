@@ -1264,7 +1264,7 @@ nsPop3Protocol::Error(int32_t err_code)
     nsresult rv = NS_OK;
     nsCOMPtr<nsIMsgMailNewsUrl> mailnewsUrl = do_QueryInterface(m_url, &rv);
     // we handle POP3_TMP_DOWNLOAD_FAILED earlier...
-    if (err_code != POP3_TMP_DOWNLOAD_FAILED && NS_SUCCEEDED(rv))
+    if (err_code != POP3_TMP_DOWNLOAD_FAILED && err_code != POP3_RETR_FAILURE && NS_SUCCEEDED(rv))
     {
         nsCOMPtr<nsIMsgWindow> msgWindow;
         nsCOMPtr<nsIPrompt> dialog;

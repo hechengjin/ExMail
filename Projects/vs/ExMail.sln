@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "thunderbird", "..\..\obj_ExMail\mozilla\dist\bin\thunderbird.exe", "{73FA672B-2DC6-452D-B81C-EE294257D88B}"
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "Firemail", "..\..\obj_Firemail\mozilla\dist\bin\Firemail.exe", "{73FA672B-2DC6-452D-B81C-EE294257D88B}"
 	ProjectSection(DebuggerProjectSystem) = preProject
 		PortSupplier = 00000000-0000-0000-0000-000000000000
-		Executable = E:\githubsrc\ExMail\obj_ExMail\mozilla\dist\bin\thunderbird.exe
+		Executable = E:\github\Firemail\ExMail\obj_Firemail\mozilla\dist\bin\Firemail.exe
 		RemoteMachine = RICHINFO-4A7225
-		StartingDirectory = E:\githubsrc\ExMail\obj_ExMail\mozilla\dist\bin
+		StartingDirectory = E:\github\Firemail\ExMail\obj_Firemail\mozilla\dist\bin
 		Environment = 默认值
 		LaunchingEngine = 00000000-0000-0000-0000-000000000000
 		LaunchSQLEngine = No
@@ -115,6 +115,57 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base", "base", "{607D94C2-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1DBD8E0D-3471-4B4E-97EF-0E1F06CC025F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local", "local", "{C225CB09-7583-4633-B9EB-316E3CF9A30B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ACC76543-7265-4C25-976F-A82D0088D8CF}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\mailnews\local\src\nsLocalMailFolder.cpp = ..\..\mailnews\local\src\nsLocalMailFolder.cpp
+		..\..\mailnews\local\src\nsLocalMailFolder.h = ..\..\mailnews\local\src\nsLocalMailFolder.h
+		..\..\mailnews\local\src\nsLocalStrings.h = ..\..\mailnews\local\src\nsLocalStrings.h
+		..\..\mailnews\local\src\nsLocalUndoTxn.cpp = ..\..\mailnews\local\src\nsLocalUndoTxn.cpp
+		..\..\mailnews\local\src\nsLocalUndoTxn.h = ..\..\mailnews\local\src\nsLocalUndoTxn.h
+		..\..\mailnews\local\src\nsLocalUtils.cpp = ..\..\mailnews\local\src\nsLocalUtils.cpp
+		..\..\mailnews\local\src\nsLocalUtils.h = ..\..\mailnews\local\src\nsLocalUtils.h
+		..\..\mailnews\local\src\nsMailboxProtocol.cpp = ..\..\mailnews\local\src\nsMailboxProtocol.cpp
+		..\..\mailnews\local\src\nsMailboxProtocol.h = ..\..\mailnews\local\src\nsMailboxProtocol.h
+		..\..\mailnews\local\src\nsMailboxServer.cpp = ..\..\mailnews\local\src\nsMailboxServer.cpp
+		..\..\mailnews\local\src\nsMailboxServer.h = ..\..\mailnews\local\src\nsMailboxServer.h
+		..\..\mailnews\local\src\nsMailboxService.cpp = ..\..\mailnews\local\src\nsMailboxService.cpp
+		..\..\mailnews\local\src\nsMailboxService.h = ..\..\mailnews\local\src\nsMailboxService.h
+		..\..\mailnews\local\src\nsMailboxUrl.cpp = ..\..\mailnews\local\src\nsMailboxUrl.cpp
+		..\..\mailnews\local\src\nsMailboxUrl.h = ..\..\mailnews\local\src\nsMailboxUrl.h
+		..\..\mailnews\local\src\nsMovemailIncomingServer.cpp = ..\..\mailnews\local\src\nsMovemailIncomingServer.cpp
+		..\..\mailnews\local\src\nsMovemailIncomingServer.h = ..\..\mailnews\local\src\nsMovemailIncomingServer.h
+		..\..\mailnews\local\src\nsMovemailService.cpp = ..\..\mailnews\local\src\nsMovemailService.cpp
+		..\..\mailnews\local\src\nsMovemailService.h = ..\..\mailnews\local\src\nsMovemailService.h
+		..\..\mailnews\local\src\nsMsgBrkMBoxStore.cpp = ..\..\mailnews\local\src\nsMsgBrkMBoxStore.cpp
+		..\..\mailnews\local\src\nsMsgBrkMBoxStore.h = ..\..\mailnews\local\src\nsMsgBrkMBoxStore.h
+		..\..\mailnews\local\src\nsMsgLocalStoreUtils.cpp = ..\..\mailnews\local\src\nsMsgLocalStoreUtils.cpp
+		..\..\mailnews\local\src\nsMsgLocalStoreUtils.h = ..\..\mailnews\local\src\nsMsgLocalStoreUtils.h
+		..\..\mailnews\local\src\nsMsgMaildirStore.cpp = ..\..\mailnews\local\src\nsMsgMaildirStore.cpp
+		..\..\mailnews\local\src\nsMsgMaildirStore.h = ..\..\mailnews\local\src\nsMsgMaildirStore.h
+		..\..\mailnews\local\src\nsNoIncomingServer.cpp = ..\..\mailnews\local\src\nsNoIncomingServer.cpp
+		..\..\mailnews\local\src\nsNoIncomingServer.h = ..\..\mailnews\local\src\nsNoIncomingServer.h
+		..\..\mailnews\local\src\nsNoneService.cpp = ..\..\mailnews\local\src\nsNoneService.cpp
+		..\..\mailnews\local\src\nsNoneService.h = ..\..\mailnews\local\src\nsNoneService.h
+		..\..\mailnews\local\src\nsParseMailbox.cpp = ..\..\mailnews\local\src\nsParseMailbox.cpp
+		..\..\mailnews\local\src\nsParseMailbox.h = ..\..\mailnews\local\src\nsParseMailbox.h
+		..\..\mailnews\local\src\nsPop3IncomingServer.cpp = ..\..\mailnews\local\src\nsPop3IncomingServer.cpp
+		..\..\mailnews\local\src\nsPop3IncomingServer.h = ..\..\mailnews\local\src\nsPop3IncomingServer.h
+		..\..\mailnews\local\src\nsPop3Protocol.cpp = ..\..\mailnews\local\src\nsPop3Protocol.cpp
+		..\..\mailnews\local\src\nsPop3Protocol.h = ..\..\mailnews\local\src\nsPop3Protocol.h
+		..\..\mailnews\local\src\nsPop3Service.cpp = ..\..\mailnews\local\src\nsPop3Service.cpp
+		..\..\mailnews\local\src\nsPop3Service.h = ..\..\mailnews\local\src\nsPop3Service.h
+		..\..\mailnews\local\src\nsPop3Sink.cpp = ..\..\mailnews\local\src\nsPop3Sink.cpp
+		..\..\mailnews\local\src\nsPop3Sink.h = ..\..\mailnews\local\src\nsPop3Sink.h
+		..\..\mailnews\local\src\nsPop3URL.cpp = ..\..\mailnews\local\src\nsPop3URL.cpp
+		..\..\mailnews\local\src\nsPop3URL.h = ..\..\mailnews\local\src\nsPop3URL.h
+		..\..\mailnews\local\src\nsRssIncomingServer.cpp = ..\..\mailnews\local\src\nsRssIncomingServer.cpp
+		..\..\mailnews\local\src\nsRssIncomingServer.h = ..\..\mailnews\local\src\nsRssIncomingServer.h
+		..\..\mailnews\local\src\nsRssService.cpp = ..\..\mailnews\local\src\nsRssService.cpp
+		..\..\mailnews\local\src\nsRssService.h = ..\..\mailnews\local\src\nsRssService.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -137,7 +188,9 @@ Global
 		{E9FED215-5A02-40C2-94A0-E8729613F1B0} = {E48CFA03-047A-4124-877C-C15F29AD9880}
 		{50EFCC3B-AD28-45DF-8E02-4B629E28A923} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
 		{607D94C2-C32C-445A-BE67-E549E774D837} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
+		{C225CB09-7583-4633-B9EB-316E3CF9A30B} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
 		{168082D2-357A-401F-9A93-2D0E88119F05} = {50EFCC3B-AD28-45DF-8E02-4B629E28A923}
 		{1DBD8E0D-3471-4B4E-97EF-0E1F06CC025F} = {607D94C2-C32C-445A-BE67-E549E774D837}
+		{ACC76543-7265-4C25-976F-A82D0088D8CF} = {C225CB09-7583-4633-B9EB-316E3CF9A30B}
 	EndGlobalSection
 EndGlobal
