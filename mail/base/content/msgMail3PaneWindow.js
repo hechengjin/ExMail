@@ -500,10 +500,13 @@ function LoadPostAccountWizard()
       // and the first run hasn't already been completed.
       // Needs to be shown outside the he normal load sequence so it doesn't appear
       // before any other displays, in the wrong place of the screen.
-      if ((shellService && defaultAccount && shellService.shouldCheckDefaultClient
-           && !shellService.isDefaultClient(true, nsIShellService.MAIL)) ||
-        (SearchIntegration && !SearchIntegration.osVersionTooLow &&
-         !SearchIntegration.osComponentsNotRunning && !SearchIntegration.firstRunDone)) {
+      //if ((shellService && defaultAccount && shellService.shouldCheckDefaultClient && !shellService.isDefaultClient(true, nsIShellService.MAIL)) ||
+      //  (SearchIntegration && !SearchIntegration.osVersionTooLow &&
+      //   !SearchIntegration.osComponentsNotRunning && !SearchIntegration.firstRunDone)) {
+	
+	 //do not check about searchIntegration
+     if (shellService && defaultAccount && shellService.shouldCheckDefaultClient && !shellService.isDefaultClient(true, nsIShellService.MAIL)) {
+		 
         window.openDialog("chrome://messenger/content/systemIntegrationDialog.xul",
                           "SystemIntegration", "modal,centerscreen,chrome,resizable=no");
         // On windows, there seems to be a delay between setting TB as the
