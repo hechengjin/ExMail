@@ -68,6 +68,7 @@
 #include "nsIMsgTraitService.h"
 #include "nsIStringEnumerator.h"
 #include "mozilla/Services.h"
+#include "nsMsgI18N.h"
 
 //////////////////////////////////////////////////////////////////////////////
 // nsLocal
@@ -556,7 +557,16 @@ nsMsgLocalMailFolder::CreateSubfolderInternal(const nsAString& folderName,
   nsCOMPtr<nsIMsgPluggableStore> msgStore;
   rv = GetMsgStore(getter_AddRefs(msgStore));
   NS_ENSURE_SUCCESS(rv, rv);
-  rv = msgStore->CreateFolder(this, folderName, aNewFolder);
+  //////////////////
+  nsCAutoString utfNewName;
+  rv = CopyUTF16toMUTF7(PromiseFlatString(folderName), utfNewName);
+  NS_ENSURE_SUCCESS(rv, rv);
+  nsCString escapedFolderName;
+  MsgEscapeString(utfNewName, nsINetUtil::ESCAPE_URL_PATH, escapedFolderName);
+   nsString unicodeNewName;
+  CopyMUTF7toUTF16(escapedFolderName, unicodeNewName);
+  /////////////////
+  rv = msgStore->CreateFolder(this, unicodeNewName, aNewFolder);
   if (rv == NS_MSG_ERROR_INVALID_FOLDER_NAME)
   {
     ThrowAlertMsg("folderCreationFailed", msgWindow);
