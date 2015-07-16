@@ -1223,7 +1223,21 @@ NS_IMETHODIMP nsImapIncomingServer::PossibleImapMailbox(const nsACString& folder
       if (hierarchyDelimiter != '/')
         nsImapUrl::UnescapeSlashes(folderName.BeginWriting());
       if (NS_SUCCEEDED(CopyMUTF7toUTF16(folderName, unicodeName)))
+	     {
         child->SetPrettyName(unicodeName);
+	     }
+
+       
+       uint32_t flags = 0;
+       child->GetFlags(&flags);
+       if (flags & nsMsgFolderFlags::SentMail)
+          OnlyOneSpecialFolder(a_nsIFolder, nsMsgFolderFlags::SentMail);
+       if (flags & nsMsgFolderFlags::Drafts) 
+          OnlyOneSpecialFolder(a_nsIFolder, nsMsgFolderFlags::Drafts);
+       if (flags & nsMsgFolderFlags::Junk)
+          OnlyOneSpecialFolder(a_nsIFolder, nsMsgFolderFlags::Junk);
+       //if (flags & nsMsgFolderFlags::Trash)
+       //   OnlyOneTrashFolder(a_nsIFolder);
     }
   }
   if (!found && child)
@@ -1555,6 +1569,11 @@ NS_IMETHODIMP nsImapIncomingServer::DiscoveryDone()
         }
       }
     }
+	
+	 OnlyOneSpecialFolder(rootMsgFolder, nsMsgFolderFlags::SentMail);
+    OnlyOneSpecialFolder(rootMsgFolder, nsMsgFolderFlags::Drafts);
+    OnlyOneSpecialFolder(rootMsgFolder, nsMsgFolderFlags::Junk);
+    //OnlyOneTrashFolder(rootMsgFolder);
   }
 
   bool usingSubscription = true;
@@ -3300,4 +3319,207 @@ NS_IMETHODIMP
 nsImapIncomingServer::GetLoginUsername(nsACString &aLoginUsername)
 {
   return GetRealUsername(aLoginUsername);
+}
+bool nsImapIncomingServer::GetSentMailFolderName(char *folderName)
+{
+  nsresult rv;
+  nsCOMPtr<nsIMsgAccountManager> accountManager = do_GetService(NS_MSGACCOUNTMANAGER_CONTRACTID, &rv);
+  NS_ENSURE_SUCCESS(rv,rv);
+
+  nsCOMPtr<nsIMsgIdentity> identity;
+  rv = accountManager->GetFirstIdentityForServer(this, getter_AddRefs(identity));
+  if (NS_SUCCEEDED(rv) && identity)
+  {
+    nsCString folderUri;
+    identity->GetFccFolder(folderUri);
+    PL_strcpy(folderName, folderUri.get());
+	return true;
+  }
+  
+  return false;
+}
+
+bool nsImapIncomingServer::GetDraftFolderName(char *folderName)
+{
+  nsresult rv;
+  nsCOMPtr<nsIMsgAccountManager> accountManager = do_GetService(NS_MSGACCOUNTMANAGER_CONTRACTID, &rv);
+  NS_ENSURE_SUCCESS(rv,rv);
+
+  nsCOMPtr<nsIMsgIdentity> identity;
+  rv = accountManager->GetFirstIdentityForServer(this, getter_AddRefs(identity));
+  if (NS_SUCCEEDED(rv) && identity)
+  {
+    nsCString folderUri;
+    identity->GetDraftFolder(folderUri);
+    PL_strcpy(folderName, folderUri.get());
+	return true;
+  }
+  
+  return false;
+}
+
+bool nsImapIncomingServer::GetJunkFolderName(nsCOMPtr<nsIMsgFolder> aRootMsgFolder, char *folderName)
+{
+    nsresult rv;
+    nsCOMPtr<nsIArray> sentFolders;
+    rv = aRootMsgFolder->GetFoldersWithFlags(nsMsgFolderFlags::SentMail,
+                                            getter_AddRefs(sentFolders));
+											
+	nsCOMPtr<nsIMsgFolder> sentFolder(do_QueryElementAt(sentFolders, 0));
+  nsCOMPtr <nsIMsgIncomingServer> server;
+  rv = sentFolder->GetServer(getter_AddRefs(server));
+	nsCString serverKey;
+	rv = server->GetKey(serverKey);
+	char *szKey = (char *)serverKey.get();
+	uint32_t serverIndex = atol(szKey + 6);
+	
+	//mail.server.server2.spamActionTargetFolder
+	nsCOMPtr<nsIPrefBranch> pPrefBranch(do_GetService(NS_PREFSERVICE_CONTRACTID, &rv));
+	NS_ENSURE_SUCCESS(rv, rv); 
+	char *szPrefName = PR_smprintf("mail.server.server%d.spamActionTargetFolder", serverIndex);
+	nsCString val;
+	pPrefBranch->GetCharPref(szPrefName, getter_Copies(val));
+	
+	NS_ENSURE_SUCCESS(rv, rv);
+	PR_smprintf_free(szPrefName);	
+	
+	PL_strcpy(folderName, val.get());
+	
+	return true;
+}
+
+nsCString nsImapIncomingServer::DropPath(nsCString URI)
+{
+	PRInt32 len = URI.Length();
+	PRInt32 index = URI.RFindChar('/');
+	if (index != kNotFound)
+	{
+		nsCAutoString folderName;
+		URI.Mid(folderName, index + 1, len - index);		
+		return folderName;
+	}
+	
+	return URI;
+}
+
+void nsImapIncomingServer::OnlyOneTrashFolder(nsCOMPtr<nsIMsgFolder> aRootMsgFolder)
+{
+    nsresult rv;
+    nsCOMPtr<nsIArray> trashFolders;
+    rv = aRootMsgFolder->GetFoldersWithFlags(nsMsgFolderFlags::Trash,
+                                            getter_AddRefs(trashFolders));
+
+    if (NS_SUCCEEDED(rv) && trashFolders)
+    {
+      uint32_t numFolders;
+      trashFolders->GetLength(&numFolders);
+    
+      if (numFolders > 1)
+      {
+        nsAutoString trashName;
+        if (NS_SUCCEEDED(GetTrashFolderName(trashName)))
+        {
+          for (uint32_t i = 0; i < numFolders; i++)
+          {
+            bool clearFlag = false;
+            nsCOMPtr<nsIMsgFolder> folder(do_QueryElementAt(trashFolders, i));
+            if (folder)
+            {
+
+              bool rc1 = false, rc2 = false;
+              nsCString folderURI;
+              rc1 = NS_SUCCEEDED(folder->GetURI(folderURI));
+
+              nsCString onlineName = DropPath(folderURI);
+
+              // 不映射的情况下暂时使用
+              rc2 = trashName.EqualsASCII("Trash");
+              clearFlag = (rc1) && (rc2);
+              //////////////////////////////////////////////////
+              // 映射的条件下使用，以后添加
+              //rc2 = trashName.EqualsASCII(onlineName.get());
+              //clearFlag = (rc1) && (!rc2);
+              //////////////////////////////////////////////////
+
+              if (clearFlag)
+              {
+                folder->ClearFlag(nsMsgFolderFlags::Trash);
+                nsCOMPtr <nsIMsgImapMailFolder> imapFolder = do_QueryInterface(folder);
+                nsCString onlineName;
+                imapFolder->GetOnlineName(onlineName);
+                nsString prettyName;
+                CopyMUTF7toUTF16(onlineName, prettyName);
+                folder->SetPrettyName(prettyName);
+              }
+            }
+          }
+        }
+      }
+    }
+}
+
+void nsImapIncomingServer::OnlyOneSpecialFolder(nsCOMPtr<nsIMsgFolder> aRootMsgFolder, uint32_t folderFlag)
+{
+    nsresult rv;
+    nsCOMPtr<nsIArray> folders;
+    rv = aRootMsgFolder->GetFoldersWithFlags(folderFlag,
+                                            getter_AddRefs(folders));
+                  
+    if (NS_SUCCEEDED(rv) && folders)
+    {
+      uint32_t numFolders;
+      folders->GetLength(&numFolders);
+    
+      if (numFolders > 1)
+      {
+        // 获取到配置文件中的已发送邮件夹名称
+        char folderName[128] = {0};
+        if (folderFlag == nsMsgFolderFlags::SentMail)
+          GetSentMailFolderName(folderName);  
+        if (folderFlag == nsMsgFolderFlags::Drafts)
+          GetDraftFolderName(folderName); 
+        if (folderFlag == nsMsgFolderFlags::Junk)
+          GetJunkFolderName(aRootMsgFolder, folderName); 
+
+        //MessageBox(NULL, folderName, "debug true", MB_OK);
+
+        char *pFixName = PL_strrchr(folderName, '/');     
+        if (pFixName != NULL)
+        {
+          bool clearFlag;
+          nsCString trueFolderName(pFixName + 1);
+          // 根据邮件夹的标志位获取带有已发送邮件夹标志的邮件夹
+          for (uint32_t i = 0; i < numFolders; i++)
+          {
+            nsCOMPtr<nsIMsgFolder> folder(do_QueryElementAt(folders, i));
+            if (folder)
+            {
+              // 得到所有带有已发送标志的邮件夹的URI，取最后的真实邮件夹名称
+              // 和配置文件中的邮件夹名称比较
+              bool rc1 = false, rc2 = false;
+              nsCString folderURI;
+              rc1 = NS_SUCCEEDED(folder->GetURI(folderURI));
+              //MessageBox(NULL, folderURI.get(), "debug false", MB_OK);
+              nsCString onlineName = DropPath(folderURI);
+              rc2 = onlineName.Equals(trueFolderName);
+              clearFlag = (rc1) && (!rc2);
+      
+              // 如果不是最新设置的已发送邮件夹，设置其显示名称为本来的名字
+              if (clearFlag)
+              {
+                folder->ClearFlag(folderFlag);
+                nsCOMPtr <nsIMsgImapMailFolder> imapFolder = do_QueryInterface(folder);
+                nsCString onlineName;
+                imapFolder->GetOnlineName(onlineName);
+                nsString prettyName;
+                CopyMUTF7toUTF16(onlineName, prettyName);
+                folder->SetPrettyName(prettyName);
+              }
+                
+            }
+          }
+        }
+      }
+    
+    }
 }

@@ -827,5 +827,4 @@ pref("mail.imap.qos", 0);
 // PgpMime Addon
 pref("mail.pgpmime.addon_url", "https://addons.mozilla.org/addon/enigmail/");
 
-
-pref("mail.check_all_imap_folders_for_new", false); // 收取邮件检测所有邮件夹
+pref("mail.check_all_imap_folders_for_new", true); //REC ALL FOLDER MAILS

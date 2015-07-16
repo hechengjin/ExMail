@@ -85,6 +85,14 @@ protected:
   static nsresult AlertUser(const nsAString& aString, nsIMsgMailNewsUrl *aUrl);
 
 private:
+  void OnlyOneTrashFolder(nsCOMPtr<nsIMsgFolder> aRootMsgFolder);
+  bool GetSentMailFolderName(char *folderName);
+  bool GetDraftFolderName(char *folderName);
+  bool GetJunkFolderName(nsCOMPtr<nsIMsgFolder> aRootMsgFolder, char *folderName);
+  void OnlyOneSpecialFolder(nsCOMPtr<nsIMsgFolder> aRootMsgFolder, uint32_t folderFlag);
+  
+  nsCString DropPath(nsCString URI);
+  
   nsresult SubscribeToFolder(const PRUnichar *aName, bool subscribe);
   nsresult GetImapConnection(nsIImapUrl* aImapUrl,
                              nsIImapProtocol** aImapConnection);

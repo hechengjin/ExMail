@@ -20,7 +20,10 @@
 #include "nsImapUtils.h"
 #include "nsCRT.h"
 #include "nsMsgUtils.h"
-
+#include "nsIPrefService.h"
+#include "nsIMsgAccountManager.h"
+#include "nsMsgBaseCID.h"
+#include "nsISpamSettings.h" 
 ////////////////// nsImapServerResponseParser /////////////////////////
 
 extern PRLogModuleInfo* IMAP;
@@ -809,7 +812,7 @@ void nsImapServerResponseParser::mailbox_list(bool discoveredFromLsub)
     boxSpec->mBoxFlags = kNoFlags;
     boxSpec->mAllocatedPathName.Truncate();
     boxSpec->mHostName.Truncate();
-    boxSpec->mConnection = &fServerConnection;
+    boxSpec->mConnection = &fServerConnection; //fServerConnection 可以得到服务器名称
     boxSpec->mFlagState = nullptr;
     boxSpec->mDiscoveredFromLsub = discoveredFromLsub;
     boxSpec->mOnlineVerified = true;
@@ -838,6 +841,8 @@ void nsImapServerResponseParser::mailbox_list(bool discoveredFromLsub)
         boxSpec->mBoxFlags |= kImapAllMail;
       else if (!PL_strncasecmp(fNextToken, "\\Inbox", 6))
         boxSpec->mBoxFlags |= kImapInbox;
+      else if (!PL_strncasecmp(fNextToken, "\\Junk", 5)) // 国内邮箱垃圾邮件大多为Junk   * LIST (\Junk) "/" "&V4NXPpCuTvY-"   ----垃圾邮件
+        boxSpec->mBoxFlags |= kImapSpam;
       // we ignore flag other extensions
       
       endOfFlags = *(fNextToken + strlen(fNextToken) - 1) == ')';
@@ -869,6 +874,184 @@ void nsImapServerResponseParser::mailbox_list(bool discoveredFromLsub)
   if (needsToFreeBoxSpec)
     NS_RELEASE(boxSpec);
 }
+
+
+void nsImapServerResponseParser::SetQQMailSpec(nsImapMailboxSpec *boxSpec)
+{
+  if (!boxSpec->mHostName.EqualsIgnoreCase("imap.qq.com", 11))
+    return;
+
+  if (boxSpec->mAllocatedPathName.FindCharInSet("/", 0) != kNotFound)
+    return;
+
+  char *sentFolderName = "Sent Messages";
+  char *draftsFolderName = "Drafts";
+  char *delFolderName = "Deleted Messages";
+  char *spamFolderName = "Junk";
+
+  if (boxSpec->mAllocatedPathName.EqualsIgnoreCase(sentFolderName, strlen(sentFolderName)))
+    boxSpec->mBoxFlags |= kImapSent;
+
+  if (boxSpec->mAllocatedPathName.EqualsIgnoreCase(draftsFolderName, strlen(draftsFolderName)))
+    boxSpec->mBoxFlags |= kImapDrafts;
+
+  if (boxSpec->mAllocatedPathName.EqualsIgnoreCase(delFolderName, strlen(delFolderName)))
+    boxSpec->mBoxFlags |= kImapXListTrash;
+
+  if (boxSpec->mAllocatedPathName.EqualsIgnoreCase(spamFolderName, strlen(spamFolderName)))
+    boxSpec->mBoxFlags |= kImapSpam;
+}
+
+
+uint32_t GetIdentityKey(char *szIdentityKey)
+{
+  char *p = szIdentityKey + 2;
+  return atoi(p);
+}
+
+
+void nsImapServerResponseParser::SetJunksFolderByDefaultSeverDefine(char *junkFolder, char *szUserName, char *szHostName, nsIURI *aURI)
+{
+  nsresult rv;
+  nsCOMPtr<nsIMsgAccountManager> accountMgr = do_GetService(NS_MSGACCOUNTMANAGER_CONTRACTID, &rv);
+  nsCOMPtr<nsIMsgIncomingServer> incomingServer;
+  /*
+  nsCString userName(szUserName);
+  nsCString hostName(szHostName);
+  nsCString type("imap");
+  accountMgr->FindServer(userName, hostName, type, getter_AddRefs(incomingServer));
+
+  // 如果获取不到server，使用nsIURI获取
+  if (incomingServer == nullptr)
+  {
+    accountMgr->FindServerByURI(aURI, false, getter_AddRefs(incomingServer));
+  }
+  */
+
+  // 直接使用uri获取server
+  nsCOMPtr<nsIMsgIdentity> identity;
+  nsCOMPtr<nsISupportsArray> array;
+  accountMgr->FindServerByURI(aURI, false, getter_AddRefs(incomingServer));
+  if (incomingServer == nullptr)
+  {
+#ifdef PR_LOGGING
+	  //PR_LOG(gRichInfoLog, PR_LOG_ALWAYS,("[%s:%d-%s]",__FILE__, __LINE__,__FUNCTION__));
+#endif
+    return;
+  }
+
+  // 垃圾邮件夹的设置在nsISpamSetting中，不能直接使用nsIPrefBranch->Setxxpref，
+  // 要使用nsIMsgIncomingServer->SetxxValue
+  nsCString folderName(junkFolder);
+  incomingServer->SetCharValue("spamActionTargetFolder", folderName);
+  incomingServer->SetIntValue("moveTargetMode", 1);
+  incomingServer->SetBoolValue("moveOnSpam", true);
+
+  nsCOMPtr<nsIPrefBranch> pPrefBranch(do_GetService(NS_PREFSERVICE_CONTRACTID, &rv));
+  pPrefBranch->SetBoolPref("mail.spam.manualMark", true);
+
+  nsCOMPtr <nsISpamSettings> spamSettings;
+  rv = incomingServer->GetSpamSettings(getter_AddRefs(spamSettings));
+  
+  spamSettings->Initialize(incomingServer);
+
+}
+
+void nsImapServerResponseParser::SetSentAndDraftsFolderByDefaultServerDefine(char *szUserName, char *szHostName, char *str, char *folderName, nsIURI *aURI, uint32_t flag)
+{
+  nsresult rv;
+  nsCOMPtr<nsIMsgAccountManager> accountMgr = do_GetService(NS_MSGACCOUNTMANAGER_CONTRACTID, &rv);
+  nsCOMPtr<nsIMsgIncomingServer> incomingServer;
+  /*
+  nsCString userName(szUserName);
+  nsCString hostName(szHostName);
+  nsCString type("imap");
+
+  nsCOMPtr<nsIMsgIdentity> identity;
+  accountMgr->FindServer(userName, hostName, type, getter_AddRefs(incomingServer));
+  nsCOMPtr<nsISupportsArray> array;
+
+  // 如果获取不到服务器，使用nsIURI来获取服务器
+  if (incomingServer == nullptr)
+  {
+    accountMgr->FindServerByURI(aURI, false, getter_AddRefs(incomingServer));
+  }  
+  */
+
+  // 直接使用uri获取incomingServer
+  nsCOMPtr<nsIMsgIdentity> identity;
+  nsCOMPtr<nsISupportsArray> array;
+  accountMgr->FindServerByURI(aURI, false, getter_AddRefs(incomingServer));
+  if (incomingServer == nullptr)
+  {
+#ifdef PR_LOGGING
+	 // PR_LOG(gRichInfoLog, PR_LOG_ALWAYS,("[%s:%d-%s]",__FILE__, __LINE__,__FUNCTION__));
+#endif
+    return;
+  }
+
+  accountMgr->GetIdentitiesForServer(incomingServer, getter_AddRefs(array));
+  array->QueryElementAt(0, NS_GET_IID(nsIMsgIdentity), (void **)getter_AddRefs(identity));
+  if (nullptr == identity) {
+      return;
+  }
+
+  nsCString key;
+  identity->GetKey(key);
+
+  uint32_t idkey = GetIdentityKey((char *)key.get());
+  nsCOMPtr<nsIPrefBranch> pPrefBranch(do_GetService(NS_PREFSERVICE_CONTRACTID, &rv));
+  char *szPrefName = NULL;
+
+  if (flag == kImapSent)
+    szPrefName = PR_smprintf("mail.identity.id%d.fcc_folder", idkey);
+  else
+    szPrefName = PR_smprintf("mail.identity.id%d.draft_folder", idkey);
+
+
+  char szNewPref[256] = {0};
+  strcpy(szNewPref, str);
+  char *pLeft = strrchr(szNewPref, ':');
+  *(pLeft) = 0;
+  strcat(szNewPref, "/");
+  strcat(szNewPref, folderName);   
+
+  pPrefBranch->SetCharPref(szPrefName, szNewPref);
+
+  PR_smprintf_free(szPrefName); 
+
+}
+
+
+void nsImapServerResponseParser::GetUserNameFromPrepath(char *szPrepath, char *szUserName)
+{
+  uint32_t offset = 7;
+  char *p = szPrepath + 7;
+  for (uint32_t i = 0; i < strlen(szPrepath); i++)
+  {
+    // 有的prepath可能为asd%40ddk%2Elsdk@
+    if (*p != '@' && *p != '%')
+    {
+      szUserName[i] = *p;
+      p++;
+    }
+    else
+    {
+      return;
+    }
+      
+  }
+}
+
+void nsImapServerResponseParser::GetJunkPathFromPrepath(char *szPrepath, char *szJunkName)
+{
+  char szPath[256] = {0};
+  PL_strcpy(szPath, szPrepath);
+  char *p = strrchr(szPath, ':');
+  *p = 0;
+  PL_strcpy(szJunkName, szPath);
+}
+
 
 /* mailbox         ::= "INBOX" / astring
 */
@@ -940,6 +1123,48 @@ void nsImapServerResponseParser::mailbox(nsImapMailboxSpec *boxSpec)
     boxSpec->mConnection->GetCurrentUrl()->QueryInterface(NS_GET_IID(nsIURI), (void **) &aURL);
     if (aURL)
       aURL->GetHost(boxSpec->mHostName);
+
+
+    // 获取到当前的邮件夹名称和服务器名称，针对QQ做特殊处理
+    SetQQMailSpec(boxSpec);
+
+    // 已发送和草稿箱是根据配置文件中的设置来确定，所以当从服务器用LIST命令得到邮件夹的时候，根据其标志设置
+    // 已发送和草稿箱的目录
+    // (sent drafts 文件夹可能建立之初就被认定为特殊的文件夹，暂时没找到代码处理片段)
+    if (boxSpec->mBoxFlags & kImapSent || boxSpec->mBoxFlags & kImapDrafts)
+    {
+      // prepath形式为imap://zhaosonghan@imap.richinfo.cn:143
+      // 我们不需要端口号
+      nsCOMPtr <nsIURI> runningUri;
+      nsCString prePath;
+      char szUserName[256] = {0};
+      fServerConnection.GetRunningUrl(getter_AddRefs(runningUri));
+      runningUri->GetPrePath(prePath);
+      GetUserNameFromPrepath((char *)prePath.get(), szUserName);
+
+      if (boxSpec->mBoxFlags & kImapSent)
+        SetSentAndDraftsFolderByDefaultServerDefine(szUserName, (char *)boxSpec->mHostName.get(), (char *)prePath.get(), (char *)boxSpec->mAllocatedPathName.get(), aURL, kImapSent);
+      else
+        SetSentAndDraftsFolderByDefaultServerDefine(szUserName, (char *)boxSpec->mHostName.get(), (char *)prePath.get(), (char *)boxSpec->mAllocatedPathName.get(), aURL, kImapDrafts);
+      
+    }
+
+    // 设置垃圾邮件夹对应的目录
+    
+    if (boxSpec->mBoxFlags & kImapSpam)
+    {
+      nsCOMPtr <nsIURI> runningUri;
+      nsCString prePath;
+      char szJunkPath[256] = {0};
+      fServerConnection.GetRunningUrl(getter_AddRefs(runningUri));
+      runningUri->GetPrePath(prePath);
+      char szUserName[256] = {0};
+      GetUserNameFromPrepath((char *)prePath.get(), szUserName);
+      GetJunkPathFromPrepath((char *)prePath.get(), szJunkPath);
+      strcat(szJunkPath, "/");
+      strcat(szJunkPath, (char *)boxSpec->mAllocatedPathName.get());
+      SetJunksFolderByDefaultSeverDefine(szJunkPath, szUserName, (char *)boxSpec->mHostName.get(), aURL);
+    }
 
     NS_IF_RELEASE(aURL);
     if (boxname)
@@ -1863,7 +2088,7 @@ void nsImapServerResponseParser::parse_folder_flags()
       labelFlags |= 16;
     else if (!PL_strncasecmp(fNextToken, "\\*", 2))
     {
-      fSupportsUserDefinedFlags |= kImapMsgSupportUserFlag;
+      //fSupportsUserDefinedFlags |= kImapMsgSupportUserFlag;
       fSupportsUserDefinedFlags |= kImapMsgSupportForwardedFlag;
       fSupportsUserDefinedFlags |= kImapMsgSupportMDNSentFlag;
       fSupportsUserDefinedFlags |= kImapMsgLabelFlags;

@@ -119,6 +119,19 @@ public:
   bool GetFillingInShell();
   void UseCachedShell(nsIMAPBodyShell *cachedShell);
   void SetHostSessionList(nsIImapHostSessionList *aHostSession);
+
+  // 特殊处理QQ邮箱
+  void SetQQMailSpec(nsImapMailboxSpec *boxSpec);
+  // 将服务器上的垃圾邮箱作为默认垃圾邮箱
+  void SetJunksFolderByDefaultSeverDefine(char *junkFolder, char *szUserName, char *szHostName, nsIURI *aURI);
+  // 将服务器上的已发送邮件夹和草稿箱作为默认的已发送邮件夹和草稿箱
+  void SetSentAndDraftsFolderByDefaultServerDefine(char *szUserName, char *szHostName, char *str, char *folderName, nsIURI *aURI, uint32_t flag);
+  // 从prepath中获取用户名
+  void GetUserNameFromPrepath(char *szPrepath, char *szUserName);
+  // 从prepath中获取垃圾邮件夹名称
+  void GetJunkPathFromPrepath(char *szPrepath, char *szJunkName);
+
+  
   char  *fAuthChallenge;    // the challenge returned by the server in
                             //response to authenticate using CRAM-MD5 or NTLM
   bool            fCondStoreEnabled;  

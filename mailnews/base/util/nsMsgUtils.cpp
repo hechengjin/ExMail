@@ -931,7 +931,8 @@ GetOrCreateFolder(const nsACString &aURI, nsIUrlListener *aListener)
 
   nsCOMPtr <nsIMsgFolder> parent;
   rv = msgFolder->GetParent(getter_AddRefs(parent));
-  if (NS_FAILED(rv) || !parent)
+  if( !msgFolder )
+  //if (NS_FAILED(rv) || !parent)
   {
     nsCOMPtr <nsIFile> folderPath;
     // for local folders, path is to the berkeley mailbox.

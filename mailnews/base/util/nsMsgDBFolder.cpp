@@ -3384,21 +3384,21 @@ NS_IMETHODIMP nsMsgDBFolder::SetPrettyName(const nsAString& name)
   nsresult rv;
 
   //Set pretty name only if special flag is set and if it the default folder name
-  if (mFlags & nsMsgFolderFlags::Inbox && name.LowerCaseEqualsLiteral("inbox"))
+  if (mFlags & nsMsgFolderFlags::Inbox/* && name.LowerCaseEqualsLiteral("inbox")*/)
     rv = SetName(nsDependentString(kLocalizedInboxName));
-  else if (mFlags & nsMsgFolderFlags::SentMail && name.LowerCaseEqualsLiteral("sent"))
+  else if (mFlags & nsMsgFolderFlags::SentMail/* && name.LowerCaseEqualsLiteral("sent")*/)
     rv = SetName(nsDependentString(kLocalizedSentName));
-  else if (mFlags & nsMsgFolderFlags::Drafts && name.LowerCaseEqualsLiteral("drafts"))
+  else if (mFlags & nsMsgFolderFlags::Drafts /*&& name.LowerCaseEqualsLiteral("drafts")*/)
     rv = SetName(nsDependentString(kLocalizedDraftsName));
-  else if (mFlags & nsMsgFolderFlags::Templates && name.LowerCaseEqualsLiteral("templates"))
+  else if (mFlags & nsMsgFolderFlags::Templates /*&& name.LowerCaseEqualsLiteral("templates")*/)
     rv = SetName(nsDependentString(kLocalizedTemplatesName));
-  else if (mFlags & nsMsgFolderFlags::Trash && name.LowerCaseEqualsLiteral("trash"))
+  else if (mFlags & nsMsgFolderFlags::Trash/* && name.LowerCaseEqualsLiteral("trash")*/)
     rv = SetName(nsDependentString(kLocalizedTrashName));
-  else if (mFlags & nsMsgFolderFlags::Queue && name.LowerCaseEqualsLiteral("unsent messages"))
+  else if (mFlags & nsMsgFolderFlags::Queue/* && name.LowerCaseEqualsLiteral("unsent messages")*/)
     rv = SetName(nsDependentString(kLocalizedUnsentName));
-  else if (mFlags & nsMsgFolderFlags::Junk && name.LowerCaseEqualsLiteral("junk"))
+  else if (mFlags & nsMsgFolderFlags::Junk/* && name.LowerCaseEqualsLiteral("junk")*/)
     rv = SetName(nsDependentString(kLocalizedJunkName));
-  else if (mFlags & nsMsgFolderFlags::Archive && name.LowerCaseEqualsLiteral("archives"))
+  else if (mFlags & nsMsgFolderFlags::Archive/* && name.LowerCaseEqualsLiteral("archives")*/)
     rv = SetName(nsDependentString(kLocalizedArchivesName));
   else
     rv = SetName(name);
