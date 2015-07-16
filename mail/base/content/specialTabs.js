@@ -763,7 +763,7 @@ var specialTabs = {
       if (prefs.getBoolPref(kTelemetryEnabled))
         return false;
     } catch (e) { }
-    return true;
+    return false;
   },
 
   showTelemetryNotification: function(prefs) {
