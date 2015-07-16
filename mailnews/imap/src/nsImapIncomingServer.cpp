@@ -1236,8 +1236,8 @@ NS_IMETHODIMP nsImapIncomingServer::PossibleImapMailbox(const nsACString& folder
           OnlyOneSpecialFolder(a_nsIFolder, nsMsgFolderFlags::Drafts);
        if (flags & nsMsgFolderFlags::Junk)
           OnlyOneSpecialFolder(a_nsIFolder, nsMsgFolderFlags::Junk);
-       //if (flags & nsMsgFolderFlags::Trash)
-       //   OnlyOneTrashFolder(a_nsIFolder);
+       if (flags & nsMsgFolderFlags::Trash)
+          OnlyOneTrashFolder(a_nsIFolder);
     }
   }
   if (!found && child)
@@ -1573,7 +1573,7 @@ NS_IMETHODIMP nsImapIncomingServer::DiscoveryDone()
 	 OnlyOneSpecialFolder(rootMsgFolder, nsMsgFolderFlags::SentMail);
     OnlyOneSpecialFolder(rootMsgFolder, nsMsgFolderFlags::Drafts);
     OnlyOneSpecialFolder(rootMsgFolder, nsMsgFolderFlags::Junk);
-    //OnlyOneTrashFolder(rootMsgFolder);
+    OnlyOneTrashFolder(rootMsgFolder);
   }
 
   bool usingSubscription = true;
@@ -3413,12 +3413,9 @@ void nsImapIncomingServer::OnlyOneTrashFolder(nsCOMPtr<nsIMsgFolder> aRootMsgFol
     {
       uint32_t numFolders;
       trashFolders->GetLength(&numFolders);
-    
+
       if (numFolders > 1)
-      {
-        nsAutoString trashName;
-        if (NS_SUCCEEDED(GetTrashFolderName(trashName)))
-        {
+      {        
           for (uint32_t i = 0; i < numFolders; i++)
           {
             bool clearFlag = false;
@@ -3426,20 +3423,14 @@ void nsImapIncomingServer::OnlyOneTrashFolder(nsCOMPtr<nsIMsgFolder> aRootMsgFol
             if (folder)
             {
 
-              bool rc1 = false, rc2 = false;
+              //bool rc1 = false, rc2 = false;
               nsCString folderURI;
-              rc1 = NS_SUCCEEDED(folder->GetURI(folderURI));
+              NS_SUCCEEDED(folder->GetURI(folderURI));
 
               nsCString onlineName = DropPath(folderURI);
 
               // 不映射的情况下暂时使用
-              rc2 = trashName.EqualsASCII("Trash");
-              clearFlag = (rc1) && (rc2);
-              //////////////////////////////////////////////////
-              // 映射的条件下使用，以后添加
-              //rc2 = trashName.EqualsASCII(onlineName.get());
-              //clearFlag = (rc1) && (!rc2);
-              //////////////////////////////////////////////////
+              clearFlag = onlineName.EqualsASCII("Trash");////如果有两个 默认为trash的改成不是
 
               if (clearFlag)
               {
@@ -3453,7 +3444,7 @@ void nsImapIncomingServer::OnlyOneTrashFolder(nsCOMPtr<nsIMsgFolder> aRootMsgFol
               }
             }
           }
-        }
+        
       }
     }
 }
