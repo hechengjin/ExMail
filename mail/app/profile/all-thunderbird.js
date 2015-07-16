@@ -358,7 +358,14 @@ pref("browser.display.auto_quality_min_font_size", 0);
 
 pref("view_source.syntax_highlight", false);
 
+
+// for telemtry 
 pref("toolkit.telemetry.infoURL", "http://www.mozilla.org/thunderbird/legal/privacy/#telemetry");
+pref("toolkit.telemetry.enabled", false);
+pref("toolkit.telemetry.prompted", false);
+pref("toolkit.telemetry.server", "http://www.wyyt.cn");
+pref("toolkit.telemetry.server_owner", "wyyt");
+//
 
 pref("mousewheel.withcontrolkey.action", 3);
 /////////////////////////////////////////////////////////////////
