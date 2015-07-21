@@ -1,0 +1,858 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is Thunderbird Conversations
+ *
+ * The Initial Developer of the Original Code is
+ *  Andy Chung <animalyouth@gmail.com>
+ * Portions created by the Initial Developer are Copyright (C) 2010
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *  Jonathan Protzenko <jonathan.protzenko@gmail.com>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+* {
+  -moz-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* This is what we set from stub.xhtml, for Linux/Windows:
+   *   font-size: 62.5%; (16px default size => we rebase to 10px)
+   * for MacOSX:
+   *   font-size: 66.6%; (15px default size => we rebase to 10px).
+   * This rule is added dynamically by stub.xhtml.
+   */
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  background-color: #ECF3FE;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+p {
+  margin-bottom: 1.8rem;
+}
+
+button {
+  background-image: -moz-linear-gradient(top, #fefefe 0%, #d5d5d5 100%);
+  border: 1px solid #919191;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55);
+  border-radius: 3px;
+  text-align: center;
+  outline: none;
+  height: 2.2rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-image: -moz-linear-gradient(top, #fafafa 0%, #e6e6e6 100%);
+}
+
+button:active {
+  background-image: none;
+  background-color: #d5d5d5;
+  box-shadow: inset 0 0 2px #666;
+  border: 1px solid #666;
+}
+
+button img {
+  vertical-align: middle;
+}
+
+#conversationHeaderWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 150;
+  box-shadow: 0 0 2px rgba(0,0,0,0.25);
+}
+
+#conversationHeader {
+  width: 100%;
+  padding: 5px 10px;
+  background-image: -moz-linear-gradient(top, #fcfcfc 0%, #e6e6e6 100%);
+  border-bottom: 1px solid #bebebe;
+  color: #0a0a0a;
+}
+
+#conversationHeader.not-junkable .junk-button {
+  display: none;
+}
+
+.subject {
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2.2rem;
+  height: 2.2rem;
+  overflow: hidden;
+}
+
+.subject a.text-link {
+  color: #3875d7;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.actions {
+}
+
+.actions button {
+  width: 28px;
+  height: 22px;
+  float: right;
+  margin: 0 0 0 3px;
+}
+
+.actions button span {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: auto;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.actions span.read {
+  background-image: url("chrome://conversations/content/i/read.png");
+}
+
+.actions span.read.unread {
+  background-image: url("chrome://conversations/content/i/unread.png");
+}
+
+.actions span.mode {
+  background-image: url("chrome://conversations/content/i/mode.png");
+}
+
+.actions span.mode.classic {
+  background-image: url("chrome://conversations/content/i/classicMode.png");
+}
+
+.actions span.expand {
+  background-image: url("chrome://conversations/content/i/expand.png");
+}
+
+.actions span.expand.collapse {
+  background-image: url("chrome://conversations/content/i/collapse.png");
+}
+
+.actions span.trash {
+  background-image: url("chrome://conversations/content/i/trash.png");
+}
+
+.actions span.archive {
+  background-image: url("chrome://conversations/content/i/archive.png");
+}
+
+.actions span.junk {
+  background-image: url("chrome://conversations/content/i/junk.png");
+}
+
+.actions span.conversation-menu-button {
+  background-image: url("chrome://conversations/content/i/conversation2.png");
+}
+
+.actions span.tab {
+  background-image: url("chrome://conversations/content/i/tab.png");
+}
+
+
+#messageList {
+  margin-top: 4.4rem;
+}
+
+.message {
+  margin: 0 10px 10px 10px;
+  background-color: #fff;
+  background-image: -moz-linear-gradient(top,#fff 0%,#fafafa 100%);
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px #CCE0FF;
+  list-style-type: none;
+}
+
+.message.highlight:-moz-focusring,
+.message:focus:-moz-focusring {
+  outline: none;
+}
+
+.message.highlight, .message:focus {
+  border: 1px solid #bebebe;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.15);
+}
+
+.messageHeader {
+  width: 100%;
+  padding: 5px 10px;
+  cursor: pointer
+}
+
+.messageHeader .involved {
+  height: 1.8rem;
+  padding: 0 5px 0 0;
+}
+
+span.downwardArrow {
+  font-size: .8rem;
+  vertical-align: baseline;
+}
+
+.messageHeader img {
+  vertical-align: text-top;
+}
+
+.author {
+  color: #ff5959;
+  font-weight: bold;
+  margin-right: .3rem;
+}
+
+.contact:not(.inAddressBook) .editContact {
+  display: none;
+}
+
+.contact.inAddressBook .addContact {
+  display: none;
+}
+
+.tooltipWrapper {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  width: 30.2rem;
+  min-width: 302px;
+  top: 24px;
+  left: 16px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.25);
+  border-radius: 5px;
+  z-index: 1000;
+  display: none;
+}
+
+.dropDown {
+  position: relative;
+}
+
+.dropDown .tooltip {
+  width: 15.2rem;
+  left: -11rem;
+  min-width: 0;
+}
+
+.dropDown ul {
+  margin-top: 0;
+  list-style-type: none;
+  font-size: 1.1rem;
+}
+
+.dropDown li {
+  padding: 3px 5px;
+}
+
+.dropDown li:hover,
+.dropDown li:nth-child(2n):hover {
+  background-image: -moz-linear-gradient(top, #3875D7 0%, #396BBD 100%);
+  color: #fff;
+}
+
+.dropDown li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+.dropDown li:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.dropDown li:nth-child(2n) {
+  background-color: #ECF3FE;
+}
+
+.tooltip {
+  display: none;
+}
+
+.arrow {
+  border-color: transparent transparent #666 transparent;
+  border-style: solid;
+  border-width: 7px;
+  height: 0;
+  left: 10px;
+  top: -14px;
+  position: absolute;
+  width: 0;
+}
+
+.dropDown .arrow {
+  left: 12rem;
+}
+
+.arrow.inside {
+  border-color: transparent transparent #fff transparent;
+  top: -13px;
+}
+
+.dropDown li:hover .arrow.inside {
+  border-color: transparent transparent #3875D7 transparent;
+}
+
+.contactName {
+  cursor: pointer;
+}
+
+.authorInfo {
+  display: inline-block;
+  font-weight: normal;
+  font-size: 1.2rem;
+  text-indent: 0;
+  float: left;
+  width: 20.0rem;
+  padding: 10px;
+  color: #333;
+}
+
+.authorLinks {
+  clear: left;
+}
+
+a img {
+  border-color: transparent;
+}
+
+.name {
+  font-size: 1.4rem;
+  float: left;
+  clear: left;
+}
+
+.authorEmail {
+  color: #888;
+  float: left;
+  clear: left;
+}
+
+.authorPicture {
+  display: inline-block;
+  float: right;
+  max-width: 100px;
+  padding: 10px;
+}
+
+.authorPicture img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.tipFooter {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #f6f6f6;
+  border-top: 1px solid #E6E6E6;
+  float: left;
+  border-radius: 0 0 5px 5px;
+}
+
+.tipFooter button {
+  padding: 0 5px;
+  float: left;
+  margin: 0 3px 0 0;
+}
+
+.moreExpander {
+  float: right;
+}
+
+.to, .bzTo {
+  color: #666;
+}
+
+.to.not-resized-yet {
+  display: none;
+}
+
+.to {
+  display: inline-block;
+  white-space:    nowrap;
+  text-overflow:  ellipsis;
+  overflow:       hidden;
+}
+
+.options a,
+.attachments a,
+.link {
+  text-decoration: none;
+  color: #3875d7;
+  cursor: pointer;
+}
+
+.options a:hover,
+.attachments a:hover ,
+.link:hover {
+  text-decoration: underline;
+}
+
+.message:not(.with-details) .show-with-details {
+  display: none;
+}
+
+.message.with-details .hide-with-details {
+  display: none !important;
+}
+
+.message:not(.bugzilla) .bzTo {
+  display: none;
+}
+
+.message.bugzilla .to {
+  display: none;
+}
+
+.message.collapsed {
+  height: 3.6rem;
+  border-radius: 5px;
+  margin: 0 10px -6px 10px;
+  border-bottom: none;
+  overflow: hidden;
+}
+
+.message.collapsed:last-child {
+  border-bottom: 1px solid #bebebe;
+  margin-bottom: 10px;
+}
+
+.message.collapsed .to, 
+.message.collapsed .bzTo, 
+.message.collapsed .details,
+.message.collapsed .hide-details,
+.message.collapsed .dropDown,
+.message.collapsed .replyLinkWrapper,
+.message.collapsed .editDraftLinkWrapper,
+.message.collapsed .messageBody .tags,
+.message.collapsed p,
+.message.collapsed .attachments,
+.message.collapsed .detailsLine,
+.message .snippet {
+  display: none;
+}
+
+.message.collapsed .snippet {
+  display: inline-block;
+  height: 1.8rem;
+  overflow: hidden;
+  color: #666;
+}
+
+.message .messageBody {
+  padding: 0 10px 5px 10px;
+  color: #0a0a0a;
+}
+
+.message.with-details .messageBody {
+  padding-top: 10px;
+}
+
+.message.collapsed iframe {
+  display: none;
+}
+
+.message iframe {
+  width: 100%;
+}
+
+.iframe-container {
+  margin-top: 5px;
+}
+
+.messageHeader .tags {
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+.messageHeader .tag-x {
+  display: none;
+}
+
+.messageBody .tags {
+  padding: 0 0 5px 0;
+  margin: 0;
+  display: inline;
+}
+
+.messageBody .tag-x {
+  border-left: 1px solid white;
+  margin-left: 1ex;
+  cursor: pointer;
+  z-index: 3;
+}
+
+ul.tags li {
+  display: inline;
+  font-size: 1.0rem;
+  font-weight: bold;
+  /*background-color: #68AB57;*/
+  padding: 1px 5px;
+  margin-right: 5px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+ul.tags li.light-tag {
+  color: rgb(10, 10, 10);
+}
+
+li.light-tag .tag-x {
+  border-color: rgb(10, 10, 10);
+}
+
+li.blc-FFFFFF {
+  border: 1px solid black;
+}
+
+ul.special-tags li {
+  background-color: #3F5381;
+}
+
+ul.special-tags img {
+  vertical-align: text-top;
+}
+
+.in-folder {
+  cursor: pointer;
+}
+
+.message.inView .in-folder {
+  display: none;
+}
+
+.message .notificationBar {
+  padding: 10px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.15) inset;
+  margin: 0 0 10px 0;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #ccc;
+  color: #666;
+}
+
+.message .notificationBar button {
+  padding: 0 5px;
+  margin: 0 3px 0 0;
+}
+
+.message .lightningImipBar {
+  background-color: #baeeff;
+  color: #666;
+}
+
+.message .lightningImipImage {
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+}
+
+.message .lightningImipButton {
+  float: right;
+}
+
+.message .phishingBar {
+  background-color: #ed6666;
+  color: #D7D7D7;
+}
+
+.message .phishingBar a {
+  text-decoration: none;
+  color: white;
+}
+
+.message .phishingBar a:hover {
+  text-decoration: underline;
+}
+
+.message .junkBar {
+  background-color: rgb(231, 243, 253);
+  color: black;
+}
+
+.message .junkBar a {
+  text-decoration: none;
+}
+
+.message .notJunk {
+  float: right;
+  color: #666;
+  padding-top: 2px;
+}
+
+.message :-moz-any(.junkBar, .outboxBar) a:hover {
+  text-decoration: underline;
+}
+
+.message .remoteContent {
+  background-color: rgba(0,255,0, 0.15);
+}
+
+.message .remoteContent a {
+  text-decoration: none;
+  color: #3875D7;
+}
+
+.message .remoteContent a:hover {
+  text-decoration: underline;
+}
+
+.message.collapsed .notificationBar {
+  display: none;
+}
+
+.detailsLine {
+  font-size: 1.1rem;
+  padding-left: 20px;
+  text-indent: -10px;
+  padding-right: 10px;
+  color: #666;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
+.attachments {
+  padding: 10px 0 0 0;
+  margin: 0 0 18px 0;
+}
+
+.attachHeader {
+  display: inline;
+  padding-top: 10px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.attachments li {
+  margin: 10px 0 0 0;
+  width: 100%;
+  list-style-type: none;
+}
+
+.attachmentThumb {
+  width: 130px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  background-image: -moz-linear-gradient(top,#fff 0%,#f2f2f2 100%);
+  margin: 0 20px 0 0;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  line-height: 0px; /* Needed, otherwise there's an extra padding at the bottom... */
+}
+
+.attachmentThumb img {
+  image-rendering: optimizeQuality;
+}
+
+.preview-attachment {
+  font-weight: bold;
+}
+
+/* For moz-icons */
+.attachmentThumb img.icon {
+  width: 48px;
+}
+
+/* For thumbnails */
+.attachmentThumb img.resize-me {
+  max-width: 120px;
+  max-height: 80px;
+}
+
+.attachActions {
+  display: inline;
+}
+
+.view-all {
+  font-weight: bold;
+}
+
+.view-attachment {
+  cursor: pointer;
+}
+
+.attachmentInfo {
+  display: inline-block;
+  float: left;
+}
+
+.filename {
+  display: block;
+  font-weight: bold;
+}
+
+.messageFooter {
+  padding: 0px 10px 5px 10px;
+  background-color: #f6f6f6;
+  border-top: 1px solid #bebebe;
+  border-radius: 0 0 5px 5px;
+}
+
+.messageFooter button {
+  background-image: none;
+  background-color: white;
+
+  float: left;
+  border: 1px solid #bebebe;
+  border-top-color: white;
+  border-radius: 0 0 0 0;
+
+  margin: -1px 3px 0 0;
+  padding: 0 5px 3px 5px;
+}
+
+.messageFooter button:hover {
+  border-color: #666;
+  border-top-color: white;
+}
+
+.messageFooter button:active {
+  background-image: none;
+  background-color: white;
+  box-shadow: none;
+}
+
+.messageFooter.hide .footerActions {
+  display: none;
+}
+
+.messageFooter.hide {
+  padding: 0;
+}
+
+.messageFooter:after {
+  content: " ";
+  display: block;
+  height: 0; 
+  clear: both;
+  visibility: hidden;
+}
+
+.star {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  background-image: url(chrome://conversations/content/i/unstarred.png);
+  background-repeat: no-repeat;
+  margin-right: 3px;
+}
+
+.star.starred {
+  background-image: url(chrome://conversations/content/i/star.png);
+}
+
+/* bottom links: forward this conversation, print this conversation */
+.bottom-links {
+  text-align: right;
+  padding: 0 15px 10px 10px;
+}
+
+/* for printing */
+
+.body-container {
+  display: none;
+}
+
+/* signed / decrypted */
+.message:not(.decrypted) .tag-decrypted {
+  display: none;
+}
+
+.message:not(.signed) .tag-signed {
+  display: none;
+}
+
+.tag-signed, .tag-decrypted {
+  background-color: #68AB57 !important;
+}
+
+/* for drafts only */
+.message.draft :-moz-any(
+  .buttonReply,
+  .buttonReplyAll,
+  .buttonReplyList,
+  .buttonForward,
+  .replyLinkWrapper
+) {
+  display: none;
+}
+
+.message:not(.draft) :-moz-any(.edit-draft, .editDraftLinkWrapper) {
+  display: none;
+}
+
+.editDraftLinkWrapper {
+  font-weight: bold;
+}
+
+.editDraftLinkWrapper > a, .replyLinkWrapper > a {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeF59z4EJADEIQ1F36k7u5E7ZKXeUQPACJ3wK7UNokVxVk9kHnQH7bY9hbDyDhNXgjpRLqFlo4M2GgfyJHhjq8V4agfrgPQX3JtJQGbofmCHgA/nAKks+JAjFAAAAAElFTkSuQmCC")
+    no-repeat scroll right center transparent;
+  padding-right: 13px;
+}
+
+.ext {
+  background: url("chrome://conversations/content/i/ext.png")
+    no-repeat scroll right center transparent;
+  padding-right: 13px;
+}
+
+/* clearfix */
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+ 
+html[xmlns] .clearfix {
+  display: block;
+}
+ 
+* html .clearfix {
+  height: 1%;
+}

@@ -1,0 +1,1234 @@
+<!DOCTYPE html [
+  <!ENTITY % pageDTD SYSTEM "chrome://conversations/locale/pages.dtd"> %pageDTD;
+]>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Conversation Reader</title>
+  <link rel="stylesheet" type="text/css"
+    href="chrome://messenger/skin/tagColors.css"/>
+  <link rel="stylesheet" type="text/css"
+    href="chrome://conversations/skin/boxflex.css" />
+  <!-- Keep the order! -->
+  <link rel="stylesheet" type="text/css"
+    href="chrome://conversations/skin/conversation.css" />
+  <link rel="stylesheet" type="text/css"
+    href="chrome://conversations/skin/quickreply.css" />
+  <link rel="stylesheet" type="text/css"
+    href="chrome://conversations/skin/tokeninput.css" />
+  <link rel="stylesheet" type="text/css" media="print"
+    href="chrome://conversations/skin/print.css" />
+  <script type="text/javascript"
+    src="chrome://messenger/content/jquery.js"></script>
+  <script type="text/javascript"
+    src="chrome://conversations/content/js/jquery.text-overflow.js"></script>
+  <script type="text/javascript"
+    src="chrome://conversations/content/js/jquery.tmpl.js"></script>
+  <script type="text/javascript"
+    src="chrome://conversations/content/js/jquery.tokeninput.js"></script>
+  <!-- The two scripts below share the same scope, they were split for the sake
+    of readability. -->
+  <script type="application/javascript;version=1.8"
+    src="chrome://conversations/content/quickReply.js"></script>
+  <script type="application/javascript;version=1.8"
+    src="chrome://conversations/content/stub.compose-ui.js"></script>
+  <script type="application/javascript;version=1.8"
+    src="chrome://conversations/content/stub.compose-ui-bz.js"></script>
+  <script type="application/javascript;version=1.8"
+    src="chrome://conversations/content/stub.completion-ui.js"></script>
+  <script type="application/javascript;version=1.8"><![CDATA[
+    // Below are mostly UI utility functions.
+    (function ($) {
+      $.fn.vAlign = function(container) {
+        $(document).ready(function () {
+          if (!container)
+            container = "div";
+
+          this.each(function(i) {
+            $(this).wrap("<div />");
+            var el = $(this);
+            var elh = el.height(); //new element height
+            var ph = el.parent().height(); //parent height
+            var nh = (ph - elh) / 2; //new margin to apply
+            if (!nh) {
+              $(this).unwrap();
+            } else {
+              el.css('margin-top', nh);
+              // don't align again now we've succeeded
+              el.removeClass("align");
+            }
+          });
+        }.bind(this));
+      };
+    })(jQuery);
+
+    function clearMenu() {
+      let menus = document.getElementsByClassName("menu");
+      for each (let [, menu] in Iterator(menus))
+        menu.style.display = "none";
+    }
+
+    function displayMenu(event) {
+      let target = event.target;
+      // This is a hack to make it work when we click the downwardArrow.
+      if (!target.nextElementSibling)
+        target = target.parentNode;
+      let menu = target.nextElementSibling;
+      let menuWasVisible = (menu.style.display == "-moz-box")
+          || (menu.style.display == "inline-block")
+          || (menu.style.display == "block");
+      clearMenu();
+      if (!menuWasVisible) {
+        menu.style.display = "-moz-box";
+        event.stopPropagation();
+      }
+    }
+
+    $(document).ready(function () {
+      document.addEventListener("click", function (event) {
+        clearMenu();
+      }, false);
+      document.addEventListener("keypress", function (event) {
+        if (event.keyCode == KeyEvent.DOM_VK_ESCAPE)
+          clearMenu();
+      }, false);
+    });
+
+    function alignAttachments(aMsgNode) {
+      $(aMsgNode._domNode).find(".align").vAlign();
+    }
+
+    // This function only works for our message nodes, use $(...).offset() for
+    //  more complicated computations.
+    function offsetFromTop (aNode) {
+      let offset = aNode.offsetTop || 0;
+      let parent = aNode.parentNode;
+      while (parent && !(parent instanceof HTMLDocument)) {
+        let style = window.getComputedStyle(parent, null);
+        if (style.position == "relative")
+          offset += parent.offsetTop;
+        parent = parent.parentNode;
+      }
+      return offset;
+    }
+
+    function scrollNodeIntoView (aNode) {
+      let offset = offsetFromTop(aNode);
+      // The header is 44px high (yes, this is harcodeadly ugly).
+      window.scrollTo(0, offset + 5 - 44);
+    }
+
+    function toggleQuote(event, showquotedtext, hidequotedtext) {
+      let link = event.target;
+      let div = link.nextSibling;
+      let cs = window.getComputedStyle(div, null);
+      if (div.style.display == "none") {
+        link.textContent = "- "+hidequotedtext+" -";
+        div.style.display = "";
+        let h = div.getBoundingClientRect().height +
+          parseFloat(cs.marginTop) + parseFloat(cs.marginBottom);
+        return h;
+      } else {
+        let h = div.getBoundingClientRect().height;
+        h += parseFloat(cs.marginTop);
+        h += parseFloat(cs.marginBottom);
+        link.textContent = "- "+showquotedtext+" -";
+        div.style.display = "none";
+        return -h;
+      }
+    }
+
+    const kPopupTimeout = 400;
+
+    // This only works for contact tooltips. The "more" menu is treated like a
+    //  real menu (it uses displayMenu and falls under clearMenu's operations),
+    //  and the reply menu with various choices is also treated like a menu.
+    // It turns out the "more" menu reuses the tooltip style for various
+    //  reasons, mostly to keep the same appearance, so we differentiate that
+    //  one with a tooltip-menu extra class.
+    function enableTooltips(aMsg) {
+      let $aMsgNode = $(aMsg._domNode);
+      $aMsgNode.find('.tooltip').each(function (i) {
+        // "details" is a hypothetical "details" link that, when
+        //   hovered/clicked, starts the interaction with the tooltip
+        let $tooltip = $(this);
+        if ($tooltip.hasClass("tooltip-menu"))
+          return;
+        let $details = $tooltip.prev();
+        if ($details.hasClass("contactBr"))
+          $details = $details.prev();
+
+        let timeout;
+        $details.hover(
+          function() {
+            if (aMsg.collapsed)
+              return;
+            clearTimeout(timeout);
+            let self = this;
+            timeout = setTimeout(function () {
+              $(self).next(':hidden').fadeIn();
+            }, kPopupTimeout);
+          },
+          function() {
+            var self = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+              $(self).next(/*':visible'*/).fadeOut()
+            }, kPopupTimeout);
+          });
+        $tooltip.hover(
+          function () {
+            clearTimeout(timeout);
+          },
+          function () {
+            var self = this;
+            if ($(this).is(":visible")) {
+              clearTimeout(timeout);
+              timeout = setTimeout(function () {
+                $(self).fadeOut();
+              }, kPopupTimeout);
+            }
+          });
+      });
+    }
+
+    // Setting the second parameter to false means don't fire a stupid timer
+    //  that lives forever everytime we call this function.
+    function fakeTextOverflowSubject() {
+      $(".subject").textOverflow(null, false);
+    }
+
+    function cleanup() {
+      // These shouldn't be necessary because we're blasting away everything by
+      //  setting .innerHTML BUT jQuery won't remove its persistent event
+      //  listeners if we don't do that which will in turn cause memory leaks!
+      // Indeed, the listeners are actually closures on Message instances. These
+      //  contain a pointer to their parent Conversation, so that would prevent
+      //  the GC from collecting anything! Argh!
+      $("#messageList").empty();
+    }
+
+    function openLink(event) {
+      gMessenger.launchExternalURL(event.originalTarget.getAttribute("href"));
+    }
+
+    document.addEventListener("focus", function (event) {
+      /* This is a persistent event listener. It can operate multiple
+       * times. We have the invariant that for a given conversation, there's at
+       * most one such element (recycling doesn't use tabindex 1). */
+      let msgNode = document.querySelector(".message[tabindex=\"1\"]");
+      if (!msgNode)
+        return;
+
+      /* Restore the proper tab order. This event is fired *after* the
+       * right message has been focused in Gecko 1.9.2, *before* the right
+       * message has been focused in Gecko 1.9.1 (so it's basically
+       * useless). */
+      let msgNodes = document.getElementsByClassName("message");
+      let index;
+      for each (let [i, k] in Iterator(msgNodes)) {
+        if (k == msgNode) {
+          index = i;
+          break;
+        }
+      }
+      if (index)
+        msgNode.setAttribute("tabindex", index+2);
+    }, true);
+
+    function closeTab() {
+      let browser = window.frameElement;
+      let tabmail = window.top.document.getElementById("tabmail");
+      let tabs = tabmail.tabInfo;
+      let candidates = tabs.filter(function (x) x.browser == browser);
+      if (candidates.length == 1) {
+        tabmail.closeTab(candidates[0]);
+      } else {
+        Log.error("Couldn't find a tab to close...");
+      }
+    }
+
+    function capitalize(str)
+      str.charAt(0).toUpperCase() + str.substring(1);
+
+    // Below are event listeners for various actions. There is some logic
+    //  involved, and they may talk to other parts of the code.
+
+    // This property is now set from the outside. This allows stub.html to
+    //  be used either in a standalone tab or in the multimessage pane.
+    // let Conversations = window.top.Conversations;
+
+    Components.utils.import("resource:///modules/mailServices.js");
+    Components.utils.import("resource://conversations/modules/stdlib/misc.js");
+    Components.utils.import("resource://conversations/modules/stdlib/msgHdrUtils.js");
+    Components.utils.import("resource://conversations/modules/prefs.js");
+    Components.utils.import("resource://conversations/modules/log.js");
+    Components.utils.import("resource://conversations/modules/contact.js");
+
+    let Log = setupLogging("Conversations.Stub");
+    let isOSX = ("nsILocalFileMac" in Components.interfaces);
+    let isWindows = ("@mozilla.org/windows-registry-key;1" in Components.classes);
+    let isInTab = false;
+
+    $(document).ready(function () {
+      let stylesheet = [x
+        for each ([, x] in Iterator(document.styleSheets))
+        if (String.indexOf(x.href, "/conversation.css") >= 0)][0];
+      if (stylesheet) {
+        if (Prefs.tweak_chrome) {
+          // Set the root size to 10px on Linux, and equivalent font sizes on
+          // other platforms.
+          if (isOSX)
+            stylesheet.insertRule("html { font-size: 66.6%; }", 0);
+          else if (isWindows)
+            stylesheet.insertRule("html { font-size: 70%; }", 0);
+          else
+            stylesheet.insertRule("html { font-size: 62.5%; }", 0);
+        } else {
+          stylesheet.insertRule("html { font-size: 83.3%; }", 0);
+        }
+      } else {
+        Log.error("No stylesheet. This is unexpected.");
+      }
+    });
+
+    // Mark the current conversation as read/unread. The conversation driver
+    //  takes care of setting the right class on us whenever the state
+    //  changes...
+    function toggleRead(event) {
+      let $span = $(event.target).find("span.read");
+      if ($span.hasClass("unread")) {
+        Conversations.currentConversation.read = true;
+        $span.removeClass("unread");
+      } else {
+        Conversations.currentConversation.read = false;
+        $span.addClass("unread");
+        markReadInView.disable();
+      }
+    }
+
+    function expandCollapse(event) {
+      let $span = $(event.target).find("span.expand");
+      if ($span.hasClass("collapse")) {
+        [message.collapse()
+          for each ([, { message }] in Iterator(Conversations.currentConversation.messages))];
+        $span.removeClass("collapse");
+      } else {
+        [message.expand()
+          for each ([, { message }] in Iterator(Conversations.currentConversation.messages))];
+        $span.addClass("collapse");
+      }
+    }
+
+    function archiveToolbar(event) {
+      if (isInTab || Prefs.operate_on_conversations)
+        archiveConversation(event);
+      else
+        msgHdrsArchive(topMail3Pane(window).gFolderDisplay.selectedMessages);
+    }
+
+    function archiveConversation(event) {
+      msgHdrsArchive(Conversations.currentConversation.msgHdrs);
+    }
+
+    function deleteToolbar(event) {
+      if (isInTab || Prefs.operate_on_conversations)
+        deleteConversation();
+      else
+        msgHdrsDelete(topMail3Pane(window).gFolderDisplay.selectedMessages);
+    }
+
+    function deleteConversation(event) {
+      msgHdrsDelete(Conversations.currentConversation.msgHdrs);
+      if (isInTab)
+        closeTab();
+    }
+
+    function forwardConversation(event) {
+      let conv = Conversations.currentConversation;
+      let fields = Cc["@mozilla.org/messengercompose/composefields;1"]
+                      .createInstance(Components.interfaces.nsIMsgCompFields);
+      fields.characterSet = "UTF-8";
+      fields.bodyIsAsciiOnly = false;
+      fields.forcePlainText = false;
+      Conversations.currentConversation.exportAsHtml(function (html) {
+        fields.body = html;
+        let params = Cc["@mozilla.org/messengercompose/composeparams;1"]
+                        .createInstance(Ci.nsIMsgComposeParams);
+        params.format = Ci.nsIMsgCompFormat.HTML;
+        params.composeFields = fields;
+        return MailServices.compose.OpenComposeWindowWithParams(null, params);
+      });
+    }
+
+    let oldPrint = window.print;
+
+    function printConversation(event) {
+      for each (let { message: m } in Conversations.currentConversation.messages) {
+        m.dumpPlainTextForPrinting();
+      }
+      oldPrint();
+    }
+
+    window.print = printConversation;
+
+    function junkConversation(event) {
+      // This callback is only activated when the conversation is not a
+      //  conversation in a tab AND there's only one message in the conversation,
+      //  i.e. the currently selected message
+      topMail3Pane(window).JunkSelectedMessages(true);
+      $("#conversationHeader").addClass("not-junkable");
+    }
+
+    const kGalleryUrl = "chrome://conversations/content/gallery/index.html";
+
+    function galleryView(uri) {
+      let tabmail = topMail3Pane(window).document.getElementById("tabmail");
+      tabmail.openTab("chromeTab", {
+        chromePage: kGalleryUrl+"?uri="+uri,
+      });
+    }
+
+    /**
+     * This function gathers various information, encodes it in a URL query
+     * string, and then opens a regular chrome tab that contains our
+     * conversation.
+     */
+    function detachTab(event) {
+      let tabmail = topMail3Pane(window).document.getElementById("tabmail");
+      let willExpand = $("textarea").parent().hasClass("expand") && startedEditing();
+      // Pick _initialSet and not msgHdrs so as to enforce the invariant
+      //  that the messages from _initialSet are in the current view.
+      let urls = [
+        msgHdrGetUri(x)
+        for each (x in Conversations.currentConversation._initialSet)
+      ].join(",");
+      let queryString = "?urls="+encodeURIComponent(urls)
+        +"&willExpand="+Number(willExpand);
+      // First, save the draft, and once it's saved, then move on to opening the
+      // conversation in a new tab...
+      onSave(function () {
+        tabmail.openTab("chromeTab", {
+          chromePage: kStubUrl+queryString,
+        });
+      });
+    }
+
+    /**
+     * This function finds the right node that holds the attachment information
+     * and returns its information.
+     */
+    function getCurrentAttInfo() {
+      let node = topMail3Pane(window).document.popupNode;
+      while (!node.attInfo)
+        node = node.parentNode;
+      return node.attInfo;
+    }
+
+    /**
+     * That big event handler tries to parse URL query parameters, and then acts
+     * upon these, by firing a conversation on its own. This is a very
+     * stripped-down version of the logic that's in monkeypatch.js, and it
+     * serves the purpose of being able to create a standalone conversation view
+     * in a new tab.
+     */
+    $(document).ready(function () {
+      // I just imagined Javascript would have some function for that
+      // built-in... looks like even jQuery doesn't have it.
+      let params = decodeUrlParameters(document.location.href);
+
+      // Oh, are we expected to build a conversation on our own? Let's do it,
+      // yay!
+      if ("urls" in params) {
+        try {
+          let scrollMode = ("scrollMode" in params)
+            ? parseInt(params.scrollMode)
+            : Prefs.kScrollUnreadOrLast;
+          /* If we start up Thunderbird with a saved conversation tab, then we
+           * have no selected message. Fallback to the usual mode. */
+          if (scrollMode == Prefs.kScrollSelected &&
+              !topMail3Pane(window).gFolderDisplay.selectedMessage)
+            scrollMode = Prefs.kScrollUnreadOrLast;
+
+          isInTab = true;
+          window.frameElement.setAttribute("tooltip", "aHTMLTooltip");
+          let mainWindow = topMail3Pane(window);
+          let willExpand = parseInt(params.willExpand);
+          let msgHdrs = [msgUriToMsgHdr(x) for each (x in params.urls.split(","))];
+          msgHdrs = msgHdrs.filter(function (x) x != null);
+          msgHdrs = msgHdrs.filter(function (x) x.messageId);
+          // It might happen that there are no messages left...
+          if (!msgHdrs.length) {
+            document.getElementById("messageList").textContent =
+              strings.get("messageMovedOrDeletedConversation");
+          } else {
+            window.Conversations = {
+              currentConversation: null,
+              counter: 0,
+            };
+            let freshConversation = new mainWindow.Conversations.monkeyPatch._Conversation(
+              window,
+              msgHdrs,
+              scrollMode,
+              ++Conversations.counter
+            );
+            let browser = window.frameElement;
+            // Because Thunderbird still hasn't fixed that...
+            browser.setAttribute("context", "mailContext");
+            freshConversation.outputInto(browser, function (aConversation) {
+              // This is a stripped-down version of what's in monkeypatch.js,
+              //  make sure the two are in sync!
+              Conversations.currentConversation = aConversation;
+              aConversation.completed = true;
+              registerQuickReply();
+              // That's why we saved it before...
+              newComposeSessionByDraftIf();
+              if (willExpand)
+                expandQuickReply();
+              // Create a new rule that will override the default rule, so that
+              // the expanded quick reply is twice higher.
+              document.body.classList.add("inTab");
+              // We can never junk a conversation in a new tab, because the junk
+              // command only operates on selected messages, and we're not in a
+              // 3pane context anymore.
+              document.getElementById("conversationHeader").classList.add("not-junkable");
+              // Do this now so as to not defeat the whole expand/collapse
+              // logic.
+              if (Prefs.getBool("mailnews.mark_message_read.auto")) {
+                setTimeout(function () {
+                  msgHdrsMarkAsRead(msgHdrs, true);
+                }, Prefs.getInt("mailnews.mark_message_read.delay.interval")
+                   * Prefs.getBool("mailnews.mark_message_read.delay") * 1000);
+              }
+            });
+          }
+        } catch (e) {
+          Log.debug(e);
+          dumpCallStack(e);
+        }
+      } else if ("quickCompose" in params) {
+        masqueradeAsQuickCompose();
+      }
+    });
+
+    var isQuickCompose = false;
+
+    function isAccel (event) (isOSX && event.metaKey || event.ctrlKey)
+
+    /* This is our new hack: reuse this file to provide a standalone composition
+     * window. Why? Because it uses gloda autocomplete and provides a
+     * no-frills composition experience. */
+    function masqueradeAsQuickCompose() {
+      isQuickCompose = true;
+      document.title = strings.get("write");
+      document.querySelector("#conversationHeader").style.display = "none";
+      document.querySelector(".bottom-links").style.display = "none";
+      document.querySelector("#messageList").style.marginTop = "0";
+      document.querySelector("#messageList").classList.add("quickCompose");
+      $("#quickReplyTemplate").tmpl().appendTo($("#messageList"));
+      $(".replyAll, #save, .replyMethod").remove();
+      showQuickReply.call($(".reply.expand"));
+      revealCompositionFields();
+      gComposeSession = createComposeSession(function (x) x.new());
+      editFields("to");
+
+      window.Conversations = {
+        currentConversation: {
+          msgHdrs: [],
+          id: null,
+        },
+      };
+
+      document.querySelector(".quickReply").addEventListener("keypress", function (event) {
+        switch (event.keyCode) {
+          case KeyEvent.DOM_VK_RETURN:
+            if (isAccel(event)) {
+              if (event.shiftKey)
+                gComposeSession.send({ archive: true });
+              else
+                gComposeSession.send();
+            }
+            break;
+        }
+      }, false);
+
+      document.querySelector(".popout").addEventListener("click", function (event) {
+        onUseEditor();
+      }, false);
+
+
+      let data = [];
+
+      // Push a new contact item in the list
+      let pushNewPopularContacts = function (n) {
+        let items = data.splice(0, n);
+        let nodes = $("#popularContactTemplate").tmpl(items);
+
+        for each (let [i, data2] in Iterator(items)) {
+          let data = data2;
+          let node = nodes.eq(i);
+          Log.debug("Adding", data.name, data.email);
+
+          node.find(".popularRemove").click(function () {
+            Log.debug("Removing", data.name, data.email);
+            // Mark it in the prefs
+            let unwantedRecipients = JSON.parse(Prefs.getString("conversations.unwanted_recipients"));
+            unwantedRecipients[data.email] = null;
+            Prefs.setString("conversations.unwanted_recipients",
+              JSON.stringify(unwantedRecipients));
+            // Update the UI
+            $(this).closest(".popularContact").remove();
+            pushNewPopularContacts(1);
+          });
+
+          node.find(".popularName").click(function () {
+            // Get all the current parameters
+            let to = JSON.parse($("#to").val());
+            let cc = JSON.parse($("#cc").val());
+            let bcc = JSON.parse($("#bcc").val());
+            // Append our new value
+            to.push(MailServices.headerParser.makeFullAddress(data.name, data.email));
+            // Re-set everything
+            let format = function (items)
+              [asToken(null, name, email, null) for each ([{ name, email }] in items.map(parseMimeLine))]
+            ;
+            setupAutocomplete(format(to), format(cc), format(bcc));
+            // Remove the node!
+            node.remove();
+            pushNewPopularContacts(1);
+          });
+
+        }
+
+        nodes.appendTo($(".quickReplyContactsBox"));
+      };
+
+      $(".quickReplyContactsMoreLink").click(function () pushNewPopularContacts(10));
+
+      // Fill in the "10 most popular contacts" thing
+      let contactQuery = Gloda.newQuery(Gloda.NOUN_CONTACT);
+      contactQuery.orderBy("-popularity").limit(100);
+      let contactCollection = contactQuery.getCollection({
+        onItemsAdded: function(aItems, aCollection) {
+        },
+        onItemsModified: function(aItems, aCollection) {
+        },
+        onItemsRemoved: function(aItems, aCollection) {
+        },
+        onQueryCompleted: function(aCollection) {
+          let items = aCollection.items;
+          let unwantedRecipients = JSON.parse(Prefs.getString("conversations.unwanted_recipients"));
+
+          for each (let contact in items) {
+            if (contact.identities.length) {
+              let id = contact.identities[0];
+              let photoForAbCard = function (card) {
+                if (!card)
+                  return defaultPhotoURI;
+                let url = card.getProperty("PhotoURI", "");
+                if (!url)
+                  return defaultPhotoURI;
+                return url;
+              };
+              if (id.kind == "email" && !(id.value in unwantedRecipients)) {
+                // Log.debug("Pushing", id.value, contact.name, contact.popularity);
+                data.push({
+                  email: id.value,
+                  name: contact.name,
+                  photo: photoForAbCard(id.abCard),
+                });
+              }
+            }
+          }
+
+          pushNewPopularContacts(10);
+        },
+      }, null);
+      contactCollection.becomeExplicit();
+
+      // Misc
+      if (!top.opener) {
+        window.frameElement.setAttribute("tooltip", "aHTMLTooltip");
+        window.frameElement.setAttribute("context", "mailContext");
+      }
+    }
+
+    // I'll never understand why JS doesn't have lexical scoping...
+    let tStrings = new StringBundle("chrome://conversations/locale/template.properties");
+    let str = function (x) {
+      try {
+        return tStrings.get(x);
+      } catch (e) {
+        Log.error("No such string", x);
+        Log.debug(e);
+        dumpCallStack(e);
+      }
+    };
+
+    // Mark a message as read if a user scrolls past top and bottom of an
+    // unread message.
+    function markReadInView(event) {
+      if (event.type == "keydown") {
+        // for scroll by keyboard shortcut
+        switch (event.which) {
+          case KeyEvent.DOM_VK_SPACE:
+          case KeyEvent.DOM_VK_TAB:
+          case KeyEvent.DOM_VK_PAGE_UP:
+          case KeyEvent.DOM_VK_PAGE_DOWN:
+          case KeyEvent.DOM_VK_UP:
+          case KeyEvent.DOM_VK_DOWN:
+          case KeyEvent.DOM_VK_F:
+          case KeyEvent.DOM_VK_B:
+            break;
+          default:
+            return;
+        }
+      }
+      document.removeEventListener("scroll", markReadInView, true);
+      clearTimeout(markReadInView.timeout);
+      markReadInView.timeout = setTimeout(function () {
+        document.addEventListener("scroll", markReadInView, true);
+      }, 200);
+      if (!Conversations.currentConversation)
+        return;
+
+      let pageTop = window.pageYOffset;
+      let pageBottom = pageTop + window.innerHeight;
+      let messages = Conversations.currentConversation.messages;
+      for each (let [i, { message }] in Iterator(messages)) {
+        if (!message.read && message.expanded) {
+          if (!message._topInView) {
+            let top = $(message._domNode).offset().top;
+            if (top > pageTop && top < pageBottom)
+              message._topInView = true;
+          }
+          if (!message._bottomInView) {
+            let footerClass = (i == messages.length - 1) ? ".quickReply" : ".messageFooter";
+            let bottom = $(message._domNode.querySelector(footerClass)).offset().top;
+            if (bottom > pageTop && bottom < pageBottom)
+              message._bottomInView = true;
+          }
+          if (message._topInView && message._bottomInView) {
+            message._topInView = false;
+            message._bottomInView = false;
+            message.read = true;
+          }
+        }
+      }
+    }
+    (function () {
+      let w = window;
+      markReadInView.enable = function () {
+        [w.document.addEventListener(x, w.markReadInView, true)
+          for each ([, x] in Iterator(["mouseover", "focus", "keydown"]))];
+      };
+      markReadInView.disable = function () {
+        w.clearTimeout(w.markReadInView.timeout);
+        [w.document.removeEventListener(x, w.markReadInView, true)
+          for each ([, x] in Iterator(["mouseover", "focus", "keydown", "scroll"]))];
+      };
+    })();
+  ]]>
+  </script>
+</head>
+
+<body>
+  <menu id="attachmentMenu" type="context">
+    <menuitem label="&stub.context.open;" onclick="getCurrentAttInfo().open();"></menuitem>
+    <menuitem label="&stub.context.save;" onclick="getCurrentAttInfo().save();"></menuitem>
+    <menuitem label="&stub.context.detach;" onclick="getCurrentAttInfo().detach(true);"></menuitem>
+    <menuitem label="&stub.context.delete;" onclick="getCurrentAttInfo().detach(false);"></menuitem>
+  </menu>
+  <script id="detailsTemplate" type="text/x-jquery-tmpl"><![CDATA[
+      {{if dataContactsFrom.length}}
+        <div class="detailsLine fromLine">
+          <u>${str("fieldFrom")}</u>
+          {{tmpl(dataContactsFrom) "#contactTemplate"}}
+        </div>
+      {{/if}}
+      {{if dataContactsTo.length}}
+        <div class="detailsLine toLine">
+          <u>${str("fieldTo")}</u>
+          {{tmpl(dataContactsTo) "#contactTemplate"}}
+        </div>
+      {{/if}}
+      {{if dataContactsCc.length}}
+        <div class="detailsLine ccLine">
+          <u>${str("fieldCc")}</u>
+          {{tmpl(dataContactsCc) "#contactTemplate"}}
+        </div>
+      {{/if}}
+      {{if dataContactsBcc.length}}
+        <div class="detailsLine bccLine">
+          <u>${str("fieldBcc")}</u>
+          {{tmpl(dataContactsBcc) "#contactTemplate"}}
+        </div>
+      {{/if}}
+      {{each(i, line) extraLines}}
+        <div class="detailsLine">
+          <u>${line.key}:</u>
+          ${line.value}
+        </div>
+      {{/each}}
+    ]]>
+  </script>
+  <script id="messageTemplate" type="text/x-jquery-tmpl"><![CDATA[
+    <li class="message collapsed ${extraClasses}">
+      <div class="messageHeader hbox">
+        <div class="star"></div>
+        <div class="author">{{tmpl(dataContactFrom) "#contactTemplate"}}</div>
+        <div class="involved boxFlex">
+          <span class="to hide-with-details not-resized-yet"> ${str("to")} {{tmpl(dataContactsTo) "#contactTemplate"}}</span>
+          <span class="bzTo"> ${str("at")} ${bugzillaUrl}</span>
+          <span class="snippet"><ul class="tags regular-tags"></ul><ul
+              class="tags special-tags"
+            ><li
+              class="tag-signed"
+              title="${str('messageSignedLong')}"
+              ><img src="chrome://conversations/content/i/sign.png" />
+              ${str("messageSigned")}</li
+            ><li
+              class="tag-decrypted"
+              title="${str('messageDecryptedLong')}"
+              ><img src="chrome://conversations/content/i/enc.png" />
+              ${str("messageDecrypted")}</li
+            ><li
+              class="in-folder"
+              title="${str('jumpToFolder')}"
+              >${str("inFolder").replace("#1", shortFolderName)}</li
+            ></ul>${snippet}</span>
+        </div>
+        <div class="options">
+          <span class="date">
+            <span class="attachmentIcon">
+              {{tmpl "#attachmentIconTemplate"}}
+            </span>
+            <span title="${fullDate}">${date}</span>
+          </span>
+          <span class="details hide-with-details">
+            | <a href="javascript:" class="link">${str("details")}</a>
+          </span>
+          <span class="hide-details show-with-details">
+            | <a href="javascript:" class="link">${str("hideDetails")}</a>
+          </span>
+          <span class="replyLinkWrapper">
+            | <a href="javascript:" class="replyMainActionLink"></a>
+          </span>
+          <span class="editDraftLinkWrapper">
+            | <a href="javascript:" class="edit-draft">${str("editDraft2")}</a>
+          </span>
+          <span class="dropDown"> |
+            <a href="javascript:" onclick="displayMenu(event);" class="top-right-more">${str("more")} <span class="downwardArrow">&#x25bc;</span></a>
+            <div class="tooltip tooltip-menu menu">
+              <ul>
+                <li class="action-reply">${str("reply")}
+                  <div class="arrow"></div>
+                  <div class="arrow inside"></div>
+                </li>
+                <li class="action-replyAll">${str("replyAll")}</li>
+                <li class="action-replyList">${str("replyList")}</li>
+                <li class="action-editNew">${str("editNew")}</li>
+                <li class="action-forward" style="border-bottom: 1px solid #aaa">${str("forward")}</li>
+                <li class="action-archive">${str("archive")}</li>
+                <li class="action-delete">${str("delete")}</li>
+                <li class="action-classic">${str("viewClassic")}</li>
+                <li class="action-source">${str("viewSource")}</li>
+                <li class="action-print" style="display: none;">${str("print")}</li>
+              </ul>
+            </div>
+          </span>
+        </div>
+      </div>
+      <div class="detailsPlaceholder show-with-details">
+      </div>
+      <div class="detailsLine">
+        {{tmpl "#attachmentDetailsTemplate"}}
+      </div>
+      <div class="lightningImipBar notificationBar" style="display: none">
+        <img class="lightningImipImage" src="chrome://calendar/skin/cal-icon32.png"/>
+        <span class="lightningImipText"></span>
+        <button class="lightningImipButton lightningImipButton1" style="display: none"/>
+        <button class="lightningImipButton lightningImipButton2" style="display: none"/>
+        <button class="lightningImipButton lightningImipButton3" style="display: none"/>
+      </div>
+      <div class="phishingBar notificationBar" style="display: none">
+        <img src="chrome://messenger/skin/icons/phishing.png" style="vertical-align: middle;" />
+        ${str("scam")}
+        <span class="ignore-warning">
+          <a href="javascript:">${str("ignoreWarning")}</a>
+        </span>
+      </div>
+      <div class="remoteContent notificationBar" style="display: none">
+        ${str("remoteContentBlocked")}
+        <span class="show-remote-content">
+          <a href="javascript:">${str("showRemote")}</a> -
+        </span>
+        <span class="always-display">
+          <a href="javascript:">${str("alwaysShowRemote").replace("#1", realFrom)}</a>
+        </span>
+      </div>
+      <div class="junkBar notificationBar" {{if !canUnJunk}}style="display: none"{{/if}}>
+        <img src="chrome://messenger/skin/icons/junk.png" style="vertical-align: middle;" />
+        ${str("junk")}
+        <span class="notJunk">
+          <a href="javascript:">${str("notJunk")}</a>
+        </span>
+      </div>
+      <div class="outboxBar notificationBar" {{if !isOutbox}}style="display: none"{{/if}}>
+        <img src="chrome://conversations/skin/icons/outbox.png" style="vertical-align: middle;" />
+        ${str("isOutbox")}
+        <span class="sendUnsent">
+          <a href="javascript:">${str("sendUnsent")}</a>
+        </span>
+      </div>
+
+      <div class="messageBody">
+        <!-- Weird markup to deal with whitespace DOM nodes -->
+        <ul class="tags special-tags"
+          ><li
+            class="keep-tag tag-signed"
+            title="${str('messageSignedLong')}"
+            ><img src="chrome://conversations/content/i/sign.png" />
+            ${str("messageSigned")}</li
+          ><li
+            class="keep-tag tag-decrypted"
+            title="${str('messageDecryptedLong')}"
+            ><img src="chrome://conversations/content/i/enc.png" />
+            ${str("messageDecrypted")}</li
+          ><li
+            class="keep-tag in-folder"
+            title="${str('jumpToFolder')}"
+            >${str("inFolder").replace("#1", folderName)}</li
+          ></ul
+        >
+        <ul class="tags regular-tags"></ul>
+        <div class="iframe-container"></div>
+        <div class="body-container"></div>
+        <div class="attachments-container">
+          {{tmpl "#attachmentsTemplate"}}
+        </div>
+        <div class="embedsContainer">
+        </div>
+      </div>
+      <div class="messageFooter">
+        <div class="footerActions">
+          <button class="edit-draft"><span>${str("editDraft2")}</span><span class="ext"></span></button>
+          <button class="buttonReply"><span>${str("reply")}</span><span class="ext"></span></button>
+          <button class="buttonReplyAll"><span>${str("replyAll")}</span><span class="ext"></span></button>
+          <button class="buttonReplyList"><span>${str("replyList")}</span><span class="ext"></span></button>
+          <button class="buttonForward">${str("forward")}<span class="ext"></span></button>
+        </div>
+      </div>
+      {{if quickReply}}
+        {{tmpl "#quickReplyTemplate"}}
+      {{/if}}
+    </li>
+    ]]>
+  </script>
+  <!-- Weird markup again, otherwise, the comma is separated from the name by a
+    space because of the #text whitespace-only nodes that end up in the DOM.
+  -->
+  <script id="contactTemplate" type="text/x-jquery-tmpl"><![CDATA[<span
+    >${separator}</span
+    ><span class="tooltipWrapper contact"
+      ><span class="contactName" style="${colorStyle}"
+        >{{if star}}&#x2605; {{/if}}${String.trim(name)}{{if writeBr}}<br />{{/if}}</span
+      ><div class="tooltip">
+        <div class="arrow"></div>
+        <div class="arrow inside"></div>
+        <div class="authorInfo">
+          <span class="name">${tooltipName}</span>
+          <span class="authorEmail">
+            ${email}
+            <button class="copyEmail" title="${str('copyEmail')}">
+              <img src="chrome://conversations/content/i/clipboard.png" />
+            </button>
+          </span>
+        </div>
+        <div class="authorPicture">
+          <img src="${avatar}" />
+        </div>
+        <div class="authorInfo authorLinks">
+          {{if ("facebook" in profiles)}}
+          <a href="http://www.facebook.com/profile.php?id=${profiles.facebook}" class="profile-link">
+            <img src="chrome://conversations/content/i/facebook.ico" />
+          </a>
+          {{/if}}
+          {{if ("twitter" in profiles)}}
+          <a href="http://www.twitter.com/${profiles.twitter}" class="profile-link">
+            <img src="chrome://conversations/content/i/twitter.ico" />
+          </a>
+          {{/if}}
+          {{if ("google" in profiles)}}
+          <a href="${profiles.google}" class="profile-link">
+            <img src="chrome://conversations/content/i/google.ico" />
+          </a>
+          {{/if}}
+          {{if ("flickr" in profiles)}}
+          <a href="${profiles.flickr}" class="profile-link">
+            <img src="chrome://conversations/content/i/flickr.ico" />
+          </a>
+          {{/if}}
+        </div>
+        <div class="tipFooter hiddenFooter" style="display:none;">
+          {{if (showMonospace)}}
+          <div style="margin-bottom:5px;">
+            <input type="checkbox" style="vertical-align: text-top" class="checkbox-monospace" />
+            <label style="color:#666; font-weight: normal">${str("messagesMonospace")}</label>
+          </div>
+          {{/if}}
+          <button class="createFilter">${str("createFilter")}</button>
+          <button class="addContact" title="${str('addToAb')}">
+            <img src="chrome://conversations/content/i/user_add.png" />
+          </button>
+          <button class="editContact" title="${str('editCardAb')}">
+            <img src="chrome://conversations/content/i/user_edit.png" />
+          </button>
+        </div>
+        <div class="tipFooter">
+          <button class="sendEmail">${str("sendEmail")}</button>
+          <button class="showInvolving">${str("recentConversations")}</button>
+          <button class="moreExpander">+</button>
+        </div>
+      </div
+    ></span
+  >]]></script>
+  <script id="attachmentIconTemplate" type="text/x-jquery-tmpl"><![CDATA[
+    {{if attachments.length}}
+      <img src="chrome://conversations/content/i/attachment.png" />
+    {{/if}}
+  ]]></script>
+  <script id="attachmentDetailsTemplate" type="text/x-jquery-tmpl"><![CDATA[
+    {{if attachments.length}}
+      <u>${attachmentsPlural}:</u>
+      {{each(i, att) attachments}}
+        <a href="javascript:"
+          onclick="scrollNodeIntoView(document.getElementById('${att.anchor}'));">
+          ${att.name} (${att.formattedSize})</a>${att.sep}
+      {{/each}}
+    {{/if}}
+  ]]></script>
+  <script id="attachmentsTemplate" type="text/x-jquery-tmpl"><![CDATA[
+    {{if attachments.length}}
+      <ul class="attachments">
+        <div class="attachHeader">
+          ${attachmentsPlural}
+          | <a href="javascript:" class="link download-all">${str("downloadAll2")}</a>
+          {{if gallery}}
+          | <a href="javascript:" onclick="galleryView('${uri}')" class="view-all">
+              ${str("galleryView")}
+            </a>
+          {{/if}}
+        </div>
+        {{each(i, att) attachments}}
+        <li class="clearfix hbox attachment" draggable="true" id="${att.anchor}">
+          <div class="attachmentThumb">
+            <img onload="$(this).closest('.attachment').find('.align').vAlign()"
+            class="${att.imgClass}" src="${att.thumb}" />
+          </div>
+          <div class="attachmentInfo align">
+            <span class="filename">${att.name}</span>
+            <div class="attachActions">
+              ${att.formattedSize}
+              {{if att.canPreview}}
+              | <a href="javascript:" class="link preview-attachment">${str("preview")}</a>
+              {{/if}}
+              | <a href="javascript:" class="link open-attachment">${str("open")}</a>
+              | <a href="javascript:" class="link download-attachment">${str("download2")}</a>
+            </div>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  ]]></script>
+  <script id="popularContactTemplate" type="text/x-jquery-tmpl"><![CDATA[
+    <div class="popularContact">
+      <img class="popularPhoto" src="${photo}" style="float: left" />
+      <span class="popularRemove">×</span>
+      <span class="popularName">${name}</span><br />
+      <span class="popularEmail">${email}</span>
+    </div>
+  ]]></script>
+  <script id="quickReplyTemplate" type="text/x-jquery-tmpl"><![CDATA[
+    <div class="quickReply" ondragover="quickReplyCheckDrag(event);" ondrop="quickReplyDrop(event);">
+      <div class="quickReplyContacts">
+        <div class="quickReplyContactsHeader">
+          ${str("mostFrequentContacts")}
+        </div>
+        <div class="quickReplyContactsBox">
+        </div>
+        <div class="quickReplyContactsMore">
+          <a class="quickReplyContactsMoreLink">
+            ${str("showMore")}
+          </a>
+        </div>
+      </div>
+      <div class="quickReplyBox">
+        <div class="replyHeader">
+          <div class="quickReplyRecipients">
+            <ul class="fromField">
+              ${str("fieldFrom")}
+              <li class="senderSwitcher" style="display: none"><a class="switchLeft">◂</a> <a class="switchRight">▸</a></li>
+              <li class="senderName"></li>,
+              <li class="replyMethod">
+                <input type="radio" name="reply-method" value="reply"
+                  onchange="changeComposeFields('reply')" id="reply-radio"
+                /><label for="reply-radio">${str("reply")}</label>
+              </li>
+              <li class="replyMethod replyMethod-replyAll">
+                <input type="radio" name="reply-method" value="replyAll"
+                  onchange="changeComposeFields('replyAll')" id="replyAll-radio"
+                /><label for="replyAll-radio">${str("replyAll")}</label>
+              </li>
+              <li class="replyMethod replyMethod-replyList">
+                <input type="radio" name="reply-method" value="replyList"
+                  onchange="changeComposeFields('replyList')" id="replyList-radio"
+                /><label for="replyList-radio">${str("replyList")}</label>
+              </li>
+              <li class="replyMethod">
+                <input type="radio" name="reply-method" value="forward"
+                  onchange="changeComposeFields('forward')" id="forward-radio"
+                /><label for="forward-radio">${str("forward")}</label>
+              </li>
+              <li class="firstBar">|</li>
+              <li class="showCc"><a onclick="showCc(); editFields('cc');" href="javascript:">${str("addCc")}</a> |</li>
+              <li class="showBcc"><a onclick="showBcc(); editFields('bcc');" href="javascript:">${str("addBcc")}</a> |</li>
+              <li class="addAttachment"><a onclick="addAttachment();" href="javascript:">${str("addAttachment")}</a></li>
+            </ul>
+            <div class="editRecipientList editToList hbox">
+              <div class="label">${str("fieldTo")}</div>
+              <div class="boxFlex"><input type="text" id="to" /></div>
+            </div>
+            <div class="editRecipientList editCcList hbox" style="display: none">
+              <div class="label">${str("fieldCc")}</div>
+              <div class="boxFlex"><input type="text" id="cc" /></div>
+            </div>
+            <div class="editRecipientList editBccList hbox" style="display: none">
+              <div class="label">${str("fieldBcc")}</div>
+              <div class="boxFlex"><input type="text" id="bcc" /></div>
+            </div>
+            <div class="editRecipientList editSubject hbox" style="display: none">
+              <div class="label">${str("fieldSubject")}</div>
+              <div class="boxFlex"><input type="text" id="subject" /></div>
+            </div>
+            <ul class="recipientList toList">
+              ${str("fieldTo")}
+              <li>${str("pleaseWait")}</li>
+              <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('to');">${str("edit")}</a></li>
+            </ul>
+            <ul class="recipientList ccList" style="display: none;">
+              ${str("fieldCc")}
+              <li>${str("pleaseWait")}</li>
+              <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('cc');">${str("edit")}</a></li>
+            </ul>
+            <ul class="recipientList bccList" style="display: none;">
+              ${str("fieldBcc")}
+              <li>${str("pleaseWait")}</li>
+              <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('bcc');">${str("edit")}</a></li>
+            </ul>
+          </div>
+          <div class="quickReplyAttachments">
+          </div>
+          <div class="quickReplyHeader" style="display: none; overflow: auto">
+            <span class="statusMessage" style="float: left;"></span>
+            <span class="statusPercentage" style="float: right;"></span>
+            <span class="statusThrobber" style="float: right;">
+              <img src="chrome://conversations/content/i/loader.gif"
+                style="vertical-align: middle;" />
+            </span>
+          </div>
+        </div>
+
+        <ul class="inputs cf" style="padding-right: ${str('actionsSize')}rem">
+          <li class="reply expand" ondragenter="quickReplyDragEnter(event);">
+            <div class="popout" title="${str('popoutReply')}" alt="popout">
+              <span class="popoutTxt">${str('popoutTxt')}</span>
+            </div>
+            <div class="textWrap">
+              <div class="icon"><span>${str("reply")}</span> <img src="i/reply.png" /></div>
+              <textarea class="sans"></textarea>
+            </div>
+          </li>
+
+          <li class="replyAll expand" ondragenter="quickReplyDragEnter(event);">
+            <div class="popout" title="${str('popoutReplyAll')}" alt="popout">
+              <span class="popoutTxt">${str('popoutTxt')}</span>
+            </div>
+            <div class="textWrap">
+              <div class="icon"><span>${str("replyAll")}</span> <img src="i/replyAll.png" /></div>
+              <textarea class="sans"></textarea>
+            </div>
+          </li>
+
+          <li class="misc" style="width: ${str('actionsSize')}rem">
+            <ul class="actions cf">
+              <li class="fwd"><a href="javascript:">${capitalize(str('forward'))}</a></li>
+              <li class="list"><a href="javascript:">${capitalize(str('replyList'))}</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="replyFooter" style="overflow: auto" tabindex="-1">
+          <button id="send" style="float:right;margin-left:3px;" onclick="gComposeSession.send();">
+            ${str("send")}
+          </button>
+          <button id="sendArchive" style="float:right;margin-left:3px;"
+              onclick="gComposeSession.send({ archive: true });">
+            ${str("sendArchive")}
+          </button>
+          <button id="save" style="float:right" onclick="onSave();">${str("save")}</button>
+          <a class="discard" href="javascript:" id="discard"
+            onclick="confirmDiscard()">${str("discard")}</a>
+        </div>
+      </div>
+    </div>
+    ]]>
+  </script>
+  <script id="quickReplyAttachmentTemplate" type="text/x-jquery-tmpl"><![CDATA[
+    <ul class="quickReplyAttachment">
+      ${str("attachment")}:
+      <li>${name}</li> (${size}) -
+      <a href="javascript:" class="removeAttachmentLink">${str("removeAttachment")}</a>
+    </ul>
+    ]]>
+  </script>
+  <div id="wrapper">
+    <div id="conversationHeaderWrapper">
+      <div id="conversationHeader" class="hbox">
+        <div class="subject boxFlex">&stub.loading;</div>
+        <div class="actions">
+          <button title="&stub.trash.tooltip;" onclick="deleteToolbar(event);">
+            <span class="trash"></span>
+          </button>
+          <button title="&stub.archive.tooltip;" onclick="archiveToolbar(event);">
+            <span class="archive"></span>
+          </button>
+          <button title="&stub.junk.tooltip;" class="junk-button" onclick="junkConversation(event);">
+            <span class="junk"></span>
+          </button>
+          <button title="&stub.expand.tooltip;" onclick="expandCollapse(event);">
+            <span class="expand"></span>
+          </button>
+          <button title="&stub.read.tooltip;" onclick="toggleRead(event);">
+            <span class="read"></span>
+          </button>
+          <button title="&stub.detach.tooltip2;" onclick="detachTab(event);">
+            <span class="tab"></span>
+          </button>
+          <!--<button><span class="mode"></span></button>-->
+        </div>
+      </div>
+    </div>
+    <ul id="messageList">
+    </ul>
+    <div class="bottom-links">
+      <a class="link" href="javascript:" onclick="forwardConversation(event);">
+        &stub.forward.tooltip;
+      </a> –
+      <a class="link" href="javascript:" onclick="printConversation(event);">
+        &stub.print.tooltip;
+      </a>
+    </div>
+  </div>
+</body>
+</html>

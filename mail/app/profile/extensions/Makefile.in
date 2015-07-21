@@ -18,6 +18,7 @@ include $(topsrcdir)/config/rules.mk
 # affect them unintentionally.
 EXTENSIONS = \
   mrc_compose@mr-consultant.net \
+  gconversation@xulforum.org \
   $(NULL)
 
 # We are in release mode, we don't want to ship the debug file.

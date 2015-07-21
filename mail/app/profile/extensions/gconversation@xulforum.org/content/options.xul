@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is GMail Conversation View
+   -
+   - The Initial Developer of the Original Code is
+   - Jonathan Protzenko <jonathan.protzenko@gmail.com>
+   - Portions created by the Initial Developer are Copyright (C) 2010
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -  Jonathan Protzenko <jonathan.protzenko@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE window SYSTEM "chrome://conversations/locale/options.dtd">
+ 
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <setting pref="conversations.expand_who" type="radio" title="&option.expand_who;">  
+    <radiogroup>  
+      <radio value="1" label="&option.expand_none;" />
+      <radio value="3" label="&option.expand_all;" />
+      <radio value="4" label="&option.expand_auto2;" tooltiptext="&option.expand_auto2.tooltip;"/>
+    </radiogroup>  
+  </setting>
+
+  <setting title="&title.quoting2;" desc="&desc.quoting;" pref="conversations.hide_quote_length" type="integer" />
+
+  <setting title="&title.friendly_date;" desc="&option.no_friendly_date2;" pref="conversations.no_friendly_date" type="bool" />
+  <setting title="&title.tweak_chrome;" desc="&option.tweak_chrome;" pref="conversations.tweak_chrome" type="bool" />
+  <setting title="&title.tweak_bodies;" desc="&option.tweak_bodies;" pref="conversations.tweak_bodies" type="bool" />
+  <setting title="&title.add_embeds;" desc="&option.add_embeds;" pref="conversations.add_embeds" type="bool" />
+  <setting title="&title.monospaced_senders;" desc="&option.monospaced_senders2;" pref="conversations.monospaced_senders" type="string" />
+
+  <setting title="&title.send_in_background;" desc="&desc.send_in_background;"
+    pref="mailnews.sendInBackground" type="bool" />
+
+  <setting title="&title.operate_on_conversations;" desc="&option.operate_on_conversations;" pref="conversations.operate_on_conversations" type="bool" />
+  <setting title="&title.assistant;" type="control">  
+    <button label="&option.assistant;"
+      oncommand="window.openDialog('chrome://conversations/content/assistant/assistant.xhtml', '', 'chrome,width=800,height=500');"
+     />
+  </setting>
+  <setting title="&title.extra_attachments;" desc="&desc.extra_attachments2;" pref="conversations.extra_attachments" type="bool" />
+  <setting title="&title.compose_in_tab;" desc="&desc.compose_in_tab;" pref="conversations.compose_in_tab" type="bool" />
+  <setting title="&title.fcc_follows_if_not_inbox;" desc="&desc.fcc_follows_if_not_inbox;" pref="conversations.fcc_follows_if_not_inbox" type="bool" />
+  <setting title="&title.debugging;" desc="&desc.debugging;" pref="conversations.logging_enabled" type="bool" />
+ 
+</vbox>
