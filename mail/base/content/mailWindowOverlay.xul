@@ -58,7 +58,7 @@
 <script type="application/javascript" src="chrome://global/content/viewZoomOverlay.js"/>
 <script type="application/javascript" src="chrome://messenger/content/newmailaccount/uriListener.js"/>
 <script type="application/javascript" src="chrome://messenger-newsblog/content/utils.js"/>
-
+<script type="application/javascript" src="chrome://messenger/content/importEML.js"/>
 <stringbundleset id="stringbundleset">
   <stringbundle id="bundle_messenger" src="chrome://messenger/locale/messenger.properties"/>
   <stringbundle id="bundle_offlinePrompts" src="chrome://messenger/locale/offline.properties"/>
@@ -878,6 +878,9 @@
       <menuitem id="folderPaneContext-exporteml"
                 label="&folderContextExporteml.label;"
                 oncommand="Exportemls();"/>
+      <menuitem id="folderPaneContext-importeml"
+                label="&folderContextImporteml.label;"
+                oncommand="importEMLs();"/>
     <menuitem id="folderPaneContext-newsUnsubscribe"
               label="&folderContextUnsubscribe.label;"
               accesskey="&folderContextUnsubscribe.accesskey;"

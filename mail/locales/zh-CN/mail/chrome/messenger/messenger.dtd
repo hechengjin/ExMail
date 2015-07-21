@@ -632,6 +632,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY folderContextMarkMailFolderRead.label "标记邮件夹已读">
 <!ENTITY folderContextMarkMailFolderRead.accesskey "k">
 <!ENTITY folderContextSubscribe.label "订阅…">
+<!ENTITY folderContextExporteml.label "导出eml">
+<!ENTITY folderContextImporteml.label "导入eml">
 <!ENTITY folderContextSubscribe.accesskey "b">
 <!ENTITY folderContextSearchForMessages.label "搜索邮件…">
 <!ENTITY folderContextSearchForMessages.accesskey "S">

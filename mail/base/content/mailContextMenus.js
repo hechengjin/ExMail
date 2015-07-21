@@ -468,6 +468,8 @@ function fillFolderPaneContextMenu()
 
     ShowMenuItem("folderPaneContext-exporteml",
         numSelected == 1 );
+    ShowMenuItem("folderPaneContext-importeml",
+        numSelected == 1 );
 
   // --- Set up the unsubscribe menu item.
   ShowMenuItem("folderPaneContext-newsUnsubscribe", haveOnlyNewsgroups);
