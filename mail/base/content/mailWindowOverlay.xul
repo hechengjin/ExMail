@@ -875,6 +875,9 @@
               label="&folderContextSubscribe.label;"
               accesskey="&folderContextSubscribe.accesskey;"
               oncommand="MsgSubscribe();"/>
+      <menuitem id="folderPaneContext-exporteml"
+                label="&folderContextExporteml.label;"
+                oncommand="Exportemls();"/>
     <menuitem id="folderPaneContext-newsUnsubscribe"
               label="&folderContextUnsubscribe.label;"
               accesskey="&folderContextUnsubscribe.accesskey;"

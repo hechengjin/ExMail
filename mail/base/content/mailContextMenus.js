@@ -466,6 +466,9 @@ function fillFolderPaneContextMenu()
   ShowMenuItem("folderPaneContext-subscribe",
                numSelected == 1 && haveOnlySubscribableFolders);
 
+    ShowMenuItem("folderPaneContext-exporteml",
+        numSelected == 1 );
+
   // --- Set up the unsubscribe menu item.
   ShowMenuItem("folderPaneContext-newsUnsubscribe", haveOnlyNewsgroups);
 
