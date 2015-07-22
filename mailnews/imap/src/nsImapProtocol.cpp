@@ -6027,7 +6027,10 @@ void nsImapProtocol::UploadMessageFromFile (nsIFile* file,
           // Courier imap server seems to have problems with recently
           // appended messages. Noop seems to clear its confusion.
           if (FolderIsSelected(mailboxName))
-              Noop();
+    		  {
+                  Noop();
+    			  GetServerStateParser().SetCommandFailed(false);
+    		  }
 
           nsCString oldMsgId;
           rv = m_runningUrl->GetListOfMessageIds(oldMsgId);
@@ -6406,7 +6409,7 @@ void nsImapProtocol::Noop()
 
   nsresult rv = SendData(command.get());
   if (NS_SUCCEEDED(rv))
-      ParseIMAPandCheckForNewMail();
+      ParseIMAPandCheckForNewMail(nullptr, true);
 }
 
 void nsImapProtocol::XServerInfo()
