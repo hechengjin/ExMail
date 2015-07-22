@@ -151,6 +151,7 @@ function OnLoadNewCard()
   if (gHideABPicker && abPopup) {
     abPopup.hidden = true;
     document.getElementById("abPopupLabel").hidden = true;
+    document.getElementById("selMailList").hidden = true;
   }
 
   SetCardDialogTitle(gEditCard.card.displayName);
@@ -467,16 +468,20 @@ function NewCardOKButton()
       var directory = GetDirectoryFromURI(uri);
       gEditCard.card = directory.addCard(gEditCard.card);
         ////////////////////////////////////////
-      let targetList = this.GetMailListDirectory();
-        // 加入新的组
-        if ( targetList != null )
-        {
-            let cardToList = Components.classes["@mozilla.org/addressbook/cardproperty;1"].createInstance();
-            cardToList = cardToList.QueryInterface(Components.interfaces.nsIAbCard);
-            cardToList.primaryEmail = gEditCard.card.getProperty("PrimaryEmail", null);
-            targetList.addressLists.appendElement(cardToList, false);
-            targetList.editMailListToDatabase(null);
+        try{
+            let targetList = this.GetMailListDirectory();
+            if ( targetList != null )
+            {
+                let cardToList = Components.classes["@mozilla.org/addressbook/cardproperty;1"].createInstance();
+                cardToList = cardToList.QueryInterface(Components.interfaces.nsIAbCard);
+                cardToList.primaryEmail = gEditCard.card.getProperty("PrimaryEmail", null);
+                targetList.addressLists.appendElement(cardToList, false);
+                targetList.editMailListToDatabase(null);
+            }
         }
+        catch(e)
+        {
+        }   
 
         /////////////////////////////////////////
       NotifySaveListeners(directory);
@@ -491,7 +496,7 @@ function NewCardOKButton()
 
   return true;  // close the window
 }
-function GetMailListDirectory(rootUri){
+function GetMailListDirectory(){
     var selMailList = document.getElementById('selMailList');
     var popup = document.getElementById('abPopup');
     if ( popup )
@@ -689,6 +694,14 @@ function CheckCardRequiredDataPresence(doc)
       gAddressBookBundle.getString("cardRequiredDataMissingTitle"),
       gAddressBookBundle.getString("cardRequiredDataMissingMessage"));
 
+    return false;
+  }
+  if (primaryEmail.textLength == 0) {
+    Services.prompt.alert(
+      window,
+      gAddressBookBundle.getString("cardRequiredDataMissingTitle"),
+      gAddressBookBundle.getString("cardRequiredEmailMissingMessage"));
+      primaryEmail.focus();
     return false;
   }
 
