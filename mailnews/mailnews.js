@@ -706,7 +706,7 @@ pref("msgcompose.background_color",         "#FFFFFF");
 
 // When there is no disclosed recipients (only bcc), we should address the message to empty group
 // to prevent some mail server to disclose the bcc recipients
-pref("mail.compose.add_undisclosed_recipients", true);
+pref("mail.compose.add_undisclosed_recipients", false);
 
 // Set this preference to true to tell mail not to attach the source of a link to a local
 // network file (file://///<network name>/<path>/<file name>). Windows only
