@@ -487,6 +487,8 @@ function goEditListDialog(abCard, listURI)
                     "",
                     "chrome,modal,resizable=no,centerscreen",
                     {abCard:abCard, listURI:listURI});
+					
+  SetAbView(GetSelectedDirectory());	// refresh
 }
 
 function goNewCardDialog(selectedAB)
