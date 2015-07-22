@@ -837,6 +837,6 @@ pref("mail.pgpmime.addon_url", "https://addons.mozilla.org/thunderbird/addon/eni
 
 // If set to true, Thunderbird will collapse the main menu for new profiles
 // (or, more precisely, profiles that start with no accounts created).
-pref("mail.main_menu.collapse_by_default", true);
+pref("mail.main_menu.collapse_by_default", false);
 
 pref("browser.helperApps.neverAsk.openFile", "image/png image/bmp image/jpeg image/gif text/plain");
