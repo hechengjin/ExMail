@@ -214,6 +214,7 @@
 @BINPATH@/distribution/extensions/mrc_compose@mr-consultant.net.xpi
 @BINPATH@/distribution/extensions/gconversation@xulforum.org.xpi
 @BINPATH@/distribution/extensions/mailmerge@example.net.xpi
+@BINPATH@/distribution/extensions/copysent2current@ggbs.de.xpi
 
 ; Gloda
 @BINPATH@/chrome/gloda@JAREXT@

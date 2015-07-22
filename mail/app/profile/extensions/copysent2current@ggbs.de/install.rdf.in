@@ -1,0 +1,104 @@
+﻿<?xml version="1.0"?>
+<RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+     xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>copysent2current@ggbs.de</em:id>
+    <em:version>1.1.2</em:version>
+    <em:type>2</em:type>
+    <em:optionsURL>chrome://copysent2current/content/options.xul</em:optionsURL>
+    
+    <em:iconURL>chrome://copysent2current/skin/copyMailIcon.png</em:iconURL>
+    
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>1.0</em:minVersion>
+        <em:maxVersion>32.0</em:maxVersion><!--TB-->
+      </Description>
+    </em:targetApplication>
+    <!--  SeaMonkey -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.1</em:minVersion>
+        <em:maxVersion>2.29</em:maxVersion><!--SM-->
+      </Description>
+    </em:targetApplication>
+
+    <em:name>Copy Sent to Current</em:name>
+    <em:creator>Günter Gersdorf</em:creator>
+    <em:description>Allows to (additionally) save a copy of sent messages to the current folder or choose folder on send</em:description>
+    <em:homepageURL>http://www.ggbs.de/extensions/CopySent2Current.html</em:homepageURL>
+    <em:contributor>Thanks to all translators!</em:contributor>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Copy Sent to Current</em:name>
+        <em:creator>Günter Gersdorf</em:creator>
+        <em:description>Erlaubt es eine Kopie gesendeter Mails (zusätzlich) im aktuellen oder einem anderen Ordner zu speichern</em:description>
+		    <em:homepageURL>http://www.ggbs.de/extensions/CopySent2Current.html</em:homepageURL>
+		    <em:contributor>Danke an alle Übersetzer!</em:contributor>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>en</em:locale>
+        <em:name>Copy Sent to Current</em:name>
+        <em:description>Allows to (additionally) save a copy of sent messages to the current folder or choose folder on send</em:description>
+        <em:creator>Günter Gersdorf</em:creator>
+        <em:homepageURL>http://www.ggbs.de/extensions</em:homepageURL>
+        <em:translator>Günter Gersdorf</em:translator>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>sv-SE</em:locale>
+        <em:name>Copy Sent to Current</em:name>
+        <em:description>LÃ¥ter dig spara (ytterligare) en kopia av skickade meddelanden vid sÃ¤ndning, till den aktuella mappen eller till en egenvald mapp</em:description>
+        <em:creator>Günter Gersdorf</em:creator>
+        <em:homepageURL>http://www.ggbs.de/extensions</em:homepageURL>
+        <em:translator>Mikael Hiort af Ornäs</em:translator>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>da</em:locale>
+        <em:name>Copy Sent to Current</em:name>
+        <em:description>Giver mulighed for (yderligere) at gemme en kopi af sendt meddelelse i den nuvÃ¦rende mappe eller at vÃ¦lge en mappe ved afsendelse</em:description>
+        <em:creator>Gynter Gersdorf</em:creator>
+        <em:homepageURL>http://www.ggbs.de/extensions</em:homepageURL>
+        <em:translator>Joergen</em:translator>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>sr</em:locale>
+        <em:name>Copy Sent to Current</em:name>
+        <em:description>ÐžÐ¼Ð¾Ð³ÑƒÑ›Ð°Ð²Ð° Ð´Ð° ÑÐ°Ñ‡ÑƒÐ²Ð°Ñ‚Ðµ ÐºÐ¾Ð¿Ð¸Ñ˜Ñƒ Ð¿Ð¾ÑÐ»Ð°Ñ‚Ðµ Ð¿Ð¾Ñ€ÑƒÐºÐµ Ñƒ Ñ‚Ñ€ÐµÐ½ÑƒÑ‚Ð½Ñƒ Ñ„Ð°ÑÑ†Ð¸ÐºÐ»Ñƒ Ð¸Ð»Ð¸ Ð¸Ð·Ð°Ð±ÐµÑ€ÐµÑ‚Ðµ Ñ„Ð°ÑÑ†Ð¸ÐºÐ»Ñƒ Ð½Ð°ÐºÐ¾Ð½ ÑÐ»Ð°ÑšÐ°, Ð°ÐºÐ¾ Ð¶ÐµÐ»Ð¸Ñ‚Ðµ.</em:description>
+        <em:creator>ÐÑƒÑ‚Ð¾Ñ€:</em:creator>
+        <em:homepageURL>http://www.ggbs.de/extensions</em:homepageURL>
+        <em:translator>Republic of Srpska</em:translator>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>ru</em:locale>
+        <em:name>Copy Sent to Current</em:name>
+        <em:description>ÐŸÐ¾Ð·Ð²Ð¾Ð»ÑÐµÑ‚ (Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾) ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÑ‚ÑŒ ÐºÐ¾Ð¿Ð¸Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð¿Ð°Ð¿ÐºÐµ Ð¸Ð»Ð¸ Ð¿Ð°Ð¿ÐºÐµ Ð²Ñ‹Ð±Ð¸Ñ€Ð°ÐµÐ¼Ð¾Ð¹ Ð¿Ñ€Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ð¸</em:description>
+        <em:creator>GÃ¼nter Gersdorf</em:creator>
+        <em:homepageURL>http://www.ggbs.de/extensions</em:homepageURL>
+        <em:translator>ÐŸÐ¸Ñ€ÑÑ‚Ð¸Ð½ÑÐºÐ¸Ð¹ Ð’Ð¸Ñ‚Ð°Ð»Ð¸Ð¹</em:translator>
+      </Description>
+    </em:localized>
+
+
+  </Description>
+</RDF>

@@ -1,0 +1,31 @@
+content copysent2current jar:chrome/CopySent2Current.jar!/content/
+locale copysent2current en jar:chrome/CopySent2Current.jar!/locale/en/
+locale copysent2current de jar:chrome/CopySent2Current.jar!/locale/de/
+locale copysent2current ja jar:chrome/CopySent2Current.jar!/locale/ja/
+locale copysent2current es jar:chrome/CopySent2Current.jar!/locale/es/
+locale copysent2current fr jar:chrome/CopySent2Current.jar!/locale/fr/
+locale copysent2current nl jar:chrome/CopySent2Current.jar!/locale/nl/
+locale copysent2current pt-PT jar:chrome/CopySent2Current.jar!/locale/pt-PT/
+locale copysent2current pt-BR jar:chrome/CopySent2Current.jar!/locale/pt-BR/
+locale copysent2current ru jar:chrome/CopySent2Current.jar!/locale/ru/
+locale copysent2current uk jar:chrome/CopySent2Current.jar!/locale/uk/
+locale copysent2current hr jar:chrome/CopySent2Current.jar!/locale/hr/
+locale copysent2current it jar:chrome/CopySent2Current.jar!/locale/it/
+locale copysent2current hu jar:chrome/CopySent2Current.jar!/locale/hu/
+locale copysent2current tr jar:chrome/CopySent2Current.jar!/locale/tr/
+locale copysent2current zh-CN jar:chrome/CopySent2Current.jar!/locale/zh-CN/
+locale copysent2current sv-SE jar:chrome/CopySent2Current.jar!/locale/sv-SE/
+locale copysent2current da jar:chrome/CopySent2Current.jar!/locale/da/
+locale copysent2current sr jar:chrome/CopySent2Current.jar!/locale/sr/
+
+overlay chrome://messenger/content/am-copiesOverlay.xul chrome://copysent2current/content/copiesandfolder.xul
+#needed for TB3-8 (no Scrollbar!):
+overlay chrome://messenger/content/AccountManager.xul chrome://copysent2current/content/accountManager.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://copysent2current/content/compose.xul
+skin  copysent2current classic/1.0 jar:chrome/CopySent2Current.jar!/skin/
+style chrome://global/content/customizeToolbar.xul chrome://copysent2current/skin/copysent2current.css
+
+interfaces components/CopySent2Current.xpt
+component {980dc71c-962d-464c-af38-eb45984d2a13} components/CopySent2Current.js
+contract @ggbs.de/copySent2Current;1 {980dc71c-962d-464c-af38-eb45984d2a13}
+category profile-after-change nsICopySent2Current @ggbs.de/copySent2Current;1

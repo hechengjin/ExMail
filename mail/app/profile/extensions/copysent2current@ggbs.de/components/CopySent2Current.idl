@@ -1,0 +1,26 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(980dc71c-962d-464c-af38-eb45984d2a13)]
+interface de_ggbs_CopySent2Current : nsISupports
+{
+  /* preferences */
+  attribute long      maxLength;
+
+  /* global values */
+  attribute long      length;
+  attribute string    ak_nc;
+  attribute string    ak_d;
+  attribute string    ak_s;
+  attribute string    ak_lu;
+  attribute string    ak_send;
+  attribute boolean   chooseBehind;
+  attribute boolean   moveMsg;
+  attribute boolean   noMoveTrash;
+  attribute boolean   numberedAccessKeys;
+
+  /* funcion */
+  void     add_URI(in string uri);
+  void     del_URI(in long i);
+  string   get_URI(in long i);
+
+};

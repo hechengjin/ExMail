@@ -20,6 +20,7 @@ EXTENSIONS = \
   mrc_compose@mr-consultant.net \
   gconversation@xulforum.org \
   mailmerge@example.net \
+  copysent2current@ggbs.de \
   $(NULL)
 
 # We are in release mode, we don't want to ship the debug file.
