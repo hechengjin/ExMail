@@ -1168,7 +1168,13 @@ function IsReplyAllEnabled()
     addresses += currentHeaderData.bcc.headerValue;
 
   // Check to see if my email address is in the list of addresses.
-  let myEmail = getIdentityForHeader(msgHdr).email;
+  //let myEmail = getIdentityForHeader(msgHdr).email;
+  let myEmail = null;
+  let identity = getIdentityForHeader(msgHdr);
+  if (identity) {
+    myEmail = identity.email;
+  }
+  
   // We aren't guaranteed to have an email address, so guard against that.
   let imInAddresses = myEmail && (addresses.toLowerCase().indexOf(
                                     myEmail.toLowerCase()) != -1);
