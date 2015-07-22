@@ -3671,7 +3671,7 @@ XREMain::XRE_mainRun()
           // reset the profile.
           aKey = MOZ_APP_NAME;
         }
-        pm->Migrate(&mDirProvider, aKey);
+        //pm->Migrate(&mDirProvider, aKey);
       }
     }
 
