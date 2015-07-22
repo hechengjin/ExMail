@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/minmaxcss.css" type="text/css"?>
+
+<!DOCTYPE dialog [
+        <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd" >
+        <!ENTITY % changempDTD SYSTEM "chrome://mozapps/locale/preferences/changemp.dtd" >
+        %brandDTD;
+        %changempDTD;
+        ]>
+
+<dialog id="changemp" title="&setPassword.title;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        ondialogaccept="return setPassword();"
+        onload="init()"
+        chromemargin="0,0,0,0"
+        class="windowFrame"
+        width="460"
+        height="240"
+        titlebox="true">
+
+    <script type="application/javascript" src="chrome://mintrayr/content/messenger/changemp.js"/>
+    <stringbundle id="bundlePreferences" src="chrome://mozapps/locale/preferences/preferences.properties"/>
+
+    <label value="&masterPasswordDescription2.label;" style="margin-top: 20px"/>
+
+    <grid flex="1">
+        <columns>
+            <column/>
+            <column flex="1"/>
+        </columns>
+        <rows>
+            <row id="oldPasswordRow" align="center" height="34">
+                <label id="oldPassword" class="textRightAlign" control="oldpw" value="&setPassword.oldPassword.label;"/>
+                <textbox id="oldpw" type="password"/>
+            </row>
+
+            <row align="center" height="34">
+                <label control="pw1" class="textRightAlign" value="&setPassword.EnterPassword.label;"/>
+                <textbox id="pw1" width="300" placeholder="&setFitPassword.EnterPassword.label;"
+                         onclick="pw1ClearEnterPasswordTips();" onkeydown="pw1KeyDown();"
+                         oninput="setPasswordStrength(); checkPasswords();"/>
+            </row>
+
+            <row align="center" height="34">
+                <label control="pw2" class="textRightAlign" value="&setPassword.reenterPassword.label;"/>
+                <textbox id="pw2" width="300" placeholder="&setPassword.reenterPassword.label;"
+                         type="password" oninput="checkPasswords();"/>
+            </row>
+
+            <row height="34">
+                <spacer/>
+                <label id="masterPasswordError" value="" align="right" hidden="true" style="color:red"/>
+            </row>
+        </rows>
+    </grid>
+
+    <groupbox hidden="true">
+        <caption label="&setPassword.meter.label;"/>
+        <progressmeter id="pwmeter" mode="determined" value="0"/>
+    </groupbox>
+
+    <description hidden="true" control="pw2" class="header">&masterPasswordWarning.label;</description>
+
+</dialog>

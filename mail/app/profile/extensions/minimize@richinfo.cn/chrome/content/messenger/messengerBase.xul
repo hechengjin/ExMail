@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xul-overlay href="chrome://mintrayr/content/common.xul"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/ -->
+<!DOCTYPE overlay [
+  <!ENTITY % messengerDTD SYSTEM "chrome://mintrayr/locale/messenger.dtd">
+  %messengerDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/javascript"
+            src="chrome://messenger/content/msgAccountCentral.js"/>
+
+  <keyset id="mailKeys">
+    <keyset id="MinTrayR_keyset"/>
+  </keyset>
+
+  <menupopup id="menu_FilePopup">
+    <menuitem id="MinTrayR_minimize" insertafter="menu_FileCloseSeparator"/>
+  </menupopup>
+
+  <popupset>
+      <menupopup id="MinTrayR_context" mintrayr_newmessage="&mintrayr.newmessage;">
+       <!-- <menuseparator id="MinTrayR_sep-top"/>
+        <menuseparator id="MinTrayR_sep-bottom"/>
+        -->
+
+        <!-- mapaPlus.lock(false,false,true)
+        lock()/>
+      -->
+          <menuitem id="MinTrayR_composeMessage" label="&mintrayr.newmessage;"
+                    oncommand="MsgNewMessage(event);"/>
+          <menuitem id="MinTrayR_getAllNewMsg" label="&mintrayr.getAllNewMsg;"
+                    oncommand="MsgGetMessagesForAllAuthenticatedAccounts();"/>
+          <menuseparator id="MinTrayR_separator_AddNewAcc" />
+          <menuitem id="MinTrayR_addNewAccount" label="&mintrayr.addNewAccount;"
+                    oncommand="CreateNewAccountTB();"/>
+           <menuitem id="MinTrayR_LockApp" label="&mintrayr.lockApp;" hidden="true"
+                    oncommand="lock();"/>
+          <menuseparator/>
+          <menuitem id="MinTrayR_quit" label="&mintrayr.quit;"
+                    oncommand="goQuitApplication();"/>
+      </menupopup>
+      
+      <menupopup id="MinTrayR_mapapluslock">
+          <menuitem id="MinTrayR_mapaplusunlock" label="&mintrayr.removeLock;" oncommand="unlock()"/>
+      </menupopup>
+    </popupset>
+</overlay>

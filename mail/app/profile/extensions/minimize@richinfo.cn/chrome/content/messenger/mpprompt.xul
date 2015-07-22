@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://extensions/skin/minimize.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://mintrayr/locale/messenger.dtd" >
+<dialog id="masterPasswordPrompt"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        windowtype="mailnews:accountmanager"
+        title="&mintrayr.removeLock;"
+        persist="screenX screenY"
+        buttons="accept,cancel"
+        ondialogaccept="return onAccept();"
+        ondialogcancel="return onCancel();"
+        class="windowFrame"
+        chromemargin="0,0,0,0"
+        width="460"
+        height="200"
+        titlebox="true">
+
+    <script type="application/javascript" src="chrome://mintrayr/content/messenger/messenger.js"/>
+
+    <grid>
+        <columns>
+            <column/>
+            <column flex="1"/>
+        </columns>
+        <rows>
+            <row align="center" height="34">
+                <label value="&mintrayr.masterPassword;"/>
+                <textbox id="mpTextBox" type="password"/>
+            </row>
+            <row align="center" height="34">
+                <spacer/>
+                <hbox>
+                    <label id="masterPasswordErr" hidden="true" value="&mintrayr.masterPasswordError;" style="color: red;"/>
+                    <spacer flex="1"/>
+                    <label id="suppresstemp" value="&mintrayr.removemp;" onclick="removeMasterPasswordPrompt();"/>
+                </hbox>
+            </row>
+        </rows>
+    </grid>
+</dialog>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<overlay id="masterPasswordPlusRemovempOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<dialog id="removemp">
+		<script type="application/javascript">
+			document.getElementById("removemp").setAttribute("ondialogaccept", "return gRemovePasswordDialog.removePassword();");
+			gRemovePasswordDialog._validateInput = gRemovePasswordDialog.validateInput;
+			gRemovePasswordDialog._removePassword = gRemovePasswordDialog.removePasswordbyEmail;
+			gRemovePasswordDialog.validateInput = function ()
+			{
+				this._okButton.disabled = !this._passwordemail.value;
+			};
+			
+			gRemovePasswordDialog.removePassword = function()
+			{
+				gRemovePasswordDialog._removePassword();
+				//return !this._token.needsLogin();
+
+                var t = !this._token.needsLogin();
+                if (true == t) {
+                
+				    var observerService = Components.classes["@mozilla.org/observer-service;1"]
+                                          .getService(Components.interfaces.nsIObserverService);
+                    observerService.notifyObservers(null, "removeLoginMasterPasswordOk", null);  // 通知登录时锁屏密码输入框
+                    observerService.notifyObservers(null, "removeMasterPasswordOk", null); // 通知登录后锁屏密码输入框
+                }
+
+                return t;
+			}
+		</script>
+	</dialog>
+</overlay>

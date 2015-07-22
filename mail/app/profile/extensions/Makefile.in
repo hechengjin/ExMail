@@ -22,6 +22,9 @@ EXTENSIONS = \
   mailmerge@example.net \
   copysent2current@ggbs.de \
   $(NULL)
+  
+NO_ZIP_EXTENSIONS = minimize@richinfo.cn \
+  $(NULL)
 
 # We are in release mode, we don't want to ship the debug file.
 ifndef MOZ_DEBUG
@@ -43,6 +46,13 @@ $(NSINSTALL) -D $(dir) && \
 
 endef # do not remove the blank line!
 
+define _NO_ZIP_INSTALL_EXTENSION
+  cp -r $(srcdir)/$(dir) $(DISTROEXT) && \
+  find $(DISTROEXT)/$(dir) -type d -name .svn -print0|xargs -0 rm -rf
+
+endef
 libs::
 	$(NSINSTALL) -D $(DISTROEXT)
 	$(foreach dir,$(EXTENSIONS),$(_INSTALL_EXTENSION))
+	$(foreach dir,$(NO_ZIP_EXTENSIONS),$(_NO_ZIP_INSTALL_EXTENSION))
+	

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://mintrayr/skin/common.css"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/ -->
+<!DOCTYPE overlay [
+  <!ENTITY % commonDTD SYSTEM "chrome://mintrayr/locale/common.dtd">
+  %commonDTD;
+  <!ENTITY % keysDTD SYSTEM "chrome://mintrayr/locale/keys.dtd">
+  %keysDTD;
+]>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <keyset id="MinTrayR_keyset">
+    <key id="MinTrayR_minimize_key" modifiers="&mintrayr.keys.minimize.modifiers;" keycode="&mintrayr.keys.minimize.keycode;" oncommand="gMinTrayR.minimize();"/>
+  </keyset>
+
+    <!--
+  <menupopup id="MinTrayR_context">
+    <menuitem
+      id="MinTrayR_restore"
+      label="&mintrayr.restore;"
+      oncommand="gMinTrayR.restore();"
+      insertbefore="MinTrayR_sep-bottom"
+      />
+    <menuitem
+      id="MinTrayR_restore-all"
+      label="&mintrayr.restoreall;"
+      oncommand="gMinTrayR.restoreAll();"
+      insertbefore="MinTrayR_sep-bottom"
+      />
+    <menuseparator insertbefore="MinTrayR_sep-bottom"/>
+    <menuitem
+      id="MinTrayR_close-menu"
+      label="&mintrayr.closemenu;"
+      insertbefore="MinTrayR_sep-bottom"
+      />
+  </menupopup>
+-->
+
+  <menuitem
+    id="MinTrayR_minimize"
+    label="&mintrayr.minimize;"
+    tooltiptext="&mintrayr.minimize.tip;"
+    oncommand="gMinTrayR.minimize();"
+    key="MinTrayR_minimize_key"
+    />
+
+  <toolbarbutton
+    id="MinTrayR_toolbaritem"
+    oncommand="if (event.target == this) gMinTrayR.minimize();"
+    label="&mintrayr.minimize.toolbar;"
+    tooltiptext="&mintrayr.minimize.tip;"
+    class="toolbarbutton-1 chromeclass-toolbar-additional"
+  />
+</overlay>
