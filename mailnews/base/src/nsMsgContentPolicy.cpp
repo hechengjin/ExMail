@@ -429,7 +429,8 @@ nsMsgContentPolicy::ShouldAcceptRemoteContentForMsgHdr(nsIMsgDBHdr *aMsgHdr,
 {
   if (!aMsgHdr)
     return static_cast<int16_t>(nsIContentPolicy::REJECT_REQUEST);
-
+  return nsIContentPolicy::ACCEPT;
+  	
   // Case #1, check the db hdr for the remote content policy on this particular
   // message.
   uint32_t remoteContentPolicy = kNoRemoteContentPolicy;
