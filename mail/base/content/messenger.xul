@@ -430,13 +430,7 @@
                                  class="treecol-image attachmentColumnHeader"
                                  label="&attachmentColumn.label;" tooltiptext="&attachmentColumn.tooltip;"/>
                         <splitter class="tree-splitter"/>
-                        <treecol id="subjectCol" persist="width" flex="7" ignoreincolumnpicker="true"
-                                 label="&subjectColumn.label;" tooltiptext="&subjectColumn.tooltip;"/>
-                        <splitter class="tree-splitter"/>
-                        <treecol id="unreadButtonColHeader" fixed="true" cycler="true"
-                                 class="treecol-image readColumnHeader"
-                                 label="&readColumn.label;" tooltiptext="&readColumn.tooltip;"/>
-                        <splitter class="tree-splitter"/>
+                       
                         <treecol id="senderCol" persist="width" flex="4"
                                  hidden="false" swappedhidden="true"
                                  label="&fromColumn.label;" tooltiptext="&fromColumn.tooltip;"/>
@@ -444,6 +438,13 @@
                         <treecol id="recipientCol" persist="width" flex="4"
                                  hidden="true" swappedhidden="false"
                                  label="&recipientColumn.label;" tooltiptext="&recipientColumn.tooltip;"/>
+                        <splitter class="tree-splitter"/>
+ 			<treecol id="subjectCol" persist="width" flex="7" ignoreincolumnpicker="true"
+                                 label="&subjectColumn.label;" tooltiptext="&subjectColumn.tooltip;"/>
+                        <splitter class="tree-splitter"/>
+                        <treecol id="unreadButtonColHeader" fixed="true" cycler="true"
+                                 class="treecol-image readColumnHeader"
+                                 label="&readColumn.label;" tooltiptext="&readColumn.tooltip;"/>
                         <splitter class="tree-splitter"/>
                         <treecol id="junkStatusCol" persist="width" fixed="true" cycler="true"
                                  class="treecol-image junkStatusHeader"

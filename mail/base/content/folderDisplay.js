@@ -368,10 +368,10 @@ FolderDisplayWidget.prototype = {
     "attachmentCol",
     "flaggedCol",
     "subjectCol",
-    "unreadButtonColHeader",
+    //"unreadButtonColHeader",
     "senderCol", // incoming folders
     "recipientCol", // outgoing folders
-    "junkStatusCol",
+    //"junkStatusCol",
     "dateCol",
     "locationCol", // multiple-folder backed folders
   ],
