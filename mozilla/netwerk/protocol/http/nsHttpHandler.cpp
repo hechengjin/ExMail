@@ -563,7 +563,7 @@ nsHttpHandler::BuildUserAgent()
                            mCompatFirefox.Length() +
                            mCompatDevice.Length() +
                            13);
-
+#if 0
     // Application portion
     mUserAgent.Assign(mLegacyAppName);
     mUserAgent += '/';
@@ -594,6 +594,7 @@ nsHttpHandler::BuildUserAgent()
     mUserAgent += mProduct;
     mUserAgent += '/';
     mUserAgent += mProductSub;
+#endif
 
     bool isFirefox = mAppName.EqualsLiteral("Firefox");
     if (isFirefox || mCompatFirefoxEnabled) {
@@ -603,7 +604,7 @@ nsHttpHandler::BuildUserAgent()
     }
     if (!isFirefox) {
         // App portion
-        mUserAgent += ' ';
+        //mUserAgent += ' ';
         mUserAgent += mAppName;
         mUserAgent += '/';
         mUserAgent += mAppVersion;
