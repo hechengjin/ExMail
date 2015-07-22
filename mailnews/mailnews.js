@@ -51,7 +51,7 @@ pref("mailnews.headers.extraExpandedHeaders", "");
 //   as defined in nsIMsgDBView.idl (ascending = 1, descending = 2)
 // sort_type is an int value reflecting nsMsgViewSortType values
 //   as defined in nsIMsgDBView.idl (byDate = 18, byId = 21 etc.)
-pref("mailnews.default_sort_order", 1); // for Mail/RSS/... (nsMsgDatabase)
+pref("mailnews.default_sort_order", 2); // for Mail/RSS/... (nsMsgDatabase)
 pref("mailnews.default_sort_type", 18); //
 pref("mailnews.default_news_sort_order", 1); // for News (nsNewsDatabase)
 pref("mailnews.default_news_sort_type", 21); //
