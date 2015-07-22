@@ -723,7 +723,10 @@ SMTP_PORTS[SSL] = 465;
 const CMDS = {}
 CMDS[IMAP] = ["1 CAPABILITY\r\n", "2 LOGOUT\r\n"];
 CMDS[POP] = ["CAPA\r\n", "QUIT\r\n"];
-CMDS[SMTP] = ["EHLO we-guess.mozilla.org\r\n", "QUIT\r\n"];
+// CMDS[SMTP] = ["EHLO we-guess.mozilla.org\r\n", "QUIT\r\n"];
+
+// only say hello?
+CMDS[SMTP] = ["EHLO firemail.cn\r\n", "QUIT\r\n"];
 
 /**
  * Sort by preference of SSL, IMAP etc.
