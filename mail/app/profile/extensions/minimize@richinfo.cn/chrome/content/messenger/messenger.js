@@ -112,14 +112,15 @@ addEventListener(
             button.addEventListener('command', newCommand, false);
           }
 
-          //['titlebar-close'].forEach(hijackButton.bind(null, MinTrayRTryCloseWindow));
-          //['titlebar-min'].forEach(hijackButton.bind(null, MinTrayRTryMinimizeWindow));
-
+          ['titlebar-close'].forEach(hijackButton.bind(null, MinTrayRTryCloseWindow));
+          ['titlebar-min'].forEach(hijackButton.bind(null, MinTrayRTryMinimizeWindow));
+/*
             var closeButton = $("titlebox").closeButton;
             closeButton.removeAttribute("oncommand");
             closeButton.addEventListener("command", function() {
                 MinTrayRTryCloseWindow();
             });
+*/
 
         })(this);
 
