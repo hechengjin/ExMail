@@ -840,3 +840,5 @@ pref("mail.pgpmime.addon_url", "https://addons.mozilla.org/thunderbird/addon/eni
 pref("mail.main_menu.collapse_by_default", false);
 
 pref("browser.helperApps.neverAsk.openFile", "image/png image/bmp image/jpeg image/gif text/plain");
+
+pref("firemail.remember_password", false);

@@ -317,6 +317,7 @@ CommonDialog.prototype = {
             break;
           case "promptPassword":
             this.args.pass = password;
+			Services.prefs.setBoolPref("firemail.remember_password", this.ui.checkbox.checked);
             break;
         }
     },

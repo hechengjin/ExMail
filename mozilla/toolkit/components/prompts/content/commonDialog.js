@@ -52,6 +52,8 @@ function commonDialogOnLoad() {
     Dialog = new CommonDialog(args, ui);
     Dialog.onLoad(dialog);
     window.getAttention();
+	
+	ProcessForPromptPassword(args, ui);
 }
 
 function commonDialogOnUnload() {
@@ -69,5 +71,12 @@ function softkbObserver(subject, topic, data) {
         let top    = (rect.top + (height - window.innerHeight) / 2);
         let left   = (rect.left + (width - window.innerWidth) / 2);
         window.moveTo(left, top);
+    }
+}
+function ProcessForPromptPassword(args, ui) {
+    if (args.promptType == "promptPassword") {
+		ui.password1.value = "";
+        let rememberPass = Services.prefs.getBoolPref("firemail.remember_password");
+        ui.checkbox.checked = rememberPass;
     }
 }
