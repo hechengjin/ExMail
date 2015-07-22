@@ -713,8 +713,9 @@ nsresult nsSmtpProtocol::SendEhloResponse(nsIInputStream * inputStream, uint32_t
             (endPos >= 0 ? endPos : responseLength) - startPos));
 
         MsgCompressWhitespace(responseLine);
-        if (responseLine.LowerCaseEqualsLiteral("starttls"))
-        {
+        //if (responseLine.LowerCaseEqualsLiteral("starttls"))
+        if (StringBeginsWith(responseLine, NS_LITERAL_CSTRING("starttls"), nsCaseInsensitiveCStringComparator()))
+				{
             SetFlag(SMTP_EHLO_STARTTLS_ENABLED);
         }
         else if (responseLine.LowerCaseEqualsLiteral("dsn"))
