@@ -2350,7 +2350,7 @@
         if (!draggedTab)
           return;
         
-        this.tabmail.replaceTabWithWindow(draggedTab);                    
+        // this.tabmail.replaceTabWithWindow(draggedTab);                    
                             
       ]]></handler>
       
