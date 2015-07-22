@@ -12,7 +12,7 @@ pref("mailnews.timeline_is_enabled", false);
 pref("mailnews.logComposePerformance", false);
 
 pref("mail.wrap_long_lines",                true);
-pref("mail.inline_attachments",             true);
+pref("mail.inline_attachments",             false);
 pref("mail.reply_quote_inline",             false);
 
 // hidden pref for controlling if the user agent string

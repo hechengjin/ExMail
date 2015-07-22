@@ -161,6 +161,7 @@ function startup(aData, aReason) {
       },
     });
 
+/*
     // Assistant.
     if (Prefs.getInt("conversations.version") < conversationsCurrentVersion)
       Services.ww.openWindow(
@@ -168,6 +169,7 @@ function startup(aData, aReason) {
         "chrome://conversations/content/assistant/assistant.xhtml",
         "",
         "chrome,width=800,height=500", {});
+*/
   } catch (e) {
     Log.error(e);
     dumpCallStack(e);
