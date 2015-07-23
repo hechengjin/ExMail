@@ -502,9 +502,9 @@ MimeMultipartRelated_output_child_p(MimeObject *obj, MimeObject* child)
             // let's stick the filename in the part so save as will work.
             if (name)
             {
-              char *savePart = part;
-              part = PR_smprintf("%s&filename=%s", savePart, name);
-              PR_Free(savePart);
+              //char *savePart = part;
+              //part = PR_smprintf("%s&filename=%s", savePart, name);
+              //PR_Free(savePart);
               PR_Free(name);
             }
             char *temp = part;
