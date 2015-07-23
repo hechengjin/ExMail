@@ -41,7 +41,7 @@ table[empty-cells],
   table:not([border]) > thead > tr > td, table:not([border]) > tbody > tr > td, table:not([border]) > tfoot > tr > td,
   table:not([border]) > thead > tr > th, table:not([border]) > tbody > tr > th, table:not([border]) > tfoot > tr > th
 {
-  border: 1px dotted red;
+  /*border: 1px dotted red;*/
 }
 
 /* give a green dashed border to forms otherwise they are invisible
