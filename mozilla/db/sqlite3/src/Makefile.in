@@ -66,6 +66,7 @@ EXPORTS = \
 
 CSRCS = \
   sqlite3.c \
+  crypt.c \
   $(NULL)
 
 # -DSQLITE_SECURE_DELETE=1 will cause SQLITE to 0-fill delete data so we
@@ -88,6 +89,7 @@ DEFINES = \
   -DSQLITE_DEFAULT_PAGE_SIZE=32768 \
   -DSQLITE_MAX_DEFAULT_PAGE_SIZE=32768 \
   -DSQLITE_MAX_SCHEMA_RETRY=25 \
+  -DSQLITE_HAS_CODEC \
   $(NULL)
 
 # -DSQLITE_ENABLE_LOCKING_STYLE=1 to help with AFP folders

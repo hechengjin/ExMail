@@ -154,3 +154,4 @@ EXPORTS
         sqlite3_mutex_held
         sqlite3_mutex_notheld
 #endif
+        sqlite3_key

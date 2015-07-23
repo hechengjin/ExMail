@@ -35,6 +35,7 @@
 #include "FileSystemModule.h"
 #include "mozStorageHelper.h"
 #include "sampler.h"
+#include "nsIPrefService.h"
 
 #include "prlog.h"
 #include "prprf.h"
@@ -484,6 +485,19 @@ Connection::initialize(nsIFile *aDatabaseFile,
   if (srv != SQLITE_OK) {
     mDBConn = nullptr;
     return convertResultCode(srv);
+  }
+
+  nsCOMPtr<nsIPrefBranch> prefs(do_GetService(NS_PREFSERVICE_CONTRACTID, &rv));
+  NS_ENSURE_SUCCESS(rv, rv);
+  bool sqliteEncrypted = false;
+  rv = prefs->GetBoolPref("sqlite.encryped", &sqliteEncrypted);
+  if (sqliteEncrypted)
+  {
+    ::sqlite3_key(mDBConn, "firemail", 8);
+  }
+  else
+  {
+    ::sqlite3_key(mDBConn, "", 0);
   }
 
   // Properly wrap the database handle's mutex.
