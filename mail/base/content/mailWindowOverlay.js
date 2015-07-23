@@ -2517,7 +2517,7 @@ function getSubjectForHdr(hdr,dirPath) {
     if (emlNameType == 2) {
     }
     else {
-        var fname =subj;// msgDate8601string+"-"+subj+"-"+hdr.messageKey;
+        var fname =msgDate8601string+"-"+subj+"-"+hdr.messageKey;// msgDate8601string+"-"+subj+"-"+hdr.messageKey;
     }
     fname = fname.replace(/[\x00-\x1F]/g,"_");
     if (mustcorrectname)
