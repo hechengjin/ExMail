@@ -151,6 +151,7 @@ function onAccept()
               var newCell = gActiveEditor.createElementWithDefaults("td");
               if (newCell)
               {
+                newCell.setAttribute("width", "" + 100/gColumns + "%");
                 newRow.appendChild(newCell);
               }
             }
