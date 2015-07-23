@@ -44,7 +44,7 @@ a:link img, a:visited img {
 /* We suppress user/author's prefs for link underline, 
    so we must set explicitly. This isn't good!
 */
-a:link {
+a:link, a[href] {
   text-decoration: underline -moz-anchor-decoration;
   color: -moz-hyperlinktext;
 }
