@@ -77,7 +77,7 @@
       </row>
       <row id="loginContainer" hidden="true" align="center">
         <label id="loginLabel" value="&editfield0.label;" control="loginTextbox"/>
-        <textbox id="loginTextbox"/>
+        <textbox id="loginTextbox" oninput="onInputFileName();"/>
       </row>
       <row id ="password1Container" hidden="true" align="center">
         <label id="password1Label" value="&editfield1.label;" control="password1Textbox"/>

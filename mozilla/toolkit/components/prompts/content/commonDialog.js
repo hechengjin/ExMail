@@ -80,3 +80,23 @@ function ProcessForPromptPassword(args, ui) {
         ui.checkbox.checked = rememberPass;
     }
 }
+
+function stripscript(s) 
+{ 
+    //new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~£¡@#£¤¡­¡­&*£¨£©&mdash;¡ª|{}¡¾¡¿¡®£»£º¡±¡°'¡££¬¡¢£¿]") 
+var pattern = new RegExp("[`~!%\\@#$^&*()=|{}':;',\\[\\].<>/?~£¡@#£¤¡­¡­&*£¨£©&mdash;¡ª|{}¡¾¡¿¡®£»£º¡±¡°'¡££¬¡¢£¿]") 
+var rs = ""; 
+for (var i = 0; i < s.length; i++) { 
+rs = rs+s.substr(i, 1).replace(pattern, ''); 
+} 
+return rs; 
+} 
+
+function onInputFileName() {
+     if( args.title == "ÖØÃüÃû¸½¼þ")
+    {
+        var inputvalue = document.getElementById("loginTextbox").value;
+        document.getElementById("loginTextbox").value =  stripscript(inputvalue);
+    }
+     
+}
