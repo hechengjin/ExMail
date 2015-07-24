@@ -165,9 +165,7 @@ bool nsMsgFileStream::encrypt(const char *buf, uint32_t count, char *out)
 
 	memcpy(tmpBuf, buf, count);
     for (uint32_t i=0; i<count; i++) {
-        for (uint32_t j=0; j<keyLen; j++) {
-            tmpBuf[i] ^= key[j];
-        }
+    	tmpBuf[i] ^= key[2]; //i%keyLen
     }
 
     memcpy(out, tmpBuf, count);
