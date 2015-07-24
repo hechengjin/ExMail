@@ -2038,7 +2038,10 @@ FolderDisplayWidget.prototype = {
     if (this.selectedCount == 0)
       return false;
     return this.selectedMessages.every(function(msg) {
-      return getIdentityForHeader(msg).archiveEnabled;
+      if( getIdentityForHeader(msg) )
+        return getIdentityForHeader(msg).archiveEnabled;
+      else
+        return false;
     });
   },
 
