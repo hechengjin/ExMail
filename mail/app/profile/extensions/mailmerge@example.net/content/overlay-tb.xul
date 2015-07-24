@@ -48,7 +48,7 @@
 			<menuseparator />
 			<menuitem
 				id="mailmerge-toolbar"
-				label="Mail Merge"
+				label="&mailmerge.overlay.Bulksingle;"
 				oncommand="mailmerge.toolbar(event)"
 				class="menuitem-iconic" />
 		</menupopup>

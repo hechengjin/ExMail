@@ -437,7 +437,7 @@ var mrcAComplete = {
     HTMLNS : "http://www.w3.org/1999/xhtml",
 
     // the separator used to split liste of emails
-    SEP : ",",
+    SEP : ";",
 
     PART_PREFIX : " ",
     PART_SUFFIX : "",
@@ -910,7 +910,7 @@ var mrcAComplete = {
          * returns :
          *    array of emails, still quoted and backslashed
          */
-        separator = this._pick(separator, ',');
+        separator = this._pick(separator, ';');
         quote = this._pick(quote, '"');
         escaper = this._pick(escaper, '\\');
         

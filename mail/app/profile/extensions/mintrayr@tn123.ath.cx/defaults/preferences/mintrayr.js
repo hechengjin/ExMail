@@ -6,7 +6,7 @@ pref('extensions.mintrayr.browser.watchbrowser', true);
 pref('extensions.mintrayr.browser.watchbookmarks', false);
 
 pref('extensions.mintrayr.messenger.watchmessenger', true);
-pref('extensions.mintrayr.messenger.watchreader', true);
+pref('extensions.mintrayr.messenger.watchreader', false);
 pref('extensions.mintrayr.messenger.watchcomposer', false);
 
 pref('extensions.mintrayr.songbird.watchplayer', true);

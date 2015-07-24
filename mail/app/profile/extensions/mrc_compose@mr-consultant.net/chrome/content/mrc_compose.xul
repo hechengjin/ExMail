@@ -116,7 +116,7 @@
         <hbox id="box-to" >
             <hbox align="center" pack="end" style="&headersSpace.style;">
                 <hbox align="left" pack="start" flex="1">
-                    <toolbarbutton id="mrc-compose-options-button" type="menu" label="" >
+                    <toolbarbutton id="mrc-compose-options-button" hidden="true" type="menu" label="" >
                         <menupopup id="mrc-compose-options-menu">
                             <menuitem id="menu-box-cc" label="&fieldcc.show;" type="checkbox" checked="false"
                                         oncommand="mrcChangeFieldVisibility(event, 'fieldCC');"/>
@@ -144,7 +144,7 @@
             <vbox flex="1">
                 <textbox id="msgTO" flex="1" class="toolbar" disableonsend="true" spellcheck="true"
                              multiline="true"
-                             placeholder="&field.placeholder;"
+                             placeholder=""
                              onkeypress="mrcRecipientKeyPress(event, this)"
                              onkeyup="mrcRecipientKeyUp(event, this)"
                              onoverflow="mrcRecipientResize(this)"
@@ -163,7 +163,7 @@
             <vbox flex="1">
                 <textbox id="msgCC" flex="1" class="toolbar" disableonsend="true" spellcheck="true"
                              multiline="true"
-                             placeholder="&field.placeholder;"
+                             placeholder=""
                              onkeypress="mrcRecipientKeyPress(event, this)"
                              onkeyup="mrcRecipientKeyUp(event, this)"
                              onoverflow="mrcRecipientResize(this)"
@@ -182,7 +182,7 @@
             <vbox flex="1">
                 <textbox id="msgBCC" flex="1" class="toolbar" disableonsend="true" spellcheck="true"
                              multiline="true"
-                             placeholder="&field.placeholder;"
+                             placeholder=""
                              onkeypress="mrcRecipientKeyPress(event, this)"
                              onkeyup="mrcRecipientKeyUp(event, this)"
                              onoverflow="mrcRecipientResize(this)"
@@ -201,7 +201,7 @@
             <vbox flex="1">
                 <textbox id="msgREPLY" flex="1" class="toolbar" disableonsend="true" spellcheck="true"
                              multiline="true"
-                             placeholder="&field.placeholder;"
+                             placeholder=""
                              onkeypress="mrcRecipientKeyPress(event, this)"
                              onkeyup="mrcRecipientKeyUp(event, this)"
                              onoverflow="mrcRecipientResize(this)"

@@ -29,7 +29,8 @@
 <!ENTITY mailmerge.dialog.sendlater.every "Every:">
 <!ENTITY mailmerge.dialog.options "Options">
 <!ENTITY mailmerge.dialog.options.debug "Debug">
-<!ENTITY mailmerge.overlay.sendnow "Send Now">
-<!ENTITY mailmerge.overlay.sendlater "Send Later">
+<!ENTITY mailmerge.overlay.sendnow "发送">
+<!ENTITY mailmerge.overlay.sendlater "以后发送">
+<!ENTITY mailmerge.overlay.Bulksingle "群发单显">
 <!ENTITY mailmerge.compose.Sending "正在处理邮件">
 <!ENTITY mailmerge.compose.Cancel "取消">
