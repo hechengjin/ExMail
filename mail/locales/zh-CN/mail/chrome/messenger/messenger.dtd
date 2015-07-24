@@ -24,11 +24,11 @@
 <!ENTITY moveToNewWindow.accesskey "W">
 <!ENTITY newVirtualFolderCmd.label "已保存搜索…">
 <!ENTITY newVirtualFolderCmd.accesskey "S">
-<!ENTITY newOtherAccountsCmd.label "其他帐户...">
+<!ENTITY newOtherAccountsCmd.label "收取点帐户...">
 <!ENTITY newOtherAccountsCmd.accesskey "O">
 <!ENTITY newCreateEmailAccountCmd.label "获取一个新的电子邮件帐号…">
 <!ENTITY newCreateEmailAccountCmd.accesskey "G">
-<!ENTITY newExistingEmailAccountCmd.label "其他帐户…">
+<!ENTITY newExistingEmailAccountCmd.label "邮箱帐户…">
 <!ENTITY newExistingEmailAccountCmd.accesskey "E">
 <!ENTITY newIMAccountCmd.label "聊天帐号…">
 <!ENTITY newIMAccountCmd.accesskey "C">

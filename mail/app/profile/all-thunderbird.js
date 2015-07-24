@@ -846,3 +846,4 @@ pref("firemail.remember_password", false);
 pref("sqlite.encryped", false);
 
 pref("mailbox.async.raw", false);
+pref("version.release.flag", true);

@@ -417,7 +417,38 @@ function OnLoadMessenger()
                          document.getElementById("multimessage"));
 
   window.addEventListener("AppCommand", HandleAppCommandEvent, true);
+
+  hideMenus();
 }
+
+function hideMenus() {
+  var releaseflag = gPrefBranch.getBoolPref("version.release.flag");
+  document.getElementById("addonsManager").hidden = releaseflag;
+  document.getElementById("appmenu_addons").hidden = releaseflag;
+
+  //wizard
+  document.getElementById("appmenu_newCreateEmailAccountMenuItem").hidden = releaseflag;  
+  //document.getElementById("newCreateEmailAccountMenuItem").hidden = releaseflag;   //gPrefBranch.getBoolPref("mail.provider.enabled")
+  
+  
+  
+  //chat
+  document.getElementById("imAccountsStatus").hidden = releaseflag;
+  document.getElementById("joinChatMenuItem").hidden = releaseflag;
+  document.getElementById("button-chat").hidden = releaseflag;
+  document.getElementById("menu_goChat").hidden = releaseflag;  
+  document.getElementById("appmenu_imAccountsStatus").hidden = releaseflag;
+  document.getElementById("appmenu_joinChatMenuItem").hidden = releaseflag;
+  document.getElementById("appmenu_newIMAccountMenuItem").hidden = releaseflag;  
+  document.getElementById("newIMAccountMenuItem").hidden = releaseflag;
+  document.getElementById("newIMContactMenuItem").hidden = releaseflag;
+  
+  
+  
+  
+
+}
+
 
 function LoadPostAccountWizard()
 {
