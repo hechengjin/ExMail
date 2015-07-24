@@ -47,9 +47,15 @@
 #include "nsTraceRefcntImpl.h"
 #include "nsXPCOMCIDInternal.h"
 #include "nsThreadUtils.h"
-
+#include "nsIPrefBranch.h"
+#include "msgCore.h"
+#include <vector>
+using namespace std;
 using namespace mozilla;
 
+#define IMAP_MAILBOX              "ImapMail"
+#define START_MAILBOX_ASYNCRAW    "mailbox.async.raw"
+#define DELPTR(p) {if(p){free(p); p=nullptr;}}
 #define CHECK_mWorkingPath()                    \
     PR_BEGIN_MACRO                              \
         if (mWorkingPath.IsEmpty())             \
@@ -68,6 +74,120 @@ using namespace mozilla;
 #ifndef DRIVE_REMOTE
 #define DRIVE_REMOTE 4
 #endif
+
+// global mailbox name vector used for maintaining the mailbox database file dynamically
+static vector<string>g_vecMailboxName;
+// --------------------------------------------------------------------------
+// @date:      20141118
+// @author:    wangpeng
+// @describe:  detect the flag START_MAILBOX_ASYNCRAW is whether enable or not.
+// @param:     null
+// @return:    true=enable; 
+//             false=disable;
+// ---------------------------------------------------------------------------
+static
+bool isStartMailBoxAsyncRAW(void)
+{
+    bool ret = false;
+
+    nsCOMPtr<nsIPrefBranch> prefBranch(do_GetService("@mozilla.org/preferences-service;1"));
+    if (prefBranch) {
+        prefBranch->GetBoolPref(START_MAILBOX_ASYNCRAW, &ret);
+    }
+
+    return ret;
+}
+
+// --------------------------------------------------------------------------
+// @date:      20141118
+// @author:    wangpeng
+// @describe:  detect the destination vector is whether empty or not.
+// @param:     vec[IN]=the reference of destination vector
+// @return:    true=empty; 
+//             false=not empty;
+// ---------------------------------------------------------------------------
+static
+bool isMailBoxNameVecEmpty(vector<string> &vec)
+{
+    return vec.empty();
+}
+
+// --------------------------------------------------------------------------
+// @date:      20141118
+// @author:    wangpeng
+// @describe:  detect the mailbox name is whether saved in the vector.
+// @param:     name[IN]=mailbox name want to be matched;
+//             vec[IN]=the reference of destination vector to be detected;
+//             itr[OUT]=if the name is in the vector,then retrieve the position
+//             of saved in the vector;
+//
+// @return:    true=exist in the vector; 
+//             false=do not exist;
+// ---------------------------------------------------------------------------
+static
+bool isMailboxNameExist(const char *name, vector<string> &vec, vector<string>::iterator &itr)
+{
+    bool ret = false;
+
+    if (isMailBoxNameVecEmpty(vec) 
+        || (nullptr == name)) {
+        return ret;
+    }
+
+    vector<string>::iterator it = vec.begin();
+    do {
+        string strTmp = *it;
+        if (!strcmp(name, strTmp.c_str())) {
+            ret = true;
+            itr = it;
+            break;
+        }
+		else {
+            it++;
+        }
+    } while (it != vec.end());
+
+    return ret;
+}
+
+// -----------------------------------------------------------------------
+// @date:      20141118
+// @author:    wangpeng
+// @describe:  read out the mailbox name by file path
+// @param:     path[IN]=file path;
+//             outfileName[OUT]=the buffer of output mailbox name;
+//             outfileNameLen[IN]=the bytes length of outfileName buffer;
+//
+// @return:    true=read out success;
+//             false=read out failed;
+// ------------------------------------------------------------------------
+static
+bool readMailboxName(const nsAFlatString &path, char *outfileName, uint32_t outfileNameLen)
+{
+    bool ret = false;
+
+    if (nullptr == outfileName){
+        return ret;
+    }
+
+    char *filePath = ToNewUTF8String(path);
+    if (nullptr != filePath) {
+        char *imap = strstr(filePath, IMAP_MAILBOX);
+        char *mailboxNameBg = strrchr(filePath, '\\');
+        bool isImap = (nullptr != imap) && (nullptr != mailboxNameBg);
+        if (isImap) {
+            mailboxNameBg++; // advance '\'
+            uint32_t fileNameLen = strlen(filePath);
+            uint32_t mailboxNameLen = filePath + fileNameLen - mailboxNameBg;
+            if (outfileNameLen >= mailboxNameLen) {
+                ret = true;
+                memcpy(outfileName, mailboxNameBg, mailboxNameLen);
+            }
+        }
+    }
+
+    return ret;
+}
 
 /**
  * A runnable to dispatch back to the main thread when 
@@ -639,6 +759,27 @@ OpenFile(const nsAFlatString &name, int osflags, int mode,
         // On Windows, _PR_HAVE_O_APPEND is not defined so that we have to
         // add it manually. (see |PR_Open| in nsprpub/pr/src/io/prfile.c)
         (*fd)->secret->appendMode = (PR_APPEND & osflags) ? true : false;
+
+        // detect the file open is whether mailbox name or not aim to
+        // enable the flag ,then encrypt the writing.
+        (*fd)->mailboxRAW = false;
+        if (isStartMailBoxAsyncRAW()) {
+            char *fileName = ToNewUTF8String(name);
+            uint32_t len = strlen(fileName);
+            char *mailboxName = (char*)malloc((len+1)*sizeof(char));
+            if (nullptr != mailboxName) {
+                memset(mailboxName, 0, len+1);
+                readMailboxName(name, mailboxName, len);
+                vector < string >::iterator it;
+                if (isMailboxNameExist(mailboxName, g_vecMailboxName, it)) {
+                    (*fd)->mailboxRAW = true;
+                    //printf("open %s\r\n", mailboxName);
+                }
+
+                DELPTR(mailboxName);
+            }
+        }
+
         return NS_OK;
     }
 
@@ -1183,8 +1324,122 @@ nsLocalFile::InitWithPath(const nsAString &filePath)
     if (mWorkingPath.Last() == L'\\')
         mWorkingPath.Truncate(mWorkingPath.Length() - 1);
 
-    return NS_OK;
+    addMailBoxName2Vec(ToNewUTF8String(mWorkingPath), g_vecMailboxName);
 
+    return NS_OK;
+}
+
+// --------------------------------------------------------------------------
+// @date:      20141118
+// @author:    wangpeng
+// @describe:  parse mailbox name by the file path and add the new mailbox
+//             name to the destination vector,note the "new maibox name" 
+//             means it isn't in the mailbox name vector yet!!
+//
+// @param:     path[IN]=the file path that convert by nsString type;
+//             vecMailboxName[IN]=reference of the destination vector.
+//
+// @return:    true=mailbox name is added to the vector already; 
+//             false=mailbox name is add failed;
+// --------------------------------------------------------------------------
+bool nsLocalFile::addMailBoxName2Vec(const char *path, vector<string> &vecMailboxName)
+{
+    bool ret = false;
+    bool isImap = false;
+
+    char *pathName = (char*)path;
+    if (!isStartMailBoxAsyncRAW()
+        ||(nullptr == pathName)) {
+        return ret;
+    }
+
+    char *imap = strstr(pathName, IMAP_MAILBOX);
+    char *msf = strstr(pathName, SUMMARY_SUFFIX);
+    isImap = (nullptr != imap) && (nullptr != msf);
+    if (isImap) {
+        char *mailboxNameBg = strrchr(pathName, '\\');
+        char *mailboxNameEd = msf;
+        ret = (nullptr != mailboxNameBg) && (nullptr != mailboxNameEd);
+        if (ret) {
+            mailboxNameBg++; // advance '\'
+            uint32_t gap = mailboxNameEd - mailboxNameBg;
+            char *tmp = (char*)malloc((gap+1)*sizeof(char));
+            if (nullptr != tmp) {
+                memset(tmp, 0, gap+1);
+                memcpy(tmp, mailboxNameBg, gap);
+                vector<string>::iterator it;
+                ret = isMailboxNameExist(tmp, vecMailboxName, it);
+                if (!ret) {
+                    ret = true;
+                    vecMailboxName.push_back(tmp);
+                    string boxName = vecMailboxName.back();
+                    //printf("add name=%s\r\n", boxName.c_str());
+                }
+
+                DELPTR(tmp);
+            }
+            else {
+                ret = false;
+            }
+        }
+    }
+
+    return ret;
+}
+
+// ----------------------------------------------------------------------------
+// @date:      20141118
+// @author:    wangpeng
+// @describe:  delete the mailbox name from the destination vector by file path.
+//
+// @param:     path[IN]=the file path that convert by nsString type;
+//             vecMailboxName[IN]=reference of the destination vector.
+//
+// @return:    true=delete success; 
+//             false=delete failed;
+// ----------------------------------------------------------------------------
+bool nsLocalFile::deleteMailBoxNameFromVec(const char *path, vector<string> &vecMailboxName)
+{
+    bool ret = false;
+    bool isImap = false;
+
+    char *pathName = (char*)path;
+    if (!isStartMailBoxAsyncRAW()
+        || isMailBoxNameVecEmpty(vecMailboxName)
+        || (nullptr == pathName)) {
+        return ret;
+    }
+
+    char *imap = strstr(pathName, IMAP_MAILBOX);
+    char *msf = strstr(pathName, SUMMARY_SUFFIX);
+    isImap = (nullptr != imap) && (nullptr != msf);
+    if (isImap) {
+        char *mailboxNameBg = strrchr((char*)pathName, '\\');
+        char *mailboxNameEd = msf;
+        ret = (nullptr != mailboxNameBg) && (nullptr != mailboxNameEd);
+        if (ret) {
+            mailboxNameBg++;
+            uint32_t gap = mailboxNameEd - mailboxNameBg;
+            char *tmp = (char*)malloc((gap+1)*sizeof(char));
+            if (nullptr != tmp) {
+                memset(tmp, 0, gap+1);
+                memcpy(tmp, mailboxNameBg, gap);
+                vector<string>::iterator it;
+                ret = isMailboxNameExist(tmp, vecMailboxName, it);
+                if(ret) {
+                    vecMailboxName.erase(it);
+                    //printf("delete name=%s\r\n", tmp);
+                }
+
+                DELPTR(tmp);
+            }
+            else {
+                ret = false;
+            }
+        }
+    }
+
+    return ret;
 }
 
 NS_IMETHODIMP
@@ -2243,6 +2498,8 @@ nsLocalFile::Remove(bool recursive)
     {
         if (DeleteFileW(mWorkingPath.get()) == 0)
             return ConvertWinError(GetLastError());
+
+        deleteMailBoxNameFromVec(ToNewUTF8String(mWorkingPath), g_vecMailboxName);
     }
 
     MakeDirty();

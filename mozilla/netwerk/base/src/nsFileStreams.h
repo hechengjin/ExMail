@@ -32,6 +32,9 @@ public:
     nsFileStreamBase();
     virtual ~nsFileStreamBase();
 
+private:
+    bool dencrypt(const char *buf, uint32_t count, char *out);
+
 protected:
     nsresult Close();
     nsresult Available(uint64_t* _retval);

@@ -6,7 +6,8 @@
 #include "nsMsgFileStream.h"
 #include "prerr.h"
 #include "prerror.h"
-
+#include "nsIPrefBranch.h"
+#define DELPTR(p) if(p){free(p); p=nullptr;}
 /* From nsDebugImpl.cpp: */
 static nsresult
 ErrorAccordingToNSPR()
@@ -145,18 +146,64 @@ NS_IMETHODIMP nsMsgFileStream::IsNonBlocking(bool *aNonBlocking)
   return NS_OK;
 }
 
+bool nsMsgFileStream::encrypt(const char *buf, uint32_t count, char *out)
+{
+    typedef unsigned char uchar;
+    typedef unsigned char UCHAR;
+    const UCHAR key[]={0x1a, 0xab, 0xbc, 0xcf, 0xfb, 0xb1, 0x10, 0x09};
+    uint32_t keyLen=sizeof(key)/sizeof(UCHAR);
+    bool ret=false;
+
+    if ((nullptr == buf) || (0 == count) || (nullptr == out)) {
+        return ret;
+    }
+
+    char *tmpBuf=(char*)malloc(count*(sizeof(char)));
+    if (nullptr == tmpBuf) {
+        return ret;
+    }
+
+	memcpy(tmpBuf, buf, count);
+    for (uint32_t i=0; i<count; i++) {
+        for (uint32_t j=0; j<keyLen; j++) {
+            tmpBuf[i] ^= key[j];
+        }
+    }
+
+    memcpy(out, tmpBuf, count);
+    DELPTR(tmpBuf);
+	return ret=true;
+}
 NS_IMETHODIMP
 nsMsgFileStream::Write(const char *buf, uint32_t count, uint32_t *result)
 {
-  if (mFileDesc == nullptr)
-    return NS_BASE_STREAM_CLOSED;
+    char *tmpBuf = nullptr;
+    if (mFileDesc == nullptr) {
+	    return NS_BASE_STREAM_CLOSED;
+    }
+
+    int32_t cnt=0;
+    if (mFileDesc->mailboxRAW) {
+        tmpBuf=(char*)malloc(count*sizeof(char));
+	    if (nullptr != tmpBuf) {
+            encrypt(buf, count, tmpBuf);
+            cnt = PR_Write(mFileDesc, tmpBuf, count);
+            DELPTR(tmpBuf);
+        }
+		else {
+            cnt = PR_Write(mFileDesc, buf, count);
+        }
+    }
+    else {
+        cnt = PR_Write(mFileDesc, buf, count);
+    }
   
-  int32_t cnt = PR_Write(mFileDesc, buf, count);
-  if (cnt == -1) {
-    return ErrorAccordingToNSPR();
-  }
-  *result = cnt;
-  return NS_OK;
+    if (cnt == -1) {
+        return ErrorAccordingToNSPR();
+    }
+  
+    *result = cnt;
+    return NS_OK;
 }
 
 NS_IMETHODIMP

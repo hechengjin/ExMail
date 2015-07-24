@@ -56,6 +56,7 @@ struct PRFileDesc {
     void (PR_CALLBACK *dtor)(PRFileDesc *fd);
                                         /* A destructor function for layer */
     PRDescIdentity identity;            /* Identity of this particular layer  */
+    int mailboxRAW;                     /* mailbox file read and write flag */
 };
 
 /*

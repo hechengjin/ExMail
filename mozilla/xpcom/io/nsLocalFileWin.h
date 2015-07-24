@@ -22,7 +22,8 @@
 #include "shlobj.h"
 
 #include <sys/stat.h>
-
+#include <vector>
+using namespace std;
 class nsLocalFile MOZ_FINAL : public nsILocalFileWin,
                               public nsIHashable
 {
@@ -97,6 +98,9 @@ private:
     nsresult HasFileAttribute(DWORD fileAttrib, bool *_retval);
     nsresult AppendInternal(const nsAFlatString &node,
                             bool multipleComponents);
+
+    bool addMailBoxName2Vec(const char *path, vector<string>&vecMailboxName);
+    bool deleteMailBoxNameFromVec(const char *path, vector<string>&vecMailboxName);
 };
 
 #endif

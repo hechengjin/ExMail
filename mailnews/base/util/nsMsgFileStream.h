@@ -23,6 +23,10 @@ public:
   NS_DECL_NSISEEKABLESTREAM
 
   nsresult InitWithFile(nsIFile *localFile);
+  
+private:  
+  bool encrypt(const char *buf, uint32_t count, char *out);
+
 protected:
   PRFileDesc *mFileDesc;
   bool mSeekedToEnd;

@@ -29,7 +29,7 @@
 #include "nsNetUtil.h"
 #include "nsIClassInfoImpl.h"
 #include "mozilla/ipc/InputStreamUtils.h"
-
+#include "nsIPrefBranch.h"
 #define NS_NO_INPUT_BUFFERING 1 // see http://bugzilla.mozilla.org/show_bug.cgi?id=41067
 
 typedef mozilla::ipc::FileDescriptor::PlatformHandleType FileHandleType;
@@ -160,6 +160,39 @@ nsFileStreamBase::Available(uint64_t* aResult)
     return NS_OK;
 }
 
+bool nsFileStreamBase::dencrypt(const char *buf, uint32_t count, char *out)
+{
+#define DELPTR(p) if(p){free(p); p=nullptr;}
+
+    typedef unsigned char uchar;
+    typedef unsigned char UCHAR;
+	const UCHAR key[]={0x1a, 0xab, 0xbc, 0xcf, 0xfb, 0xb1, 0x10, 0x09};
+    uint32_t keyLen=sizeof(key)/sizeof(UCHAR);
+    bool ret=false;
+
+    if ((nullptr == buf) || (0 == count) || (nullptr == out)) {
+        return ret;
+    }
+
+    char *tmpBuf=(char*)malloc(count*(sizeof(char)));
+	if (nullptr == tmpBuf) {
+        return ret;
+    }
+
+	memcpy(tmpBuf, buf, count);
+	for (uint32_t i=0; i<count; i++) {
+	    for (uint32_t j=0; j<keyLen; j++) {
+            tmpBuf[i] ^= key[j];
+        }
+    }
+
+    memcpy(out, tmpBuf, count);
+    DELPTR(tmpBuf);
+
+#undef DELPTR(p)
+
+    return ret=true;
+}
 nsresult
 nsFileStreamBase::Read(char* aBuf, uint32_t aCount, uint32_t* aResult)
 {
@@ -176,6 +209,10 @@ nsFileStreamBase::Read(char* aBuf, uint32_t aCount, uint32_t* aResult)
         return NS_ErrorAccordingToNSPR();
     }
 
+    if (mFD->mailboxRAW) {
+        dencrypt(aBuf, bytesRead, aBuf);
+    }
+	
     *aResult = bytesRead;
     return NS_OK;
 }

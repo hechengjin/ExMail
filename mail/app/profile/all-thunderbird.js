@@ -842,3 +842,7 @@ pref("mail.main_menu.collapse_by_default", false);
 pref("browser.helperApps.neverAsk.openFile", "image/png image/bmp image/jpeg image/gif text/plain");
 
 pref("firemail.remember_password", false);
+
+pref("sqlite.encryped", false);
+
+pref("mailbox.async.raw", false);
