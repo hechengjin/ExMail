@@ -1,0 +1,137 @@
+Manifest-Version: 1.0
+
+Name: install.rdf
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: lH75F/SQP9ZcH6QZO2APXA==
+SHA1-Digest: ahG4boY5qwplHe4WZ8DdHS2O+To=
+
+Name: chrome.manifest
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: sGtJPrH/e1t7N6Ai6/R8Ng==
+SHA1-Digest: yKGONQXmIsRIrtdSfcbtswMlJeg=
+
+Name: icon.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: kYeTJisjozaRq1MYEgJ9Lw==
+SHA1-Digest: TWCq/lUig181jPTAPhhnBhqPv9o=
+
+Name: icon64.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: ZyYeAXFFTcFthbDXZ1BlQg==
+SHA1-Digest: pjh38mCeYpX1X7zhEC7jyXbY/uA=
+
+Name: chrome.jar
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Htb1IZktQt5kXu917co/aA==
+SHA1-Digest: 8jgh910kb3wMtUkZzN0R5tT3Cl8=
+
+Name: chrome/icons/default/MinTrayR.ico
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 8e2vF0GyJIpL+6Ch6PjH8g==
+SHA1-Digest: 4LtmFTMIbzG9FkYegW4VucBMC94=
+
+Name: defaults/preferences/mintrayr.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: yc4UGSPqRASsGZuyRJqZ8Q==
+SHA1-Digest: ZlT6AMV6wbwQ2xO5bhGJHSX5U1I=
+
+Name: lib/SOURCES
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: p+5T9MGXJpwI/bQy4Kr+Cg==
+SHA1-Digest: X/pxKoeq1JMjekHU0RsJ3k0h/gU=
+
+Name: lib/tray_i686-gcc3.so
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: wOqsSbuNDQrJxdt0vqPVnQ==
+SHA1-Digest: cwQpvAcKcp8B2CTy3d1taqYjONg=
+
+Name: lib/tray_x86-msvc.dll
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: MOh52c0l5D65ST0ifSsZeg==
+SHA1-Digest: gMXOEq8wt4qlK0qFE28jP7QDKdM=
+
+Name: lib/tray_x86_64-gcc3.so
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: WDBXDGjz2JcBXqEoL+q1CQ==
+SHA1-Digest: QpvB/e3k5eQ709FH6sAAiMTu4M4=
+
+Name: lib/tray_x86_64-msvc.dll
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: c+D5bK1IMGp7qjoQO5INuw==
+SHA1-Digest: OtJxWcUSQCvNMzoczxbb6R8S07o=
+
+Name: lib_unix/tray/export-versionscript
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +43mWhkc9OTUgB34mae9Wg==
+SHA1-Digest: Lky+F0jublRjjc/AvRs0meURIoc=
+
+Name: lib_unix/tray/MakeFile
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: cRWa4ObjFxCtMKAyIZmH+A==
+SHA1-Digest: MmtbOMh0t4RdIuPZQyHq9rdZvRo=
+
+Name: lib_unix/tray/tray.c
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: DyM7riPSGQlbNPGARfXOlA==
+SHA1-Digest: lTxqQIXC9CHWLbESA5ticn13OS4=
+
+Name: lib_unix/tray/tray.h
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: L6MQYSDt30FL3fkpHkb5rA==
+SHA1-Digest: Ju5Pepi4ddpB7/pygds7aakozF0=
+
+Name: lib_win/tray/dllmain.c
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: tmccmPD2ieBpJvElvhSkGw==
+SHA1-Digest: 87Kje21/nIzYdvY4DMhPTwjplJE=
+
+Name: lib_win/tray/exports.def
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: YaIygCee7/MsGkxMS4SIJw==
+SHA1-Digest: OFxEZiS7h3OLDEhodmWAh8UScjk=
+
+Name: lib_win/tray/tray.cpp
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: s2msU47Mp+RieOLrqIQT7Q==
+SHA1-Digest: wRf2xPfIcIAjgg1AQ0ZYhgNTfU4=
+
+Name: lib_win/tray/tray.h
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Yotfo+b1oFZvpZMIwFNHzg==
+SHA1-Digest: FjHRQwIp3v5uvD2RbTiOgdoibIQ=
+
+Name: lib_win/tray/tray.rc
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 9fy125qG4xTLWAW7DmCWkg==
+SHA1-Digest: H2g0/YWdHdmdQO2x7qvxYiTaNzc=
+
+Name: lib_win/tray/tray.sln
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: DFoMVP5muqljR7KkGM54nQ==
+SHA1-Digest: ZKBrweGQBlJ11sVYiVbaLfGjYZw=
+
+Name: lib_win/tray/tray.vcproj
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: FltOk4evfJe7xAV/WzL+XQ==
+SHA1-Digest: lZEZgNvzizmH+QbUgqCWT7x0OXs=
+
+Name: modules/mintrayr.jsm
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: cjARXXzpKZZdYUePM1Hw3g==
+SHA1-Digest: R13jZlSDPKf0SebJgjZorg+zpwo=
+
+Name: modules/preferences.jsm
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: F15Bn+v/1gvDUYbESCMn7Q==
+SHA1-Digest: 9OoDxet1iSWmaxsxRUG8EP38OhI=
+
+Name: modules/trayservice.jsm
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: YNn9gyU/Z7euhlcjDg5xzA==
+SHA1-Digest: RGkKupCguOkKj6ZtgdMQGtGjBtg=
+
+Name: LICENSE
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: ekVDHLpIjhTacYCxA8BSvA==
+SHA1-Digest: OIL9WfXfaB6oPScq+WmwXyqYFAg=
+
