@@ -387,13 +387,11 @@ function NewMailAccountProvisioner(aMsgWindow, args) {
   // accountProvisioner.xhtml isn't throwing errors or warnings, that's due
   // to bug 688273.  Just make the window non-modal to get those errors and
   // warnings back, and then clear this comment when bug 688273 is closed.
-  /*window.openDialog(
+  window.openDialog(
     "chrome://messenger/content/newmailaccount/accountProvisioner.xhtml",
     "AccountCreation",
     windowParams,
     args);
-    */
-    NewMailAccount(args.msgWindow, null, args[0]);
 }
 
 /**
