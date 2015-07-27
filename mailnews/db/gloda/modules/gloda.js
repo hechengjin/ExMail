@@ -2198,6 +2198,8 @@ var Gloda = {
     }
 
     aItem._jsonText = JSON.stringify(jsonDict);
+    // _jsonText后续会被delete(GlodaDatastore.loadNounItem)，用_jsonAttributes记录原生属性文字
+    aItem._jsonAttributes = aItem._jsonText;
     this._log.debug("  json text: " + aItem._jsonText);
 
     if (aIsRecordNew) {

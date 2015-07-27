@@ -2660,7 +2660,7 @@ var GlodaMsgIndexer = {
                                                                    aNewURI) {
       let newFolder = MailUtils.getFolderForURI(aNewURI);
       let specialFolderFlags = Ci.nsMsgFolderFlags.Trash | Ci.nsMsgFolderFlags.Junk;
-      if (newFolder.isSpecialFolder(specialFolderFlags, true)) {
+      if (/*newFolder.isSpecialFolder(specialFolderFlags, true) */ false) {
         let descendentFolders = Cc["@mozilla.org/supports-array;1"].
                                   createInstance(Ci.nsISupportsArray);
         newFolder.ListDescendents(descendentFolders);

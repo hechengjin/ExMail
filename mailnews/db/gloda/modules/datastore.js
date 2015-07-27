@@ -2035,9 +2035,12 @@ var GlodaDatastore = {
     //  telling us to do so.
     let specialFolderFlags = Ci.nsMsgFolderFlags.Trash | Ci.nsMsgFolderFlags.Junk;
     if (aFolder.isSpecialFolder(specialFolderFlags, true))
-      indexingPriority = aAllowSpecialFolderIndexing ?
+    {
+      /*indexingPriority = aAllowSpecialFolderIndexing ?
                            GlodaFolder.prototype.kIndexingDefaultPriority :
-                           GlodaFolder.prototype.kIndexingNeverPriority;
+                           GlodaFolder.prototype.kIndexingNeverPriority;*/
+              indexingPriority =  GlodaFolder.prototype.kIndexingDefaultPriority;            
+    }
     // Queue folders should always be ignored just because messages should not
     //  spend much time in there.
     // We hate newsgroups, and public IMAP folders are similar.
@@ -2052,7 +2055,11 @@ var GlodaDatastore = {
                               //| Ci.nsMsgFolderFlags.ImapPublic
                               //| Ci.nsMsgFolderFlags.ImapOtherUser
                              ))
-      indexingPriority = GlodaFolder.prototype.kIndexingNeverPriority;
+    {
+      //indexingPriority = GlodaFolder.prototype.kIndexingNeverPriority;
+      indexingPriority = GlodaFolder.prototype.kIndexingDefaultPriority;
+    }
+      
     else if (aFolder.flags & Ci.nsMsgFolderFlags.Inbox)
       indexingPriority = GlodaFolder.prototype.kIndexingInboxPriority;
     else if (aFolder.flags & Ci.nsMsgFolderFlags.SentMail)
@@ -2089,6 +2096,9 @@ var GlodaDatastore = {
     else
       // otherwise, fall back to the default for folders of this type
       indexingPriority = this.getDefaultIndexingPriority(aFolder);
+
+    if ( indexingPriority == -1 )
+      indexingPriority = 20;
 
     // If there are messages in the folder, it is filthy.  If there are no
     //  messages, it can be clean.

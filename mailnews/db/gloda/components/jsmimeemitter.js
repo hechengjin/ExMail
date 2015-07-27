@@ -394,7 +394,8 @@ MimeMessageEmitter.prototype = {
     let partName = partMatch && partMatch[1];
     this._curAttachment = partName;
 
-    if (aContentType == "message/rfc822") {
+    // 如果附件类型是message/rfc822，则不会将此附件索引到数据库。因此，将此附件视为普通附件处理。
+    if (/*aContentType == "message/rfc822"*/false) {
       // we want to offer extension authors a way to see attachments as the
       // message readers sees them, which means attaching an extra url property
       // to the part that was already created before

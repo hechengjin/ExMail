@@ -507,6 +507,9 @@ function GlodaMessage(aDatastore, aID, aFolderID, aMessageKey,
   this._indexedBodyText = aIndexedBodyText;
   this._attachmentNames = aAttachmentNames;
 
+  // _jsonText后续会被处理掉，不再可用，因此引入新的属性
+  this._jsonAttributes = aJsonText;
+
   // only set _deleted if we're deleted, otherwise the undefined does our
   //  speaking for us.
   if (aDeleted)
@@ -523,6 +526,7 @@ GlodaMessage.prototype = {
   get conversationID() { return this._conversationID; },
   // conversation is special
   get headerMessageID() { return this._headerMessageID; },
+  get jsonAttributes() { return this._jsonAttributes; },
   get notability() { return this._notability; },
   set notability(aNotability) { this._notability = aNotability; },
 
@@ -878,8 +882,10 @@ GlodaAttachment.prototype = {
   NOUN_ID: 105,
   // set by GlodaDatastore
   get name() { return this._name; },
+  set name(aName) { this._name = aName; },
   get contentType() { return this._contentType; },
   get size() { return this._size; },
+  set size(aSize) { this._size = aSize; },
   get url() {
     if (this.isExternal)
       return this._externalUrl;
