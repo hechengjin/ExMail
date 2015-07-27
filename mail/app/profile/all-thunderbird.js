@@ -209,7 +209,7 @@ pref("general.autoScroll", false);
 pref("general.autoScroll", true);
 #endif
 
-pref("mail.shell.checkDefaultClient", true);
+pref("mail.shell.checkDefaultClient", false);
 pref("mail.spellcheck.inline", true);
 
 pref("mail.biff.alert.show_preview", true);
