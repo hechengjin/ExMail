@@ -395,6 +395,9 @@ let mailTabType = {
         dateCol: {
           visible: true,
         },
+        sizeCol: {
+          visible: true,
+        },
       },
       /**
        * Open a new folder-display-style tab showing the contents of a gloda

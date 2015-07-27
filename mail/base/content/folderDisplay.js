@@ -373,6 +373,7 @@ FolderDisplayWidget.prototype = {
     "recipientCol", // outgoing folders
     //"junkStatusCol",
     "dateCol",
+    "sizeCol",
     "locationCol", // multiple-folder backed folders
   ],
 
