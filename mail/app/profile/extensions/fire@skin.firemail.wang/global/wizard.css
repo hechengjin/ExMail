@@ -1,0 +1,33 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.wizard-header{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	border-bottom:2px solid;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	padding:2px;
+	color:black;
+	-moz-box-align:center}
+.wizard-header-box-1{
+	-moz-box-align:center}
+.wizard-header-box-text{
+	-moz-box-pack:center;
+	text-align:center}
+.wizard-header-label{
+	margin:2px;
+	font-weight:bold;
+	font-size:120%;
+	text-shadow:1px 1px 1px rgba(238,212,162,0.7)}
+.wizard-header-icon{
+	list-style-image:url(chrome://global/skin/icons/wizard.png)}
+.wizard-header-description{margin:1px 2px;font-weight:bold}
+.wizard-header-description[value=""]{display:none}
+.wizard-page-box{padding:3px}
+#dataSources{
+	-moz-appearance:none;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}

@@ -1,0 +1,201 @@
+html,body{height:100%;max-height:100%}
+
+body{
+	margin:0;
+	padding:0;
+	display:-moz-box;
+	-moz-box-orient:vertical;
+	font:message-box!important;
+	width:-moz-available;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+ 
+.hidden{display:none}
+
+/*Must have color and background-color*/
+#heading_wrapper{
+	display:-moz-box;
+	-moz-box-orient:horizontal;
+	-moz-box-align:center;
+	background:#EED4A2 url(chrome://global/skin/hout.png);
+	color:black}
+
+#heading{
+	margin:0;
+	-moz-box-flex:1;
+	-moz-box-align:center;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	font-weight:bold;
+	font-size:120%;
+	overflow:hidden}
+
+ul{
+	-moz-box-align:stretch;
+	display:-moz-box;
+	-moz-box-orient:vertical;
+	min-height:44px;
+	width:-moz-available;
+	margin:2px;
+	padding:0;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+li{
+	display:-moz-box;
+	-moz-box-orient:vertical;
+	padding:1px}
+li:not(:last-child){
+	border-bottom:1px solid #B26F00}
+
+.cropped{
+	display:-moz-box;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis}
+
+.left_right{
+	display:-moz-box;
+	-moz-box-flex:1}
+.lr_wide{
+	display:-moz-box;
+	-moz-box-flex:1;
+	-moz-box-orient:vertical}
+.lr_narrow{
+	white-space:nowrap;
+	-moz-margin-start:4px}
+	
+.message{
+	-moz-padding-start:18px}
+.starred{
+	background:-moz-image-rect(url(chrome://messenger/skin/threadPane2.png),0,32,16,16) 2px 2px no-repeat}
+
+#content,
+#table{
+	display:-moz-box;
+	-moz-box-flex:1;
+	-moz-box-align:stretch;
+	-moz-box-orient:vertical}
+
+#messages,#correspondents{-moz-margin-end:4px}
+
+#folderName{white-space:nowrap}
+
+#messageCount{
+	white-space:nowrap;
+	-moz-margin-start:1em}
+
+.list_heading,
+.section_heading{
+	margin:2px 0;
+	font-weight:bold;
+	font-size:100%;
+	overflow:hidden;
+	text-overflow:ellipsis}
+
+.space_folder_other,
+.message_author,
+.message_count,
+.correspondent_email{
+	color:#893B00}
+
+#multi_row{
+	display:-moz-box;
+	-moz-box-flex:1;
+	overflow:auto}
+#multi_row_part1,
+#multi_row_part1_inner{
+	display:-moz-box;
+	-moz-box-flex:2;
+	-moz-box-align:stretch}
+#multi_row_part1_inner>.section{
+	-moz-box-orient:vertical;
+	display:-moz-box;
+	width:200px;
+	-moz-box-flex:1}
+#multi_row_part2{
+	width:200px;
+	display:-moz-box;
+	-moz-box-orient:vertical;
+	-moz-box-flex:1}
+#multi_row.vertical,
+#multi_row.vertical>#multi_row_part1>#multi_row_part1_inner{
+	-moz-box-orient:vertical}
+
+.subject_and_author{
+	display:-moz-box;
+	-moz-box-orient:vertical;
+	-moz-box-flex:1;
+	min-width:1px}
+
+.peep,
+.message{
+	-moz-box-orient:horizontal}
+
+.message_author,
+.message_recipient{
+	padding:1px 2px;
+	color:#893B00}
+
+.message_subject,
+.thread_subject,
+.correspondent_name,
+.correspondent_email{
+	padding:1px 2px}
+
+.message_subject:hover,
+.thread_subject:hover,
+.correspondent_name:hover{
+	border-radius:3px;
+	cursor:pointer;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+.unread .message_subject{
+	font-weight:bold}
+
+#tag_dots{
+	overflow:hidden;
+	width:200px;
+	padding:4px}
+
+#overflow{
+	text-align:center;
+	color:#893B00}
+
+.centered{text-align:center}
+
+.alert,
+#loading_box{
+	padding:8px;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	border-radius:9px;
+	box-shadow:1px 1px 3px #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+#spinner{
+	-moz-margin-end:1ex;
+	vertical-align:middle}
+
+.peep,
+#correspondents_list>li{
+	background:-moz-image-rect(url(chrome://messenger/skin/primaryToolbar.png),0,192,16,176) no-repeat 2px 2px;
+	-moz-padding-start:18px}
+
+#threads_list>li{
+	background:-moz-image-rect(url(chrome://messenger/skin/threadPane2.png),16,16,32,0) no-repeat 2px 2px;
+	-moz-padding-start:18px}
+
+#spark_wrapper{
+	margin-bottom:2px;
+	padding:4px;
+	border-radius:7px;
+	border:1px solid #B26F00;
+	box-shadow:1px 1px 3px #893B00;
+	background-image:url(chrome://global/skin/hout-active.png)}

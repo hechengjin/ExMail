@@ -1,0 +1,74 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+.datetimepicker-text-class{width:11em}
+.timepicker-text-class{width:8em}
+
+datepicker,timepicker{
+	border-radius:5px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+datepicker[type="grid"]{
+    border:0}
+
+.datetimepicker-input-subbox{width:1.6em}
+html|*.datetimepicker-input{text-align:center}
+html|*.datetimepicker-input:focus{outline-offset:0;-moz-outline-radius:3px}
+.datetimepicker-separator{padding:0}
+.datetimepicker-year{width:3.2em}
+
+.datepicker-weeklabel,
+.datepicker-gridlabel{
+	border:1px solid transparent;
+	text-align:center}
+
+.datepicker-gridlabel[today="true"] {
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white}
+
+.datepicker-monthbox{
+	font-weight:bold}
+
+.datepicker-button{
+	border-radius:0;
+	-moz-outline-radius:0;
+	padding:2px 0 3px 0;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	margin:0;
+	border:1px solid;
+	-moz-border-top-colors:transparent;
+	-moz-border-left-colors:transparent;
+	-moz-border-right-colors:transparent;
+	-moz-border-bottom-colors:transparent}
+
+.datepicker-weeklabel{color:#893B00}
+
+.datepicker-button:hover,
+row>.datepicker-gridlabel:hover:not([value=""]),
+.datepicker-button:hover{
+	-moz-border-top-colors:#EED4A2;
+	-moz-border-left-colors:#EED4A2;
+	-moz-border-right-colors:#B26F00;
+	-moz-border-bottom-colors:#B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+.datepicker-button:hover:active,
+row>.datepicker-gridlabel:hover:active:not([value=""]),
+scrollbarbutton:hover:active,
+.datepicker-gridlabel[selected="true"]{
+	-moz-border-top-colors:#B26F00!important;
+	-moz-border-left-colors:#B26F00!important;
+	-moz-border-right-colors:#EED4A2!important;
+	-moz-border-bottom-colors:#EED4A2!important;
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+
+.datepicker-previous{-moz-image-region:rect(20px,60px,30px,50px)}
+.datepicker-next{-moz-image-region:rect(30px,60px,40px,50px)}
+.datepicker-previous[disabled="true"]{-moz-image-region:rect(20px,70px,30px,60px)}
+.datepicker-next[disabled="true"]{-moz-image-region:rect(30px,70px,40px,60px)}

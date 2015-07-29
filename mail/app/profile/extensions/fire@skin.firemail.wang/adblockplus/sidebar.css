@@ -1,0 +1,67 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#suggestionsList{margin:0}
+
+#detachButton,#reattachButton:not([disabled="true"]){
+	text-decoration:underline;
+	cursor:pointer}
+
+#reattachButton[disabled="true"]{
+	color:GrayText}
+
+#detachButton,#reattachButton{
+	font-size:90%}
+
+tooltip{max-width:none}
+
+#tooltipPreview{
+	margin:10px;
+	max-width:300px;
+	max-height:300px}
+
+#tooltip label,
+#contextBlock,
+#contextWhitelist{
+	font-weight:bold}
+
+#state{min-width:16px}
+#size{text-align:end}
+
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-filter),
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-address),
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-size){
+	direction:ltr;
+	text-align:end}
+
+.disabledTextLabel{
+	font-style:italic}
+
+treechildren::-moz-tree-cell-text(state-filtered,selected-false),
+treechildren::-moz-tree-cell-text(state-hidden,selected-false){
+	color:darkred}
+treechildren::-moz-tree-cell-text(state-whitelisted,selected-false),
+treechildren::-moz-tree-cell-text(state-hiddenexception,selected-false){
+	color:darkgreen}
+treechildren::-moz-tree-cell-text(col-filter,state-hidden,selected-false){
+	color:darkblue}
+treechildren::-moz-tree-cell-text(col-filter,filter-disabled-true,selected-false){
+	color:graytext}
+
+treechildren::-moz-tree-image(col-state,dummy-false){
+	list-style-image:url(item-state.png);
+	-moz-image-region:rect(0 10px 10px 0);
+	-moz-margin-start:3px}
+treechildren::-moz-tree-image(col-state,filter-disabled-true,dummy-false){
+	-moz-image-region:rect(10px 10px 20px 0)}
+treechildren::-moz-tree-image(col-state,state-filtered,dummy-false),
+treechildren::-moz-tree-image(col-state,state-hidden,dummy-false){
+	-moz-image-region:rect(20px 10px 30px 0)}
+treechildren::-moz-tree-image(col-state,state-whitelisted,dummy-false),
+treechildren::-moz-tree-image(col-state,state-hiddenexception,dummy-false){
+	-moz-image-region:rect(30px 10px 40px 0)}
+
+@media (-moz-windows-compositor){
+#list{border-width:2px 0 0}
+#abpDetachedSidebar{-moz-appearance:-moz-win-borderless-glass;background-color:transparent!important}
+#abp-sidebar{background:none}
+}

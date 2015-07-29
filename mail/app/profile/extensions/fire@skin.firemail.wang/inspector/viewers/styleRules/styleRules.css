@@ -1,0 +1,6 @@
+@import url(chrome://global/skin);
+#olcPropPriority,
+#olbStyleProps::-moz-tree-image(olcPropPriority,important){
+	list-style-image:url(data:image/gif;base64,R0lGODlhCgAMAPAAAP8AAMDAwCH5BAEAAAEALAAAAAAKAAwAAAISjI8IkLdtHpSNJqsY3FFXzxkFADs=)}
+#olcLine{width:5em}
+

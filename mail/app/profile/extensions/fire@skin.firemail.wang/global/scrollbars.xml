@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<bindings id="skinBindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+  <binding id="scrollbarbutton">
+    <content>
+      <xul:image xbl:inherits="src"/>
+    </content>
+  </binding>
+</bindings>

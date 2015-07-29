@@ -1,0 +1,43 @@
+@import url(chrome://global/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#alertNotification{background:transparent}
+#alertNotification[clickable="true"]{cursor:pointer}
+.alertBox{
+	padding:2px;
+	border:2px solid;
+	border-radius:3px;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+#alertImage{
+	margin:2px;
+	max-width:48px;
+	max-height:48px;
+	list-style-image:url(chrome://global/skin/icons/notification-48.png)}
+.alertTextBox{
+	width:250px;
+	padding:2px}
+.alertTitle{
+	font-weight:bold}
+.alertText[clickable="true"]{
+	cursor:pointer;
+	color:darkblue;
+	text-decoration:underline}
+.alertText[clickable="true"]:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+.alertText[clickable="true"]:hover:active{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.alertCloseButton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(177px 31px 191px 17px)}
+.alertCloseButton:hover{
+	-moz-image-region:rect(225px 31px 239px 17px)}
+.alertCloseButton:hover:active{
+	-moz-image-region:rect(113px 31px 127px 17px)}

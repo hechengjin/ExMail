@@ -1,0 +1,107 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.db_progressStack,
+.db_pauseStack,
+.db_notdoneHbox,
+.db_finishedHbox{
+	max-width:125px;
+	max-height:20px;
+	min-height:20px;
+	border-radius:5px;
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	margin:0}
+.db_progressMeter{
+	border-radius:4px;
+	border:0;
+	background:transparent none}
+
+.db_progress-bar{
+	border-radius:4px;
+	-moz-appearance:none!important;
+	background:url(chrome://global/skin/hout-hover.png)}
+.db_progress-remainder{
+	background-color:transparent}
+
+.db_pauseStack{border:1px solid red}
+.db_finishedHbox{background-color:#89AFDB}
+.db_notdoneHbox{background-color:#A3A3A3}
+
+.db_progressDescription{
+	font-size:10px;
+	max-width:125px;
+	text-align:left;
+	-moz-margin-start:2px}
+
+.db_progressIndicator{
+	font-size:5pt;
+	text-align:right;
+	margin:0 3px 0 0;
+	padding:0;
+	font-weight:bold}
+
+.db_progressTooltip{
+	border:2px solid;
+	-moz-border-bottom-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#EED4A2 #B26F00;
+	-moz-border-top-colors:#EED4A2 #B26F00;
+	background:white url(chrome://global/skin/hout.png)}
+
+.db_finishedIcon{
+	max-height:16px;
+	max-width:16px;
+	margin-top:0;
+	margin-bottom:0;
+	padding-top:0;
+	padding-bottom:0;
+	vertical-align:baseline}
+
+#downbar>stack:hover{
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+#downbarMini{
+	padding-left:1px;
+	padding-right:1px}
+
+#downbarMiniImage{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(96px,85px,112px,69px);
+	height:16px}
+
+#downbarMainMenuImage{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(96px,85px,112px,69px);
+	-moz-margin-start:2px;
+	-moz-margin-end:0}
+
+#downbarMainMenuButton,
+#downbarClearButton,
+#downbarToMiniButton,
+#downbarToFullButton,
+#downbarClearButtonMini{
+	-moz-box-align:center;
+	border-radius:3px;
+	margin:1px;
+	border:1px solid transparent}
+#downbarMainMenuButton:hover,
+#downbarClearButton:hover,
+#downbarToMiniButton:hover,
+#downbarToFullButton:hover,
+#downbarClearButtonMini:hover,
+.db_progressStack:hover,
+.db_finishedHbox:hover{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)!important;
+	color:black!important}
+#downbarMainMenuButton:hover:active,
+#downbarClearButton:hover:active,
+#downbarToMiniButton:hover:active,
+#downbarToFullButton:hover:active,
+#downbarClearButtonMini:hover:active,
+.db_progressStack:hover:active,
+.db_finishedHbox:hover:active{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}

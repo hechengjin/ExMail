@@ -1,0 +1,54 @@
+.datetimepicker-text-class{width:11em}
+.timepicker-text-class{width:8em}
+
+grid[anonid="time-picker-hour-grid"]{
+	border-bottom:2px solid;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+.datepicker:focus{
+	outline-offset:0}
+
+.datepicker-button,
+.datepicker-weeklabel,
+.datepicker-gridlabel,
+.time-picker-more-control-label,
+timepicker-hour,
+timepicker-minute{
+	border:1px solid transparent;
+	-moz-box-align:center}
+
+.time-picker-more-control-label{
+	padding:2px}
+
+.datepicker-button:hover,
+.datepicker-gridlabel:hover,
+.time-picker-more-control-label:hover,
+timepicker-hour:hover,
+timepicker-minute:hover{
+	border-top-color:#EED4A2;
+	border-left-color:#EED4A2;
+	border-right-color:#B26F00;
+	border-bottom-color:#B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+.datepicker-button:hover:active,
+.datepicker-gridlabel:hover:active,
+.time-picker-more-control-label:hover:active,
+timepicker-hour[selected="true"],
+timepicker-minute[selected="true"]{
+	border-top-color:#B26F00!important;
+	border-left-color:#B26F00!important;
+	border-right-color:#EED4A2!important;
+	border-bottom-color:#EED4A2!important;
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+
+.datepicker-button{
+	border-radius:0;
+	padding:2px 0 3px 0;
+	list-style-image:url(chrome://calendar/skin/widgets/nav-buttons.png);
+	margin:0;
+	border:1px solid transparent}
+.datepicker-previous{-moz-image-region:rect(0,10px,11px,0)}
+.datepicker-next{-moz-image-region:rect(0,32px,11px,22px)}

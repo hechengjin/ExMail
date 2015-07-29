@@ -1,0 +1,48 @@
+richlistbox{
+	-moz-appearance:none!important;
+	border:2px solid!important;
+	-moz-border-top-colors:#B26F00 #893B00!important;
+	-moz-border-left-colors:#B26F00 #893B00!important;
+	-moz-border-right-colors:#EED4A2 #B26F00!important;
+	-moz-border-bottom-colors:#EED4A2 #B26F00!important;
+	border-radius:5px!important;
+	background:transparent url(chrome://global/skin/backarea.png)!important;
+	color:black!important}
+richlistbox[disabled="true"]{
+	color:#893B00!important}
+
+richlistitem{
+	padding:2px;
+	border:1px solid!important;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2!important;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+richlistitem:first-child{border-radius:3px 3px 0 0}
+richlistitem:last-child{border-radius:0 0 3px 3px}
+
+richlistitem:hover,
+richlistitem[selected="true"]{
+	border-color:#EED4A2 #893B00 #893B00 #EED4A2!important;
+	background-image:url(chrome://global/skin/hout-hover.png)!important;
+	color:black!important}
+richlistbox:focus>richlistitem[current="true"]{
+	border-color:#EED4A2 #893B00 #893B00 #EED4A2!important;
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+richlistitem[disabled="true"]{
+	background-image:url(chrome://global/skin/hout.png)!important;
+	color:#893B00!important;
+	text-shadow:1px 1px 1px #EED4A2}
+
+richlistitem>hbox,
+richlistitem>vbox{
+	background:none!important;
+	color:inherit!important}
+
+richlistbox[state="themes"]{width:30em!important}
+
+richlistitem:hover .text-link,
+richlistitem[selected="true"] .text-link{color:inherit!important}
+
+/*BRIEF extension*/
+richlistitem.view-list-item{box-shadow:none}

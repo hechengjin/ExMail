@@ -1,0 +1,23 @@
+
+treechildren::-moz-tree-image(folderNameCol,serverType-rss),
+.folderMenuItem[ServerType="rss"]{
+	list-style-image:url(chrome://messenger-newsblog/skin/newsblog.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+treechildren::-moz-tree-image(folderNameCol,serverType-rss,newMessages-true){
+	-moz-image-region:rect(0 32px 16px 16px)}
+treechildren::-moz-tree-image(folderNameCol,isServer-true,serverType-rss),
+.folderMenuItem[IsServer="true"][ServerType="rss"]{
+	-moz-image-region:rect(0 64px 16px 48px)}
+treechildren::-moz-tree-image(folderNameCol,serverType-rss,specialFolder-Virtual){
+	-moz-image-region:rect(0 48px 16px 32px)}
+
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Trash),
+.folderMenuItem[SpecialFolder="Trash"]{
+	list-style-image:url(chrome://messenger/skin/folders.png);
+	-moz-image-region:rect(0 112px 16px 96px)}
+
+treechildren::-moz-tree-image(subjectCol,rss){
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(32px 144px 48px 128px)}
+treechildren::-moz-tree-image(subjectCol,rss,new){
+	-moz-image-region:rect(32px 160px 48px 144px)}

@@ -1,0 +1,94 @@
+wizardpage{height:360px;width:700px}
+#updates,.wizard-page-box{margin:0;padding:0}
+.update-content{padding:3px}
+#updates[currentpageid="updatesfoundbasic"] .wizard-button[dlgtype="next"],
+#updates[currentpageid="updatesfoundbillboard"] .wizard-button[dlgtype="next"],
+#updates[currentpageid="finished"] .wizard-button[dlgtype="finish"],
+#updates[currentpageid="finishedBackground"] .wizard-button[dlgtype="finish"]{
+	font-weight:bold}
+#licenseContent,#incompatibleListbox{-moz-margin-start:6px;-moz-margin-end:6px}
+#incompatibleListBox{margin-bottom:6px}
+
+link{
+	color:blue;
+	border:1px solid transparent;
+	text-decoration:underline!important}
+link>label{text-decoration:underline!important}
+link:hover:active{color:red}
+link:focus{border:1px dotted #893B00}
+
+#licenseContent,#incompatibleListBox,
+license,remotecontent{
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout.png)}
+
+#downloadThrobber,
+.licenseLoadingThrobber,
+.remoteLoadingThrobber{
+	margin:2px;
+	list-style-image:url(chrome://global/skin/leds.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+#downloadThrobber[state="loading"],
+.licenseLoadingThrobber[state="loading"],
+.remoteLoadingThrobber[state="loading"]{
+	list-style-image:url(chrome://global/skin/loading.gif);
+	-moz-image-region:rect(0,16px,16px,0)}
+#verificationFailedIcon,
+#alertImage,
+#downloadThrobber[state="error"],
+.licenseLoadingThrobber[state="error"],
+.remoteLoadingThrobber[state="error"]{
+	margin:2px;
+	list-style-image:url(chrome://global/skin/icons/warning-16.png)}
+
+.heed,#errorReason,#downloadNow{font-weight:bold}
+#updateName,#updateFinishedName{font-weight:bold;font-size:larger}
+
+#incompatibleWarning{
+	border:1px outset InfoBackground;
+	background-color:InfoBackground;
+	color:InfoText;
+	padding:2px;
+	margin:2px}
+
+#downloadStatus{padding-top:6px}
+#downloadStatusLine{-moz-box-align:center}
+
+update{
+	padding:1px;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+.update-name{font-weight:bold}
+.update-label-column{-moz-box-align:end}
+.update-type{
+	font-weight:bold;
+	color:#990000}
+
+#historyItems{
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	height:200px}
+
+.updatePrefsInfo{
+	font-size:smaller;
+	margin-left:27px;
+	margin-bottom:10px}
+
+#downloadStatusTop,#downloadStatusLine{-moz-box-align:center}
+#downloadStatusProgress{padding-right:5px}
+
+#pauseButton{
+	list-style-image:url(chrome://global/skin/playbuttons.png);
+	-moz-image-region:rect(0 48px 16px 32px)}
+#pauseButton[paused="true"]{
+	-moz-image-region:rect(0 16px 16px 0)}

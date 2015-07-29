@@ -1,0 +1,223 @@
+@import url(chrome://messenger/content/messenger.css);
+@import url(chrome://global/skin/);
+@import url(chrome://messenger/skin/folderPane.css);
+@import url(chrome://messenger/skin/tagColors.css);
+@import url(chrome://messenger/skin/tabmail1.css);
+@import url(chrome://messenger/skin/threadPane.css);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#navigation-toolbox{background-image:url(chrome://global/skin/hout-hover.png)}
+
+#main-window>#appmenu-button-container:-moz-window-inactive{
+	opacity:.7}
+
+#messengerWindow:not([chromemargin])>#titlebar{display:none}
+
+#messengerWindow[chromemargin]:not([inFullscreen="true"]){
+	background-image:url(chrome://global/skin/hout-hover.png);
+	box-shadow:0 1px 1px #EED4A2 inset}
+#messengerWindow[chromemargin]>#navigation-toolbox{background:none}
+
+#navigation-toolbox>#mail-toolbar-menubar2{font-weight:600}
+#mail-menubar>menu{font-weight:inherit}
+
+#messengerWindow[chromemargin]>#tabmail-container,
+#messengerWindow[chromemargin]>#status-bar,
+#navigation-toolbox>#mail-toolbar-menubar2[autohide="false"]>#menubar-items>#mail-menubar>menu[_moz-menuactive="true"]:not([open="true"]):not(:hover),
+#navigation-toolbox>#mail-toolbar-menubar2[autohide="false"]>#menubar-items>#mail-menubar>menu:hover:not(:active){
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+/* Windows Classic */
+@media all and (-moz-windows-classic){
+#messengerWindow[chromemargin]>#titlebar{
+	border-top:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	margin-bottom:-24px!important}
+#titlebar-buttonbox{position:relative;margin-top:2px}
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2,
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2[autohide="true"][inactive="true"]:not([customizing="true"])+#tabs-toolbar{
+	-moz-margin-end:72px}
+}
+
+/* WindowsVista Style */
+@media not all and (-moz-windows-classic){
+@media not all and (-moz-windows-compositor){
+#titlebar-content:-moz-window-inactive,
+toolbox:-moz-window-inactive{
+	opacity:.7}
+#messengerWindow[chromemargin][sizemode="maximized"]{margin-top:6px!important}
+#titlebar{
+	margin-bottom:-26px!important}
+#titlebar-buttonbox{
+	position:relative;
+	margin-top:2px}
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2{
+	margin:3px 2px 1px 2px}
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2,
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2[autohide="true"][inactive="true"]:not([customizing="true"])+#tabs-toolbar{
+	-moz-margin-end:72px}
+}
+}
+
+@media not all and (-moz-windows-compositor){
+#navigation-toolbox{border-bottom:1px solid #B26F00;box-shadow:0 -1px 2px #B26F00 inset}
+#navigation-toolbox>#tabs-toolbar{border-bottom-width:0!important;box-shadow:none!important}
+}
+
+@media (-moz-windows-compositor){
+#menubar-items:-moz-window-inactive{opacity:.7}
+#titlebar{
+	margin-bottom:6px!important}
+
+#messengerWindow[chromemargin]{
+	-moz-appearance:-moz-win-borderless-glass}
+#messengerWindow[chromemargin]>#titlebar{
+	margin-bottom:-18px!important}
+#messengerWindow[chromemargin]>#tabmail-container{
+	-moz-appearance:-moz-win-exclude-glass}
+
+#titlebar-buttonbox-container{
+	max-height:20px;
+	-moz-appearance:-moz-window-button-box}
+#messengerWindow[sizemode="maximized"] #titlebar-buttonbox-container{
+	-moz-margin-end:3px;
+	-moz-appearance:-moz-window-button-box-maximized}
+#titlebar-buttonbox{display:none}
+#messengerWindow[chromemargin][sizemode="maximized"]>#titlebar{
+	margin-top:8px!important}
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2,
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2[autohide="true"][inactive="true"]:not([customizing="true"])+#tabs-toolbar{
+	-moz-padding-end:110px}
+}
+
+#messengerWindow[chromemargin]>#navigation-toolbox>#mail-toolbar-menubar2[autohide="true"][inactive="true"]:not([customizing="true"]){
+	margin:0!important}
+
+.titlebar-placeholder{display:none}
+#tabbar-toolbar{position:relative}
+
+#titlebar-min,#titlebar-max,#titlebar-close{
+	margin:2px 1px;
+	padding:0 1px;
+	list-style-image:url(chrome://global/skin/global.png)!important}
+#titlebar-min{-moz-image-region:rect(128px,32px,144px,16px)!important}
+#titlebar-max{-moz-image-region:rect(16px,32px,32px,16px)!important}
+window[sizemode="maximized"] #titlebar-max{-moz-image-region:rect(96px,32px,112px,16px)!important}
+#titlebar-close{-moz-image-region:rect(144px,32px,160px,16px)!important}
+#titlebar-close:-moz-locale-dir(rtl)>.toolbarbutton-icon{-moz-transform:scaleX(-1)}
+
+/*prevent shaky statusbar effect*/
+#status-bar{min-height:20px}
+
+.contentTabToolbar{min-height:0}
+
+#abDirTreeHeader,#folderPaneHeaderContainer{
+	display:none}
+
+#folderUnreadCol,#folderTotalCol,#folderSizeCol,
+#sizeCol,#unreadCol,#totalCol{
+	text-align:right}
+
+#checkForUpdates[loading="true"]{
+	list-style-image:url(chrome://global/skin/loading.gif)}
+
+#gray_vertical_splitter,
+#threadpane-splitter{
+	border:0;min-height:4px}
+
+#aboutDialog{padding-bottom:0!important}
+#aboutDialog>.dialog-content-box{
+	margin:2px;
+	border:2px solid;
+	border-radius:3px;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+#groove{display:none}
+#userAgent{
+	border:1px solid #893B00!important;
+	height:48px!important;
+	overflow:auto!important;
+	background-color:white!important;
+	color:black!important}
+#version{margin-bottom:4px!important}
+#detailsBox{padding:0!important;margin:4px 4px 4px 8px!important}
+#aboutDialog .dialog-button{margin:0!important}
+.dialog-button-box{margin:2px}
+
+#folderview-cycler-prev{
+	border-radius:5px 0 0 5px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(20px 60px 30px 50px)}
+#folderview-cycler-next{
+	border-radius:0 5px 5px 0;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(30px 60px 40px 50px)}
+
+#tabpanelcontainer>iframe,
+#downloadView[flex],
+browser[type="content-primary"]:not([id="messagepane"]){
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}
+#dummychromebrowser[disablesecurity="true"][disablehistory="true"],
+.contentTabInstance[disablechrome="true"]>notificationbox>browser[type="content-primary"]{
+	border-width:0!important}
+
+tabpanels.plain,
+#multimessage,
+#tabpanelcontainer>iframe[src*="glodaFacet"],
+browser[onclick*="addons.mozilla.org"]{
+	border-width:0!important}
+
+#quotaMeter{width:4em}
+#quotaPanel[alert="warning"] .progress-bar{background-color:orange;opacity:.6}
+#quotaPanel[alert="critical"] .progress-bar{background-color:red;opacity:.6}
+#quotaLabel{
+	padding-top: 2px;
+	text-align:center;
+	text-shadow:0 0 1px white,0 0 1px white;
+	font-weight:bold}
+
+#messengerWindow[persona] tabpanels.plain{
+	background-image:url(chrome://global/skin/hout.png)!important}
+#messengerWindow[persona] #today-splitter,
+#messengerWindow[persona] #today-pane-panel{
+	margin-top:23px;
+	border-top:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png)}
+#messengerWindow[persona] #today-splitter:hover{background-color:#B26F00}
+
+#mfb-text-search-upsell{
+	border-radius:5px;
+	border:2px solid;
+	-moz-border-top-colors:#EED4A2!important;
+	-moz-border-left-colors:#EED4A2!important;
+	-moz-border-right-colors:#B26F00 #893B00!important;
+	-moz-border-bottom-colors:#B26F00 #893B00!important;
+	background-image:url(chrome://global/skin/hout.png)!important}
+
+.remote-gloda-search{margin:4px 2px;border-radius:5px}
+
+/* For the Account Colors extension */
+#threadTree treechildren::-moz-tree-row(odd,hover),
+#threadTree treechildren::-moz-tree-row(ac-showstripes,odd,hover){
+	background-image:url(chrome://global/skin/hout.png)!important}
+#threadTree treechildren::-moz-tree-row(odd,selected),
+#threadTree treechildren::-moz-tree-row(ac-showstripes,odd,selected){
+	background-image:url(chrome://global/skin/hout-hover.png)!important}
+#threadTree treechildren::-moz-tree-row(odd,selected,focus),
+#threadTree treechildren::-moz-tree-row(ac-showstripes,odd,selected,focus){
+	background-image:url(chrome://global/skin/hout-active.png)!important}
+
+#gContactSyncStatusText>label{
+	background:url(chrome://global/skin/icons/sync-16.png) no-repeat left center;
+	-moz-padding-start:16px}
+#gContactSyncStatusText>label:-moz-locale-dir(rtl){
+	background-position:right center}
+
+notification[image="chrome://messenger/skin/icons/update.png"]>button{
+	list-style-image:url(chrome://mozapps/skin/extensions/extensions.png);
+	-moz-image-region:rect(0 114px 16px 98px)}

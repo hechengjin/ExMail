@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE bindings [
+<!ENTITY % tabMailDTD SYSTEM "chrome://messenger/locale/tabmail.dtd">
+%tabMailDTD;
+]>
+
+<bindings xmlns="http://www.mozilla.org/xbl"
+		xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		xmlns:xbl="http://www.mozilla.org/xbl">
+	<binding id="tabmail-tab" extends="chrome://messenger/content/tabmail.xml#tabmail-tab">
+		<content closetabtext="&closeTab.label;" context="tabContextMenu">
+			<xul:image class="tab-icon-image" xbl:inherits="busy,validate,src=image,src" role="presentation"/>
+			<xul:label class="tab-text" flex="1" xbl:inherits="value=label,crop,accesskey" crop="right" role="presentation"/>
+			<xul:toolbarbutton class="tab-close-button" anonid="close-button" tabindex="-1" clickthrough="never"/>
+		</content>
+	</binding>
+</bindings>

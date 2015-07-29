@@ -1,0 +1,9 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+dialog{width:550px}
+*[invisible="true"]{visibility:hidden}
+#supplementMessage{color:darkred}
+.localeMatch{font-weight:bold}
+#all-subscriptions-loading{margin:50px}
+#all-subscriptions{min-height:200px}
+.variant{width:200px}

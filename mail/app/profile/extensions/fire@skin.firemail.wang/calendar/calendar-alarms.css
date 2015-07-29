@@ -1,0 +1,41 @@
+#reminder-details{
+	-moz-margin-start:4px}
+
+.reminder-icon[value="EMAIL"]{
+	list-style-image:url(chrome://calendar/skin/alarm-icons.png);
+	-moz-image-region:rect(0,16px,11px,0)}
+
+.reminder-icon[value="DISPLAY"]{
+	list-style-image:url(chrome://calendar/skin/alarm-icons.png);
+	-moz-image-region:rect(0,30px,11px,16px)}
+
+.alarm-icons-box[suppressed="true"]>.reminder-icon[value="DISPLAY"]{
+	-moz-image-region:rect(0,44px,11px,30px)}
+
+.alarm-icons-box[flashing="true"]>.reminder-icon[value="DISPLAY"]{
+	list-style-image:url(chrome://calendar/skin/alarm-flashing.png);
+	-moz-image-region:auto}
+
+#reminder-relative-radio{padding:5px 1px}
+
+#reminder-actions-menulist>menupopup>menuitem>.menu-iconic-left{
+	display:-moz-box}
+
+#reminder-notifications{
+	overflow-y:visible}
+
+#reminder-notifications>notification{
+	background-color:transparent}
+#reminder-notifications>notification>.notification-inner{
+	border:0}
+#reminder-notifications>notification[type="warning"]{
+	list-style-image:url(chrome://global/skin/icons/warning-large.png)}
+
+#reminder-actions-caption,
+#reminder-details-caption,
+#calendar-event-dialog-reminder>.dialog-button-box{
+	padding-top:20px}
+
+.reminder-icon>.menu-iconic-left>.menu-iconic-icon{
+	width:auto;
+	height:auto}

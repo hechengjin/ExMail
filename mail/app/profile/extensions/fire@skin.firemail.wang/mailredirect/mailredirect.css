@@ -1,0 +1,2 @@
+#mailredirect-toolbarbutton{list-style-image:url(chrome://mailredirect/skin/mailredirect.png)}
+toolbar[iconsize=small] #mailredirect-toolbarbutton{list-style-image:url(chrome://mailredirect/skin/mailredirect-small.png)}

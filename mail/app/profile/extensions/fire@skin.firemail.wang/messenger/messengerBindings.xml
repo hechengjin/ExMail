@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<bindings id="messengerBindings"
+		xmlns="http://www.mozilla.org/xbl" 
+		xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		xmlns:xbl="http://www.mozilla.org/xbl">
+	<binding id="row-iconic" extends="xul:row">
+		<content>
+			<xul:image class="iconic-icon"/>
+			<xul:label class="iconic-label" xbl:inherits="value"/> 
+		</content>
+	</binding>
+</bindings>

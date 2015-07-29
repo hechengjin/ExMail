@@ -1,0 +1,21 @@
+#icon{
+	margin:4px;
+	width:32px;
+	height:32px;
+	list-style-image:url(chrome://mozapps/skin/extensions/addons.png);
+	-moz-image-region:rect(0 32px 32px 0)}
+#icon[addontype="theme"]{-moz-image-region:rect(0 64px 32px 32px)}
+#icon[addontype="locale"]{-moz-image-region:rect(0 96px 32px 64px)}
+#icon[addontype="plugin"]{-moz-image-region:rect(0 128px 32px 96px)}
+#icon[addontype="dictionary"]{-moz-image-region:rect(0 448px 32px 416px)}
+
+#heading-container{
+	-moz-box-align:center}
+
+#heading{
+	padding:4px;
+	font-size:120%}
+#eula{
+	margin:0;
+	background-color:-moz-Field;
+	color:-moz-FieldText}

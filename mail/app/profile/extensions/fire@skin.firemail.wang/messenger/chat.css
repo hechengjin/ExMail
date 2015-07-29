@@ -1,0 +1,365 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#noConvScreen,
+#noPreviousConvScreen,
+#conv-log-browser,
+.conv-messages>vbox>browser{
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+#statusMessage{
+	width:auto!important;
+	margin:2px;
+	padding:2px;
+	border:2px solid;
+	-moz-border-top-colors:transparent #B26F00;
+	-moz-border-left-colors:transparent #B26F00;
+	-moz-border-right-colors:transparent #EED4A2;
+	-moz-border-bottom-colors:transparent #EED4A2;
+	border-radius:5px;
+	-moz-outline-radius:5px}
+#statusMessage[editing]:hover,
+#statusMessage[editing]{
+	-moz-appearance:none!important;
+	padding:1px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+.im-placeholder-screen{
+	overflow:auto;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+.im-placeholder-box{
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	box-shadow:1px 1px 3px #B26F00;
+	border-radius:10px;
+	padding:8px;
+	-moz-padding-start:20px;
+	margin-left:1em;
+	margin-right:1em}
+.im-placeholder-image{
+	list-style-image:url(chrome://global/skin/icons/information-large.png);
+	-moz-margin-end:4px}
+.im-placeholder-innerbox{
+	max-width:25em}
+.im-placeholder-title{
+	font-weight:bold;
+	font-size:120%}
+.im-placeholder-desc{
+	font-size:110%}
+
+.conv-messages>vbox>browser,
+#contactlistbox{
+	background-image:url(chrome://global/skin/backarea.png)!important;
+	color:black!important}
+
+.contactStatusText,
+.convStatusText{
+	color:GrayText}
+
+.contact-vbox{
+	min-height:40px}
+
+.startChatBubble,
+.closeConversationButton{
+	display:-moz-box;
+  	visibility:hidden;
+	margin:0;
+	padding:0;
+	border-radius:3px;
+	-moz-outline-radius:5px;
+	-moz-binding:url(chrome://global/content/bindings/button.xml#button-image)}
+
+imcontact[cansend]:hover .startChatBubble,
+imconv:hover .closeConversationButton{
+  	visibility:visible}
+
+.startChatBubble{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0 256px 16px 240px)}
+
+.closeConversationButton{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(177px 31px 191px 17px)!important}
+.closeConversationButton:hover{
+	-moz-image-region:rect(225px 31px 239px 17px)!important}
+.closeConversationButton:hover:active{
+	-moz-image-region:rect(113px 31px 127px 17px)!important}
+
+.conv-top{
+	min-height:115px}
+
+.conv-top-info{
+	-moz-box-align:start;
+	background:none;
+	margin-bottom:8px}
+
+.userIcon{
+	margin:0;
+	-moz-margin-end:24px;
+	width:74px;
+	height:74px;
+	border:5px solid white;
+	box-shadow:2px 2px 3px 1px #893B00;
+	background:white url(chrome://messenger/skin/addressbook/icons/contact-generic.png) no-repeat center;
+	background-size:64px}
+
+.statusTypeIcon{
+	margin-top:26px;
+	margin-bottom:32px;
+	-moz-margin-start:82px;
+	width:16px;
+	height:16px}
+#statusTypeIcon>.toolbarbutton-icon{display:-moz-box}
+
+.displayNameAndstatusMessageStack{
+	-moz-margin-start:-16px}
+
+.displayNameAndstatusMessageStack>hbox{
+	-moz-box-direction:reverse;
+	margin-bottom:20px!important}
+
+.displayName{
+	font-size:120%;
+	font-weight:bold}
+
+.statusMessage{
+	-moz-margin-start:16px;
+	margin-top:24px;
+	padding:1px 2px;
+	border:1px solid transparent}
+.statusMessage[editing]{
+	-moz-appearance:none!important;
+	padding:0;
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+.statusMessage[noTopic]:not([editing]),
+.statusMessageWithDash[noTopic]{
+	font-style:italic}
+
+.status-overlay-icon{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,64px,16px,48px)}
+.status-overlay-icon[status="available"]{-moz-image-region:rect(0,16px,16px,0)}
+.status-overlay-icon[status="unavailable"],
+.status-overlay-icon[status="away"]{-moz-image-region:rect(0,32px,16px,16px)}
+.status-overlay-icon[status="offline"],
+.status-overlay-icon[status="invisible"]{-moz-image-region:rect(0,48px,16px,32px)}
+.status-overlay-icon[status="idle"]{-moz-image-region:rect(0,80px,16px,64px)}
+.status-overlay-icon[status="mobile"]{-moz-image-region:rect(0,112px,16px,96px)}
+
+.conv-messages{min-width:150px}
+
+.conv-textbox{
+	margin:0;
+	-moz-box-sizing:content-box}
+.conv-textbox>.textbox-input-box{font:message-box}
+
+.textbox-textarea,
+notificationbox{
+	overflow-x:hidden}
+
+.conv-logs-header-label{
+	padding:2px;
+	font-weight:bold;
+	opacity:.7}
+
+.conv-nicklist-header-label{
+	font-weight:bold;
+	-moz-margin-start:0!important;
+	-moz-margin-end:2px!important}
+
+.listitem-iconic[inactive]:not([selected])>.listcell-iconic>.listcell-label{
+	color:#893B00!important}
+
+.protoIcon{margin:0 2px 2px 0}
+.statusIcon{margin:5px -3px -3px 5px}
+
+#searchResultConv>.prplBuddyIcon>.protoIcon{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(64px 16px 80px 0)}
+
+#contextPane,
+#conversationsDeck{
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+imgroup{
+	padding:2px;
+	font-weight:bold;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png)}
+
+imgroup .twisty{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(0,25px,12px,13px)}
+imgroup[closed] .twisty{
+	-moz-image-region:rect(0,12px,12px,0)}
+
+imconv,imcontact{
+	padding:1px}
+
+imgroup:hover,
+imconv:hover,
+imcontact:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+imgroup:hover:active,
+imconv[selected],
+imcontact[selected]{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.contact-hbox{-moz-box-align:center}
+.prplBuddyIcon{-moz-margin-end:1px}
+
+#button-add-buddy{
+	list-style-image:url(chrome://messenger/skin/addressbook/addressbook.png);
+	-moz-image-region:rect(0,16px,16px,0)}
+toolbar[iconsize="large"]>#button-add-buddy>.toolbarbutton-icon{
+	margin:4px}
+#button-join-chat{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar24.png);
+	-moz-image-region:rect(0,480px,24px,456px)}
+toolbar[iconsize="small"]>#button-join-chat{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0 256px 16px 240px)}
+#button-chat-accounts{
+	list-style-image:url(chrome://messenger/skin/accounts.png);
+	-moz-image-region:rect(0,24px,24px,0)}
+toolbar[iconsize="small"]>#button-chat-accounts>.toolbarbutton-icon{
+	width:16px;height:16px}
+
+menuitem[cmd="cmd_undo"]{
+	-moz-binding:url(chrome://global/content/bindings/menu.xml#menuitem-iconic);
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(496px,32px,512px,16px)}
+menuitem[cmd="cmd_cut"]{
+	-moz-binding:url(chrome://global/content/bindings/menu.xml#menuitem-iconic);
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(320px 16px 336px 0)}
+menuitem[cmd="cmd_copy"]{
+	-moz-binding:url(chrome://global/content/bindings/menu.xml#menuitem-iconic);
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(336px 16px 352px 0)}
+menuitem[cmd="cmd_paste"]{
+	-moz-binding:url(chrome://global/content/bindings/menu.xml#menuitem-iconic);
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(352px 16px 368px 0)}
+menuitem[cmd="cmd_delete"]{
+	-moz-binding:url(chrome://global/content/bindings/menu.xml#menuitem-iconic);
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(272px 16px 288px 0)}
+
+.statusIcon,
+#statusTypeIcon,
+.statusTypeIcon{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,64px,16px,48px)}
+
+#statusTypeAvailable,
+#imStatusAvailable,
+.statusIcon[status="available"],
+#statusTypeIcon[status="available"],
+.statusTypeIcon[status="available"]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,16px,16px,0)}
+
+#statusTypeUnavailable,
+#imStatusUnavailable,
+.statusIcon[status="unavailable"],
+#statusTypeIcon[status="unavailable"],
+.statusTypeIcon[status="unavailable"],
+.statusIcon[status="away"],
+#statusTypeIcon[status="away"],
+.statusTypeIcon[status="away"]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+
+#statusTypeOffline,
+#imStatusOffline,
+.statusIcon[status="offline"],
+#statusTypeIcon[status="offline"],
+.statusTypeIcon[status="offline"],
+.statusIcon[status="invisible"],
+#statusTypeIcon[status="invisible"],
+.statusTypeIcon[status="invisible"]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,48px,16px,32px)}
+
+.statusIcon[status="idle"],
+#statusTypeIcon[status="idle"],
+.statusTypeIcon[status="idle"]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,80px,16px,64px)}
+
+.statusIcon[status="mobile"],
+.statusTypeIcon[status="mobile"]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(16px,112px,32px,96px)}
+
+.statusTypeIcon[status="chat"]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,128px,16px,112px)}
+
+.statusTypeIcon[typing]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,144px,16px,128px)}
+.statusTypeIcon[typed]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(16px,144px,32px,128px)}
+
+.protoIcon[status="offline"],
+.protoIcon[status="unknown"]{
+	opacity:.3}
+
+.protoIcon[status="offline"][selected],
+.protoIcon[status="unknown"][selected]{
+	opacity:.7}
+
+#buddyTooltip{
+	-moz-box-direction:reverse;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+#buddyTooltip>vbox>hbox{
+	padding:2px}
+#buddyTooltip>vbox>grid{
+	-moz-box-flex:10000;
+	padding:2px}
+
+#conv-log-browser,
+#contactlistbox,
+#logList{border-radius:5px}
+
+.listitem-iconic:hover,
+.listitem-iconic[selected="true"]{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+.listitem-iconic:focus>listitem[selected="true"]{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.listitem-iconic>.listcell-iconic>.listcell-icon{
+	-moz-margin-end:2px}
+.listitem-iconic>.listcell-iconic>.listcell-label{
+	font-weight:bold}
+.listitem-iconic[inactive]:not([selected])>.listcell-iconic>.listcell-label{
+	color:inherit!important}

@@ -1,0 +1,11 @@
+#alert{list-style-image:url(chrome://browser/skin/Info.png)}
+.throbber{
+	list-style-image:url(chrome://global/skin/loading.gif);
+	width:16px;
+	height:16px;
+	margin:2px}
+#incompatibleAlert,.alertBox{
+	background-color:#ffcc33;
+	border:1px inset #ffcc33;
+	color:black;
+	padding:1px}

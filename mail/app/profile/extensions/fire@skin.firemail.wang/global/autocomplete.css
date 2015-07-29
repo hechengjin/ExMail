@@ -1,0 +1,76 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+textbox{cursor:default}
+	
+.autocomplete-history-dropmarker{
+	border:1px solid transparent;
+	padding:1px;
+	-moz-box-align:center;
+	-moz-box-pack:center;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(10px 60px 20px 50px)}
+.autocomplete-history-dropmarker:hover:not([disabled="true"]){
+	border-color:#EED4A2 #893B00 #893B00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+.autocomplete-history-dropmarker[open="true"]{
+	-moz-image-region:rect(0 60px 10px 50px)}
+.autocomplete-history-dropmarker[disabled="true"]{
+	-moz-image-region:rect(10px 70px 20px 60px)}
+
+panel[type="autocomplete"],
+panel[type="autocomplete-richlistbox"],
+.autocomplete-history-popup{
+	max-height:25em}
+
+.autocomplete-treecol{
+	margin:0!important;
+	border:0!important;
+	padding:0!important}
+
+.autocomplete-treebody::-moz-tree-cell-text{padding-left:3px}
+.autocomplete-treebody::-moz-tree-row{border-bottom:1px solid transparent}
+.autocomplete-treebody::-moz-tree-row(selected){background-image:url(chrome://global/skin/hout-active.png)!important}
+.autocomplete-treebody::-moz-tree-cell-text(selected){color:white!important}
+
+.autocomplete-dropmarker-bkgnd-box{display:none}
+
+.autocomplete-tree,
+.autocomplete-richlistbox{
+	margin:0;
+	border:0!important;
+	padding:0!important;
+	background-image:url(chrome://global/skin/hout.png)!important;
+	color:black}
+.autocomplete-richlistbox>scrollbox>.scrollbox-innerbox{
+	background:transparent url(chrome://global/skin/hout.png)!important}
+
+.autocomplete-richlistitem{
+	box-shadow:none;
+	-moz-box-orient:vertical;
+	margin:0!important;
+	padding:2px 0 2px 2px!important;
+	border:0!important;
+	border-radius:0!important;
+	background:transparent none!important}
+.autocomplete-richlistitem:not(:first-child){
+	border-top:1px solid #B26F00!important}
+
+.autocomplete-richlistitem[selected="true"]{
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+
+.ac-normal-text{padding:0}
+
+.ac-type-icon,
+.ac-result-type-tag,
+.ac-site-icon{width:16px;height:16px;margin:0 1px}
+.ac-extra>.ac-comment{-moz-padding-end:4px}
+
+.ac-ellipsis-after{min-width:1em;padding:0}
+html|*.ac-emphasize-text{font-weight:bold}
+.ac-title,.ac-url{overflow:hidden}
+
+.autocomplete-treebody::-moz-tree-image(treecolAutoCompleteValue){max-width:16px;height:16px}
+
+textbox[nomatch="true"][highlightnonmatches="true"]{color:red}

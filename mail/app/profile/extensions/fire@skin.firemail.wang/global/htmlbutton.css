@@ -1,0 +1,111 @@
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+html|input[type="submit"],
+html|button{
+	-moz-appearance:none!important;
+	font:message-box;
+	margin:2px;
+	padding:1px;
+	outline-color:transparent;
+	border-radius:5px;
+	background-clip:padding-box;
+	-moz-outline-radius:7px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+html|input[type="submit"]:hover:not([disabled="true"]),
+html|button:hover:not([disabled="true"]){
+	box-shadow:1px 1px 2px #B26F00;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:1px 1px 2px #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+html|input[type="submit"]:focus,
+html|button:focus{
+	box-shadow:0 0 0 1px #893B00!important}
+
+html|input[type="submit"][default],
+html|button[default]{
+	font-weight:bold}
+
+html|input[type="submit"]:hover:active:not([disabled="true"]),
+html|button:hover:active:not([disabled="true"]){
+	box-shadow:inset 1px 1px 1px #B26F00;
+	-moz-border-top-colors:#893B00 #B26F00;
+	-moz-border-left-colors:#893B00 #B26F00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+html|input[type="submit"][checked="true"],
+html|button[checked="true"]{
+	box-shadow:inset 1px 1px 1px #B26F00;
+	-moz-border-top-colors:#B26F00;
+	-moz-border-left-colors:#B26F00;
+	-moz-border-right-colors:#893B00 #EED4A2;
+	-moz-border-bottom-colors:#893B00 #EED4A2;
+	background-image:url(chrome://global/skin/backarea.png)}
+
+html|input[type="submit"][disabled="true"],
+html|button[disabled="true"]{
+	-moz-border-top-colors:#B26F00 #EED4A2!important;
+	-moz-border-left-colors:#B26F00 #EED4A2!important;
+	-moz-border-right-colors:#B26F00 #B26F00!important;
+	-moz-border-bottom-colors:#B26F00 #B26F00!important;
+	background-image:url(chrome://global/skin/hout.png)!important;
+	color:#893B00!important;
+	text-shadow:1px 1px 0 #EED4A2}
+
+#closeButton,#btnCloseSidebar,#allow-button,
+html|input[type="submit"][value="OK"],
+html|input[type="submit"][value="Cancel"],#errorCancel,
+#btnTryAgain,#errorTryAgain,#restart-button{
+	-moz-padding-start:18px;
+	background-repeat:no-repeat,repeat!important;
+	background-position:2px center,left top!important}
+#closeButton:-moz-locale-dir(rtl),#btnCloseSidebar:-moz-locale-dir(rtl),#allow-button:-moz-locale-dir(rtl),
+html|input[type="submit"][value="OK"]:-moz-locale-dir(rtl),
+html|input[type="submit"][value="Cancel"]:-moz-locale-dir(rtl),#errorCancel:-moz-locale-dir(rtl),
+#btnTryAgain:-moz-locale-dir(rtl),#errorTryAgain:-moz-locale-dir(rtl){
+	background-position:right center,right top}
+
+#closeButton,#btnCloseSidebar,#allow-button,
+html|input[type="submit"][value="OK"]{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),0,16,16,0),url(chrome://global/skin/hout.png)}
+html|input[type="submit"][value="Cancel"],#errorCancel{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),16,16,32,0),url(chrome://global/skin/hout.png)}
+#errorTryAgain{/*needs to be separate*/
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),128,16,144,0),url(chrome://global/skin/hout.png)}
+#btnTryAgain,#restart-button{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),128,16,144,0),url(chrome://global/skin/hout.png)}
+
+#closeButton:hover,#btnCloseSidebar:hover,#allow-button:hover,
+html|input[type="submit"][value="OK"]:hover{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),0,16,16,0),url(chrome://global/skin/hout-hover.png)}
+html|input[type="submit"][value="Cancel"]:hover,#errorCancel:hover{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),16,16,32,0),url(chrome://global/skin/hout-hover.png)}
+#errorTryAgain:hover{/*needs to be separate*/
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),128,16,144,0),url(chrome://global/skin/hout-hover.png)}
+#btnTryAgain:hover,#restart-button:hover{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),128,16,144,0),url(chrome://global/skin/hout-hover.png)}
+
+#closeButton:hover:active,#btnCloseSidebar:hover:active,#allow-button:hover:active,
+html|input[type="submit"][value="OK"]:hover:active{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),0,16,16,0),url(chrome://global/skin/hout-active.png)}
+html|input[type="submit"][value="Cancel"]:hover:active,#errorCancel:hover:active{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),16,16,32,0),url(chrome://global/skin/hout-active.png)}
+#errorTryAgain:hover:active{/*needs to be separate*/
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),128,16,144,0),url(chrome://global/skin/hout-active.png)}
+#btnTryAgain:hover:active,#restart-button:hover:active{
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),128,16,144,0),url(chrome://global/skin/hout-active.png)}

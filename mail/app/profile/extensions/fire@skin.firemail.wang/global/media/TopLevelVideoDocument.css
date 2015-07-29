@@ -1,0 +1,7 @@
+@media not print{
+body{background-image:url(chrome://global/skin/hout.png)}
+video{
+	box-shadow:2px 2px 15px #893B00,2px 2px 4px #893B00;
+	background-color:-moz-Dialog;
+	color:-moz-DialogText}
+}

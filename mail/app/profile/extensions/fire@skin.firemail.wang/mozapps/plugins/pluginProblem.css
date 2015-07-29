@@ -1,0 +1,132 @@
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+.mainBox{
+	position:relative;
+	font:message-box;
+	-moz-user-select:none;
+	text-align:center;
+	box-shadow:inset 2px 2px 3px #893B00,inset 0 0 3px #B26F00,inset 0 0 1px #893B00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+:-moz-any(
+:-moz-handler-clicktoplay,
+:-moz-handler-vulnerable-updatable,
+:-moz-handler-vulnerable-no-update)>.mainBox{
+	cursor:pointer}
+
+.hoverBox{-moz-box-align:center}
+
+.icon{
+	border-width:0;
+	width:32px;
+	height:32px;
+	background:-moz-image-rect(url(chrome://mozapps/skin/extensions/addons.png),0,128,32,96) center center no-repeat}
+:-moz-any(
+:-moz-type-unsupported,
+:-moz-handler-vulnerable-updatable,
+:-moz-handler-vulnerable-no-update,
+:-moz-type-unsupported-platform) .icon{
+	background-image:-moz-image-rect(url(chrome://mozapps/skin/extensions/addons.png),0,288,32,256)}
+:-moz-any(
+:-moz-handler-disabled,
+:-moz-handler-blocked) .icon{
+	background-image:-moz-image-rect(url(chrome://mozapps/skin/extensions/addons.png),0,320,32,288)}
+:-moz-handler-crashed .icon{
+	background-image:-moz-image-rect(url(chrome://mozapps/skin/extensions/addons.png),0,352,32,320)}
+:-moz-type-unsupported .icon[status="ready"],
+:-moz-type-unsupported .icon[installable]{
+	background-image:-moz-image-rect(url(chrome://mozapps/skin/extensions/addons.png),0,416,32,384)}
+
+.throbber{
+	padding-left:16px;
+	background:url(chrome://global/skin/loading.gif) no-repeat;
+	margin-left:5px}
+
+.msg{
+	cursor:default;
+	opacity:1;
+	padding:2px 4px;
+	border-radius:5px;
+	margin:2px 8px;
+	font-size:110%;
+	font-weight:600}
+vbox:hover>.msgTapToPlay,
+vbox:hover>.msgClickToPlay{
+	box-shadow:1px 1px 3px #893B00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:white}
+vbox:hover:active>.msgTapToPlay,
+vbox:hover:active>.msgClickToPlay{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.msgBottomLinks{
+	margin:0!important;
+	background:none!important;
+	box-shadow:none!important}
+
+.closeIcon,
+.helpIcon{
+	display:block;
+	position:absolute;
+	width:24px;
+	height:24px;
+	border-radius:5px;
+	border:2px solid transparent;
+	background:-moz-image-rect(url(chrome://global/skin/global.png),32,16,48,0) no-repeat center}
+.helpIcon{
+	bottom:4px;
+	cursor:pointer}
+.closeIcon{
+	top:4px;
+	background-image:-moz-image-rect(url(chrome://global/skin/global.png),16,16,32,0)}
+.helpIcon,
+.closeIcon[chromedir="rtl"]{
+	right:auto;
+	left:4px}
+.closeIcon,
+.helpIcon[chromedir="rtl"]{
+	left:auto;
+	right:4px}
+
+.helpIcon:hover,
+.closeIcon:hover{
+	background-color:#B26F00;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:1px 1px 2px #B26F00}
+.helpIcon:hover:active,
+.closeIcon:hover:active{
+	background-color:#893B00;
+	-moz-border-top-colors:#893B00 #B26F00;
+	-moz-border-left-colors:#893B00 #B26F00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	box-shadow:1px 1px 1px #B26F00 inset}
+
+@media not all and (-moz-touch-enabled){
+	:-moz-handler-clicktoplay .msgTapToPlay{display:none}
+}
+@media (-moz-touch-enabled) {
+	:-moz-handler-clicktoplay .msgClickToPlay{display:none}
+}
+
+.submitComment{
+	width:340px;
+	height:70px;
+	padding:5px;
+	border-radius:5px;
+	resize:none;
+	font-family:inherit;
+	font-size:inherit}
+.submitURLOptInBox{
+	text-align:start}
+.submitButtonBox{
+	margin-top:7px}
+.submitButton{
+	float:right}
+.mainBox[chromedir="rtl"] .submitButton{
+	float:left}

@@ -1,0 +1,7 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+treechildren::-moz-tree-image(GeneratedName){
+	list-style-image:url(chrome://messenger/skin/addressbook/addressbook.png);
+	-moz-image-region:rect(0 112px 16px 96px)}
+treechildren::-moz-tree-image(GeneratedName,MailList){
+	-moz-image-region:rect(0 144px 16px 128px)}

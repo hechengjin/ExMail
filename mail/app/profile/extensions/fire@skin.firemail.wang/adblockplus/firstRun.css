@@ -1,0 +1,27 @@
+@import url(chrome://global/skin/about.css);
+@namespace url(http://www.w3.org/1999/xhtml);
+
+body{
+	background-image:-moz-image-rect(url(chrome://adblockplus/skin/abp-status.png),0,24,24,0),url(chrome://global/skin/backarea.png);
+	background-repeat:no-repeat,repeat;
+	background-position:left top;
+	background-origin:content-box,border-box}
+
+p{margin:0;padding:0}
+body>p:first-child{
+	margin:0 30px;
+	font-weight:bold;
+	font-size:150%}
+
+.sectionContainer{
+	margin:4px;
+	padding:4px;
+	border-radius:9px;
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}
+.sectionTitle{
+	font-weight:bold}
+#listNameContainer{display:list-item;-moz-margin-start:1.5em}
+#listName{display:inline;font-weight:bold;-moz-margin-end:2em}
+#listNone{font-style:italic}
+#acceptableAds{margin-top:1em}

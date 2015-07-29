@@ -1,0 +1,5 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#msgReadSecurityInfo{width:40em;max-width:50em}
+#signatureLabel,#encryptionLabel{font-weight:bold}
+#outer_vbox,#signatureCert,#encryptionCert{margin:5px}

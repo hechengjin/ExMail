@@ -1,0 +1,191 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+.controlBar{
+	height:20px;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+button{
+	margin:0!important;
+	padding:0!important;
+	width:20px;
+	height:20px;
+	outline:none!important;
+	box-shadow:none!important}
+.muteButton[noAudio="true"],
+button:not(:hover){
+	-moz-border-top-colors:transparent;
+	-moz-border-left-colors:transparent;
+	-moz-border-right-colors:transparent;
+	-moz-border-bottom-colors:transparent;
+	background:transparent none}
+.button-box{
+	background-position:center!important;
+	background-repeat:no-repeat!important}
+
+.playButton{
+	margin-right:-20px!important;
+	position:relative}
+
+.playButton>.button-box{
+	background-image:-moz-image-rect(url(chrome://global/skin/media/video.png),0,16,16,0)}
+.playButton[paused="true"]>.button-box{
+	background-image:-moz-image-rect(url(chrome://global/skin/media/video.png),0,32,16,16)}
+.muteButton>.button-box{
+	background-image:-moz-image-rect(url(chrome://global/skin/media/video.png),16,16,32,0)}
+.muteButton[muted="true"]>.button-box{
+	background-image:-moz-image-rect(url(chrome://global/skin/media/video.png),16,32,32,16)}
+.muteButton[noAudio="true"]>.button-box{
+	background-image:-moz-image-rect(url(chrome://global/skin/media/video.png),0,64,16,48)}
+.fullscreenButton>.button-box{
+	background-image:-moz-image-rect(url(chrome://global/skin/media/video.png),0,48,16,32)}
+.fullscreenButton[fullscreened]>.button-box{
+	background-image:-moz-image-rect(url(chrome://global/skin/media/video.png),16,48,32,32)}
+
+.volumeStack{
+	width:16px;
+	height:68px;
+	border-radius:6px 6px 0 0;
+	border:1px solid #EED4A2;
+	border-right-color:#B26F00;
+	border-bottom:0;
+	background-image:url(chrome://global/skin/hout-vert.png);
+	margin:-68px 2px 19px -18px;
+	overflow:hidden;
+	position:relative;
+	padding-top:3px}
+.volumeControl{min-height:64px}
+.volumeControl .scale-thumb{
+	width:10px;
+	min-height:10px;
+	max-height:10px}
+
+.volumeBackgroundBar{
+	margin:0 4px;
+	border-radius:5px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png)}
+
+.durationBox{
+	margin-left:-20px!important;
+	-moz-box-align:center;
+	-moz-box-pack:center}
+
+.durationLabel{
+	padding-left:8px;
+	color:black;
+	text-shadow:0 1px #EED4A2;
+	font:11px sans-serif}
+
+.bufferBar,
+.progressBar{
+	margin:5px 20px!important;
+	min-width:0;
+	min-height:0}
+
+.bufferBar{
+	border:0!important}
+.bufferBar .progress-bar{
+	border-radius:5px;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+
+.progressBar .progress-bar{
+	background-image:url(chrome://global/skin/hout-active.png)}
+
+.scale-slider{
+	margin:0}
+
+.scrubber>.scale-slider{
+	-moz-appearance:none!important;
+	box-shadow:none!important;
+	background:transparent none!important;
+	margin-top:-13px;
+	margin-bottom:11px}
+
+.scrubber>.scale-slider>.scale-thumb{
+	width:45px;
+	height:28px;
+	background:transparent none;
+	border-width:0;
+	border-radius:0!important}
+
+.timeThumb{
+	-moz-box-align:start;
+	-moz-box-pack:center;
+	width:45px;
+	height:22px;
+	background:-moz-image-rect(url(chrome://global/skin/media/scrubberThumb.png),0,33,22,0) no-repeat center}
+.timeThumb[showhours="true"]{
+	background:-moz-image-rect(url(chrome://global/skin/media/scrubberThumb.png),0,78,22,33) no-repeat center}
+ 
+.timeLabel{
+	padding-top:1px;
+	color:black;
+	font-size:10px;
+	font-family:Tahoma,Arial,sans-serif;
+	text-shadow:0 1px #EED4A2}
+
+.statusOverlay{
+	-moz-box-align:center;
+	-moz-box-pack:center;
+	background-color:rgba(0,0,0,.55)}
+
+.statusIcon{
+	margin-bottom:20px;
+	height:24px;
+	width:24px;
+	background-repeat:no-repeat;
+	background-position:center}
+.statusIcon[type="throbber"]{
+	background-image:url(chrome://global/skin/icons/loading_16.png)}
+.statusIcon[type="error"]{
+	background-image:url(chrome://global/skin/icons/warning-large.png)}
+
+.controlBar:not([immediate]){-moz-transition:opacity 300ms}
+.volumeStack:not([immediate]){-moz-transition:opacity 200ms,margin-top 200ms}
+.statusOverlay:not([immediate]){-moz-transition:opacity 300ms 750ms}
+.controlBar[fadeout],
+.statusOverlay[fadeout]{opacity:0}
+.volumeStack[fadeout]{opacity:0;margin-top:0}
+
+.positionLabel{display:none}
+
+html|*.statsDiv{position:relative}
+html|tr[style^="height"]{display:none}
+html|td{
+	text-align:left;
+	padding:0 2px}
+html|table{
+	table-layout:fixed;
+	border-collapse:collapse;
+	border:2px solid rgba(160,160,160,.7);
+	position:absolute;
+	font:message-box;
+	text-shadow:0 0 2px black,0 0 1px black;
+	background:rgba(68,68,68,.7);
+	color:white}
+
+.errorLabel{
+	font:message-box;
+	color:white;
+	text-shadow:0 0 2px black,0 0 1px black;
+	padding:0 10px;
+	text-align:center}
+
+.clickToPlay{
+	opacity:.7;
+	background:url(chrome://global/skin/media/play.png) no-repeat center -moz-calc(50% + 1px);
+	background-size:64px 64px;
+	-moz-transition-property:opacity,background-size;
+	-moz-transition-duration:400ms,400ms}
+.clickToPlay:hover{opacity:1}
+.clickToPlay[fadeout]{background-size:192px 192px;opacity:0}
+.clickToPlay[fadeout][immediate] {
+	-moz-transition-property:opacity,background-size;
+	-moz-transition-duration:0s,0s}
+	

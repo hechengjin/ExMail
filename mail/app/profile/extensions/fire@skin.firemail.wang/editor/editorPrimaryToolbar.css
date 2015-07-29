@@ -1,0 +1,54 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#newButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(0,24px,24px,0)}
+#openButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(24px,24px,48px,0)}
+#spellingButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(48px,24px,72px,0)}
+#publishButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(72px,24px,96px,0)}
+#previewButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(96px,24px,120px,0)}
+#imageButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(120px,24px,144px,0)}
+#tableButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(144px,24px,168px,0)}
+#linkButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(168px,24px,192px,0)}
+#findButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(192px,24px,216px,0)}
+#namedAnchorButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(216px,24px,240px,0)}
+#hlineButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(240px,24px,264px,0)}
+#formButton{
+	list-style-image:url(chrome://editor/skin/editorPrimary.png);
+	-moz-image-region:rect(264px,24px,288px,0)}
+#print-button,
+#printButton{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(120px,24px,144px,0)}
+#cutButton{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(192px,24px,216px,0)}
+#copyButton{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(216px,24px,240px,0)}
+#pasteButton{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(240px,24px,264px,0)}
+#saveButton{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(24px,24px,48px,0)}

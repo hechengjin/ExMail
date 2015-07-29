@@ -1,0 +1,80 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+#searchInput,
+#IMSearchInput{
+	margin:0 2px!important;
+	font-style:normal!important;
+	border-radius:7px}
+#searchInput[empty="true"]{color:#893B00}
+
+#IMSearchInput html|*.autocomplete-textbox:focus,
+#searchInput html|*.autocomplete-textbox:focus{
+	-moz-outline-radius:5px}
+
+.gloda-search-icon,
+.quick-search-button{
+	margin:0;
+	padding:1px 2px;
+	border:1px solid transparent;
+	-moz-border-start-width:2px!important;
+
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png)}
+.gloda-search-icon{
+	border-radius:0 5px 5px 0}
+.quick-search-button,
+.gloda-search-icon:-moz-locale-dir(rtl){
+	border-radius:5px 0 0 5px}
+
+.gloda-search-icon,
+.quick-search-button-image{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(64px 16px 80px 0)}
+.gloda-search-icon:-moz-locale-dir(rtl),
+.quick-search-button-image:-moz-locale-dir(rtl){
+	-moz-transform:scaleX(-1)}
+
+.quick-search-button-dropmarker{
+	-moz-margin-start:16px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(10px 60px 20px 50px)}
+.quick-search-button[open="true"] .quick-search-button-dropmarker{
+	-moz-image-region:rect(0 60px 10px 50px)}
+
+.gloda-search-icon:hover,
+.quick-search-button:hover{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+.gloda-search-icon:hover:active,
+.quick-search-button:hover:active{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png)}
+
+.autocomplete-history-dropmarker{display:none}
+.autocomplete-history-dropmarker[enablehistory="true"]{
+	display:-moz-box;
+	-moz-binding:url(chrome://global/content/bindings/autocomplete.xml#history-dropmarker)}
+
+.explanation,.gloda-single-identity{
+	margin:0!important}
+
+.gloda-single-identity{
+	-moz-box-align:start}
+.gloda-single-identity>.picture{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(1px,192px,16px,176px)}
+.autocomplete-richlistitem[type="gloda-single-tag"],
+.autocomplete-richlistitem[type="gloda-fulltext-single"],
+.autocomplete-richlistitem[type="websearch"]{
+	-moz-padding-start:20px!important;
+	background-repeat:no-repeat,repeat!important;
+	background-position:3px center,top left!important}
+.autocomplete-richlistitem[type="websearch"]{background-image:-moz-image-rect(url(chrome://global/skin/global.png),256,16,272,0)!important}
+.autocomplete-richlistitem[type="gloda-fulltext-single"]{background-image:-moz-image-rect(url(chrome://global/skin/global.png),304,32,320,16)!important}
+.autocomplete-richlistitem[type="gloda-single-tag"]{background-image:-moz-image-rect(url(chrome://global/skin/global.png),320,32,336,16)!important}
+.autocomplete-richlistitem[type="websearch"]:hover{background-image:-moz-image-rect(url(chrome://global/skin/global.png),256,16,272,0),url(chrome://global/skin/hout-active.png)!important}
+.autocomplete-richlistitem[type="gloda-fulltext-single"]:hover{background-image:-moz-image-rect(url(chrome://global/skin/global.png),304,32,320,16),url(chrome://global/skin/hout-active.png)!important}
+.autocomplete-richlistitem[type="gloda-single-tag"]:hover{background-image:-moz-image-rect(url(chrome://global/skin/global.png),320,32,336,16),url(chrome://global/skin/hout-active.png)!important}
+

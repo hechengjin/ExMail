@@ -1,0 +1,21 @@
+
+#header{
+	overflow:hidden;
+	border-bottom:1px solid black}
+
+#addressbox{-moz-box-align:center}
+
+#security-button{
+	height:16px;
+	margin:2px}
+#security-button[loading="true"]{
+	list-style-image:url(chrome://global/skin/loading.gif)}
+#security-button[level="high"]{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(80px,51px,96px,36px)}
+#security-button[level="low"]{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(80px,36px,96px,21px)}
+#security-button[level="broken"]{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(80px,69px,96px,51px)}

@@ -1,0 +1,117 @@
+@import url(chrome://messenger/content/sharedsummary.css);
+ 
+html,body{height:100%;max-height:100%}
+
+body{
+	display:-moz-box;
+	-moz-box-orient:vertical;
+	width:-moz-available;
+	margin:0;
+	padding:0;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+ 
+#headingwrappertable{
+	font:message-box}
+
+#heading{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	padding:3px;
+	font-weight:bold;
+	font-size:120%;
+	text-shadow:1px 1px 1px rgba(238,212,162,0.8),-1px -1px 1px rgba(171,111,0,0.5)}
+
+#header-view-toolbox{float:right}
+
+#content,#messagelist{
+	display:-moz-box;
+	-moz-box-flex:1;
+	-moz-box-align:stretch;
+	-moz-box-orient:vertical}
+
+#messagelist{
+	overflow-x:hidden;
+	overflow-y:auto;
+	margin:0;
+	padding:2px;
+	border:2px solid;
+	border-radius:3px;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	box-shadow:1px 1px 3px #B26F00 inset;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+.notice{
+	font:message-box;
+	text-shadow:0 1px rgba(238,212,162,.7)}
+
+.message{
+	margin:2px;
+	padding:2px;
+	border-radius:0 9px 9px 9px;
+	box-shadow:1px 1px 2px #B26F00;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+.star{
+	float:left;
+	width:16px;
+	height:16px}
+.star:-moz-locale-dir(rtl){float:right}
+.starred .star{
+	background-image:-moz-image-rect(url(chrome://messenger/skin/threadPane2.png),0,32,16,16)}
+.header{padding:0}
+.wrappedsender,.wrappedsubject{
+	font:message-box;
+	-moz-margin-start:16px}
+
+.subject,.sender{
+	display:inline;
+	text-decoration:none!important;
+	padding:1px 2px;
+	font-weight:bold;
+	color:#893B00;
+	border-radius:3px;
+	-moz-outline-radius:4px;
+	cursor:pointer}
+.subject:hover,.sender:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+.subject:hover:active,.sender:hover:active{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+.unread>*>*>*>.subject,
+.unread>*>*>*>.sender{
+	color:black;
+	-moz-padding-end:16px;
+	background-image:-moz-image-rect(url(chrome://messenger/skin/threadPane2.png),0,160,16,144);
+	background-repeat:no-repeat;
+	background-position:right center}
+
+.count,.tags{
+	display:inline;
+	white-space:nowrap;
+	padding:0 10px}
+.count{
+	font-style:italic;
+	font-weight:bold}
+
+#buttonbox,.date,.author{
+	float:right;
+	-moz-margin-end:4px}
+.snippet{
+	padding:2px;
+	-moz-padding-start:18px;
+	-moz-padding-end:8em}
+
+.messagecount{
+	display:inline-block;
+	white-space:nowrap;
+	overflow:hidden}

@@ -1,0 +1,11 @@
+.moz-txt-sig,.moz-signature{color:gray}
+.moz-txt-sig>a,.moz-signature>a{color:#7777FF}
+
+blockquote[type=cite]{
+	padding:0 .5em .5em 1em!important;
+	border-right:2px solid blue!important;
+	border-left:2px solid blue!important}
+blockquote[type=cite] blockquote[type=cite]{border-color:maroon!important}
+blockquote[type=cite] blockquote[type=cite] blockquote[type=cite]{border-color:teal!important}
+blockquote[type=cite] blockquote[type=cite] blockquote[type=cite] blockquote[type=cite]{border-color:purple!important}
+blockquote[type=cite] blockquote[type=cite] blockquote[type=cite] blockquote[type=cite] blockquote[type=cite]{border-color:green!important}

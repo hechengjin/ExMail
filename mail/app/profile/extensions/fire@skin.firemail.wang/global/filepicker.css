@@ -1,0 +1,21 @@
+@import url(chrome://global/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#FilenameColumn,#ContentLengthColumn,#LastModifiedDateColumn{width:100px}
+
+treechildren::-moz-tree-image(FilenameColumn){
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(41px 54px 57px 38px)}
+treechildren::-moz-tree-image(FilenameColumn,directory){
+	-moz-image-region:rect(57px 54px 73px 38px)}
+treechildren::-moz-tree-image(FilenameColumn,directory,open){
+	-moz-image-region:rect(57px 70px 73px 54px)}
+
+.up-button{list-style-image:url(chrome://global/skin/dirListing/up.png)}
+
+.home-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(288px 16px 304px 0)}
+.new-dir-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(416px 32px 432px 16px)}

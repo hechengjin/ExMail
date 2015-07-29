@@ -1,0 +1,11 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#editContactPanelIcon{
+	list-style-image:url(chrome://messenger/skin/vcard.png)}
+#editContactPanelTitle{
+	font-weight:bold;padding:2px}
+#editContactEmail{
+	min-width:20em}
+.editContactTextbox[readonly="true"]{
+	border-width:0;
+	background-color:transparent}

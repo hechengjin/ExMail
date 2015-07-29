@@ -1,0 +1,69 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+autorepeatbutton,
+.scrollbutton-up,
+.scrollbutton-down{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	margin:0;
+	padding:0;
+	border:1px solid transparent;
+	-moz-box-align:center;
+	-moz-box-pack:center}
+
+.scrollbutton-up>.toolbarbutton-text,
+.scrollbutton-down>.toolbarbutton-text{display:none}
+
+.scrollbutton-up:hover,
+.scrollbutton-down:hover{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+
+autorepeatbutton:hover,
+.scrollbutton-up:hover:active,
+.scrollbutton-down:hover:active{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png)}
+
+autorepeatbutton[disabled="true"]{
+	display:none!important}
+
+.scrollbutton-up[disabled="true"],
+.scrollbutton-down[disabled="true"]{
+	border:1px solid transparent!important;
+	background:transparent none!important}
+
+.autorepeatbutton-up,
+.scrollbutton-up{-moz-image-region:rect(0 60px 10px 50px)}
+
+.autorepeatbutton-down,
+.scrollbutton-down{-moz-image-region:rect(10px 60px 20px 50px)}
+
+.autorepeatbutton-up[disabled="true"],
+.scrollbutton-up[disabled="true"]{-moz-image-region:rect(0 70px 10px 60px)}
+
+.autorepeatbutton-down[disabled="true"],
+.scrollbutton-down[disabled="true"]{-moz-image-region:rect(10px 70px 20px 60px)}
+
+.autorepeatbutton-up[orient="horizontal"],
+.autorepeatbutton-down[chromedir="rtl"][orient="horizontal"],
+.scrollbutton-up[orient="horizontal"],
+.scrollbutton-down[chromedir="rtl"][orient="horizontal"]{
+	-moz-image-region:rect(20px 60px 30px 50px)}
+
+.autorepeatbutton-down[orient="horizontal"],
+.autorepeatbutton-up[chromedir="rtl"][orient="horizontal"],
+.scrollbutton-down[orient="horizontal"],
+.scrollbutton-up[chromedir="rtl"][orient="horizontal"]{
+	-moz-image-region:rect(30px 60px 40px 50px)}
+
+.autorepeatbutton-up[orient="horizontal"][disabled="true"],
+.autorepeatbutton-down[chromedir="rtl"][orient="horizontal"][disabled="true"],
+.scrollbutton-up[orient="horizontal"][disabled="true"],
+.scrollbutton-down[chromedir="rtl"][orient="horizontal"][disabled="true"]{
+	-moz-image-region:rect(20px 70px 30px 60px)}
+
+.autorepeatbutton-down[orient="horizontal"][disabled="true"],
+.autorepeatbutton-up[chromedir="rtl"][orient="horizontal"][disabled="true"],
+.scrollbutton-down[orient="horizontal"][disabled="true"],
+.scrollbutton-up[chromedir="rtl"][orient="horizontal"][disabled="true"]{
+	-moz-image-region:rect(30px 70px 40px 60px)}

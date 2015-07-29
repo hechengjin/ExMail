@@ -1,0 +1,188 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#buttonspacer{width:4px}
+
+#today-pane-header{
+	font-weight:bold;
+	text-shadow:0 1px rgba(250,250,250,0.4)}
+
+.today-subpane{margin-top:2px}
+#miniday-month-panel{padding:2px}
+#mini-day-box{-moz-box-pack:center}
+
+#mini-day-box>stack{
+	min-width:14em;
+	max-width:15em;
+	border:2px solid;
+	border-radius:9px;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	box-shadow:1px 1px 3px #B26F00 inset;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+#weekspacer+hbox{-moz-box-align:start}
+
+.dateValue,
+#weekdayNameContainer,
+.monthLabel{
+	font-family:Trebuchet MS,Lucida Grande,Arial,Helvetica,sans-serif}
+
+#weekdayNameContainer{
+	padding-top:4px;
+	font-weight:bold;
+	font-size:18px}
+
+.dateValue{
+	font-size:36px;
+	font-weight:bold}
+
+.miniday-nav-buttons{
+	border-radius:0;
+	margin:0;
+	padding:2px 0;
+	list-style-image:url(chrome://calendar/skin/widgets/nav-buttons.png);
+	-moz-user-focus:normal}
+#previous-day-button{-moz-image-region:rect(0,10px,11px,0)}
+#today-button{-moz-image-region:rect(0,22px,11px,10px)}
+#next-day-button{-moz-image-region:rect(0,32px,11px,22px)}
+
+#miniday-dropdown-button{
+	min-width:1px;
+	margin:0;
+	padding:0;
+	border-radius:0 7px 7px 0;
+	-moz-user-focus:normal}
+#miniday-dropdown-button>dropmarker{padding:0}
+
+.today-closebutton>.toolbarbutton-icon,
+.miniday-nav-buttons>.toolbarbutton-icon{
+	margin:1px}
+
+.today-closebutton>.toolbarbutton-text,
+#miniday-dropdown-button>.toolbarbutton-icon,
+#miniday-dropdown-button>.toolbarbutton-text,
+.miniday-nav-buttons>.toolbarbutton-text{
+	display:none}
+
+.today-closebutton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(176px 31px 192px 17px)!important;
+	background:transparent none!important;
+	border:1px solid transparent!important}
+.today-closebutton:hover{
+	-moz-image-region:rect(224px 31px 240px 17px)!important;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2!important;
+	background-image:url(chrome://global/skin/hout-hover.png)!important}
+.today-closebutton:hover:active{
+	-moz-image-region:rect(224px 31px 240px 17px)!important;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00!important;
+	background-image:url(chrome://global/skin/hout-active.png)!important}
+
+#agenda-toolbar{
+	padding:4px 0;
+	-moz-box-pack:center}
+#agenda-toolbar>toolbarbutton{
+	border:2px solid!important;
+	-moz-border-top-colors:#B26F00 #EED4A2!important;
+	-moz-border-left-colors:#B26F00 #EED4A2!important;
+	-moz-border-right-colors:#EED4A2 #B26F00!important;
+	-moz-border-bottom-colors:#EED4A2 #B26F00!important}
+#agenda-toolbar>toolbarbutton:hover:not([disabled="true"]){
+	-moz-border-right-colors:#893B00 #B26F00!important;
+	-moz-border-bottom-colors:#893B00 #B26F00!important}
+#agenda-toolbar>toolbarbutton:hover:active:not([disabled="true"]){
+	-moz-border-top-colors:#B26F00 #893B00!important;
+	-moz-border-left-colors:#B26F00 #893B00!important;
+	-moz-border-right-colors:#EED4A2 transparent!important;
+	-moz-border-bottom-colors:#EED4A2 transparent!important}
+#todaypane-new-event-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+	
+#agenda-listbox{
+	border-radius:0;
+	box-shadow:inset 1px 1px 3px #B26F00;
+	background-image:url(chrome://global/skin/backarea.png)!important;
+	-moz-user-focus:normal}
+#agenda-listbox:-moz-locale-dir(ltr){border-top-left-radius:9px}
+#agenda-listbox:-moz-locale-dir(rtl){border-top-right-radius:9px}
+#agenda-listbox>scrollbox:-moz-locale-dir(ltr),
+agenda-checkbox-richlist-item:-moz-locale-dir(ltr)>agenda-checkbox{border-top-left-radius:7px}
+#agenda-listbox>scrollbox:-moz-locale-dir(rtl),
+agenda-checkbox-richlist-item:-moz-locale-dir(rtl)>agenda-checkbox{border-top-right-radius:7px}
+	
+#today-header>.agenda-checkbox:-moz-locale-dir(ltr){border-top-left-radius:7px}
+#today-header>.agenda-checkbox:-moz-locale-dir(rtl){border-top-left-radius:7px}
+
+agenda-checkbox-richlist-item{
+	box-shadow:1px 1px 3px #B26F00;
+	-moz-binding:url(chrome://calendar/content/agenda-listbox.xml#agenda-checkbox-richlist-item);
+	-moz-user-focus:normal;
+	font-weight:bold;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+agenda-checkbox-richlist-item>.agenda-checkbox{
+	background-image:url(chrome://global/skin/hout.png);
+	border-radius:0;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2}
+
+agenda-richlist-item{
+	-moz-binding:url(chrome://calendar/content/agenda-listbox.xml#agenda-richlist-item);
+	-moz-user-focus:normal;
+	padding:2px;
+	overflow:hidden}
+agenda-allday-richlist-item{
+	-moz-binding:url(chrome://calendar/content/agenda-listbox.xml#agenda-allday-richlist-item);
+	-moz-user-focus:normal;
+	padding:2px;
+	overflow:hidden}
+agenda-richlist-item:hover:not([disabled="true"]),
+agenda-allday-richlist-item:hover:not([disabled="true"]){
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+agenda-richlist-item[selected="true"],
+agenda-allday-richlist-item[selected="true"]{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.agenda-event-start{padding:0 2px}
+
+.agenda-new-date{
+	width:15px;
+	height:15px;
+	border:1px solid #893B00;
+	cursor:pointer}
+
+.agenda-calendar-image{
+	margin:3px 2px 2px 2px;
+	list-style-image:url(chrome://calendar/skin/calendar-overlay.png);
+	-moz-image-region:rect(0,10px,10px,0)}
+
+.agenda-multiDayEvent-image{
+	display:none;
+	margin-top:1px;
+	-moz-margin-start:3px;
+	list-style-image:url(chrome://calendar/skin/calendar-overlay.png);
+	-moz-image-region:rect(0,20px,10px,10px)}
+.agenda-multiDayEvent-image[type="start"]{
+	display:-moz-box}
+.agenda-multiDayEvent-image[type="continue"]{
+	display:-moz-box;
+	-moz-image-region:rect(0,30px,10px,20px)}
+.agenda-multiDayEvent-image[type="end"]{
+	display:-moz-box;
+	-moz-image-region:rect(0,40px,10px,30px)}
+
+calendar-header-container .alarm-icons-box,
+agenda-richlist-item .alarm-icons-box,
+agenda-allday-richlist-item .alarm-icons-box{
+	min-width:14px;
+	background:transparent url(chrome://calendar/skin/alarm.png) center center no-repeat}
+calendar-header-container .alarm-icons-box[flashing="true"],
+agenda-richlist-item .alarm-icons-box[flashing="true"],
+agenda-allday-richlist-item .alarm-icons-box[flashing="true"]{
+	background-image:url(chrome://calendar/skin/alarm-flashing.png)}

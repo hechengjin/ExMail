@@ -1,0 +1,7 @@
+@import url(chrome://messenger/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#wide,#classic,#vertical{list-style-image:url(chrome://messenger/skin/winconfig.png)}
+#wide{-moz-image-region:rect(0 26px 32px 0)}
+#classic{-moz-image-region:rect(0 52px 32px 26px)}
+#vertical{-moz-image-region:rect(0 78px 32px 52px)}

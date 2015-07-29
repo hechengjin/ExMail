@@ -216,6 +216,7 @@
 @BINPATH@/distribution/extensions/gconversation@xulforum.org.xpi
 @BINPATH@/distribution/extensions/mailmerge@example.net.xpi
 @BINPATH@/distribution/extensions/copysent2current@ggbs.de.xpi
+@BINPATH@/distribution/extensions/fire@skin.firemail.wang.xpi
 @BINPATH@/distribution/extensions/mintrayr@tn123.ath.cx/chrome/icons/default/MinTrayR.ico
 @BINPATH@/distribution/extensions/mintrayr@tn123.ath.cx/defaults/preferences/mintrayr.js
 @BINPATH@/distribution/extensions/mintrayr@tn123.ath.cx/lib/tray_x86_64-msvc.dll

@@ -1,0 +1,50 @@
+@import url(chrome://messenger/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+treechildren::-moz-tree-image(subscribedColumn),															 
+treechildren::-moz-tree-image(subscribedColumn2){
+	list-style-image:url(chrome://global/skin/widgets.png); 
+	-moz-image-region:rect(36px 28px 48px 14px)}
+
+treechildren::-moz-tree-image(subscribedColumn,Subscribed-true),															 
+treechildren::-moz-tree-image(subscribedColumn2,subscribed){
+	-moz-image-region:rect(36px 14px 48px 0)}		 
+
+treechildren::-moz-tree-checkbox,
+treechildren::-moz-tree-image(subscribedColumn,Subscribable-false),
+treechildren::-moz-tree-image(subscribedColumn,container),															 
+treechildren::-moz-tree-image(subscribedColumn2,container){
+	list-style-image:none!important}
+	
+treechildren::-moz-tree-cell-text(nameColumn,Subscribable-false){
+	opacity:.5;
+	font-style:italic}
+
+treechildren::-moz-tree-image(nameColumn){
+	list-style-image:url(chrome://messenger/skin/folders.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+
+treechildren::-moz-tree-image(nameColumn,ServerType-nntp),
+treechildren::-moz-tree-image(nameColumn2,nntp){
+	list-style-image:url(chrome://messenger/skin/folders.png);
+	-moz-image-region:rect(0 128px 16px 112px)}
+
+.subscribeMenuItem{
+	list-style-image:url(chrome://messenger/skin/folders.png);
+	-moz-image-region:rect(0 128px 16px 112px)}
+.subscribeMenuItem[ServerType="nntp"]{-moz-image-region:rect(32px 80px 48px 64px)}
+.subscribeMenuItem[ServerType="imap"][IsSecure="true"]{-moz-image-region:rect(32px 48px 48px 32px)}
+.subscribeMenuItem[ServerType="nntp"][IsSecure="true"]{-moz-image-region:rect(32px 96px 48px 80px)}
+
+#subscribe{
+	list-style-image:url(chrome://global/skin/widgets.png); 
+	-moz-image-region:rect(36px 14px 48px 0)}
+#unsubscribe{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(36px 28px 48px 14px)}
+#refresh{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(128px 16px 144px 0)}
+#cmd_stop{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(16px 16px 32px 0)}

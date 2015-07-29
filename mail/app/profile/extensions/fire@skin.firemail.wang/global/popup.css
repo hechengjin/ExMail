@@ -1,0 +1,76 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+popup,panel,menupopup{
+	padding:0;
+	min-width:10px;
+	min-height:16px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background:white url(chrome://global/skin/hout.png);
+	color:black}
+menupopup{
+	min-width:inherit;
+	max-width:60em;
+	list-style-image:none}
+
+.tooltip,tooltip{
+	max-width:40em;
+	padding:1px;
+	margin-top:21px;
+	font:status-bar;
+	cursor:default;
+	border-radius:3px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background:white url(chrome://global/skin/backarea.png);
+	color:black}
+tooltip[titletip="true"]{max-width:none}
+tooltip>label{margin:0 2px}
+
+menupopup>menu>menupopup,
+popup>menu>menupopup{
+	-moz-margin-start:-2px;
+	margin-top:-2px}
+
+panel[titlebar]{
+	border-width:0!important}
+
+panel[type="arrow"]{
+	padding:0;
+	background:none!important;
+	border-width:0!important}
+
+panel[type="arrow"][side="top"],
+panel[type="arrow"][side="bottom"]{
+	margin:0 -16px}
+
+panel[type="arrow"][side="left"],
+panel[type="arrow"][side="right"]{
+	margin:-16px 0}
+
+.panel-arrowcontent{
+	padding:4px;
+	margin:4px;
+	border-radius:6px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:1px 1px 3px 1px #B26F00;
+	background:white url(chrome://global/skin/hout.png);
+	color:black}
+
+.panel-arrow{
+	margin:5px -3px 5px -9px;
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(72px 24px 96px 0)}
+.panel-arrow[side="top"]{-moz-transform:rotate(270deg);margin:-4px 5px -9px 5px}
+.panel-arrow[side="bottom"]{-moz-transform:rotate(90deg);margin:-9px 5px -4px 5px}
+.panel-arrow[side="left"]{-moz-image-region:rect(48px 24px 72px 0);margin:5px -9px 5px -4px}

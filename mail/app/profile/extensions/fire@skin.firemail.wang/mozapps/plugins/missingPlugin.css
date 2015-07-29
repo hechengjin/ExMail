@@ -1,0 +1,49 @@
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+html|object>*|*,
+html|embed>*|*,
+html|applet>*|*{
+	width:inherit;
+	height:inherit}
+
+html|object:not([width]),html|object[width=""],
+html|embed:not([width]),html|embed[width=""],
+html|applet:not([width]),html|applet[width=""]{
+	width:240px}
+
+html|object:not([height]),html|object[height=""],
+html|embed:not([height]),html|embed[height=""],
+html|applet:not([height]),html|applet[height=""]{
+	height:200px}
+
+html|a,html|div{
+	overflow:-moz-hidden-unscrollable;
+	display:block;
+	border:1px outset threedface;
+	padding:5px;
+	font:message-box;
+	-moz-user-select:none;
+	text-align:-moz-center;
+	text-decoration:none;
+	background:threedface;
+	color:windowtext}
+
+vbox{
+	outline:2px solid red;
+	-moz-outline-radius:20px;
+	-moz-outline-offset:-6px;
+	width:inherit;
+	height:inherit;
+	-moz-box-align:center;
+	-moz-box-pack:center}
+description:hover{background-color:#CCCCFF}
+
+#missingPluginPlaceholder,
+#disabledPluginPlaceholder,
+#blockedPluginPlaceholder{
+	display:block;
+	border:0;
+	list-style-image:url(chrome://mozapps/skin/extensions/addons.png);
+	-moz-image-region:rect(0,128px,32px,96px)}
+#disabledPluginPlaceholder{-moz-image-region:rect(0,288px,32px,256px)}
+#blockedPluginPlaceholder{-moz-image-region:rect(0,320px,32px,288px)}

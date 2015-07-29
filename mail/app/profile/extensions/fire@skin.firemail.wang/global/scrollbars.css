@@ -1,0 +1,60 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+scrollbar{
+	-moz-binding:url(chrome://global/content/bindings/scrollbar.xml#scrollbar);
+	cursor:default}
+scrollbar[orient="horizontal"]{
+	background-image:url(chrome://global/skin/hout.png);
+	min-height:14px}
+scrollbar[orient="vertical"]{
+	background:white url(chrome://global/skin/hout-vert.png);
+	min-width:14px}
+
+slider{background-color:rgba(255,255,255,.5)}
+
+thumb,
+scrollbarbutton{
+	background:white url(chrome://global/skin/hout-vert.png);
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	min-width:12px;
+	min-height:12px}
+thumb[orient="horizontal"],
+scrollbarbutton[sborient="horizontal"]{
+	background-image:url(chrome://global/skin/hout.png)}
+
+scrollbarbutton{
+	-moz-binding:url(chrome://global/skin/scrollbars.xml#scrollbarbutton);
+	list-style-image:url(chrome://global/skin/scrollbuttons.png)}
+
+thumb:hover,
+scrollbarbutton:hover{
+	background-image:url(chrome://global/skin/hout-hover.png)}
+thumb[sborient="vertical"]:hover,
+scrollbarbutton[sborient="vertical"]:hover{
+	background-image:url(chrome://global/skin/hout-vert-hover.png)}
+thumb:active,
+scrollbarbutton:hover:active,
+scrollbarbutton[active="true"]{
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png)}
+thumb[sborient="vertical"]:active,
+scrollbarbutton[sborient="vertical"]:active{
+	background-image:url(chrome://global/skin/hout-vert-active.png)}
+scrollbarbutton[disabled="true"]{
+	background-image:url(chrome://global/skin/hout.png)!important;
+	border:1px solid!important;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2!important}
+
+scrollbarbutton[type="decrement"]{-moz-image-region:rect(0 12px 12px 0)}
+scrollbarbutton[type="increment"]{-moz-image-region:rect(12px 12px 24px 0)}
+
+scrollbarbutton[type="decrement"][sborient="vertical"]{-moz-image-region:rect(0 24px 12px 12px)}
+scrollbarbutton[type="increment"][sborient="vertical"]{-moz-image-region:rect(12px 24px 24px 12px)}
+
+scrollcorner{
+	background:white url(chrome://global/skin/hout.png);
+	-moz-binding:url(chrome://global/content/bindings/scrollbar.xml#scrollbar-base);
+	cursor:default}

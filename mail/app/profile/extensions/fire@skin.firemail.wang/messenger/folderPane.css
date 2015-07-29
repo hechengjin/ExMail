@@ -1,0 +1,107 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#folderPaneHeader{display:-moz-box!important}
+
+treechildren::-moz-tree-image(folderNameCol){
+	list-style-image:url(chrome://messenger/skin/folders.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+treechildren::-moz-tree-image(folderNameCol){-moz-margin-end:2px}
+treechildren::-moz-tree-image(open,folderNameCol){-moz-image-region:rect(32px 112px 48px 96px)}
+treechildren::-moz-tree-image(folderNameCol,newMessages-true){-moz-image-region:rect(16px 16px 32px 0)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Inbox"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Inbox){-moz-image-region:rect(0 32px 16px 16px)}
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Inbox,newMessages-true){-moz-image-region:rect(16px 32px 32px 16px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Sent"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Sent){-moz-image-region:rect(0 48px 16px 32px)}
+treechildren::-moz-tree-image(open,folderNameCol,specialFolder-Sent){-moz-image-region:rect(16px 48px 32px 32px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Drafts"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Drafts){-moz-image-region:rect(0 64px 16px 48px)}
+treechildren::-moz-tree-image(open,folderNameCol,specialFolder-Drafts){-moz-image-region:rect(16px 64px 32px 48px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Templates"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Templates){-moz-image-region:rect(0 80px 16px 64px)}
+treechildren::-moz-tree-image(open,folderNameCol,specialFolder-Templates){-moz-image-region:rect(16px 80px 32px 64px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Outbox"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Outbox),
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Unsent Messages){-moz-image-region:rect(0 96px 16px 80px)}
+treechildren::-moz-tree-image(open,folderNameCol,specialFolder-Unsent Messages){-moz-image-region:rect(16px 96px 32px 80px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Junk"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Junk){-moz-image-region:rect(0 144px 16px 128px)}
+treechildren::-moz-tree-image(open,folderNameCol,specialFolder-Junk){-moz-image-region:rect(16px 144px 32px 128px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Virtual"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Virtual){-moz-image-region:rect(0 160px 16px 144px)}
+treechildren::-moz-tree-image(open,folderNameCol,specialFolder-Virtual){-moz-image-region:rect(16px 160px 32px 144px)}
+
+.tabmail-tab[type="folder"][IsServer="true"],
+treechildren::-moz-tree-image(folderNameCol,isServer-true){-moz-image-region:rect(32px 16px 48px 0)}
+treechildren::-moz-tree-image(folderNameCol,biffState-NewMail,isServer-true){-moz-image-region:rect(32px 32px 48px 16px)}
+
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="imap"][IsSecure="true"],
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="pop3"][IsSecure="true"],
+treechildren::-moz-tree-image(folderNameCol,isServer-true,isSecure-true){-moz-image-region:rect(32px 48px 48px 32px)}
+treechildren::-moz-tree-image(folderNameCol,biffState-NewMail,isServer-true,isSecure-true){-moz-image-region:rect(32px 128px 48px 112px)}
+treechildren::-moz-tree-image(folderNameCol,isServer-true,serverType-none){-moz-image-region:rect(32px 64px 48px 48px)}
+
+.tabmail-tab[type="folder"][ServerType="nntp"],
+treechildren::-moz-tree-image(folderNameCol,serverType-nntp){-moz-image-region:rect(0 128px 16px 112px)}
+treechildren::-moz-tree-image(folderNameCol,biffState-NewMail,serverType-nntp){-moz-image-region:rect(16px 128px 32px 112px)}
+treechildren::-moz-tree-image(folderNameCol,isServer-true,serverType-nntp){-moz-image-region:rect(32px 80px 48px 64px)}
+treechildren::-moz-tree-image(folderNameCol,isServer-true,serverType-nntp,isSecure-true){-moz-image-region:rect(32px 96px 48px 80px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Archive"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Archive){
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0 224px 16px 208px)}
+
+.tabmail-tab[type="folder"][ServerType="rss"],
+#subscriptionChildren::-moz-tree-image(folderNameCol),
+treechildren::-moz-tree-image(folderNameCol,serverType-rss){
+	list-style-image:url(chrome://messenger-newsblog/skin/newsblog.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+treechildren::-moz-tree-image(folderNameCol,serverType-rss,newMessages-true){
+	-moz-image-region:rect(0 32px 16px 16px)}
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="rss"],
+treechildren::-moz-tree-image(folderNameCol,isServer-true,serverType-rss){
+	-moz-image-region:rect(0 64px 16px 48px)}
+.tabmail-tab[type="folder"][SpecialFolder="Virtual"][ServerType="rss"],
+treechildren::-moz-tree-image(folderNameCol,serverType-rss,specialFolder-Virtual){
+	-moz-image-region:rect(0 48px 16px 32px)}
+
+.tabmail-tab[type="folder"][SpecialFolder="Trash"],
+.tabmail-tab[type="folder"][SpecialFolder="Trash"][ServerType="rss"],
+treechildren::-moz-tree-image(folderNameCol,specialFolder-Trash),
+treechildren::-moz-tree-image(folderNameCol,serverType-rss,specialFolder-Trash){
+	list-style-image:url(chrome://messenger/skin/folders.png);
+	-moz-image-region:rect(0 112px 16px 96px)}
+treechildren::-moz-tree-image(open,folderNameCol,specialFolder-Trash),
+treechildren::-moz-tree-image(open,folderNameCol,serverType-rss,specialFolder-Trash){
+	-moz-image-region:rect(16px 112px 32px 96px)}
+
+treechildren::-moz-tree-cell-text(closed,subfoldersHaveUnreadMessages-true),
+treechildren::-moz-tree-cell-text(folderNameCol,isServer-true),
+treechildren::-moz-tree-cell-text(hasUnreadMessages-true){font-weight:bold}
+treechildren::-moz-tree-cell-text(newMessages-true){font-weight:bold;color:red}
+
+treechildren::-moz-tree-cell-text(folderNameCol,noSelect-true){color:gray;font-style:italic}
+
+treechildren::-moz-tree-image(syncCol){
+	list-style-image:url(chrome://global/skin/widgets.png); 
+	-moz-image-region:rect(36px 28px 48px 14px)}
+treechildren::-moz-tree-image(syncCol,synchronize-true){-moz-image-region:rect(36px 14px 48px 0)}
+
+treechildren::-moz-tree-image(syncCol,isServer-true),
+.tree-folder-checkbox,
+#folderNameCol>.treecol-sortdirection{list-style-image:none!important}
+
+#subscriptionChildren::-moz-tree-image(folderNameCol,container){
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(57px 54px 73px 38px)}
+#subscriptionChildren::-moz-tree-image(folderNameCol,container,open){
+	-moz-image-region:rect(57px 69px 73px 53px)}
+#rssFeedInfoBox{margin-top:2px}

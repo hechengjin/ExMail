@@ -1,0 +1,85 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#buttons{margin-top:10px}
+#noSubscriptions{font-style:italic}
+.localeMatch{font-weight:bold}
+.selectSubscriptionItem{margin:0}
+.subscription{padding:5px}
+.subscription:not(:last-child){border-bottom:1px solid #B26F00}
+.subscription:not([selected="true"])>.disabled{
+	opacity:.7}
+
+.titleBox .title,
+.titleBox>.titleEditor{
+	font-weight:bold}
+
+.subscription description,
+.subscription textbox{
+	margin:0!important;
+	padding:0!important;
+	border-width:0!important;
+	-moz-appearance:none!important}
+
+.subscription .link{
+	text-decoration:underline;
+	cursor:pointer}
+
+.subscription .warning{
+	color:darkred}
+
+.enabledCheckbox{
+	padding:2px;
+	-moz-margin-end:10px}
+.enabledCheckbox:focus{
+	outline:1px solid #B26F00}
+
+splitter{border-width:0!important}
+
+#filtersTooltip{max-width:none}
+
+.tooltipLabel{
+	font-weight:bold;
+	-moz-margin-end:10px}
+
+#tooltip-additional{
+	color:darkred;
+	margin-top:10px}
+
+#col-slow{text-align:center}
+#col-hitcount,#col-lasthit{text-align:right}
+#col-hitcount{min-width:60px}
+#col-enabled{min-width:48px}
+#col-slow{min-width:30px}
+
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-filter,type-invalid),
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-filter,type-whitelist),
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-filter,type-filterlist),
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-filter,type-elemhide),
+treechildren:-moz-locale-dir(rtl)::-moz-tree-cell(col-filter,type-elemhideexception){
+	direction:ltr;
+	text-align:end}
+
+treechildren::-moz-tree-cell-text(col-filter,dummy-true){font-style:italic}
+
+treechildren::-moz-tree-cell-text(col-filter,type-whitelist,selected-false),
+treechildren::-moz-tree-cell-text(col-filter,type-elemhideexception,selected-false){color:green}
+treechildren::-moz-tree-cell-text(col-filter,type-elemhide,selected-false){color:blue}
+treechildren::-moz-tree-cell-text(col-slow){font-size:0}
+treechildren::-moz-tree-cell-text(col-filter,disabled-true,selected-false),
+treechildren::-moz-tree-cell-text(col-filter,type-comment,selected-false){color:#893B00}
+treechildren::-moz-tree-cell-text(col-filter,type-invalid,selected-false){color:darkred}
+
+treechildren::-moz-tree-image(col-enabled){
+	list-style-image:url(chrome://global/skin/checkbox.png);
+	-moz-image-region:rect(14px,14px,28px,0)}
+treechildren::-moz-tree-image(col-enabled,disabled-false){
+	-moz-image-region:rect(0,14px,14px,0)}
+treechildren::-moz-tree-image(col-slow,slow-true){
+	list-style-image:url(slow.png)}
+
+.enabledCheckbox .checkbox-label-box,
+.findbar-highlight{
+	display:none}
+
+#tabs{border-width:0;background:none}
+

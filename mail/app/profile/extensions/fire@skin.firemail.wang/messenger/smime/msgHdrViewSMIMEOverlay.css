@@ -1,0 +1,29 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#smimeBox{
+	-moz-box-pack:center;
+	-moz-box-align:center}
+
+#signedHdrIcon[signed]{
+	padding:1px;
+	border-radius:5px;
+	border:1px solid transparent;
+	list-style-image:url(chrome://messenger/skin/smime/sign.png);
+	-moz-image-region:rect(0,58px,24px,37px)}
+#signedHdrIcon[signed="ok"]{-moz-image-region:rect(0,16px,24px,0)}
+#signedHdrIcon[signed="notok"]{-moz-image-region:rect(0,34px,24px,16px)}
+
+#encryptedHdrIcon[encrypted]{
+	list-style-image:url(chrome://messenger/skin/smime/smime.png);
+	-moz-image-region:rect(0,56px,22px,45px)}
+#encryptedHdrIcon[encrypted="ok"]{-moz-image-region:rect(0,10px,22px,0)}
+#encryptedHdrIcon[encrypted="notok"]{-moz-image-region:rect(0,24px,22px,10px)}
+
+#signedHdrIcon[signed]:hover,
+#encryptedHdrIcon[encrypted]:hover{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+#signedHdrIcon[signed]:hover:active,
+#encryptedHdrIcon[encrypted]:hover:active{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png)}

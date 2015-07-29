@@ -1,0 +1,112 @@
+.heading{
+	font-size:270%;
+	text-align:center;
+	margin:0 120px}
+
+.progress{
+	margin:10px 128px}
+
+.progress-label,
+#errors-description{
+	text-align:center;
+	margin:0 10px}
+
+#checking-heading,
+#update-heading,
+#errors-heading{
+	margin-top:90px}
+
+#select-heading,
+#confirm-heading{
+	margin-top:4px;
+	margin-bottom:4px;
+	text-align:center}
+
+#select-description,
+#confirm-description{
+	margin:4px}
+
+#select-list{
+	border-top:1px solid threedshadow;
+	background-color:-moz-Dialog}
+
+#select-grid column{
+	-moz-box-align:center}
+
+#select-grid row{
+	-moz-box-align:stretch}
+
+#select-grid label{
+	margin-top:0;
+	margin-bottom:0}
+
+.select-cell{
+	-moz-box-align:center;
+	-moz-box-pack:start}
+
+#select-header .select-cell{
+	 -moz-box-sizing:border-box}
+
+#select-header{
+	background-image:url(chrome://global/skin/menubar.png)}
+
+.select-keep{
+	-moz-box-pack:center}
+
+.select-icon{
+	width:20px}
+
+.select-keep .addon-keep-checkbox{
+	margin:0;
+	padding:0;
+	width:13px}
+
+.select-keep .checkbox-label-box{
+	display:none}
+
+.addon-name,
+.addon-action-message,
+.addon-action-update{
+	-moz-box-sizing:border-box;
+	margin:0;
+	padding:1px 4px}
+
+#select-grid separator{
+	border-top:1px solid threedshadow;
+	height:0;
+	margin:4px 0}
+
+.addon:not([active]) .addon-name,
+.addon:not([active]) .addon-action-message,
+.addon:not([active]) .addon-action-update{
+	color:GrayText}
+
+.addon-icon{
+	list-style-image:url(chrome://mozapps/skin/extensions/addons.png);
+	-moz-image-region:rect(0 32px 32px 0)}
+.addon-icon[type="theme"]{-moz-image-region:rect(0 64px 32px 32px)}
+.addon-icon[type="locale"]{-moz-image-region:rect(0 96px 32px 64px)}
+.addon-icon[type="plugin"]{-moz-image-region:rect(0 128px 32px 96px)}
+.addon-icon[addontype="dictionary"]{-moz-image-region:rect(0 448px 32px 416px)}
+
+.action-list{
+	margin-top:10px;
+	-moz-margin-start:5em}
+
+.action-header{
+	margin-bottom:10px}
+
+#confirm .addon{
+	-moz-margin-start:3em;
+	-moz-box-align:center}
+
+.addon:not([active]) .addon-icon,
+#disable-list .addon-icon,
+#incompatible-list .addon-icon{
+	filter:url(chrome://global/skin/greyscale.svg#greyscale)}
+
+#footer{padding:4px}
+
+.progress-label,
+#footer-label{
+	color:GrayText}

@@ -1,0 +1,26 @@
+.back,.forward{
+	margin:1px;
+	padding:2px;
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(192px 16px 208px 0)}
+.forward{-moz-image-region:rect(208px 16px 224px 0)}
+
+toolbarbutton[group="engines"]{
+	margin:1px;
+	padding:2px}
+
+toolbarbutton[group="engines"]>.toolbarbutton-icon{
+	width:16px;
+	height:16px}
+
+.defaultButton{
+	list-style-image:url(chrome://messenger/skin/icons/search-favorite.png);
+	-moz-image-region:rect(0,16px,16px,0)}
+.defaultButton:not(:hover){
+	background-image:none;
+	-moz-border-top-colors:transparent;
+	-moz-border-left-colors:transparent;
+	-moz-border-right-colors:transparent;
+	-moz-border-bottom-colors:transparent}
+.defaultButton[checked="true"]{
+	-moz-image-region:rect(0,32px,16px,16px)}

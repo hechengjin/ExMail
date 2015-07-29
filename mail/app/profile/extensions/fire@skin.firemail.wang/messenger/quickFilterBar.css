@@ -1,0 +1,39 @@
+@import url(chrome://messenger/content/quickFilterBar.css);
+
+#quick-filter-bar-expando{padding:2px 0}
+
+#threadTree[filterActive="searching"]{background-color:#ffffcc}
+#threadTree[filterActive="matches"]{background-color:#f2f9fc}
+#threadTree[filterActive="nomatches"]{background:-moz-repeating-linear-gradient(top left -45deg,#fff0f4,#fff0f4 5px,white 5px,white 10px)}
+
+#qfb-filter-label{
+	color:#893B00;
+	text-shadow:1px 1px 1px rgba(255,255,255,0.6);
+	font-weight:bold}
+
+#qfb-sticky{
+	margin:1px 2px;
+	list-style-image:url(chrome://messagefilterbar/skin/pin_yellow.png)}
+
+#qfb-sticky>.toolbarbutton-text,
+#qfb-closebutton>.toolbarbutton-text{display:none}
+
+#qfb-unread{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(0,160px,16px,144px)}
+#qfb-starred{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+#qfb-inaddrbook{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0,192px,16px,176px)}
+#qfb-tags{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0,176px,16px,160px)}
+#qfb-attachment{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(16px,32px,32px,16px)}
+
+#quick-filter-bar[filterActive="matches"] #qfb-results-label{color:green}
+#quick-filter-bar[filterActive="nomatches"] #qfb-results-label{color:darkred}
+

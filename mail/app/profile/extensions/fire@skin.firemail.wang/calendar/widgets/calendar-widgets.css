@@ -1,0 +1,31 @@
+treenode-checkbox{
+	-moz-box-align:center;
+	padding:1px;
+	border-radius:5px 5px 0 0;
+	border:1px solid transparent}
+.checkbox-icon{-moz-margin-end:2px}
+
+treenode-checkbox:hover:not([disabled="true"]){
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+treenode-checkbox:hover:active:not([disabled="true"]){
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+treenode-checkbox>.checkbox-check{
+	margin:3px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(0 12px 12px 0)}
+treenode-checkbox[checked="true"]>.checkbox-check{
+	-moz-image-region:rect(0 25px 12px 13px)}
+
+.view-navigation-button{
+	-moz-user-focus:normal;
+	margin:0;
+	padding:1px;
+	list-style-image:url(chrome://calendar/skin/widgets/nav-buttons.png);
+	-moz-image-region:rect(0,22px,11px,10px)}
+.view-navigation-button[type="prev"]{-moz-image-region:rect(0,10px,11px,0)}
+.view-navigation-button[type="next"]{-moz-image-region:rect(0,32px,11px,22px)}

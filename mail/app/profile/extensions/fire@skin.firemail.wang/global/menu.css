@@ -1,0 +1,163 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+menu,
+menuitem,
+.splitmenu-menuitem{
+	font:menu;
+	padding:1px;
+	list-style-image:none;
+	-moz-image-region:auto}
+menuitem{-moz-padding-end:10px}
+
+menu{max-width:32em}
+
+menu>stack,
+menuitem>stack,
+.menu-inner-content{-moz-box-flex:1}
+.menu-inner-content>hbox{-moz-box-pack:end}
+
+menu:hover:not([disabled="true"]):not([open="true"]),
+menuitem:hover:not([disabled="true"]),
+.splitmenu-menuitem:hover:not([disabled="true"]),
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"],
+.splitmenu-menuitem[_moz-menuactive="true"]{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+menuitem:hover:active:not([disabled="true"]),
+.splitmenu-menuitem:hover:active:not([disabled="true"]),
+menu[open="true"]{
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+
+menu[disabled="true"],
+menuitem[disabled="true"],
+.splitmenu-menuitem[disabled="true"]{
+	-moz-user-focus:none;
+	color:#893B00!important;
+	text-shadow:1px 1px 1px #EED4A2}
+
+:-moz-any(menuitem,.splitmenu-menuitem)[disabled="true"]>.menu-iconic-left{
+	opacity:.7;
+	filter:url(chrome://global/skin/greyscale.svg#greyscale)}
+
+menuitem[selected="true"]{
+	font-weight:bold!important}
+
+menubar>menu{
+	border:1px solid transparent;
+	padding:0;
+	border-radius:7px 7px 7px 0;
+	outline-offset:-2px;
+	-moz-outline-radius:8px 8px 8px 0;
+	outline:2px solid transparent;
+	-moz-box-align:center;
+	-moz-box-pack:center}
+menubar>menu[_moz-menuactive="true"]:not([open="true"]):not(:hover){
+	background-image:none;
+	outline:2px groove rgb(230,160,70);
+	color:inherit}
+menubar>menu:hover:not([disabled="true"]):not([open="true"]){
+	box-shadow:0 0 1px #893B00;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2}
+menubar>menu[open="true"]{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00!important}
+menubar>menu[disabled="true"]{
+	background:transparent none!important}
+
+menuitem.spell-suggestion,
+menuitem[default="true"]{font-weight:bold}
+
+.menu-description{
+	font-style:italic;
+	color:#B26F00;
+	-moz-margin-start:1ex!important}
+
+.menu-accel,
+.menu-accel-container{
+	opacity:.75}
+
+.menu-accel,
+.menu-text,
+.menu-iconic-accel,
+.menu-iconic-text{
+	margin-top:0!important;
+	margin-bottom:1px!important;
+	-moz-margin-start:2px!important;
+	-moz-margin-end:1px!important;
+	color:inherit}
+
+.menu-accel,
+.menu-iconic-accel{
+	-moz-padding-start:5px!important}
+
+.menu-text{
+	-moz-margin-start:18px!important;
+	font-weight:inherit}
+.menubar-text{
+	margin:1px 3px 2px 3px!important}
+
+.menu-iconic-left{
+	-moz-box-align:center;
+	-moz-box-pack:center;
+	width:16px;
+	-moz-padding-end:1px!important}
+
+.menu-right{
+	margin:1px 3px;
+	width:4px;
+	text-align:right;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(20px 28px 27px 24px)}
+.menu-right:-moz-locale-dir(rtl){-moz-transform:scaleX(-1)}
+
+menuitem:hover:active>.menu-right,
+menu[open="true"]>.menu-right{
+	-moz-image-region:rect(20px 32px 27px 28px)}
+.menu-right[disabled="true"]{
+	-moz-image-region:rect(20px 36px 27px 32px)!important}
+
+menuseparator{
+	border-top:1px solid #B26F00;
+	border-bottom:1px solid #EED4A2;
+	margin:0}
+
+.menu-iconic-icon{
+	width:16px;
+	height:16px}
+
+.menulist-menupopup>menuitem>.menu-iconic-left,
+menulist>menupopup>menuitem>.menu-iconic-left,
+.menulist-menupopup>menuitem>.menu-accel-container,
+menulist>menupopup>menuitem>.menu-accel-container,
+.menulist-menupopup>menu>.menu-iconic-left,
+menulist>menupopup>menu>.menu-iconic-left{
+	display:none}
+
+.menulist-menupopup>menuitem,
+menulist>menupopup>menuitem,
+.menulist-menupopup>menu,
+menulist>menupopup>menu{
+	border-width:0!important;
+	padding:1px;
+	min-width:3em;
+	max-width:none}
+.menulist-menupopup>menuitem,
+menulist>menupopup>menuitem{
+	-moz-padding-end:16px}
+
+menulist>menupopup>menu>.menu-text,
+menulist>menupopup>menuitem>.menu-iconic-text{
+	margin:0!important}
+
+menuitem[checked="true"]>.menu-iconic-left>.menu-iconic-icon{
+	list-style-image:url(chrome://global/skin/widgets.png)!important;
+	-moz-image-region:rect(12px 31px 20px 24px)!important;
+	padding:4px!important}
+menuitem[type="radio"]>.menu-iconic-left>.menu-iconic-icon{
+	list-style-image:url(chrome://global/skin/widgets.png)!important;
+	-moz-image-region:rect(12px 24px 24px 12px)!important;
+	padding:2px!important}
+menuitem[type="radio"][checked="true"]>.menu-iconic-left>.menu-iconic-icon{
+	-moz-image-region:rect(12px 12px 24px 0)!important}

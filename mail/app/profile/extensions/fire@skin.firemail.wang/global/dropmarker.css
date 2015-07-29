@@ -1,0 +1,12 @@
+dropmarker{
+	border:1px solid transparent;
+	padding:1px;
+	-moz-box-align:center;
+	-moz-box-pack:center;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(10px 60px 20px 50px)}
+dropmarker[open="true"],
+toolbarbutton[open="true"]>.toolbarbutton-menu-dropmarker,
+toolbarbutton[open="true"]>.toolbarbutton-menubutton-dropmarker{
+	-moz-image-region:rect(0 60px 10px 50px)}
+dropmarker[disabled="true"]{-moz-image-region:rect(10px 70px 20px 60px)}

@@ -1,0 +1,63 @@
+#messagefilterbar-toolbar-button{
+	list-style-image:url(chrome://messagefilterbar/skin/toolbar-button.png);
+	-moz-image-region:rect(0,24px,24px,0)}
+
+#mfb-show-filter-bar{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(64px 16px 80px 0)}
+
+#threadTree[filterActive="searching"]{background-color:#ffffcc}
+#threadTree[filterActive="matches"]{background-color:#f2f9fc}
+
+#mfb-closebutton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(224px,32px,240px,16px)}
+
+#mfb-closebutton,
+#mfb-unread,
+#mfb-starred,
+#mfb-inaddrbook,
+#mfb-tags,
+#mfb-attachment{
+	-moz-user-focus:normal}
+
+#mfb-sticky>.toolbarbutton-text,
+#mfb-closebutton>.toolbarbutton-text{display:none}
+
+#mfb-results-label{
+	color:GrayText;
+	text-shadow:1px 1px 1px rgba(255,255,255,0.6);
+	font-weight:bold;
+	text-align:end;
+	visibility:hidden}
+
+#message-filter-bar[filterActive="matches"] #mfb-results-label{color:green}
+#message-filter-bar[filterActive="nomatches"] #mfb-results-label{color:darkred}
+
+#mfb-filter-bar-spacer{min-width:4px!important}
+
+#mfb-unread {
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(0,160px,16px,144px)}
+#mfb-starred{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+#mfb-inaddrbook{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0,192px,16px,176px)}
+#mfb-tags{
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0,176px,16px,160px)}
+#mfb-attachment{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(16px 32px 32px 16px)}
+
+#mfb-sticky{list-style-image:url(chrome://messagefilterbar/skin/pin_yellow.png)}
+
+@media screen and (max-width: 1080px){
+	#mfb-unread>.toolbarbutton-text,
+	#mfb-starred>.toolbarbutton-text,
+	#mfb-inaddrbook>.toolbarbutton-text,
+	#mfb-tags>.toolbarbutton-text,
+	#mfb-attachment>.toolbarbutton-text{
+		display:none}}

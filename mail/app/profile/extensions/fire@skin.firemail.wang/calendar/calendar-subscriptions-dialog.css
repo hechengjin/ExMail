@@ -1,0 +1,4 @@
+#calendar-subscriptions-dialog{min-width:480px;min-height:320px}
+.calendar-subscriptions-richlistitem-checkbox>.checkbox-label-box{display:none}
+.calendar-subscriptions-status-icon{list-style-image:url(chrome://global/skin/brand/throbber-single.png)}
+.calendar-subscriptions-status-icon[busy="true"]{list-style-image:url(chrome://global/skin/brand/throbber-anim.gif)}

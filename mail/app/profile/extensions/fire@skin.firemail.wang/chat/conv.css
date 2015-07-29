@@ -1,0 +1,14 @@
+.ib-msg-txt{
+	white-space:pre-wrap;
+	word-wrap:break-word}
+.ib-img-smile{
+	vertical-align:text-bottom}
+*:-moz-any-link .ib-img-smile{
+	border-width:0;
+	border-bottom:1px solid;
+	margin-bottom:1px}
+
+.moz-txt-underscore{text-decoration:underline}
+
+#Chat{overflow:hidden!important}
+#Chat *{overflow:visible!important}

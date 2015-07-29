@@ -1,0 +1,6 @@
+#description-image:not([src]){height:32px;width:32px}
+richlistitem{-moz-box-align:center}
+richlistitem[type]{min-height:36px;-moz-padding-start:2px}
+richlistbox{min-height:110px}
+.name{font-weight:bold}
+.description{color:GrayText}

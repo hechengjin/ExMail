@@ -1,0 +1,30 @@
+skin	communicator		walnut_tb	communicator/
+skin	global			walnut_tb	global/
+skin	editor			walnut_tb	editor/
+skin	inspector		walnut_tb	inspector/
+skin	home			walnut_tb	home/
+skin	mozapps			walnut_tb	mozapps/
+skin	messenger		walnut_tb	messenger/
+skin	enigmail		walnut_tb	enigmail/
+skin	messenger-newsblog	walnut_tb	messenger-newsblog/
+skin	contactssidebar		walnut_tb	contactssidebar/
+skin	calendar		walnut_tb	calendar/
+skin	lightning		walnut_tb	lightning/
+skin	messagefilterbar	walnut_tb	messagefilterbar/
+skin	os			walnut_tb	os-linux/	os=Linux
+skin	os			walnut_tb	os-darwin/	os=Darwin
+skin	os			walnut_tb	os-winnt/	os=WINNT
+skin	CustomizeHeaderToolbar     walnut_tb	CustomizeHeaderToolbar/
+skin	CustomizeHeaderToolbar-os  walnut_tb	CustomizeHeaderToolbar/os/
+skin	CompactHeader		walnut_tb	CompactHeader/
+skin	CompactHeader-os	walnut_tb	CompactHeader/os/
+skin	calendar-windows	walnut_tb	calendar-windows/
+skin	chat			walnut_tb	chat/
+skin	messenger-messagestyles walnut_tb	messages/
+skin	contacttabs		walnut_tb	contacttabs/
+skin	mailsummaries		walnut_tb	mailsummaries/
+skin	dispmua 		walnut_tb	dispmua/
+skin	adblockplus		walnut_tb	adblockplus/
+skin	mailredirect		walnut_tb	mailredirect/
+skin	mailredirect-os		walnut_tb	mailredirect/
+skin	google_tasks_sync	walnut_tb	google_tasks_sync/

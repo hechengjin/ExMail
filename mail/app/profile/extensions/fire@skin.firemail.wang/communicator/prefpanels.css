@@ -1,0 +1,32 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+#prefsTree{margin:0 3px 0 0!important}
+#skinsTree{height:80px}
+
+#previewImageContainer{
+	padding:2px;
+	height:93px;
+	background-color:black}
+#previewImage{max-width:380px}
+
+#sizeVar, #sizeMono{width:4em}
+.prefpanel-font-list{-moz-box-flex:1}
+#mouseWheelMode{width:9em}
+#disabledDomains{max-height:13em}
+
+.skinsRow{
+	border-bottom:1px solid threedshadow;
+	margin:0;
+	padding:2px}
+.skinName{
+	font-size:120%;
+	font-weight:bold}
+.skinAuthor{
+	font-size:110%;
+	font-style:italic}
+.skinImage{
+	overflow:auto;
+	width:380px;
+	height:90px;
+	border:1px solid black}

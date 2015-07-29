@@ -1,0 +1,20 @@
+#app-picker{
+	width:320px;
+	min-height:320px}
+
+#sendto-message{margin-top:4px}
+#content-description{font-weight:bold}
+#suggested-filename{font-weight:normal}
+
+#app-picker-list,
+#app-picker-listbox{
+	height:220px;
+	min-height:220px}
+
+#browse-button{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(57px 70px 73px 54px)}
+
+.listcell-icon{
+	width:32px;
+	height:32px}

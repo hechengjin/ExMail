@@ -1,0 +1,19 @@
+#itemList[collapsed="true"],
+#sanitizeDurationSuffixLabel[value=""]{display:none}
+
+#sanitizeEverythingWarningBox{
+	border:1px inset threedface;
+	background-color:InfoBackground;
+	color:InfoText}
+
+#sanitizeEverythingWarningIcon{
+	list-style-image:url(chrome://global/skin/icons/warning-large.png);
+	margin:2px}
+
+.expander-up,
+.expander-down{
+	padding:2px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(40px 36px 48px 28px)}
+.expander-down{
+	-moz-image-region:rect(32px 36px 40px 28px)}

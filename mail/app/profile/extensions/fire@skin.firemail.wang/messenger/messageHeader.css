@@ -1,0 +1,408 @@
+@import url(chrome://messenger/skin/primaryToolbar.css);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+#dlProgressWindow{width:35em}
+#msgHeaderView{
+	-moz-box-ordinal-group:0;
+	-moz-box-align:start}
+#expandedHeadersNameColumn{min-width:5em}
+#dispMUA,#otherActionsBox{-moz-box-pack:end}
+
+#msgHeaderView,
+.headerContainer,
+#msgHeaderViewDeck,
+#collapsedHeaderView,
+#expandedHeaderView,
+#expandedHeadersBox{min-width:1px}
+
+#expandedHeaderView[show_header_mode="all"]>#expandedHeadersBox>#expandedHeadersBottomBox>#expandedHeaders2{
+	overflow-y:auto;
+	max-height:20em}
+
+#expandedAttachmentBox{width:20em;height:0}
+
+#attachment-view-toolbar{background-image:none!important}
+
+#attachmentListWrapper,
+#attachmentList,
+#messagepane,
+#attachmentTree{
+	-moz-appearance:none!important;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+#attachmentLabel{
+	-moz-box-pack:center;
+	-moz-box-align:center}
+
+#attachmentView[attachmentOverflow="true"],
+#attachmentListWrapper[attachmentOverflow="true"]{
+	overflow:auto}
+
+#attachmentIcon{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(16px 32px 32px 16px)}
+#attachmentSize{
+	margin:0 4px;
+	color:#893B00}
+
+#attachmentSaveAll{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(368px 16px 384px 0)!important}
+
+#attachmentList{padding:0}
+
+#attachmentName{
+	-moz-user-focus:normal;
+	padding:1px 3px;
+	border-radius:6px;
+	-moz-outline-radius:7px;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background:-moz-Dialog url(chrome://global/skin/hout.png)}
+attachmentitem,
+descriptionitem{
+	margin:0;
+	padding:2px;
+	border:1px solid transparent;
+	border-radius:6px;
+	-moz-outline-radius:7px}
+.attachmentBox{width:15em}
+
+#attachmentName:hover,
+attachmentitem:hover,
+descriptionitem:hover{
+	box-shadow:0 0 1px #893B00;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+attachmentitem[selected="true"],
+descriptionitem[selected="true"]{
+	box-shadow:inset 0 0 1px #893B00;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+#attachmentName:hover:active,
+attachmentitem:hover:active,
+descriptionitem:hover:active,
+#attachmentName[selected="true"]:focus,
+#attachmentList:focus>attachmentitem[current="true"],
+description[selectable="true"]:focus>descriptionitem[current="true"]{
+	box-shadow:inset 0 0 1px #893B00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+#collapsedfromBox{-moz-box-align:center;height:22px}
+
+.headerNameBox{
+	padding-top:2px;
+	-moz-margin-end:3px;
+	-moz-box-pack:end;
+	-moz-box-align:center}
+.headerName{
+	margin-top:1px;
+	-moz-padding-start:10px;
+	-moz-padding-end:4px;
+	opacity:.8;
+	text-align:right}
+.headerName[value$=" "]{-moz-padding-end:0}
+.collapsedHeaderValue,
+.subjectvalue{font-weight:bold}
+
+.headerValueBox[singleline="true"]{overflow:hidden}
+.headerValueBox[singleline="true"]>.headerValue[containsEmail="true"]{white-space:nowrap}
+
+.headerValue{
+	display:-moz-box;
+	min-height:16px;
+	min-width:50px;
+	margin:0;
+	padding:0;
+	white-space:normal;
+	background:none!important;
+	border-width:0}
+#expandedHeaderView[show_header_mode="all"] .headerValue{word-wrap:break-word}
+
+.messageIdDisplayButton,
+.headerValueUrl{
+	cursor:pointer;
+	color:darkblue;
+	text-decoration:underline!important}
+.messageIdDisplayButton:hover,
+.headerValueUrl:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+.expandHeaderViewButton{
+	padding:1px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(-1px 25px 11px 13px)}
+.collapsedHeaderViewButton{
+	padding:1px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(-1px 12px 11px 0)}
+
+#collapsedAttachmentBox{-moz-box-pack:center}
+#collapseddateValue{text-align:right}
+
+.collapsedAttachmentButton{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(16px 32px 32px 16px)}
+
+.moreIndicator{
+	outline-offset:-1px;
+	padding:0 1px;
+	border-radius:3px;
+	font-weight:bold}
+
+#collapseddateValue{text-align:right}
+
+#otherActionsShowConversation{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(16px 16px 32px 0)}
+toolbar:not([iconsize="small"]) #otherActionsShowConversation{padding:4px}
+
+#attachmentToggle{
+	-moz-user-focus:normal}
+
+#attachmentToggle,
+.addresstwisty,
+#CompactHeader_hideDetailsButton,
+#CompactHeader_showDetailsButton,
+#hideDetailsButton,
+#showDetailsButton{
+	min-width:0;
+	margin:2px;
+	padding:2px;
+	border-radius:10000px;
+	-moz-outline-radius:10000px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(32px 36px 40px 28px)}
+.addresstwisty{margin:0}
+
+.addresstwisty,
+#attachmentToggle:not(:hover),
+#hideDetailsButton:not(:hover),
+#showDetailsButton:not(:hover),
+#CompactHeader_hideDetailsButton:not(:hover){
+	box-shadow:none;
+	border:2px solid!important;
+	-moz-border-top-colors:#B26F00 #EED4A2!important;
+	-moz-border-left-colors:#B26F00 #EED4A2!important;
+	-moz-border-right-colors:#EED4A2 #B26F00!important;
+	-moz-border-bottom-colors:#EED4A2 #B26F00!important;
+	background:transparent none}
+#attachmentToggle[checked="true"],
+.addresstwisty[open],
+#CompactHeader_hideDetailsButton,
+#hideDetailsButton{
+	-moz-image-region:rect(40px 36px 48px 28px)}
+
+.addresstwisty:hover:not([disabled="true"]){
+	-moz-border-top-colors:#B26F00 #EED4A2!important;
+	-moz-border-left-colors:#B26F00 #EED4A2!important;
+	-moz-border-right-colors:#893B00 #B26F00!important;
+	-moz-border-bottom-colors:#893B00 #B26F00!important;
+	background-image:url(chrome://global/skin/hout-hover.png)!important;
+	color:black!important}
+.addresstwisty:hover:active:not([disabled="true"]){
+	-moz-border-top-colors:#B26F00 #893B00!important;
+	-moz-border-left-colors:#B26F00 #893B00!important;
+	-moz-border-right-colors:#EED4A2 transparent!important;
+	-moz-border-bottom-colors:#EED4A2 transparent!important;
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+
+.emailDisplayButton{
+	display:-moz-box!important;
+	-moz-box-align:center!important;
+	cursor:pointer;
+	border:1px solid transparent;
+	border-radius:3px;
+	margin:0;
+	padding:0 1px;
+	-moz-user-focus:ignore;
+	-moz-padding-start:1px}
+
+mail-emailaddress[selected="true"] .emailDisplayButton{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.emaillabel,
+.newsgrouplabel{
+	padding:0;
+	margin:0;
+	overflow:hidden}
+
+.emailStar{
+	vertical-align:middle;
+	list-style-image:url(chrome://messenger/skin/primaryToolbar.png);
+	-moz-image-region:rect(0,316px,12px,304px)}
+.emailStar:not([hascard="true"]){
+	opacity:.7;
+	filter:url(chrome://global/skin/greyscale.svg#greyscale)}
+
+.emailSeparator{-moz-margin-end:2px}
+.newsgroupSeparator{-moz-margin-start:-1px}
+
+.moreIndicator:focus,
+.emailDisplayButton:focus,
+.emailStar:focus{
+	outline:1px solid #B26F00;
+	-moz-outline-radius:3px}
+
+.messageIdDisplayButton,
+.emailDisplayButton,
+.moreIndicator,
+.expandHeaderViewButton,
+.collapsedHeaderViewButton,
+.showMoreAddressesButton,
+.showLessAddressesButton,
+.collapsedAttachmentButton{
+	border:1px solid transparent}
+
+.messageIdDisplayButton:hover,
+.emailDisplayButton:hover,
+.moreIndicator:hover,
+.expandHeaderViewButton:hover,
+.collapsedHeaderViewButton:hover,
+.showMoreAddressesButton:hover,
+.showLessAddressesButton:hover,
+.collapsedAttachmentButton:hover{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;	
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+.messageIdDisplayButton:hover:active,
+.moreIndicator:hover:active,
+.expandHeaderViewButton:hover:active,
+.collapsedHeaderViewButton:hover:active,
+.showMoreAddressesButton:hover:active,
+.showLessAddressesButton:hover:active,
+.collapsedAttachmentButton:hover:active{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;	
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+mail-multi-emailHeaderField,
+mail-headerfield,
+mail-newsgroups-headerfield{
+	margin:0;
+	padding:0;
+	-moz-box-align:baseline}
+
+mail-headerfield>description.headerValue{
+	margin:1px 0;
+	-moz-user-focus:normal;
+	-moz-user-select:text}
+
+#collapsed2LHeaderViewFirstLine,
+#collapsedHeadersTopBox,
+#expandedHeadersTopBox{
+	-moz-box-align:center}
+
+#expandedHeaderRows>row,
+#expandedHeader2Rows>row{
+	-moz-box-align:start}
+
+#expandedHeaders{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-moz-box-flex:1;
+	min-width:200px;
+	font-weight:bold;
+	font-size:120%;
+	text-shadow:0 1px 1px #EED4A2}
+#header-view-toolbox{
+	-moz-box-ordinal-group:10}
+#header-view-toolbar{
+	background-image:none;
+	opacity:1!important}
+
+#expandedHeadersBottomBox{
+	-moz-box-flex:1000;
+	margin:2px 0}
+#otherActionsButton,
+.msgHeaderView-button{
+	margin:0!important;
+	padding:0!important;
+	-moz-margin-start:2px!important}
+.msgHeaderView-button>toolbarbutton{
+	padding:0!important}
+
+.dateLabel{
+	margin:0 2px;
+	font:status-bar;
+	text-shadow:0 1px #EED4A2}
+
+#expandedtagsBox,mail-urlfield{
+	margin-top:2px}
+
+#header-view-toolbox[doCustomization] #header-view-toolbar{
+	min-width:100px;
+	min-height:10px}
+
+#header-view-toolbox[doCustomization]{
+	background-image:url(chrome://global/skin/backarea.png)}
+
+:-moz-any(#hdrOtherActionsButton,#CompactHeader_hdrOtherActionsButton)>dropmarker{
+	margin:2px 0}
+
+#DCP-Box{
+	min-width:1px!important;
+	max-width:none!important;
+	margin:0 0 8px 0!important}
+#DCP-Image{
+	max-width:none!important;
+	max-height:none!important;
+	background:white url(chrome://messenger/skin/addressbook/icons/contact-generic.png) no-repeat center!important;
+	background-size:-moz-calc(100% - 10px)!important;
+	-moz-box-sizing:content-box;
+	padding:5px;
+	box-shadow:2px 2px 3px #893B00,1px 1px 3px 1px #B26F00}
+
+#header-view-toolbar[iconsize="small"]>#abp-toolbarbutton{
+	list-style-image:url(chrome://adblockplus/skin/abp-status-16.png)!important;
+	-moz-image-region:rect(0,16px,16px,0)!important}
+#header-view-toolbar>#abp-toolbarbutton{
+	list-style-image:url(chrome://adblockplus/skin/abp-status.png)!important;
+	-moz-image-region:rect(0,24px,24px,0)!important}
+	
+.emailPresence[chatStatus]{
+	list-style-image:url(chrome://chat/skin/status.png);
+	-moz-image-region:rect(0,14px,13px,0)}
+.emailPresence[chatStatus="away"]{
+	-moz-image-region:rect(0,30px,13px,16px)}
+
+.emailStar[chatStatus],
+#tbrowser-splitter,
+#hdrReplyAllSubButtonSep,
+#hdrReplyListSubSeparator,
+#hdrReplyAllSubSeparator,
+window[toolboxId="header-view-toolbox"] button[icon="add"],
+window[toolboxId="header-view-toolbox"] #wrapper-spring,
+.inline-toolbox[doCustomization] #hdrSmartReplyButton>toolbarbutton,
+toolbarpaletteitem #hdrSmartReplyButton>toolbarbutton,
+#attachmentText,
+.collapsedHeaderDisplayName>.headerNameBox,
+:-moz-any(#hideDetailsButton,#showDetailsButton)>.button-box>.button-text,
+#dispMUA>spacer,
+#dispMUAicon[src="chrome://dispmua/content/48x48/empty.png"]{
+	display:none}
+ 
+.inline-toolbox[doCustomization] #hdrDummyReplyButton,
+toolbarpaletteitem #hdrDummyReplyButton,
+toolbarpaletteitem>#hdrReplyToSenderButton{
+	display:-moz-box!important}
+
+#attachmentListWrapper,
+#attachmentList,
+#messagepane,
+#attachmentTree{
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}

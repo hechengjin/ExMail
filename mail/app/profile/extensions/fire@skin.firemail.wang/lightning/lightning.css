@@ -1,0 +1,179 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+radio[pane=paneLightning],
+#imipNotificationImage{list-style-image:url(chrome://calendar/skin/cal-icon32.png)}
+
+#imipNotificationBar{
+	background-image:url(chrome://global/skin/hout.png);
+	color:black;
+	border-bottom:1px solid #893B00;
+	padding:3px}
+
+#minimonth-pane{padding-top:4px}
+
+#mode-toolbar{-moz-box-pack:center;border-width:0}
+#mode-toolbar>toolbarspring{display:none}
+#mode-toolbar[location="bottom"]{margin-top:4px}
+
+.toolbarbutton-2{
+	-moz-box-orient:vertical;
+	min-width:55px}
+
+.toolbarbutton-2[type="menu"]{
+	-moz-binding:url(chrome://global/content/bindings/toolbarbutton.xml#menu-vertical)}
+
+#mail-switch-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar.png);
+	-moz-image-region:rect(0,24px,24px,0)}
+#lightning-button-calendar,
+#calendar-switch-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar.png);
+	-moz-image-region:rect(0,48px,24px,24px)}
+#lightning-button-tasks,
+#task-switch-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar.png);
+	-moz-image-region:rect(0,72px,24px,48px)}
+
+toolbar[iconsize="small"] #mail-switch-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0,16px,16px,0)}
+toolbar[iconsize="small"] #lightning-button-calendar,
+toolbar[iconsize="small"] #calendar-switch-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+toolbar[iconsize="small"] #lightning-button-tasks,
+toolbar[iconsize="small"] #task-switch-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0,48px,16px,32px)}
+
+#ltnSidebar>separator{display:none}
+#ltnDateTextPickerBox{margin-top:4px}
+#todo-tab-panel,#calendar-listtree-pane{margin-bottom:0}
+
+#view-tabbox,
+#ltnTabpanelBox{
+	padding:0;
+	border-width:0;
+	background:none}
+
+#view-deck,
+#task-tree-filter{
+	background-image:url(chrome://global/skin/backarea.png);
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+#task-filtertree-pane{-moz-box-align:center}
+#task-tree-filtergroup{margin:2px auto;width:180px}
+
+#calendar-nav-control{
+	border-bottom:2px solid;
+	-moz-border-bottom-colors:#893B00 #B26F00}
+
+#view-deck{background-color:-moz-Dialog;font-size:90%}
+#calendar-nav-control+#view-deck{border-top:0}
+
+#ltnMinimonth{-moz-box-flex:6;border-width:0!important}
+
+#task-tree-filtergroup>radio{margin:0}
+
+#imip-bar{
+	margin:4px 2px;
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+
+#imip-bar>button{
+	padding:0;
+	margin:0}
+#imipbar>button:not(:hover){
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+#imip-button1{
+	border-radius:5px 0 0 5px;
+	-moz-outline-radius:7px 0 0 7px;
+	border-right-width:1px;
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(0,16px,16px,0)}
+#imip-button2{
+	border-left-width:1px;
+	border-right-width:1px;
+	border-radius:0;
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(16px,16px,32px,0)}
+#imip-button3{
+	border-radius:0 5px 5px 0;
+	-moz-outline-radius:0 7px 7px 0;
+	border-left-width:1px;
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(240px,16px,256px,0)}
+
+#task-addition-box{margin:2px 0}
+#view-task-edit-field{margin:0}
+#invitations-pane{-moz-box-pack:center}
+#invitations-pane>spacer{display:none}
+
+.calendar-invitations-sidebar-label{
+	border:2px solid transparent;
+	text-decoration:none!important;
+	background:transparent none;
+	color:black;
+	margin:2px;
+	padding:1px}
+.calendar-invitations-sidebar-label:focus{
+	outline:1px solid #B26F00;
+	-moz-outline-radius:3px}
+.calendar-invitations-sidebar-label:hover{
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+.calendar-invitations-sidebar-label:hover:active{
+	-moz-border-top-colors:#893B00 #EED4A2;
+	-moz-border-left-colors:#893B00 #EED4A2;
+	-moz-border-right-colors:#B26F00 #893B00;
+	-moz-border-bottom-colors:#B26F00 #893B00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+#calendar-list-header:hover{
+	background-image:url(chrome://global/skin/hout-hover.png)}
+#calendar-list-header:hover:active{
+	background-image:url(chrome://global/skin/hout-active.png)}
+
+#calendar-task-details-description{margin:0!important}
+
+#calendar-invitations-label,
+#calendar-invitations-label:hover,
+#calendar-invitations-label:hover:active{
+	border-width:0!important;
+	outline-width:0!important;
+	text-decoration:none!important;
+	text-shadow:none!important;
+	-moz-padding-start:18px!important;
+	background:transparent -moz-image-rect(url(chrome://calendar/skin/calendartoolbar16.png),0,32,16,16) no-repeat left center!important;
+	color:inherit!important}
+#calendar-invitations-label:-moz-locale-dir(rtl){
+	background-position:right center!important}
+
+#calendar-invitations-label:not([value]){display:none}
+
+#calendar-status-todaypane-button{padding:0 2px!important}
+#calendar-status-todaypane-button>.toolbarbutton-icon-begin,
+#calendar-status-todaypane-button>stack>.toolbarbutton-icon-begin{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0,128px,16px,112px)}
+
+#calendar-status-todaypane-button>stack>.toolbarbutton-day-text{
+	text-align:center;
+	margin:6px 2px 2px 2px;
+	font-size:7pt;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color:DarkBlue;
+	background-color:transparent}
+
+#calendar-status-todaypane-button>.toolbarbutton-text{
+	margin-bottom:1px!important}

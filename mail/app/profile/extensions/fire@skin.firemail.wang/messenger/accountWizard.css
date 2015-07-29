@@ -1,0 +1,8 @@
+@import url(chrome://messenger/skin/);
+@import url(chrome://global/skin/wizardOverlay.css);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.awIdentityLabel{width:8em;-moz-margin-start:5px}
+#fullName{-moz-margin-end:15px}
+.serverLabel{width:8em}
+.serverDataBox{-moz-margin-start:15px}

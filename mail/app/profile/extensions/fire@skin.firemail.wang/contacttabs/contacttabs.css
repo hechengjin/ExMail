@@ -1,0 +1,50 @@
+#abContent{
+	font:message-box}
+
+#cotaSearchInput{
+	-moz-binding:url(chrome://global/content/autocomplete.xml#autocomplete)!important}
+
+.cota-result-name{
+	font-weight:bold}
+
+.cota-result-details{
+	padding:0;
+	-moz-padding-start:1em;
+	font-style:italic;
+	opacity:.8}
+
+#cota-searchbutton{
+	margin:0;
+	border:1px solid transparent;
+	-moz-border-end-color:#B26F00;
+	border-radius:5px 0 0 5px;
+	-moz-outline-radius:6px 0 0 6px;
+	list-style-image:url(chrome://messenger/skin/addressbook/addressbook.png);
+	-moz-image-region:rect(0,112px,16px,96px)}
+#cota-searchbutton:not(:hover){
+	background-image:url(chrome://global/skin/hout.png)}
+#cota-searchbutton:hover{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2}
+#cota-searchbutton:hover:active{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2}
+
+#cota-cardtitle-box{
+	border-width:0!important;
+	-moz-box-align:center;
+	background-image:url(chrome://global/skin/hout.png)!important;
+	color:black!important}
+
+#cota-button-editcard{
+	list-style-image:url(chrome://contacttabs/skin/cards.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+
+#cota-button-deletecard{
+	list-style-image:url(chrome://contacttabs/skin/cards.png);
+	-moz-image-region:rect(0,48px,18px,32px)}
+
+#cota-abookslist{
+	margin:0;
+	min-width:15em}
+
+#cota-cardtitle-box>toolbar{
+	border-width:0}

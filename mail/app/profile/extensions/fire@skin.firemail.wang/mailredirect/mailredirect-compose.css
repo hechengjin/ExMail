@@ -1,0 +1,3 @@
+#bounceTree treechildren::-moz-tree-row(notsent){background-color:red}
+#bounceTree treechildren::-moz-tree-cell-text(notsent){color:white}
+#addressingToolbar,#mailListToolbar{background:transparent!important;-moz-box-align:stretch}

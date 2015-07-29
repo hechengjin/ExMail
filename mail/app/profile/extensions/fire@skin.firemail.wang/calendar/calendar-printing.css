@@ -1,0 +1,31 @@
+.main-table{
+	font-size:26px;
+	font-weight:bold}
+
+.day-name{
+	border:1px solid black;
+	background-color:#e0e0e0;
+	font-size:12px;
+	font-weight:bold}
+
+.day-box{
+	border:1px solid black;
+	vertical-align:top}
+
+.out-of-month{
+	background-color:gray!important}
+
+.day-off{
+	background-color:#D3D3D3!important}
+
+.taskItem{
+	border-bottom:1px solid #F3F3F3}
+
+.tasks{
+	margin:5px}
+
+.taskList{
+	margin:0;
+	list-style-image:none;
+	list-style-type:none;
+	padding:0}

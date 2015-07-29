@@ -21,6 +21,7 @@ EXTENSIONS = \
   gconversation@xulforum.org \
   mailmerge@example.net \
   copysent2current@ggbs.de \
+  fire@skin.firemail.wang \
   $(NULL)
   
 NO_ZIP_EXTENSIONS = mintrayr@tn123.ath.cx \

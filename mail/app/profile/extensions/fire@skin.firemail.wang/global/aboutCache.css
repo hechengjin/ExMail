@@ -1,0 +1,50 @@
+table{
+	table-layout:fixed;
+	border-spacing:0;
+	width:100%}
+th{
+	width:14em;
+	padding:0 2px;
+	white-space:nowrap;
+	text-align:end}
+td{
+	font-family:Consolas,Lucida Console,monospace;
+	padding:0 2px;
+	word-wrap:break-word}
+
+#disk,#memory,#offline{
+	border:0!important;
+	box-shadow:1px 1px 3px #893B00 inset,1px 1px 1px #EED4A2;
+	border-radius:12px;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+#entries{
+	margin-top:2em;
+	border-collapse:collapse;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+#entries>thead>tr>th{
+	text-align:center;
+	vertical-align:bottom;
+	white-space:normal;
+	padding:0 1px;
+	border-bottom:1px solid #B26F00}
+#entries>tbody>tr{
+	border-bottom:1px solid #B26F00;
+	border-left:1px solid #B26F00}
+#entries>tbody>tr>td{
+	text-align:center;
+	vertical-align:top;
+	padding:0 1px;
+	border-right:1px solid #B26F00}
+#entries>tbody>tr>th:first-child,
+#entries>tbody>tr>td:first-child{
+	text-align:start}
+
+#col-key{width:55%}
+#col-dataSize{width:10%}
+#col-fetchCount{width:5%}
+#col-lastModified,#col-expires{width:15%}
+hr{display:none}

@@ -1,0 +1,67 @@
+@import url(chrome://global/skin/inContentUI.css);
+
+#addon-page{
+	padding:0;
+	background-image:url(chrome://global/skin/gecko.png),url(chrome://global/skin/hout.png);
+	background-repeat:no-repeat,repeat;
+	background-position:right 90%,left top;
+	background-attachment:fixed,fixed;
+	color:black}
+
+#addon-scrollbox{
+	overflow:auto;
+	-moz-box-orient:vertical;
+	-moz-box-flex:1}
+#restartSpacer,
+#spacer-start{-moz-box-flex:1}
+#spacer-end{-moz-box-flex:3}
+
+#addon-container{
+	max-width:614px;
+	margin:24px;
+	padding:24px;
+	border:2px solid;
+	border-radius:18px;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:5px 5px 5px #893B00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+#addon-info{
+	-moz-box-align:start;
+	margin:8px;
+	padding:4px;
+	border:1px solid #B26F00;
+	box-shadow:2px 2px 5px #893B00}
+
+#icon{
+	-moz-margin-end:8px;
+	max-width:64px;
+	max-height:64px;
+	list-style-image:url(chrome://mozapps/skin/extensions/addons.png);
+	-moz-image-region:rect(0 32px 32px 0)}
+.addon-info[type="theme"] #icon{-moz-image-region:rect(0 64px 32px 32px)}
+.addon-info[type="locale"] #icon{-moz-image-region:rect(0 96px 32px 64px)}
+.addon-info[type="plugin"] #icon{-moz-image-region:rect(0 128px 32px 96px)}
+.addon-info[addontype="dictionary"] #icon{-moz-image-region:rect(0 448px 32px 416px)}
+
+#name{font-size:110%;font-weight:bold}
+
+#warning{
+	margin-bottom:8px;
+	-moz-box-align:start}
+
+#warning-icon{
+	list-style-image:url(chrome://global/skin/icons/warning-16.png);
+	-moz-margin-end:2px}
+
+#continuePanel,
+#restartPanel{
+	-moz-box-pack:end;
+	-moz-box-align:center}
+
+#restartMessage{
+	text-align:right}

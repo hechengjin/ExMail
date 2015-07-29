@@ -1,0 +1,18 @@
+@import url(chrome://messenger/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#askSendFormat{width:40em}
+#askImageBox{-moz-box-align:start}
+
+#convertNo{list-style-image:url(chrome://global/skin/icons/warning-large.png)}
+
+#convertYes,
+#convertAltering,
+#convertDefault{
+	list-style-image:url(chrome://global/skin/alerts.png);
+	-moz-image-region:rect(0 72px 24px 48px)}
+
+#print-preview-toolbar{
+	-moz-binding:url(chrome://global/content/printPreviewBindings.xml#printpreviewtoolbar)!important;
+	border-bottom:2px solid;
+	-moz-border-bottom-colors:#893B00 #B26F00}

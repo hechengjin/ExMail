@@ -1,0 +1,66 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.wizard-header{
+	display:none}
+
+#wizardHeader{
+	display:-moz-box;
+	-moz-box-ordinal-group:0;
+	padding:10px 5px !important}
+
+.progressLabel{
+	margin:5px 0px;
+	text-align:center;
+	font-size:110%;
+	font-weight:normal}
+
+.progressLabel.active{
+	font-weight:bold}
+
+progressmeter{
+	margin-top:100px}
+
+.radioDescription{
+	-moz-margin-start:32px}
+
+radio,checkbox,.topLabel,#dataDeck{
+	margin-top:15px}
+
+#recentReports{
+	margin-top:15px}
+
+#recentReportsList{
+	overflow-x:hidden;
+	overflow-y:auto}
+
+#outdatedSubscriptionsList{
+	margin:10px 20px}
+
+#issuesBox{
+	overflow:auto}
+
+#screenshotButtons{
+	margin-top:10px}
+
+#screenshotBox{
+	overflow-y:scroll}
+
+#issuesChangeMessage,
+#commentLengthWarning{
+	color:darkred}
+
+#commentLengthWarning[visible=false]{
+	visibility:hidden}
+
+#data:-moz-locale-dir(rtl){
+	direction:ltr}
+
+#sendReportError{
+	color:darkred;
+	font-size:150%}
+
+#sendReportErrorLinks,#typeWarningTextLink{
+	margin:0}
+
+#sendReportErrorBox{
+	margin-bottom:10px}

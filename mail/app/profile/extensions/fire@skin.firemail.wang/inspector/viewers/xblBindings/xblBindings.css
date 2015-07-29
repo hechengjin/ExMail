@@ -1,0 +1,18 @@
+@import url(chrome://inspector/skin/);
+@import url(chrome://inspector/skin/viewers/dom/dom.css);
+
+#bxBindingAspects,
+#bxBindingAspects tabpanels,
+#bxBindingAspects caption{
+	background-image:none;
+	border:0}
+#bxBindingAspects groupbox,
+#bxBindingAspects .groupbox-body{
+	border:0;
+	margin:0}
+#bxBindingAspects caption{
+	text-shadow:1px 1px 1px #EED4A2}
+#txbMethodCode,#txbPropCode,#txbHandlerCode{
+	margin:0;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}

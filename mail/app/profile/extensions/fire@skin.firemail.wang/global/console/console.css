@@ -1,0 +1,83 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.console-box{
+	border-top:1px inset #B26F00;
+	border-bottom:1px inset #EED4A2;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+.console-row{
+	border-bottom:1px solid #B26F00}
+.console-row:hover{
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+.console-row[selected="true"]{
+	background-image:url(chrome://global/skin/hout-hover.png)!important;
+	color:black!important}
+
+.console-row-icon{
+	padding:1px;
+	border-right:1px solid #B26F00;
+	background-image:url(chrome://global/skin/hout.png)}
+.console-row-content{
+	padding:0 2px}
+
+:-moz-any(.console-row[type="error"],.console-row[type="exception"])>box>vbox>.console-row-msg>.console-error-msg{
+	font-weight:bold}
+
+.console-row-file>label:first-child,
+.console-time{
+	opacity:.6}
+
+.console-row-code{
+	margin-bottom:2px;
+	font-size:larger;
+	color:darkblue}
+.console-row-code>box{
+	margin-top:-6px}
+.console-dots{
+	padding:0 0 0 8px;
+	border-bottom:1px dotted green}
+.console-caret{
+	width:7px;
+	background:url(data:image/gif;base64,R0lGODlhBwAJAIABAACmUQAAACH5BAEAAAEALAAAAAAHAAkAAAIOjGEJq8sOVZIzoHotSwUAOw==) no-repeat bottom}
+
+.console-row-code[selected="true"],
+.console-row-content[selected="true"]>.console-row-file>.console-error-source>.text-link{
+	color:inherit!important}
+
+toolbarbutton[observes="Console:modeAll"],
+#Console\:modeAll{
+	list-style-image:url(chrome://global/skin/alerts.png);
+	-moz-image-region:rect(0,144px,24px,120px)}
+.console-row,
+toolbarbutton[observes="Console:modeErrors"],
+#Console\:modeErrors{
+	list-style-image:url(chrome://global/skin/alerts.png);
+	-moz-image-region:rect(0,24px,24px,0)}
+.console-row[type="warning"],
+toolbarbutton[observes="Console:modeWarnings"],
+#Console\:modeWarnings{
+	list-style-image:url(chrome://global/skin/alerts.png);
+	-moz-image-region:rect(0,48px,24px,24px)}
+.console-row[type="message"],
+toolbarbutton[observes="Console:modeMessages"],
+#Console\:modeMessages{
+	list-style-image:url(chrome://global/skin/alerts.png);
+	-moz-image-region:rect(0,72px,24px,48px)}
+toolbarbutton[observes="Console:clear"],
+#Console\:clear{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(312px,24px,336px,0)}
+#ButtonEval{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(80px,16px,96px,0)}
+
+/*Overrule,AllInOneSidebar*/
+#ToolbarMode[class],#ToolbarExt[class],#ToolbarEval[class]{
+	border:0!important;
+	padding:0!important}
+#ToolbarEval[class]{
+	padding:0 2px!important}
+
+#viewGroup+toolbarseparator{display:none}

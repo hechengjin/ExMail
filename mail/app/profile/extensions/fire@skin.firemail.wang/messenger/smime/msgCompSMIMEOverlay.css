@@ -1,0 +1,26 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#button-security{
+	list-style-image:url(chrome://messenger/skin/messengercompose/messengercompose24.png);
+	-moz-image-region:rect(0,144px,24px,120px)}
+toolbar[iconsize="small"] #button-security{
+	list-style-image:url(chrome://messenger/skin/messengercompose/messengercompose.png);
+	-moz-image-region:rect(0,96px,16px,80px)}
+
+#msgcomposeWindow #encryption-status,
+#msgcomposeWindow #signing-status{
+	display:none}
+
+#msgcomposeWindow[signing] #signing-status{
+	list-style-image:url(chrome://messenger/skin/smime/sign.png);
+	-moz-image-region:rect(24px,58px,40px,37px);
+	display:-moz-box}
+#msgcomposeWindow[signing="ok"] #signing-status{-moz-image-region:rect(24px,16px,40px,0)}
+#msgcomposeWindow[signing="notok"] #signing-status{-moz-image-region:rect(24px,34px,40px,16px)}
+
+#msgcomposeWindow[crypto] #encryption-status{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(80px,21px,96px,0);
+	display:-moz-box}
+#msgcomposeWindow[crypto="ok"] #encryption-status{-moz-image-region:rect(80px,51px,96px,36px)}
+#msgcomposeWindow[crypto="notok"] #encryption-status{-moz-image-region:rect(80px,69px,96px,51px)}

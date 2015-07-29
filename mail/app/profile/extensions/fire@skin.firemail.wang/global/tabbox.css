@@ -1,0 +1,92 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+tabbox{
+	padding:3px;
+	border:2px solid;
+	border-radius:9px 9px 0 0;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #893B00;
+	-moz-border-bottom-colors:#EED4A2 #893B00;
+	background:url(chrome://global/skin/hout-hover.png)}
+
+.tabs-left,.tabs-right{
+	min-width:3px;
+	border-bottom:1px solid #EED4A2}
+.tabs-bottom>.tabs-left,.tabs-bottom>.tabs-right{
+	border-bottom:0;
+	border-top:1px solid #B26F00}
+
+tabpanels{
+	border-left:1px solid #EED4A2;
+	border-right:1px solid #B26F00;
+	border-bottom:1px solid #B26F00;
+	background-image:url(chrome://global/skin/hout.png)}
+
+tabbox>tabpanels:first-child{
+	border-bottom:0;
+	border-top:1px solid #EED4A2}
+
+tab{
+	border-radius:9px 9px 0 0;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #EED4A2 #EED4A2;
+	margin:5px 0 0 0;
+	padding:2px 3px 0 3px;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+tab:hover:not([selected="true"]):not([disabled="true"]){
+	margin-top:3px;
+	padding-bottom:2px;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+tab[selected="true"]{
+	margin-top:2px;
+	padding:1px 2px 3px 2px;
+	font-weight:bold;
+	border-radius:7px 7px 0 0;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	border-bottom:1px solid transparent}
+
+.tab-bottom{
+	border-radius:0 0 9px 9px;
+	border-color:#B26F00 #B26F00 #B26F00 #EED4A2; 
+	margin:0 0 5px 0!important;
+	padding:0 3px 2px 3px!important}
+.tab-bottom:hover:not([selected="true"]){
+	margin-bottom:3px!important;
+	padding-top:2px!important}
+.tab-bottom[selected="true"]{
+	margin-bottom:2px!important;
+	padding:4px 2px 1px 2px!important;
+	border-radius:0 0 7px 7px;
+	border:2px solid;
+	border-top-width:0!important;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00}
+
+/*TABMIXPLUS*/
+.groupbox-panels{
+	-moz-appearance:none!important;
+	padding:0!important}
+tabpanels#tabpanId tabbox[value]{
+	width:400px;
+	padding:3px;
+	border:2px solid!important;
+	-moz-border-top-colors:#B26F00 #893B00!important;
+	-moz-border-left-colors:#B26F00 #893B00!important;
+	-moz-border-right-colors:#EED4A2 #893B00!important;
+	-moz-border-bottom-colors:#EED4A2 #893B00!important}
+
+prefpane>tabbox{
+	border-radius:0!important;
+	border-width:0!important}
+prefpane>tabbox>tabpanels{
+	-moz-border-end:1px solid #B26F00!important;
+	border-bottom:1px solid #B26F00!important}

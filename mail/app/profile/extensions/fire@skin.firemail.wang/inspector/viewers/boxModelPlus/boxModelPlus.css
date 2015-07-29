@@ -1,0 +1,39 @@
+@import url(chrome://inspector/skin);
+
+page{font:message-box}
+
+groupbox,.groupbox-body{margin:0}
+
+hbox.valueBox{-moz-box-pack:center;min-width:7em;border:1px dotted threedshadow}
+
+.title{margin:0 2px}
+
+label[hasUnit="true"]::after{
+	content:"px";
+	font-size:70%;
+	opacity:.7}
+
+label[hasUnit="true"].nonzero+hbox:before,
+label.nonzero,
+textbox.nonzero{
+	font-weight:bold;
+	color:#0000B0}
+
+column.first,
+column.last{
+	-moz-box-flex:1}
+
+.upper>.left1,
+.lower>.left1{
+	text-align:right;
+	-moz-box-pack:end}
+
+#enclosingBox{
+	-moz-box-flex:1;
+	overflow:auto}
+
+.upper.boxDimension{
+	margin-top:1.2em}
+
+#boxOtherContent .title{
+	text-align:end}

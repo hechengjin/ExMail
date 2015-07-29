@@ -1,0 +1,144 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+radiogroup{margin:1px}
+
+radio{
+	outline-width:0!important;
+	border:2px solid transparent;
+	background-clip:padding-box;
+	padding:1px;
+	border-radius:3px;
+	-moz-box-align:center}
+
+.radio-icon{list-style-image:inherit}
+.radio-label{
+	margin:0;
+	-moz-margin-start:2px;
+	padding:1px}
+
+radio[focused="true"]{
+	box-shadow:0 0 1px 1px #893B00!important}
+
+radio:hover:not([selected="true"]):not([disabled="true"]){
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+radio:hover:active:not([selected="true"]):not([disabled="true"]){
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+radio:hover:not([selected="true"]):not([disabled="true"]):not(:active){
+	box-shadow:0 0 2px #893B00}
+
+radio[disabled="true"]{
+	color:#893B00!important;
+	text-shadow:1px 1px 0 #EED4A2}
+
+.radio-check{
+	margin:2px;
+	-moz-margin-end:1px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(12px 24px 24px 12px)}
+.radio-check[selected="true"]{-moz-image-region:rect(12px 12px 24px 0)}
+.radio-check[disabled="true"]{-moz-image-region:rect(24px 24px 36px 12px)}
+.radio-check[selected="true"][disabled="true"]{-moz-image-region:rect(24px 12px 36px 0)}
+
+#viewGroup:focus{outline:0!important}
+
+.paneSelector>radio,
+#viewGroup>radio{
+	-moz-box-align:center!important;
+	-moz-box-pack:end;
+	min-width:50px;
+	margin:1px;
+	padding:2px;
+	border:1px solid transparent;
+	border-radius:5px!important}
+.paneSelector>radio{
+	-moz-box-orient:vertical!important}
+.viewButtonLabel{margin:0 2px}
+.paneSelector>radio:hover:not([selected="true"]),
+#viewGroup>radio:hover:not([selected="true"]){
+	-moz-border-top-colors:#EED4A2;
+	-moz-border-left-colors:#EED4A2;
+	-moz-border-right-colors:#B26F00;
+	-moz-border-bottom-colors:#B26F00}
+.paneSelector>radio:hover:active,
+#viewGroup>radio:hover:active{
+	-moz-border-top-colors:#B26F00;
+	-moz-border-left-colors:#B26F00;
+	-moz-border-right-colors:#EED4A2;
+	-moz-border-bottom-colors:#EED4A2;
+	box-shadow:inset 1px 1px 3px #893B00}
+#viewGroup>radio[selected="true"],
+.paneSelector>radio[selected="true"]{
+	-moz-border-top-colors:#B26F00;
+	-moz-border-left-colors:#B26F00;
+	-moz-border-right-colors:#EED4A2;
+	-moz-border-bottom-colors:#EED4A2;
+	box-shadow:inset 1px 1px 2px #B26F00!important;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+.paneSelector:focus>radio[selected="true"],
+#viewGroup>radio[selected="true"][focused="true"]{
+	box-shadow:inset 1px 1px 2px #B26F00,0 0 1px 1px #B26F00!important}
+
+radiogroup[orient="horizontal"]{margin:2px}
+
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]){
+	border-radius:0;
+	-moz-padding-end:3px;
+	border-width:2px!important;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):first-of-type:-moz-locale-dir(ltr),
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):last-of-type:-moz-locale-dir(rtl){
+	border-radius:5px 0 0 5px}
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):last-of-type:-moz-locale-dir(ltr),
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):first-of-type:-moz-locale-dir(rtl){
+	border-radius:0 5px 5px 0}
+
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):not(:last-of-type):-moz-locale-dir(ltr),
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):not(:first-of-type):-moz-locale-dir(rtl){
+	-moz-border-right-colors:#B26F00 transparent}
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):not(:first-of-type):-moz-locale-dir(ltr),
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):not(:last-of-type):-moz-locale-dir(rtl){
+	-moz-border-left-colors:#EED4A2 transparent}
+
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):not([disabled="true"]):not([selected="true"]):hover{
+	-moz-border-right-colors:#893B00 #B26F00; 
+	-moz-border-bottom-colors:#893B00 #B26F00}
+
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane]):not([disabled="true"]):not([selected="true"]):hover:active{
+	-moz-border-top-colors:#B26F00 #893B00!important;
+	-moz-border-left-colors:#B26F00 #893B00!important;
+	-moz-border-right-colors:#EED4A2 #B26F00!important;
+	-moz-border-bottom-colors:#B26F00 #B26F00!important}
+
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane])[selected="true"]{
+	box-shadow:1px 1px 2px #B26F00 inset;
+	-moz-border-top-colors:#B26F00!important;
+	-moz-border-left-colors:#B26F00!important;
+	-moz-border-right-colors:#EED4A2!important;
+	-moz-border-bottom-colors:#EED4A2!important;
+	background-image:url(chrome://global/skin/backarea.png)!important;
+	color:black!important}
+
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane])[selected="true"]:-moz-locale-dir(rtl){
+	-moz-border-right-colors:#B26F00 #B26F00!important;
+	-moz-border-left-colors:#EED4A2 #EED4A2!important;
+	box-shadow:-1px 1px 2px #B26F00 inset}
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane])[selected="true"][focused="true"]{
+	box-shadow:0 0 1px 1px #B26F00,1px 1px 2px #B26F00 inset!important}
+radiogroup[orient="horizontal"]:not(#viewGroup)>radio:not([pane])[selected="true"][focused="true"]:-moz-locale-dir(rtl){
+	box-shadow:0 0 1px 1px #B26F00,-1px 1px 2px #B26F00 inset!important}

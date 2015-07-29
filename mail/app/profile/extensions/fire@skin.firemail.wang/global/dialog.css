@@ -1,0 +1,28 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+dialogheader{
+	border:2px solid;
+	-moz-border-top-colors:#EED4A2 transparent;
+	-moz-border-left-colors:#EED4A2 transparent;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	margin:0;
+	padding:2px}
+.dialogheader-title{
+	margin:2px;
+	font-size:120%;
+	font-weight:bold;
+	text-shadow:1px 1px 1px rgba(238,212,162,0.7)}
+.dialogheader-description{
+	font-style:italic;
+	margin:2px}	
+.header-large{
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	margin:0px;
+	padding:2px}

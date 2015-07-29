@@ -1,0 +1,37 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.scale-slider{
+	-moz-appearance:none!important;
+	width:100px;
+	margin:1px;
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAFCAYAAACzSkmrAAAALElEQVR42mPclM/wn2EUDBrAcv3MaCCMglGAEzCOFlmDLELeXVk0GiGDCAAA9ecJTmd5JMwAAAAASUVORK5CYII=) 0% 50% repeat-x}
+
+.scale-slider[orient="vertical"]{
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAABkCAYAAABOx/oaAAAALklEQVR42mPYlM/wv9Oa4T8DEIDY764s+s/EgAWMCo4KjgqOCo4KjgqOCo5kQQDiYgotKcCN+wAAAABJRU5ErkJggg==) 50% 0% repeat-y;
+	width:auto;
+	height:100px}
+
+.scale-thumb{
+	width:15px;
+	height:15px;
+	outline-color:transparent;
+	border:2px solid;
+	border-radius:3px;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-vert.png)}
+
+.scale-thumb:hover{background-image:url(chrome://global/skin/hout-hover.png)}
+.scale-thumb:active{background-image:url(chrome://global/skin/hout-active.png)}
+
+.scale-thumb[disabled="true"]{
+	-moz-border-top-colors:#B26F00 #EED4A2!important;
+	-moz-border-left-colors:#B26F00 #EED4A2!important;
+	-moz-border-right-colors:#B26F00 #B26F00!important;
+	-moz-border-bottom-colors:#B26F00 #B26F00!important;
+	background-image:url(chrome://global/skin/hout.png)!important;
+	color:#893B00!important}
+
+#pageZoomScale>.scale-slider{background:transparent none!important}

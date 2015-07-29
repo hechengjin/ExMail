@@ -1,0 +1,113 @@
+html{
+	margin:0;
+	font:message-box;
+	background-image:url(chrome://global/skin/gecko.png),url(chrome://global/skin/hout.png);
+	background-repeat:no-repeat,repeat;
+	background-position:right 90%,left top;
+	background-attachment:fixed,fixed;
+	color:black}
+@media print{html{background:none}}
+
+body{
+	min-width:300px;
+	max-width:80%;
+	margin:4em auto;
+	padding:24px;
+	text-align:left;
+	border-radius:18px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:5px 5px 5px #893B00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+/*
+body.verbose,
+.aboutPageWideContainer{width:80%}
+@-moz-document domain(mozilla.org),url(about:credits){body{width:80%}}
+*/
+.entries{
+	max-height:500px;
+	overflow-y:auto}
+body.verbose>.entries{
+	overflow-x:auto}
+
+#aboutLogoContainer{
+	width:300px;min-height:230px;
+	text-align:center;
+	float:left;
+	-moz-margin-end:30px;
+	box-shadow:1px 1px 4px #893B00;
+	background-color:white;
+	color:black}
+#vendorURL{
+	display:block;
+	position:relative;
+	cursor:pointer}
+#vendorURL>img{
+	display:block}
+#version{
+	font-weight:bold;
+	font-size:120%;
+	position:absolute;
+	border-radius:4px;
+	bottom:0;
+	left:4px;
+	right:4px}
+#vendorURL:hover>#version{
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+#vendorURL:hover:active>#version{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:white}
+
+#aboutPageList{
+	min-height:238px;
+	margin:0;
+	font-size:110%}
+h1:first-child{
+	text-align:start;
+	padding:0 30px;
+	margin-top:0!important;
+	box-shadow:1px 1px 3px #893B00 inset,1px 1px 1px #EED4A2;
+	border-radius:12px;
+	text-shadow:2px 2px 5px rgba(178,111,0,.4);
+	background:url(chrome://global/skin/icons/information-large.png) no-repeat 4px center}
+ul{list-style:square}
+ul>li{margin-bottom:8px}
+a:link{color:darkblue;padding:0 2px;border-radius:3px}
+a:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+a:active{
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+a:focus{
+	-moz-outline-radius:4px;
+	outline:1px solid #B26F00;
+	outline-offset:0}
+
+hr{border-style:solid;border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}
+
+.columns{-moz-column-width:20em;-moz-column-gap:3em}
+
+h2{font-size:120%;margin-bottom:4px}
+h1,h2>a[name]{text-shadow:1px 1px 4px #B26F00}
+h2>a[name]{
+	clear:both;
+	float:left;
+	font-size:170%;
+	margin:-7px 4px -7px 0;
+	padding:0}
+p{margin:4px 0}
+
+.columns{
+	-moz-column-width:15em;
+	-moz-column-gap:2em}
+.columns>li{margin-top:4px}
+
+.sectionHeader{
+	padding-left:0!important;
+	background-color:transparent!important}

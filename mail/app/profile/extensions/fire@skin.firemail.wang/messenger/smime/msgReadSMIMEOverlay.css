@@ -1,0 +1,16 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+
+#status-bar[signed] #signed-status{
+	list-style-image:url(chrome://messenger/skin/smime/sign.png);
+	-moz-image-region:rect(24px,58px,40px,37px)}
+#status-bar[signed="ok"] #signed-status{-moz-image-region:rect(24px,16px,40px,0px)}
+#status-bar[signed="notok"] #signed-status{-moz-image-region:rect(24px,34px,40px,16px)}
+
+#status-bar[encrypted] #encrypted-status{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(80px,21px,96px,0px)}
+#status-bar[encrypted="ok"] #encrypted-status{-moz-image-region:rect(80px,51px,96px,36px)}
+#status-bar[encrypted="notok"] #encrypted-status{-moz-image-region:rect(80px,69px,96px,51px)}
+
+

@@ -1,0 +1,29 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+.suggestion>.radio-label-box:-moz-locale-dir(rtl),
+html|*.textbox-input:-moz-locale-dir(rtl){
+	direction:ltr;
+	text-align:end}
+
+#patternGroup{overflow:auto}
+#anchorGroup{padding-left:20px}
+#typeGroupLabel{margin-top:10px}
+#typeGroup{overflow:auto;margin-bottom:10px}
+tooltip{max-width:none}
+:root:not([advancedMode="true"]) #options{display:none}
+.text-link{-moz-user-focus:ignore}
+
+#disabledWarning,#groupDisabledWarning,#regexpWarning,#shortpatternWarning,#matchWarning{
+	color:darkred}
+
+#disabledWarning>*,#groupDisabledWarning>*{
+	margin:0;
+	font-size:inherit}
+
+.help{
+	color:#893B00;
+	border-bottom:1px solid #893B00;
+	cursor:help;
+	margin:0;
+	padding:0}

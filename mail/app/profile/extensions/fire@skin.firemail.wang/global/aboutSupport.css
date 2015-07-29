@@ -1,0 +1,90 @@
+@import url(chrome://global/skin/htmlbutton.css);
+
+html{
+	margin:0;
+	font:message-box;
+	background-image:url(chrome://global/skin/gecko.png),url(chrome://global/skin/hout.png);
+	background-repeat:no-repeat,repeat;
+	background-position:right 90%,left top;
+	background-attachment:fixed,fixed}
+
+@media print{
+html{background-image:url(chrome://global/skin/gecko.png)}
+body{margin:0!important;background:none!important}
+}
+
+body{
+	width:auto;
+	margin:2em 4em;
+	border:2px solid;
+	border-radius:8px;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:5px 5px 5px #893B00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+h1{
+	margin:0!important;
+	padding:8px 8px 8px 48px!important;
+	background:transparent url(chrome://global/skin/firefox.png) 8px 8px no-repeat;
+	font-size:x-large!important;
+	font-weight:bold!important;
+	text-shadow:2px 2px 5px rgba(178,111,0,0.4);
+	border-radius:6px 6px 0 0;
+	text-align:left!important}
+
+.major-section{
+	margin-bottom:4px;
+	font-size:110%;
+	text-shadow:2px 2px 5px rgba(178,111,0,0.4);
+	text-align:start;
+	font-weight:bold}
+
+.page-subtitle,
+.page-subtitle+div{
+	margin:0;
+	padding:4px 48px}
+
+#contents{
+	padding:8px}
+
+table{
+	color:black;
+	font:message-box;
+	text-align:start;
+	width:100%;
+	border:1px solid #B26F00;
+	border-collapse:collapse;
+	border-spacing:0;
+	box-shadow:1px 1px 3px #B26F00}
+
+th,td{padding:0 2px}
+th{text-align:start;background-image:url(chrome://global/skin/hout.png)}
+th.column{white-space:nowrap;width:0}
+tr{border-bottom:1px solid #B26F00;border-left:1px solid #B26F00}
+td{text-align:start;border-right:1px solid #B26F00}
+
+.prefs-table{width:100%;table-layout:fixed}
+.pref-name{width:70%;white-space:nowrap;overflow:hidden}
+.pref-value{width:30%;white-space:nowrap;overflow:hidden}
+
+a:link,a:hover{color:darkblue}
+
+#contents{clear:both}
+
+#reset-box{
+	float:right;
+	margin:4px;
+	padding:4px;
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	border-radius:7px;
+	box-shadow:inset 1px 1px 3px #B26f00;
+	width:30%;
+	text-align:center}
+
+body[dir="rtl"]>#reset-box{float:left}
+#reset-box>h3{margin-top:0}

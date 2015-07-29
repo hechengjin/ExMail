@@ -1,0 +1,25 @@
+@import url(chrome://messenger/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+listcell[enabled="false"],
+treechildren::-moz-tree-image(activeColumn){
+	list-style-image:url(chrome://global/skin/checkbox.png);
+	-moz-image-region:rect(14px 14px 28px 0)}
+
+listcell[enabled="true"],
+treechildren::-moz-tree-image(activeColumn,Enabled-true){
+	list-style-image:url(chrome://global/skin/checkbox.png);
+	-moz-image-region:rect(0 14px 14px 0)}
+
+#booleanAndGroup{margin:3px}
+
+.search-value-textbox{margin:0}
+.search-menulist,.search-value-menulist{width:10em;margin:0}
+.search-menulist[unavailable="true"]{color:#893B00}
+.ruleactionitem{min-width:18em}
+.ruleaction-type{min-width:13em}
+
+.filler{-moz-padding-end:20px}
+
+#countBox[filterActive="matches"]{color:darkgreen}
+#countBox[filterActive="nomatches"]{color:darkred}

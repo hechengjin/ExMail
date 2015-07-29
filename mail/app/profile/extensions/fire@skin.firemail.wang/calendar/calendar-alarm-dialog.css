@@ -1,0 +1,54 @@
+
+.resizer-box{display:none}
+
+menupopup[type="snooze-menupopup"]>arrowscrollbox{
+	-moz-binding:url(chrome://calendar/content/widgets/calendar-alarm-widget.xml#calendar-snooze-popup)}
+
+#alarm-richlist{box-shadow:inset 1px 1px 3px threedshadow}
+@media (-moz-windows-compositor){
+#alarm-richlist{background-color:rgba(255,255,255,.7)!important}
+}
+#alarm-actionbar{
+	margin:0 -2px}
+
+calendar-alarm-widget{
+	-moz-binding:url(chrome://calendar/content/widgets/calendar-alarm-widget.xml#calendar-alarm-widget);
+	padding:2px;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	box-shadow:1px 1px 3px #893B00;
+	border-radius:5px;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+calendar-alarm-widget:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+calendar-alarm-widget[selected="true"]{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.alarm-title-label{
+	font-weight:bold}
+
+#alarm-actionbar{
+	min-width:1px}
+
+.alarm-calendar-image{
+	margin:1px;
+	list-style-image:url(chrome://calendar/skin/cal-icon32.png)}
+
+.alarm-details-label{
+	color:inherit!important;
+	text-decoration:underline}
+
+.snooze-popup-ok-button,
+.custom-menupopup-ok-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+
+button[anonid="alarm-dismiss-button"],
+.snooze-popup-cancel-button,
+.custom-menupopup-cancel-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(16px 16px 32px 0)}

@@ -1,0 +1,3 @@
+@import url(chrome://global/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+#content-source,#doctype-text{font-family:-moz-fixed;font-size:-moz-initial}

@@ -1,0 +1,19 @@
+@import url(chrome://messenger/skin/);
+@import url(chrome://messenger/skin/tagColors.css);
+@import url(chrome://messenger/skin/threadPane.css);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#searchTermTree{min-height:50px}
+#searchTermListBox,
+#searchResultListBox{height:100px}
+.search-menulist[unavailable="true"]{color:GrayText}
+menulist{width:12em}
+textbox{margin:0}
+
+#search-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(64px 16px 80px 0)}
+#propertiesButton,#composeButton{
+	list-style-image:url(chrome://messenger/skin/addressbook/addressbook.png);
+	-moz-image-region:rect(0 48px 16px 32px)}
+#composeButton{-moz-image-region:rect(0 64px 16px 48px)}

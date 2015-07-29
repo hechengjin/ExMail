@@ -1,0 +1,50 @@
+@import url(chrome://messenger/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#newMailAlertNotification{
+	min-height:60px;
+	padding:4px;
+	border:2px solid;
+	border-radius:3px;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+#alertBox{-moz-box-align:start}
+#alertImage{list-style-image:url(chrome://messenger/skin/newmail_48.png)}
+#alertTitle{font-weight:bold;padding:2px;-moz-padding-end:20px}
+folderSummary{
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}
+.folderSummary-message-row{width:500px}
+folderSummaryMessage{
+	padding:1px;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+.folderSummary-previewText{opacity:.7}
+.folderSummary-subject,
+.folderSummary-sender{font-weight:bold}
+
+folderSummaryMessage:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+folderSummaryMessage:hover:active{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.folderSummary-message-row>spring,
+#closeButton>.toolbarbutton-text{display:none}
+
+#closeButton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(177px 31px 191px 17px)}
+#closeButton:hover{
+	-moz-image-region:rect(225px 31px 239px 17px)}
+#closeButton:hover:active{
+	-moz-image-region:rect(113px 31px 127px 17px)}

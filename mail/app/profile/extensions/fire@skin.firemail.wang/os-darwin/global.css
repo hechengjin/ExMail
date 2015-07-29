@@ -1,0 +1,27 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+menupopup{-moz-window-shadow:menu}
+popup,panel{-moz-window-shadow:sheet}
+.tooltip,tooltip{-moz-window-shadow:tooltip}
+#customizeToolbarSheetPopup{-moz-window-shadow:sheet}
+
+#addon-bar{padding-right:16px}
+
+toolbar:not([nowindowdrag="true"]),
+#TabsToolbar[tabsontop="true"]:not(:-moz-lwtheme):-moz-system-metric(menubar-drag){
+	-moz-binding:url(chrome://global/content/bindings/toolbar.xml#toolbar-drag)}
+statusbar:not([nowindowdrag="true"]){
+	-moz-binding:url(chrome://global/content/bindings/general.xml#statusbar-drag)}
+windowdragbox,
+.wizard-buttons-btm{
+	-moz-binding:url(chrome://global/content/bindings/general.xml#windowdragbox)}
+
+resizer[type="window"],
+#titlebar{
+	display:none}
+toolbox:-moz-window-inactive{
+	color:inherit!important;
+	opacity:1!important}
+#TabsToolbar[tabsontop="true"]{
+	padding:0!important;
+	background:url(chrome://global/skin/hout-hover.png!important)

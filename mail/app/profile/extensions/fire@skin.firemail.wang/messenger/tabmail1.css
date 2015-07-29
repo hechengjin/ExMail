@@ -1,0 +1,207 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.tabmail-tabbox{
+	border:0;
+	padding:0;
+	background:none}
+.tabmail-tabs{
+	-moz-padding-start:2px;
+	border:2px solid;
+	border-bottom:0;
+	border-top-right-radius:9px;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+.tabmail-arrowscrollbox,#tabmail-buttons,#thunderbird-private-tabmail-buttons,
+.tabs-alltabs-stack,.tabs-closebutton-box,#tabbar-toolbar{
+	border-bottom:2px solid;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+.tabmail-arrowscrollbox>scrollbox{
+	z-index:1000;
+	margin-bottom:-2px}
+
+.tabmail-tab{
+	-moz-binding:url(chrome://messenger/skin/tabmailBindings.xml#tabmail-tab)!important;
+	max-width:150px;
+	margin:4px 2px 2px 2px;
+	padding:0;
+	border:1px solid #EED4A2;
+	box-shadow:0 0 2px #B26F00;
+	border-right-color:#B26F00;
+	opacity:.75;
+	border-radius:0 9px 0 0;
+	border-bottom:0!important;
+	background-image:url(chrome://global/skin/hout.png)}
+
+.tabmail-tab:hover:not([selected="true"]){
+	opacity:1;
+	padding:0 0 1px 0;
+	margin:3px 2px 2px 2px;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+
+.tabmail-tab[selected="true"]{
+	opacity:1!important;
+	padding:0 0 3px 0!important;
+	margin:2px 1px 0 1px!important;
+	font-weight:bold;
+	text-shadow:1px 1px 1px rgba(238,212,162,.8),-1px -1px 1px rgba(171,111,0,.5)!important;
+	box-shadow:0 0 2px #893B00!important;
+	border-width:2px 2px 0 2px!important;
+	-moz-border-top-colors:#B26F00 #EED4A2!important;
+	-moz-border-left-colors:#B26F00 #EED4A2!important;
+	-moz-border-right-colors:#893B00 #B26F00!important;
+	background-image:url(chrome://global/skin/hout.png)!important}
+
+.tab-icon-image,.tabmail-tab .tab-icon{
+	margin:1px;
+	width:16px;
+	height:16px}
+
+.tabmail-tab:not([image]),
+.alltabs-item{
+	list-style-image:url(chrome://messenger/skin/folders.png);
+	-moz-image-region:rect(0,16px,16px,0)}
+
+.tabmail-tab[busy],
+.tabmail-tab[thinking],
+.alltabs-item[busy]{
+	list-style-image:url(chrome://global/skin/loading.gif)!important;
+	-moz-image-region:auto!important}
+.tabmail-tab[download="true"]{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(368px 16px 384px 0)}
+.tabmail-tab[type="glodaSearch"] {
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(64px,16px,80px,0)}
+#calendar-tab-button,
+.icon-holder[type="calendar"],
+.tabmail-tab[type="calendar"]{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png)!important;
+	-moz-image-region:rect(0 32px 16px 16px)!important}
+#task-tab-button,
+.icon-holder[type="tasks"],
+.tabmail-tab[type="tasks"]{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png)!important;
+	-moz-image-region:rect(0 48px 16px 32px)!important}
+.tabmail-tab[type="message"]{
+	list-style-image:url(chrome://messenger/skin/threadPane2.png);
+	-moz-image-region:rect(0,64px,16px,48px)}
+.tabmail-tab[type="contentTab"]{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(144px,16px,160px,0)}
+.tabmail-tab[type="contentTab"][label="Google Agenda"]{
+	list-style-image:url(chrome://messenger/skin/googleagenda.png);
+	-moz-image-region:auto}
+
+#tabmail-buttons>toolbarbutton,
+#tabbar-buttons>toolbarbutton,
+#tabbar-toolbar>toolbarbutton,
+#tabbar-toolbar>toolbarpaletteitem>toolbarbutton,
+#thunderbird-private-tabmail-buttons>toolbarbutton,
+.tabs-closebutton,
+.tabs-alltabs-button{
+	margin:2px!important;
+	padding:0 2px!important}
+#tabmail-buttons>toolbarbutton:hover,
+#tabbar-buttons>toolbarbutton:hover,
+#tabbar-toolbar>toolbarbutton:hover,
+#tabbar-toolbar>toolbarpaletteitem>toolbarbutton:hover,
+#thunderbird-private-tabmail-buttons>toolbarbutton:hover,
+.titlebar-button:hover,
+.tabs-closebutton:hover,
+.tabs-alltabs-button:hover{
+	background-image:url(chrome://global/skin/hout.png)}
+
+.alltabs-item[selected="true"]{font-weight:bold}
+
+.tabs-alltabs-button{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(480px 16px 496px 0)!important}
+
+.tabs-closebutton{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(48px 32px 64px 16px)!important}
+
+.tab-close-button{
+	display:-moz-box!important;
+	visibility:hidden;
+	padding:1px 0!important;
+	margin:0!important;
+	-moz-margin-start:1px!important;
+	border-radius:0 8px 0 0!important;
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(177px 31px 191px 17px)!important}
+.tab-close-button:hover{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	-moz-image-region:rect(225px 31px 239px 17px)!important}
+.tabmail-tab:not([selected="true"]) .tab-close-button:hover{
+	background-image:url(chrome://global/skin/hout.png)}
+.tab-close-button:hover:active{
+	-moz-image-region:rect(113px 31px 127px 17px)!important;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+.tabmail-tabs:not([closebuttons="noclose"]):not([closebuttons="closeatend"])>.tabmail-tab[selected="true"]:not(:first-child)>.tab-close-button,
+.tabmail-tabs[closebuttons="alltabs"]>.tabmail-tab:not(:first-child)>.tab-close-button{
+	visibility:visible}
+
+#context_newTab,
+menuitem[oncommand="BrowserOpenTab();"]{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(48px 16px 64px 0px)!important}
+menuitem[oncommand*="reloadTab"]{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(128px 16px 144px 0)!important}
+menuitem[oncommand="BookmarkThisTab();"]{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(240px 32px 256px 16px)!important}
+menuitem[command="Browser:BookmarkAllTabs"]{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(480px 32px 496px 16px)!important}
+menuitem[oncommand*="removeTab"]{
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(48px 32px 64px 16px)!important}
+
+.tabs-alltabs-stack,
+.tabs-closebutton-box,
+#tabmail-buttons,
+#thunderbird-private-tabmail-buttons{
+	-moz-box-align:center}
+	
+#tabmail-buttons{
+	-moz-box-ordinal-group:3}
+
+.tabs-alltabs-stack,
+.tabs-closebutton-box{
+	-moz-padding-end:1px}
+
+/* TB12 */
+#tabs-toolbar,
+#tabs-toolbar>#tabcontainer,
+#tabs-toolbar>#tabmail-buttons,
+#tabs-toolbar>#tabbar-toolbar,
+#tabs-toolbar .tabmail-arrowscrollbox,
+#tabs-toolbar .tabs-closebutton-box{
+	border-width:0!important;
+	box-shadow:none!important;
+	background:none!important}
+#tabs-toolbar{
+	box-shadow:0 -1px 2px #B26F00 inset!important;
+	border-bottom:2px solid!important;
+	-moz-border-bottom-colors:#EED4A2 #B26F00!important}
+#tabs-toolbar>#alltabs-button{-moz-box-ordinal-group:10}
+#tabs-toolbar #qfb-show-filter-bar{padding:0 2px}
+
+
+.tabs-left,
+#tabs-toolbar>#tabcontainer>.tabs-alltabs-stack,
+#dummycontenttoolbar{display:none}
+
+.tab-drop-indicator{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(84px,83px,95px,72px);
+	-moz-margin-start:-15px!important;
+	-moz-margin-end:4px}

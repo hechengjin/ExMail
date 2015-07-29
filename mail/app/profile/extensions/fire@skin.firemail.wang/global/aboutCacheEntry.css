@@ -1,0 +1,26 @@
+body{display:table}
+table{
+	table-layout:fixed;
+	word-wrap:break-word;
+	width:100%;
+	border-spacing:0}
+th{
+	width:10em;
+	vertical-align:top;
+	text-align:end;
+	padding:0 2px}
+td{
+	white-space:pre-wrap;
+	padding:0 2px}
+pre{
+	line-height:1.1em;
+	margin:0;
+	padding:1px}
+hr{visibility:hidden}
+td,pre{
+	font-family:Consolas,Lucida Console,monospace;
+	border:1px solid #B26F00;
+	background-color:url(chrome://global/skin/backarea.png);
+	color:black}
+tr:not(:last-child)>td{
+	border-bottom-width:0}

@@ -1,0 +1,15 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+slider{padding:2px!important}
+thumb{
+	min-width:6px!important;
+	min-height:6px!important;
+	border-radius:10px!important;
+	background-image:url(chrome://global/skin/hout.png)!important}
+slider:hover>thumb,
+thumb:hover{
+	background-image:url(chrome://global/skin/hout-hover.png)!important}
+slider:active>thumb,
+thumb:active{
+	background-image:url(chrome://global/skin/hout-hover.png)!important}

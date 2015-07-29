@@ -1,0 +1,24 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.paneSelector{margin:1px 2px}
+.paneButtonIcon{width:24px;height:24px}
+.paneButtonLabel{margin:0 2px}
+
+.paneDeckContainer{
+	margin:0 2px;
+	border-radius:11px 11px 5px 5px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+#DCP-PrefWindow>.paneDeckContainer,
+prefwindow[type="child"]>.paneDeckContainer{
+	border-width:0 0 2px 0;
+	border-radius:0;
+	background:none}
+
+separator{display:none}
+#LanguagesDialog{min-height:20em}
+#test-pilot-all-studies-window>.paneDeckContainer{display:none}

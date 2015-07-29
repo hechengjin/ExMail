@@ -1,0 +1,57 @@
+treechildren::-moz-tree-image(calendar-list-tree-checkbox),
+treechildren::-moz-tree-image(checkbox-treecol){
+	width:14px;height:14px;
+	list-style-image:url(chrome://global/skin/checkbox.png);
+	-moz-image-region:rect(14px,14px,28px,0)}
+
+treechildren::-moz-tree-image(calendar-list-tree-checkbox,checked),
+treechildren::-moz-tree-image(checkbox-treecol,checked){
+    -moz-image-region:rect(0,14px,14px,0)}
+
+treechildren::-moz-tree-image(calendar-list-tree-checkbox,disabled),
+treechildren::-moz-tree-image(checkbox-treecol,disabled){
+    -moz-image-region:rect(14px,28px,28px,14px)}
+
+treechildren::-moz-tree-image(checkbox-treecol,checked,disabled){
+    -moz-image-region:rect(0,28px,14px,14px)}
+
+treechildren::-moz-tree-cell(calendar-list-tree-color,color-default){
+	background-color:#a8c2e1}
+
+treechildren::-moz-tree-cell(calendar-list-tree-color){
+	margin:1px;
+	padding:0}
+
+treechildren::-moz-tree-cell(calendar-list-tree-calendar){
+	-moz-margin-start:1px}
+
+treechildren::-moz-tree-image(status-treecol,readonly),
+treechildren::-moz-tree-image(calendar-list-tree-status,readonly),
+treechildren::-moz-tree-image(calendar-list-tree-color,readOnly,black){
+	list-style-image:url(chrome://calendar/skin/calendar-status.png);
+	-moz-image-region:rect(0,14px,14px,0)}
+
+treechildren::-moz-tree-image(status-treecol,readfailed),
+treechildren::-moz-tree-image(calendar-list-tree-status,readfailed),
+treechildren::-moz-tree-image(calendar-list-tree-color,readOnly,white){
+	list-style-image:url(chrome://calendar/skin/calendar-status.png);
+	-moz-image-region:rect(0,28px,14px,14px)}
+
+treechildren::-moz-tree-cell-text(disabled){
+	color:GrayText}
+
+#calendar-list-tree,
+#calendar-list-tree-widget{
+	padding:0}
+#calendar-list-tree>tree{border-radius:5px}
+
+treecol[hideheader="true"],
+treecols[hideheader="true"]{
+	font-size:0;
+	border:0;
+	padding:0;
+	max-height:0;
+	height:0}
+
+treecol[hideheader="true"]>treecol-text,
+treecol[hideheader="true"]>treecol-sortdirection{display:none}

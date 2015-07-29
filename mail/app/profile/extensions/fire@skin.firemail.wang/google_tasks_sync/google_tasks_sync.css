@@ -1,0 +1,80 @@
+#gt_tasks_sync_interfacewrapper{
+	height:360px}
+
+#gt_tasks_sync_taskcontainer,
+#gt_tasks_sync_reorderingcontainer,
+#gt_tasks_sync_dummycontainer,
+#gt_tasks_sync_testingcontainer{
+	overflow:auto;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+.gt_tasks_sync_c_taskwrapper_faded{
+	opacity:.7;
+	-moz-text-decoration-color:#893B00;
+	-moz-text-decoration-line:line-through}
+
+.gt_tasks_sync_c_taskwrapper:hover,
+.gt_tasks_sync_c_taskwrapper_faded:hover{
+	background:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+.gt_tasks_sync_c_taskwrapper_selected,
+.gt_tasks_sync_c_taskwrapper_faded_selected{
+	background:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.gt_tasks_sync_c_taskcheckbox{
+	margin:0;
+	border-width:0}
+
+.gt_tasks_sync_c_taskauxbox{margin:1px 0}
+
+.gt_tasks_sync_c_taskdue,
+.gt_tasks_sync_c_tasktitle{
+	padding:0 2px}
+
+.gt_tasks_sync_c_taskoverdue{
+	font-weight:bold}
+
+.gt_tasks_sync_c_tasktitledummy,
+.gt_tasks_sync_c_tasknotes{
+	opacity:.7;
+	padding:0 2px}
+
+#gt_tasks_sync_containsdatepicker>box{-moz-box-align:center}
+
+.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/clear-due-date.png"]{
+	width:16px;height:16px;
+	background:-moz-image-rect(url(chrome://global/skin/global.png),177,31,191,17) center no-repeat}
+toolbarbutton:hover>.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/clear-due-date.png"]{
+	width:16px;height:16px;
+	background:-moz-image-rect(url(chrome://global/skin/global.png),225,31,239,17) center no-repeat}
+toolbarbutton:hover>.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/clear-due-date.png"]{
+	width:16px;height:16px;
+	background:-moz-image-rect(url(chrome://global/skin/global.png),113,31,127,17) center no-repeat}
+.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/sync.png"]{
+	width:16px;height:16px;
+	background:url(chrome://global/skin/icons/sync-16.png) center no-repeat}
+.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/sync-alert.png"]{
+	width:16px;height:16px;
+	background:url(chrome://global/skin/icons/warning-16.png) center no-repeat}
+.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/sync-hourglass.png"]{
+	width:16px;height:16px;
+	opacity:1!important;
+	filter:none!important;
+	background:url(chrome://global/skin/icons/loading_16.png) center no-repeat}
+.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/list-add.png"]{
+	width:16px;height:16px;
+	background:-moz-image-rect(url(chrome://global/skin/widgets.png),31,37,41,27) center no-repeat}
+.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/Andy_Trash_Can.png"]{
+	width:16px;height:16px;
+	background:-moz-image-rect(url(chrome://global/skin/global.png),272,16,288,0) center no-repeat}
+.toolbarbutton-icon[src="chrome://google_tasks_sync/skin/blue_help_button.png"]{
+	width:16px;height:16px;
+	background:-moz-image-rect(url(chrome://global/skin/global.png),32,16,48,0) center no-repeat}

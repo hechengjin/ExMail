@@ -1,0 +1,61 @@
+#calendar-invitations-dialog{
+	min-width:500px;
+	min-height:273px}
+
+.calendar-invitations-updating-icon{
+	list-style-image:url(chrome://global/skin/loading.gif)}
+
+calendar-invitations-richlistbox{
+	-moz-appearance:none!important;
+	border:2px solid!important;
+	-moz-border-top-colors:#B26F00 #893B00!important;
+	-moz-border-left-colors:#B26F00 #893B00!important;
+	-moz-border-right-colors:#EED4A2 #B26F00!important;
+	-moz-border-bottom-colors:#EED4A2 #B26F00!important;
+	background:transparent url(chrome://global/skin/backarea.png)!important;
+	color:black!important}
+calendar-invitations-richlistbox[disabled="true"]{
+	color:#893B00!important;
+	text-shadow:1px 1px #EED4A2}
+
+calendar-invitations-richlistitem{
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	padding:2px;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+calendar-invitations-richlistitem:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+calendar-invitations-richlistitem[selected="true"]{
+	background-image:url(chrome://global/skin/hout-hover.png)!important;
+	color:black!important}
+calendar-invitations-richlistbox:focus>richlistitem[current="true"]{
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+calendar-invitations-richlistitem[disabled="true"]{
+	background-image:url(chrome://global/skin/hout.png)!important;
+	color:#893B00!important;
+	text-shadow:1px 1px #EED4A2}
+
+.calendar-invitations-richlistitem-title{
+	font-weight:bold}
+
+.calendar-invitations-richlistitem-icon{
+	list-style-image:url(chrome://calendar/skin/calendar-invitations-dialog-list-images.png);
+	-moz-image-region:rect(0 32px 32px 0)}
+.calendar-invitations-richlistitem-icon[status="ACCEPTED"]{
+	-moz-image-region:rect(0 64px 32px 32px)}
+.calendar-invitations-richlistitem-icon[status="DECLINED"]{
+	-moz-image-region:rect(0 96px 32px 64px)}
+
+.calendar-invitations-richlistitem-button .button-icon{
+	margin:0;
+	-moz-margin-end:2px}
+
+.calendar-invitations-richlistitem-accept-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+.calendar-invitations-richlistitem-decline-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(16px 16px 32px 0)}

@@ -1,0 +1,50 @@
+#genericAbout{
+	min-height:300px;
+	max-height:500px;
+	width:30em}
+#clientBox{
+	margin:0;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+.sectionTitle[hidden="true"]+.boxIndent,
+#groove{
+	display:none}
+#extensionDetailsBox{
+	overflow:auto;
+	margin:2px;
+	padding:4px;
+	box-shadow:inset 1px 1px 1px #B26F00;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+.basic-info{padding:4px 4px 0 4px}
+#extensionDescription{padding:2px 4px}
+#extensionName{font-size:120%;font-weight:bold}
+#extensionVersion{font-style:italic;font-weight:bold;color:#893B00}
+.sectionTitle,#extensionCreatorLabel,#extensionContributors{
+	border-bottom:1px solid #B26F00;
+	margin-top:3px;
+	font-weight:bold;
+	color:#893B00}
+#developersBox,
+#translatorsBox,
+#contributorsBox{
+	padding:0!important;
+	margin:0!important;
+	border-width:0!important}
+	
+#extensionIcon{
+	-moz-margin-end:4px;
+	max-width:32px;
+	max-height:32px;
+	list-style-image:url(chrome://mozapps/skin/extensions/addons.png);
+	-moz-image-region:rect(0 32px 32px 0)}
+#genericAbout[addontype="theme"] #extensionIcon{-moz-image-region:rect(0 64px 32px 32px)}
+#genericAbout[addontype="locale"] #extensionIcon{-moz-image-region:rect(0 96px 32px 64px)}
+#genericAbout[addontype="plugin"] #extensionIcon{-moz-image-region:rect(0 128px 32px 96px)}
+#genericAbout[addontype="dictionary"] #extensionIcon{-moz-image-region:rect(0 448px 32px 416px)}
+

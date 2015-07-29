@@ -1,0 +1,66 @@
+body{
+	margin:0;
+	padding:0 2px;
+	font:message-box;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+.conv-textbox[flex]{font:message-box!important}
+.indicator,p{margin:0}
+.pseudo{font-size:90%;-moz-margin-start:54px}
+.nick,.sender{font-weight:bold}
+.time{float:right}
+.message{-moz-margin-start:54px}
+.action{font-style:italic}
+.action:before{content:"*** "}
+#Chat{white-space:normal}
+
+.bubble{
+	min-height:50px;
+	margin:4px 2px!important;
+	padding:4px;
+	box-shadow:1px 1px 2px #B26F00;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+.bubble.incoming{border-radius:10px 0 10px 10px!important}
+.bubble.outgoing{border-radius:0 10px 10px 10px!important}
+
+.bubble.event{
+	opacity:.7;
+	min-height:1px}
+
+.interval{
+	opacity:.7;
+	font-size:90%;
+	text-align:center}
+
+#lastMessage{
+	font-weight:bold;
+	padding:4px;
+	opacity:1;
+	text-shadow:0 1px #EED4A2}
+
+*:-moz-any-link img{
+	margin-bottom:1px;
+	border-bottom:1px solid darkblue}
+
+.usericon {
+	float:left;
+	-moz-margin-end:4px;
+	max-width:48px;
+	max-height:48px;
+	border-radius:5px}
+	
+.hide{
+	background-image:-moz-image-rect(url(chrome://global/skin/widgets.png),40,36,48,28}
+	background-repeat:no-repeat;
+	background-position:left center}
+.hide:after{
+	content:"...";
+	color:GrayText}
+.show{
+	background-image:-moz-image-rect(url(chrome://global/skin/widgets.png),32,36,40,28}
+	background-repeat:no-repeat;
+	background-position:left center}

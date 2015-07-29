@@ -1,0 +1,121 @@
+
+minimonth{
+	border-radius:7px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+menupopup>minimonth{
+	border-width:0}
+
+minimonth-header{
+	border-radius:5px 5px 0 0;
+	border-bottom:1px solid #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+minimonth-header[readonly="true"]{
+	-moz-box-pack:end}
+
+minimonth-header[readonly="true"]>spacer{
+	display:none}
+
+.minimonth-year-name,
+.minimonth-month-name{
+	font-weight:bold;
+	text-align:center;
+	-moz-user-focus:normal}
+.minimonth-year-name,
+.minimonth-month-name>toolbarbutton{
+	margin:0;
+	padding:1px;
+	border-radius:0}
+.minimonth-month-name>toolbarbutton{
+	border-top-left-radius:5px}
+.minimonth-month-name-readonly{
+	text-align:center;
+	font-weight:bold}
+.minimonth-year-name{
+	min-width:4em}
+.minimonth-year-name-readonly{
+	min-width:4em;
+	font-weight:bold;
+	-moz-padding-start:4px}
+
+.minimonth-list{
+	text-align:center;
+	min-width:4em}
+.minimonth-list[index]{
+	min-width:76px}
+
+.minimonth-nav-btns{
+	-moz-user-focus:normal;
+	margin:0;
+	padding:2px;
+	border-radius:0;
+	list-style-image:url(chrome://calendar/skin/widgets/nav-buttons.png);
+	-moz-image-region:rect(0,22px,11px,10px)}
+.minimonth-nav-btns[dir="-1"]{
+	-moz-image-region:rect(0,10px,11px,0)}
+.minimonth-nav-btns[dir="1"]{
+	border-top-right-radius:5px;
+	-moz-image-region:rect(0,32px,11px,22px)}
+
+.minimonth-month-name>.toolbarbutton-icon,
+.minimonth-year-name>.toolbarbutton-icon,
+.minimonth-nav-btns>.toolbarbutton-text{
+	display:none}
+
+.minimonth-row-head{
+	border-bottom:1px solid #B26F00;
+	text-shadow:1px 1px 1px #EED4A2;
+	background-image:url(chrome://global/skin/hout.png);
+	color:#893B00}
+
+.minimonth-row-header,
+.minimonth-header{
+	text-align:center}
+
+.minimonth-cal-box{
+	border-radius:0 0 5px 5px;
+	background-image:url(chrome://global/skin/backarea.png)}
+
+.minimonth-day{
+	border-radius:5px;
+	color:black;
+	border:1px solid transparent;
+	text-align:center}
+.minimonth-day[othermonth="true"]{
+	color:#893B00}
+.minimonth-day[today="true"]{
+	background-image:url(chrome://global/skin/hout.png)}
+.minimonth-day[busy]{
+	font-weight:bold}
+.minimonth-day[busy="1"]{
+	border-radius:0;
+	background-image:url(chrome://global/skin/hout-hover.png)}
+.minimonth-day[selected="true"]{
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+.minimonth-day[busy="true"]{
+	color:darkred}
+.minimonth-day[interactive]{
+	cursor:pointer}
+.minimonth-day:hover[interactive]{
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+.minimonth-day:active[interactive]{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.minimonth-list{
+	padding:2px 4px}
+.minimonth-list[current="true"]{
+	font-weight:bold}
+.minimonth-list:hover{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white;
+	cursor:pointer}

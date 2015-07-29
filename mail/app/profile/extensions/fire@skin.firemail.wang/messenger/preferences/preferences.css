@@ -1,0 +1,192 @@
+radio[pane="paneMain"],radio[pane="paneGeneral"]{
+	list-style-image:url(chrome://messenger/skin/preferences/preferences.png);
+	-moz-image-region:rect(0 24px 24px 0)}
+radio[pane="paneCompose"]{
+	list-style-image:url(chrome://messenger/skin/preferences/preferences.png);
+	-moz-image-region:rect(24px 24px 48px 0)}
+radio[pane="paneDisplay"]{
+	list-style-image:url(chrome://messenger/skin/preferences/preferences.png);
+	-moz-image-region:rect(48px 24px 72px 0)}
+radio[pane="paneAdvanced"]{
+	list-style-image:url(chrome://messenger/skin/preferences/preferences.png);
+	-moz-image-region:rect(96px 24px 120px 0)}
+radio[pane="panePrivacy"],
+radio[pane="paneSecurity"]{
+	list-style-image:url(chrome://messenger/skin/preferences/preferences.png);
+	-moz-image-region:rect(144px 24px 168px 0)}
+radio[pane="paneApplications"],
+radio[pane="paneDownloads"]{
+	list-style-image:url(chrome://messenger/skin/preferences/preferences.png);
+	-moz-image-region:rect(168px 24px 192px 0)}
+radio[pane=paneChat]{
+	list-style-image:url(chrome://messenger/skin/preferences/preferences.png);
+	-moz-image-region:rect(192px 24px 216px 0)}
+
+prefpane>tabbox{border-width:0!important}
+prefpane>tabbox>tabpanels{
+	border-right:1px solid #B26F00!important;
+	border-bottom:1px solid #B26F00!important}
+
+#paneApplications>vbox{
+	background-image:url(chrome://global/skin/hout.png)}
+
+#cookiesChildren::-moz-tree-image(domainCol){
+	width:16px;height:16px;margin:0 2px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(41px 54px 57px 38px)}
+#cookiesChildren::-moz-tree-image(domainCol,container){
+	-moz-image-region:rect(57px 54px 73px 38px)}
+#cookiesChildren::-moz-tree-image(domainCol,container,open){
+	-moz-image-region:rect(57px 70px 73px 54px)}
+
+#backgroundBox,
+#cookieInfoGrid{
+	background-image:url(chrome://global/skin/backarea.png)}
+
+#cookieInfoBox,
+filefield{
+	margin:2px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+.fileFieldIcon{
+	width:16px;
+	height:16px;
+	margin:1px;
+	-moz-margin-end:3px}
+filefield[disabled="true"] .fileFieldIcon{
+	opacity:.7;
+	filter:url(chrome://global/skin/greyscale.svg#greyscale)}
+.fileFieldLabel{
+	background:transparent none;
+	border-width:0;
+	margin:0}
+
+#saveToRow{-moz-box-align:center}
+#downloadFolder,#chooseFolder{margin:0}
+#fileExtension{width:5em}
+#extensionChildren::-moz-tree-image(fileExtension){margin:0 5px 0 0}
+#typeField{font-weight:bold}
+#typeIcon{width:32px;height:32px;-moz-margin-end:3px}
+
+#typeField{
+	font-weight:bold;
+	background-color:transparent;
+	margin:1px!important;
+	-moz-margin-start:3px!important;
+	-moz-margin-end:2px!important}
+
+#extensionField{
+	color:#893B00;
+	font-weight:bold}
+#ChangeActionDialog{padding:0}
+
+#changeActionHeader{
+	margin:0;
+	padding:4px;
+	border:1px solid #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+#defaultAppIcon{width:16px;height:16px;-moz-margin-start:2px}
+#defaultAppName{-moz-margin-start:4px!important;font-weight:bold}
+#chooseClientAppCell{-moz-padding-end:12px}
+
+#provider-listing{min-width:170px}
+
+#cloudFileSettingsWrapper{
+	-moz-margin-start:2px;
+	border:2px solid;
+	border-radius:7px;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+#provider-management{
+	font:message-box;
+	padding:4px}
+
+#provider-spacebox{
+	width:100%;
+	-moz-box-orient:horizontal;
+	display:-moz-box;
+	-moz-box-direction:reverse;
+	-moz-box-pack:start}
+
+#provider-space{
+	text-align:right}
+
+#provider-header{
+	margin-bottom:20px;
+	padding-bottom:20px}
+
+#provider-name{
+	padding:0;
+	margin:0;
+	margin-right:120px}
+
+#provider-name>h1{
+	font-size:120%;
+	margin:0}
+
+#provider-terms{
+	float:right;
+	width:110px}
+
+#provider-terms a{
+	display:block;
+	margin-bottom:5px;
+	text-align:right}
+
+#provider-listing{
+	max-width:150px}
+
+#upgrade{
+	margin-top:10px}
+
+#provider-account-settings{
+	margin-top:10px;
+	text-align:right}
+
+.space-swatch{
+	display:inline-block;
+	width:1em;
+	height:1em;
+	border:1px solid #B26F00;
+	border-radius:2px;
+	vertical-align:middle;
+	-moz-margin-start:0.5ch;
+	-moz-box-sizing:border-box}
+
+#cloudFileToggleAndThreshold{padding-bottom:4px}
+
+#cloudFileLoadingPanel,
+#cloudFileDefaultPanel{
+	text-align:center;
+	padding-top:150px}
+
+#timeBeforeAway{width:4em}
+
+a{
+	padding:1px 3px;
+	border-radius:5px;
+	color:darkblue;
+	text-decoration:underline}
+a:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+a:active{
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+#provider-space>div>label,
+#provider-space>div>span{
+	vertical-align:middle}
+	
+separator,
+#CompactHeader_checkboxflatButtons{display:none}
+
+#paneChat{padding:4px}

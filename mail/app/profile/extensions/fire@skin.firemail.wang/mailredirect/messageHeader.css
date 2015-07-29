@@ -1,0 +1,12 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#mailredirect-toolbarbutton,
+#hdrMailredirectButton,
+.hdrMailredirectButton{
+	list-style-image:url(chrome://mailredirect-os/skin/mailredirect.png)}
+toolbar[iconsize="small"]>#hdrMailredirectButton,
+toolbar[iconsize="small"]>#mailredirect-toolbarbutton,
+toolbar[iconsize="small"]>.hdrMailredirectButton{
+	list-style-image:url(chrome://mailredirect-os/skin/mailredirect-small.png)}
+.hdrMailredirectButton[disabled=true]{
+	display:-moz-box!important}

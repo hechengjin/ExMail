@@ -1,0 +1,178 @@
+@import url(chrome://communicator/skin/smileys.css);
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@media not print{
+body{
+	margin:0!important;
+	padding:0!important;
+	-moz-box-sizing:padding-box;
+	min-width:100%;
+	min-height:100%;
+	height:100%}
+body:not([bgcolor]):not([style*="background"]):not(.hmmessage),
+body[bgcolor="#FFFFFF"]:not([style*="background"]):not(.hmmessage){
+	box-shadow:1px 1px 3px #B26F00 inset;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+body:not([bgcolor]):not([style*="background"]):not(.hmmessage)>div,
+body[bgcolor="#FFFFFF"]:not([style*="background"]):not(.hmmessage)>div{
+	box-shadow:1px 1px 3px #B26F00;
+	background:-moz-default-background-color;
+	color:-moz-default-color}
+body>div{
+	width:inherit;
+	padding:8px}
+body>div:only-child{
+	-moz-box-sizing:border-box}
+body[style*="margin:0"]>.moz-text-html:only-child,
+body[style*="background"]>.moz-text-html:only-child{
+	padding:0}
+body[marginheight="0"]>.moz-text-html:only-child{
+	padding-top:0;padding-bottom:0}
+body[marginwidth="0"]>.moz-text-html:only-child{
+	padding-right:0;padding-left:0}
+.hmmessage>.moz-text-html:only-child{
+	padding:8px!important}
+}
+body>br{line-height:0}
+
+.moz-text-plain pre{margin:inherit;font-family:inherit}
+.moz-text-plain[wrap="true"],
+.moz-text-plain[wrap="flow"] .moz-txt-sig{white-space:pre-wrap}
+.moz-text-plain[wrap="false"]{white-space:pre}
+
+blockquote{
+	margin:inherit;
+	border-left:inherit;
+	padding-left:inherit}
+.moz-text-flowed blockquote,
+.moz-text-plain[graphical-quote="true"] blockquote{
+	margin:inherit;
+	border-width:medium;
+	border-color:gray}
+.moz-txt-underscore{text-decoration:underline}
+.moz-txt-formfeed{display:block;height:100%}
+.moz-txt-sig,.moz-signature{color:gray}
+.moz-txt-sig>a,.moz-signature>a{color:-moz-nativehyperlinktext}
+
+.moz-vcard-table{
+	margin:4px;
+	border-radius:5px;
+	border:1px solid #B26F00;
+	background-color:white}
+
+.moz-vcard-property{font-size:80%;color:grey}
+
+a:hover{
+	background-image:url(chrome://global/skin/hout-hover.png)!important;
+	color:black!important}
+a:hover:active{
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+
+.moz-vcard-badge{
+	height:26px;
+	width:26px;
+	background:transparent url(chrome://messenger/skin/vcard.png) no-repeat center center;
+	display:block;
+	border-radius:5px;
+	border:1px solid transparent}
+.moz-vcard-badge:hover{
+	box-shadow:0 0 1px #893B00;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2}
+.moz-vcard-badge:hover:active{
+	box-shadow:inset 1px 1px 3px #893B00;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}
+.moz-vcard-badge:focus{outline:0}
+
+blockquote[type=cite]{
+	padding:0em .5em .5em 1em!important;
+	border-right:2px solid blue!important;
+	border-left:2px solid blue!important}
+blockquote[type=cite] blockquote[type=cite]{
+	border-color:maroon!important}
+blockquote[type=cite] blockquote[type=cite] blockquote[type=cite]{
+	border-color:teal!important}
+blockquote[type=cite] blockquote[type=cite] blockquote[type=cite] blockquote[type=cite]{
+	border-color:purple!important}
+blockquote[type=cite] blockquote[type=cite] blockquote[type=cite] blockquote[type=cite] blockquote[type=cite]{
+	border-color:green!important}
+
+.mimeAttachmentHeader{
+	margin:0;
+	padding:0 10px;
+	border-width:0}
+.mimeAttachmentHeaderName{
+	margin:10px 0;
+	padding:2px 6px;
+	text-align:center;
+	font-size:90%;
+	font-style:italic;
+	font-weight:bold;
+	text-shadow:1px 1px 1px #EED4A2;
+	border-radius:9px;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+.moz-attached-image[overflowing="true"]{cursor:-moz-zoom-out}
+.moz-attached-image[isshrunk="true"]{cursor:-moz-zoom-in;max-width:100%}
+
+.mimeAttachmentTable{
+	table-layout:fixed;
+	width:100%;
+	border:1px solid #893B00}
+.mimeAttachmentFile{word-wrap:break-word}
+ 
+.mimeAttachmentSize{
+	vertical-align:top;
+	width:10ch;
+	text-align:right}
+.mimeAttachmentFile,
+.mimeAttachmentSize{
+	padding:2px}
+	
+.header-part1,.header-part2,.header-part3,.mimeAttachmentTable{
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+body>p{margin:0}
+
+@media print{
+.header-part2{
+	margin-top:-1px;
+	border-top-width:0}
+:-moz-any(.header-part1,.header-part2,.header-part3)+br{
+	line-height:8px}
+:-moz-any(.header-part1,.header-part2,.header-part3)>tbody>tr>td{
+	-moz-padding-start:6.5em}
+.headerdisplayname{
+	display:inline-block!important;
+	width:6em;
+	-moz-margin-start:-6.5em;
+	-moz-margin-end:.5em;
+	text-align:end;
+	color:#893B00}
+.mimeAttachmentHeader{border-top:2px solid #B26F00}
+}
+@media not print{
+.header-part1{
+	box-shadow:-2px 2px 2px #B26F00}
+.mimeAttachmentHeaderName,
+.mimeAttachmentTable,
+.moz-attached-image,
+.moz-vcard-table{
+	box-shadow:2px 2px 5px #893B00, 2px 2px 7px 2px #893B00}
+.moz-attached-image{
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+}
+
+mailattachcount,
+.moz-text-plain[graphical-quote="true"] .moz-txt-citetags,
+.moz-signature+br{display:none}
+
+#msgFeedSummaryBody>.moz-text-html>img:not(:focus){max-width:100%}

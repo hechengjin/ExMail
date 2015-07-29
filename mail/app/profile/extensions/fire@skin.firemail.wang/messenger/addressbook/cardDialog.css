@@ -1,0 +1,38 @@
+@import url(chrome://messenger/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.CardEditWidth{width:25em}
+.CardEditLabel{padding:0;margin-top:3px}
+.alignBoxWithFieldset{-moz-margin-start:6px;-moz-margin-end:5px}
+.stateZipSpacer{width:3em}
+
+.PhoneEditWidth{width:24ch}
+.AddressCardEditWidth{width:90ch}
+.YearWidth{width:8ch}
+.stateZipSpacer{width:6ch}
+.ZipWidth{width:14ch}
+
+#abcardWindow>spacer{display:none}
+
+#photo{
+	background-color:white;
+	min-width:110px!important;
+	max-width:110px!important;
+	min-height:110px!important;
+	max-height:110px!important;
+	margin:2px;
+	padding:5px;
+	box-shadow:2px 2px 3px #893B00,1px 1px 3px 1px #B26F00!important;
+	background:white url(chrome://messenger/skin/addressbook/icons/contact-generic.png) center no-repeat;
+	background-size:100px 100px}
+#photo:not([src="default"]){
+	background-image:none}
+
+.person-icon{
+	list-style-image:url(chrome://messenger/skin/addressbook/icons/abcard.png)}
+#GenericPhotoList[value="default"]{
+	list-style-image:url(chrome://messenger/skin/addressbook/icons/contact-generic-tiny.png)}
+
+#editcard>tabbox{
+	border-width:0 0 2px 0;
+	border-radius:0}

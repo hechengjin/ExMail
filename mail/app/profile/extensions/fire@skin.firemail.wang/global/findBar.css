@@ -1,0 +1,59 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+findbar{
+	min-width:1px}
+findbar[position="top"]{
+	margin-top:-2px;
+	border-bottom:2px solid;
+	-moz-border-bottom-colors:#B26F00 #893B00;
+	background-image:url(chrome://global/skin/hout.png)}
+
+.findbar-find-next{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(400px 16px 416px 0)}
+.findbar-find-previous{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(384px 16px 400px 0)}
+.findbar-highlight{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(432px 16px 448px 0)}
+
+:-moz-any(.findbar-find-next,.findbar-find-previous,.findbar-highlight)>.toolbarbutton-icon{
+	margin:0 1px}
+
+.findbar-closebutton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(177px,31px,191px,17px)}
+.findbar-closebutton:hover{
+	-moz-image-region:rect(225px,31px,239px,17px)}
+
+.find-status-icon{
+	-moz-margin-start:8px}
+.find-status-icon[status="notfound"]{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(448px 16px 464px 0)}
+.find-status-icon[status="wrapped"]{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(448px 32px 464px 16px)}
+.find-status-icon[status="pending"]{
+	list-style-image:url(chrome://global/skin/icons/loading_16.png)}
+
+.findbar-textbox[status="notfound"]{
+	color:red}
+
+.findbar-find-status{
+	-moz-box-flex:1;
+	font-style:italic;
+	text-shadow:0 1px rgba(255,255,255,.4)}
+
+.findbar-container>checkbox{
+	border-radius:5px;
+	-moz-outline-radius:7px}
+
+.findbar-textbox{
+	-moz-binding:url(chrome://global/content/bindings/findbar.xml#findbar-textbox);
+	margin:0 2px;
+	border-radius:5px}
+.findbar-textbox html|*.textbox-input:focus{
+	-moz-outline-radius:3px}

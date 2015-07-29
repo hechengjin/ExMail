@@ -1,0 +1,37 @@
+@import url(chrome://global/skin/htmlbutton.css);
+
+#menu{
+	position:absolute;
+	top:5px;
+	color:graytext}
+
+.warningMessage{
+	min-width:13em;
+	max-width:35em;
+	margin:4em auto;
+	padding:17px;
+	text-align:center;
+	border:3px solid red;
+	border-radius:18px;
+	background:-moz-Field url(chrome://global/skin/icons/warning-large.png) no-repeat scroll left 0;
+	background-origin:content-box;
+	box-shadow:5px 5px 5px graytext;
+	color:-moz-FieldText}
+
+.active ~ *,
+.tab:not(.active),
+:not(.active)>.warningMessage{
+	display:none}
+
+#menu .selected{
+	font-weight:bold}
+
+table{border-collapse:collapse}
+thead{background-image:url(chrome://global/skin/menu-bg.png)}
+th,td{padding:0 2px}
+td{background-color:-moz-field;color:-moz-fieldtext}
+
+#refreshdiv{
+	top:5px;
+	position:absolute;
+	right:30px}

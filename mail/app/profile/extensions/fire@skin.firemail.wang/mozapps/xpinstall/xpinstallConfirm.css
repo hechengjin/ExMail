@@ -1,0 +1,47 @@
+#xpinstallConfirm{padding:2px;min-height:4em!important}
+
+.listbox{
+	-moz-appearance:none!important;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black;
+	border-radius:6px;
+	margin:2px;padding:2px}
+
+.alert-icon,#itemWarningIntro,#itemList{margin:2px}
+
+#itemList{height:10em}
+
+installitem{
+	margin:2px!important;
+	padding:2px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	border-radius:4px;
+	background-image:url(chrome://global/skin/hout.png)}
+
+.xpinstallItemIcon{
+	margin:2px;
+	width:32px;height:32px;
+	list-style-image:url(chrome://mozapps/skin/extensions/addons.png);
+	-moz-image-region:rect(0 32px 32px 0)}
+installitem[type="theme"] .xpinstallItemIcon{-moz-image-region:rect(0 64px 32px 32px)}
+installitem[type="locale"] .xpinstallItemIcon{-moz-image-region:rect(0 96px 32px 64px)}
+installitem[type="plugin"] .xpinstallItemIcon{-moz-image-region:rect(0 128px 32px 96px)}
+installitem[type="dictionary"] .xpinstallItemIcon{-moz-image-region:rect(0 448px 32px 416px)}
+
+.xpinstallItemName,.warning{font-weight:bold}
+.xpinstallItemSigned{font-style:italic}
+.xpinstallItemSigned[signed="false"]{
+	color:#ED1C24;
+	font-style:normal;
+	font-weight:bold}
+.xpinstallItemNameRow{padding-bottom:3px}
+.xpinstallItemURL{-moz-appearance:none;border:0}

@@ -1,0 +1,47 @@
+.calendar-task-tree{background-color:white}
+
+.calendar-task-tree>treechildren::-moz-tree-cell-text(inprogress){color:darkgreen}
+.calendar-task-tree>treechildren::-moz-tree-row(inprogress,selected){background-color:green}
+.calendar-task-tree>treechildren::-moz-tree-cell-text(overdue){color:darkred}
+.calendar-task-tree>treechildren::-moz-tree-row(overdue,selected){background-color:red}
+.calendar-task-tree>treechildren::-moz-tree-cell-text(duetoday){color:darkblue}
+.calendar-task-tree>treechildren::-moz-tree-row(duetoday,selected){background-color:blue}
+.calendar-task-tree>treechildren::-moz-tree-cell-text(future){color:#893B00}
+.calendar-task-tree>treechildren::-moz-tree-row(future,selected){background-color:#893B00}
+.calendar-task-tree>treechildren::-moz-tree-cell-text(completed){text-decoration:line-through;color:black}
+
+.calendar-task-tree>treechildren::-moz-tree-cell-text(selected){color:white}
+
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-completed),
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-completed),
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-completed),
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-completed){
+	width:14px;
+	height:14px;
+	list-style-image:url(chrome://global/skin/checkbox.png);
+	-moz-image-region:rect(14px,14px,28px,0)}
+
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-completed,completed),
+.calendar-task-tree-col-completed{
+	list-style-image:url(chrome://global/skin/checkbox.png);
+	-moz-image-region:rect(0,14px,14px,0)}
+
+.todo-due-image-class,
+.calendar-task-tree-col-priority{
+	list-style-image:url(chrome://calendar/skin/priority.png);
+	-moz-image-region:rect(0,39px,13px,26px)}
+
+.todo-due-image-class[highpriority="true"],
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-priority,highpriority){
+	list-style-image:url(chrome://calendar/skin/priority.png);
+	-moz-image-region:rect(0,13px,13px,0px)}
+
+.todo-due-image-class[lowpriority="true"],
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-priority,lowpriority){
+	list-style-image:url(chrome://calendar/skin/priority.png);
+	-moz-image-region:rect(0,26px,13px,13px)}
+
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-priority,selected,highpriority){
+	-moz-image-region:rect(13px,13px,26px,0px)}
+.calendar-task-tree>treechildren::-moz-tree-image(calendar-task-tree-col-priority,selected,lowpriority){
+	-moz-image-region:rect(13px,26px,26px,13px)}

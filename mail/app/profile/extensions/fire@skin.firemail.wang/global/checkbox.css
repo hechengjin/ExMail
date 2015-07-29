@@ -1,0 +1,65 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+checkbox{
+	outline-width:0!important;
+	margin:2px;
+	padding:1px;
+	border:2px solid transparent;
+	border-radius:3px;
+	-moz-outline-radius:5px;
+	-moz-box-align:center}
+toolbar checkbox{
+	border-radius:5px}
+caption>checkbox{
+	border-radius:5px;
+	padding:2px 5px;
+	margin:-2px -5px}
+
+.checkbox-label-box{
+	-moz-box-align:center}
+.checkbox-icon{
+	list-style-image:inherit}
+.checkbox-label{
+	margin:0;
+	-moz-margin-start:2px;
+	padding:1px}
+checkbox:not([label])>.checkbox-label-box>.checkbox-label{
+	display:none}
+
+checkbox:focus{
+	box-shadow:0 0 0 1px #B26F00!important}
+
+checkbox:hover:not([disabled="true"]){
+	box-shadow:1px 1px 2px #B26F00;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+checkbox:hover:active:not([disabled="true"]){
+	box-shadow:none;
+	-moz-border-top-colors:#893B00 #B26F00;
+	-moz-border-left-colors:#893B00 #B26F00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+checkbox[disabled="true"]{
+	border:2px solid transparent!important;
+	color:#893B00!important;
+	text-shadow:1px 1px 0 #EED4A2!important}
+
+.checkbox-check{
+	list-style-image:url(chrome://global/skin/checkbox.png);
+	width:14px;
+	height:14px;
+	margin:0 0 2px 2px;
+	-moz-image-region:rect(14px 14px 28px 0)}
+.checkbox-check[disabled="true"]{
+	-moz-image-region:rect(14px 28px 28px 14px)}
+.checkbox-check[checked="true"]{
+	-moz-image-region:rect(0 14px 14px 0)}
+.checkbox-check[checked="true"][disabled="true"]{
+	-moz-image-region:rect(0 28px 14px 14px)}

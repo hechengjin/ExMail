@@ -1,0 +1,33 @@
+#event-filter-menulist{-moz-margin-start:0}
+
+#unifinder-todo-tree{margin:2px 0}
+#unifinder-task-edit-field{margin:0}
+
+#unifinder-search-results-tree{
+	min-height:92px;
+	margin:0}
+
+#calendar-view-splitter{border:none}
+
+#unifinder-searchBox{-moz-box-align:center}
+
+.unifinder-closebutton{
+	box-shadow:none;
+	margin:0;
+	background:transparent none!important;
+	border-radius:7px!important;
+	border:1px solid transparent!important;
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(176px 31px 192px 17px)!important}
+.unifinder-closebutton:hover{
+	-moz-image-region:rect(224px 31px 240px 17px)!important;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2!important;
+	background-image:url(chrome://global/skin/hout-hover.png)!important}
+.unifinder-closebutton:hover:active{
+	-moz-image-region:rect(224px 31px 240px 17px)!important;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00!important;
+	background-image:url(chrome://global/skin/hout-active.png)!important}
+.unifinder-closebutton>.toolbarbutton-text{display:none}
+
+#unifinder-search-results-tree>treechildren::-moz-tree-cell-text(highpriority){font-weight:bold}
+#unifinder-search-results-tree>treechildren::-moz-tree-cell-text(lowpriority){font-style:italic;color:#893B00}

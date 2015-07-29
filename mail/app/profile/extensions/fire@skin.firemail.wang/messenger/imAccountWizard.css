@@ -1,0 +1,17 @@
+#accountprotocol,
+#accountsummary{overflow:visible}
+#summarygrid{overflow:auto}
+groupbox.collapsable{-moz-user-focus:normal}
+groupbox.collapsable>caption{-moz-box-align:center}
+caption:hover{background-color:#CCCCFF;color:black}
+caption:hover:active{background-color:highlight;color:highlighttext}
+groupbox.collapsable:focus>caption{box-shadow:1px 1px 2px threedshadow,0 0 0 1px #6666CC}
+groupbox.collapsable[closed="true"]{border-width:0}
+groupbox[closed="true"]>.groupbox-body{display:none}
+
+groupbox.collapsable>caption>.caption-icon{
+	-moz-margin-end:2px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(40px 36px 48px 28px)}
+groupbox.collapsable[closed="true"]>caption>.caption-icon{
+	-moz-image-region:rect(32px 36px 40px 28px)}

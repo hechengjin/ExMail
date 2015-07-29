@@ -1,0 +1,10 @@
+
+.titled-splitter{cursor:default}
+.titledsplitter-dragbar{min-height:6px;cursor:n-resize!important}
+.titledsplitter-text{font-weight:bold;-moz-margin-start:2px}
+.titledsplitter-closeimage{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(224px 32px 240px 16px)}
+.titledsplitter-closebutton{border:1px solid transparent;padding:0!important}
+.titledsplitter-closebutton:hover{border:1px outset threedface}
+.titledsplitter-closebutton:hover:active{border:1px inset threedface}

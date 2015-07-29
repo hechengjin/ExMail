@@ -1,0 +1,25 @@
+@import url(chrome://communicator/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#FilenameColumn,#ContentLengthColumn,#LastModColumn{width:100px}
+#tree{border-width:0!important}
+.treecell-indent[type="FILE"]>.tree-cell-twisty{list-style-image:none}
+
+.treecell-filename{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(41px 53px 57px 38px)}
+treeitem[container="true"]>treerow>.treecell-filename{
+	-moz-image-region:rect(57px 54px 73px 38px)}
+treeitem[container="true"][open="true"]>treerow>.treecell-filename{
+	-moz-image-region:rect(57px 70px 73px 54px)}
+treeitem[loading="true"]>treerow>.treecell-filename>.tree-cell-twisty{
+	list-style-image:url("chrome://global/skin/loading.gif")}
+.treecell-filename[type="SYMBOLIC-LINK"]{
+	color:inherit;
+	text-decoration:inherit;
+	font-style:italic}
+div.server,div.client{
+	display:block;
+	font-weight:bold;
+    color:blue}
+div.client{color:red}

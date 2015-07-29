@@ -1,0 +1,14 @@
+#privacyFrame,#finishExtendedFrame{
+	margin:2px;
+	border-radius:4px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background:white url(chrome://global/skin/backarea.png);
+	color:black}
+.hide{display:none}
+.wizard-header-icon{
+	list-style-image:url(chrome://reporter/skin/icon.png);
+	max-height:23px}

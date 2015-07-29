@@ -1,0 +1,8 @@
+@import url(chrome://global/skin/cutemenu.css);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+toolbar[type="menubar"]:not([autohide="true"]):not(:-moz-lwtheme):-moz-system-metric(menubar-drag){
+	-moz-binding:url(chrome://global/content/bindings/toolbar.xml#toolbar-drag)}
+	
+/* Overrule Linux images-in-button setting */
+.button-icon:not(:-moz-system-metric(images-in-buttons)){display:-moz-box!important}

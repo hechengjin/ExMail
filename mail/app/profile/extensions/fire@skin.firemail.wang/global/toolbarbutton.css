@@ -1,0 +1,189 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+toolbarbutton{
+	min-width:20px;
+	-moz-box-align:center;
+	-moz-box-pack:center;
+	vertical-align:middle;
+	padding:0;
+	margin:2px 1px;
+	-moz-outline-radius:7px;
+	outline-color:transparent;
+	border-radius:5px;
+	border:1px solid transparent;
+	background:none;
+	color:inherit}
+
+toolbar[mode="full"][iconsize="large"] toolbarbutton:not([type="menu-button"]){
+	-moz-box-orient:vertical}
+toolbar:-moz-any([mode="text"],[iconsize="small"]) toolbarbutton:not([type="menu-button"]){
+	padding:1px!important}
+
+.toolbarbutton-icon{margin:1px}
+.toolbarbutton-text{margin:0 1px}
+
+.toolbarbutton-text:not([value]),
+.toolbarbutton-text[value=""],
+toolbar[mode="icons"] .toolbarbutton-text,
+toolbar[mode="text"] .toolbarbutton-icon{
+	display:none}
+
+toolbar[iconsize="small"]>toolbarbutton>dropmarker>.dropmarker-icon,
+toolbar[iconsize="small"]>*>toolbarbutton>dropmarker>.dropmarker-icon{
+	-moz-transform:scaleY(.75)}
+
+toolbarbutton[type="menu"]{
+	border-bottom-left-radius:0}
+
+toolbarbutton[type="menu-button"]{
+	background:none!important;
+	-moz-box-align:stretch;
+	-moz-box-orient:horizontal!important}
+.toolbarbutton-menubutton-button{
+	margin:0;
+	border-width:0;
+	-moz-border-end:1px solid transparent}
+toolbarbutton:hover>.toolbarbutton-menubutton-button,
+toolbarbutton[open="true"]>.toolbarbutton-menubutton-button,
+.toolbarbutton-menubutton-button:hover:active:-moz-locale-dir(rtl){
+	-moz-border-end-color:#B26F00}
+.toolbarbutton-menubutton-button:hover:active,
+toolbarbutton:hover>.toolbarbutton-menubutton-button:-moz-locale-dir(rtl),
+toolbarbutton[open="true"]>.toolbarbutton-menubutton-button:-moz-locale-dir(rtl){
+	-moz-border-end-color:#EED4A2}
+
+.toolbarbutton-menubutton-dropmarker{
+	border-width:0;
+	-moz-border-start:1px solid transparent}
+toolbarbutton:hover:not([open="true"]):not([checked="true"])>.toolbarbutton-menubutton-dropmarker,
+toolbarbutton[open="true"]>.toolbarbutton-menubutton-dropmarker:-moz-locale-dir(rtl),
+.toolbarbutton-menubutton-dropmarker:hover:active:-moz-locale-dir(rtl){
+	-moz-border-start-color:#EED4A2}
+toolbarbutton[open="true"]>.toolbarbutton-menubutton-dropmarker,
+.toolbarbutton-menubutton-dropmarker:hover:active,
+toolbarbutton:hover:not([open="true"]):not([checked="true"])>.toolbarbutton-menubutton-dropmarker:-moz-locale-dir(rtl){
+	-moz-border-start-color:#B26F00}
+
+.toolbarbutton-menubutton-button:-moz-locale-dir(ltr),
+.toolbarbutton-menubutton-dropmarker:-moz-locale-dir(rtl){
+	border-radius:4px 0 0 4px;
+	border-width:0 1px 0 0!important}
+.toolbarbutton-menubutton-dropmarker:-moz-locale-dir(ltr),
+.toolbarbutton-menubutton-button:-moz-locale-dir(rtl){
+	border-radius:0 4px 4px 0;
+	border-width:0 0 0 1px!important}
+
+toolbarbutton:not([disabled="true"]):not([checked="true"]):not([open="true"]):hover{
+	box-shadow:0 0 1px #893B00;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2}
+
+toolbarbutton:not([disabled="true"]):not([checked="true"]):not([open="true"]):hover:active,
+toolbarbutton[checked="true"]{
+	box-shadow:inset 1px 1px 3px #893B00;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00!important}
+
+toolbarbutton[open="true"]{
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00!important}
+
+toolbarbutton[buttonover="true"]:not([open="true"])>.toolbarbutton-menubutton-dropmarker,
+toolbarbutton[buttonover="true"]:hover:not([open="true"])>.toolbarbutton-menubutton-dropmarker,
+toolbarbutton:hover>.toolbarbutton-menubutton-button{
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+toolbarbutton:not([open="true"]):hover,
+toolbarbutton:not([open="true"])[buttonover="true"]>.toolbarbutton-menubutton-button,
+toolbarbutton:not([open="true"]):hover:not([buttonover="true"])>.toolbarbutton-menubutton-dropmarker{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+toolbarbutton:hover:active:not([type="menu"]),
+toolbarbutton[type="menu"][open="true"],
+.button-appmenu[open="true"],
+toolbarbutton[open="true"]>.toolbarbutton-menubutton-dropmarker,
+toolbarbutton[checked="true"]:hover:active,
+.toolbarbutton-menubutton-button:hover:active,
+.toolbarbutton-menubutton-dropmarker:hover:active{
+	box-shadow:inset 1px 1px 3px #893B00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+toolbarbutton[checked="true"]{
+	box-shadow:inset 1px 1px 3px #893B00,inset 1px 1px 1px #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+
+toolbarbutton[disabled="true"],
+.toolbarbutton-menubutton-button[disabled="true"],
+.toolbarbutton-menubutton-dropmarker[disabled="true"]{
+	opacity:1!important;
+	border-color:transparent!important;
+	box-shadow:none!important;
+	background:transparent none!important;
+	color:#893B00!important;
+	text-shadow:1px 1px 1px #EED4A2}
+
+toolbarbutton[disabled="true"]>.toolbarbutton-icon,
+toolbarbutton[disabled="true"]>stack>hbox>.toolbarbutton-icon,
+toolbarbutton[disabled="true"]>hbox>vbox>.toolbarbutton-icon{
+	opacity:.7;
+	filter:url(chrome://global/skin/greyscale.svg#greyscale)}
+
+toolbarbutton.toolbar-text-button:hover:active{color:white!important}
+.toolbarbutton-menubutton-button:hover{box-shadow:none!important}
+
+
+toolbarbutton[type="radio"]:not([autoCheck]):not(.share-provider-button){
+	-moz-box-orient:horizontal!important;
+	padding:0;
+	margin:2px 0;
+	border-radius:0;
+	-moz-outline-radius:0;
+	-moz-padding-start:1px;
+	-moz-padding-end:3px;
+	border-width:2px!important;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+
+toolbarbutton[type="radio"]:not(.share-provider-button):first-of-type:-moz-locale-dir(ltr),
+toolbarbutton[type="radio"]:not(.share-provider-button):last-of-type:-moz-locale-dir(rtl){
+	margin-left:1px;
+	border-radius:5px 0 0 5px;
+	-moz-outline-radius:7px 0 0 7px}
+toolbarbutton[type="radio"]:not(.share-provider-button):last-of-type:-moz-locale-dir(ltr),
+toolbarbutton[type="radio"]:not(.share-provider-button):first-of-type:-moz-locale-dir(rtl){
+	margin-right:1px;
+	border-radius:0 5px 5px 0;
+	-moz-outline-radius:0 7px 7px 0}
+
+toolbarbutton[type="radio"]:not(.share-provider-button):not([autoCheck]):not(:last-of-type):-moz-locale-dir(ltr),
+toolbarbutton[type="radio"]:not(.share-provider-button):not([autoCheck]):not(:first-of-type):-moz-locale-dir(rtl){
+	-moz-border-right-colors:#B26F00 transparent}
+toolbarbutton[type="radio"]:not([autoCheck]):not(:first-of-type):-moz-locale-dir(ltr),
+toolbarbutton[type="radio"]:not([autoCheck]):not(:last-of-type):-moz-locale-dir(rtl){
+	-moz-border-left-colors:#EED4A2 transparent}
+
+toolbarbutton[type="radio"]:not(.share-provider-button):not([autoCheck]):not([disabled="true"]):not([checked="true"]):hover{
+	-moz-border-right-colors:#893B00 #B26F00!important; 
+	-moz-border-bottom-colors:#893B00 #B26F00!important}
+
+toolbarbutton[type="radio"]:not(.share-provider-button):not([autoCheck]):not([disabled="true"]):not([checked="true"]):hover:active{
+	-moz-border-top-colors:#893B00 #B26F00!important;
+	-moz-border-left-colors:#893B00 #B26F00!important;
+	-moz-border-right-colors:#B26F00 #893B00!important;
+	-moz-border-bottom-colors:#B26F00 #893B00!important}
+
+toolbarbutton[type="radio"][checked="true"]:not([autoCheck]):not(.share-provider-button){
+	box-shadow:1px 1px 2px threedface inset,1px 1px 1px #B26F00 inset;
+	-moz-border-top-colors:#B26F00!important;
+	-moz-border-left-colors:#B26F00!important;
+	-moz-border-right-colors:#EED4A2!important;
+	-moz-border-bottom-colors:#EED4A2!important;
+	background-image:url(chrome://global/skin/backarea.png)!important;
+	color:black!important}
+toolbarbutton[type="radio"][checked="true"]:not([autoCheck]):not(.share-provider-button):-moz-locale-dir(rtl){
+	-moz-border-right-colors:#B26F00 #B26F00!important;
+	-moz-border-left-colors:#EED4A2 #EED4A2!important;
+	box-shadow:-1px 1px 2px threedface inset,-1px 1px 1px #B26F00 inset}

@@ -1,0 +1,92 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#acctCentralGrid{
+	font:message-box;
+	border:2px solid;
+	border-radius:9px;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/gecko.png),url(chrome://global/skin/backarea.png);
+	background-repeat:no-repeat,repeat;
+	background-position:right bottom,top left;
+	box-shadow:inset 1px 1px 5px #B26F00;
+	color:black}
+
+separator,
+#acctCentralRows>spacer{display:none}
+
+.acctCentralRow{margin:2px 20px}
+
+#acctCentralHeaderRow{
+	display:-moz-box;
+	-moz-box-pack:center;
+	padding:4px;
+	border:2px solid;
+	border-radius:7px 7px 0 0;
+	-moz-border-top-colors:#EED4A2 transparent;
+	-moz-border-left-colors:#EED4A2 transparent;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	font-size:150%;
+	font-weight:bold;
+	text-shadow:1px 1px 1px #EED4A2;
+	box-shadow:1px 1px 5px #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+.acctCentralTitleRow{
+	font-weight:bold;
+	font-size:150%;
+	letter-spacing:4px;
+	margin:14px 10px 4px 10px;
+	text-shadow:1px 1px 3px #EED4A2}
+
+.acctCentralLinkText{
+	-moz-binding:url(chrome://messenger/skin/messengerBindings.xml#row-iconic);
+	-moz-box-align:center;
+	padding:3px;
+	margin:0;
+	border:2px solid transparent;
+	border-radius:9px;
+	font-size:130%}
+.acctCentralLinkText:hover{
+	cursor:pointer;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:1px 1px 2px #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+.acctCentralLinkText:hover:active{
+	-moz-border-top-colors:#893B00 #B26F00;
+	-moz-border-left-colors:#893B00 #B26F00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	box-shadow:none;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+.acctCentralLinkText:focus{
+	outline:1px solid #B26F00}
+.iconic-icon{
+	list-style-image:inherit;
+	margin-right:10px}
+
+#ReadMessages,#ComposeMessage,#SubscribeImapFolders,#SubscribeNewsgroups,#SubscribeRSS,
+#SearchMessages,#AccountSettings,#CreateAccount,#CreateFilters,
+#OfflineSettings,#JunkSettingsMail,#JunkSettingsNews,#lightning-newCalendar-row{
+	list-style-image:url(chrome://messenger/skin/accounts.png)}
+#CreateAccount{-moz-image-region:rect(0 24px 24px 0)}
+#OfflineSettings{-moz-image-region:rect(0 48px 24px 24px)}
+#AccountSettings{-moz-image-region:rect(0 72px 24px 48px)}
+#CreateFilters{-moz-image-region:rect(0 96px 24px 72px)}
+#JunkSettingsMail,
+#JunkSettingsNews{-moz-image-region:rect(0 120px 24px 96px)}
+#SubscribeRSS,
+#SubscribeImapFolders,
+#SubscribeNewsgroups{-moz-image-region:rect(0 144px 24px 120px)}
+#ReadMessages{-moz-image-region:rect(0 168px 24px 144px)}
+#ComposeMessage{-moz-image-region:rect(0 192px 24px 168px)}
+#SearchMessages{-moz-image-region:rect(0 216px 24px 192px)}
+#lightning-newCalendar-row{-moz-image-region:rect(0 240px 24px 216px)}

@@ -1,0 +1,6 @@
+@import url(chrome://messenger/content/messenger.css);
+@import url(chrome://global/skin/);
+@import url(chrome://messenger/skin/tagColors.css);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#messagepanebox{overflow:hidden}

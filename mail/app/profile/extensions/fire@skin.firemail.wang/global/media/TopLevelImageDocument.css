@@ -1,0 +1,18 @@
+@media not print{
+body{
+	height:100%;
+	background-image:url(chrome://global/skin/logo.png),url(chrome://global/skin/hout.png);
+	background-position:30px bottom,left top;
+	background-repeat:no-repeat,repeat;
+	background-attachment:fixed;
+	background-origin:content-box,padding-box}
+img{
+	box-shadow:2px 2px 15px #893B00,2px 2px 4px #893B00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+img:hover{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEWgoKClpaUrSK7yAAAAAnRSTlNkFG3Yt+YAAAAPSURBVHheY2D4jxXhEgYAfr8P8SM7T18AAAAASUVORK5CYII=),url(chrome://global/skin/backarea.png)}
+img:not(.decoded){height:0}
+}
+.completeRotation{transition:transform 300ms}
+.overflowing{cursor:-moz-zoom-out}
+.shrinkToFit{cursor:-moz-zoom-in}

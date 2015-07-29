@@ -1,0 +1,14 @@
+@import url(chrome://global/skin);
+
+treechildren::-moz-tree-cell-text(ELEMENT_NODE){color:black}
+treechildren::-moz-tree-cell-text(ATTRIBUTE_NODE){color:#556b2f}
+treechildren::-moz-tree-cell-text(CDATA_SECTION_NODE),
+treechildren::-moz-tree-cell-text(TEXT_NODE){color:blue}
+treechildren::-moz-tree-cell-text(COMMENT_NODE){color:#228b22}
+treechildren::-moz-tree-cell-text(DOCUMENT_NODE){color:#800080}
+treechildren::-moz-tree-cell-text(PROCESSING_INSTRUCTION_NODE){color:#808080}
+treechildren::-moz-tree-cell-text(anonymous){color:red}
+treechildren::-moz-tree-cell-text(selected, focus){color:white}
+
+treechildren::-moz-tree-column(dnd-insert-before){border-left:2px solid black}
+treechildren::-moz-tree-column(dnd-insert-after){border-right:2px solid black}

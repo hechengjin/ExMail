@@ -1,0 +1,38 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#CompactHeader_collapsed1LHeadersBox{-moz-box-pack:center}
+#CompactHeader_collapsed1LdateBox{margin:1px 2px}
+
+#collapsed1LtoCcBccLabel{
+	-moz-padding-start:2px;
+	-moz-padding-end:1px}
+
+#collapsedHeaderView{
+	overflow:hidden;
+	max-height:30em}
+
+#collapsed1LHeaderRows>row,
+#collapsed1LHeader2Rows>row,
+#collapsed1LHeaderViewFirstLine{
+	-moz-box-align:baseline}
+
+#collapsedsubjectlinkBox,
+#collapsed1LsubjectBox,
+#collapsed2LsubjectBox{
+	font-weight:bold}
+
+#CompactHeader_checkboxflatButtons,
+#otherActionsTopSpacer,
+#collapsed1LtoCcBccBox .headerNameBox,
+#collapsed1LfromBox .headerNameBox{
+	display:none}
+
+#collapsedHeaderDisplayName{text-align:left}
+#collapsed1LdateBox{-moz-box-align:stretch;text-align:right}
+#collapsed2LsubjectBox>.headerValue{margin-top:0!important}
+
+#expandedfromBox,#collapsed1LtoCcBccRow,	
+#collapsed1LsubjectOutBox,#collapsed1LfromOutBox,#collapsedButtonBox,
+#expandedButtonBox,#collapsed1LsubjectBox,#collapsed1LfromBox{
+	margin:0;
+	padding:0}

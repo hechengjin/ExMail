@@ -1,0 +1,66 @@
+table{
+	margin:0;
+	width:100%;
+	border-spacing:0;
+	border-collapse:separate;
+	border:0}
+#invitation-table{
+	padding:0 2px 2px 0;
+	box-shadow:1px 1px 3px #B26F00;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png)}
+	color:black}
+
+th.header{
+	padding:2px 4px;
+	-moz-padding-start:-moz-calc(8em + 24px);
+	font-weight:bold;
+	text-align:left;
+	background:-moz-image-rect(url(chrome://calendar/skin/calendartoolbar16.png),0,32,16,16) no-repeat -moz-calc(8em + 6px) center}
+
+.status-icon{
+	margin:1px 2px;
+	width:12px;
+	height:14px;
+	background-image:-moz-image-rect(url(chrome://calendar/skin/calendar-event-dialog-attendees.png),0,36,14,24)}
+.status-icon[disabled="true"]{
+	opacity:.7;
+	filter:url(chrome://global/skin/greyscale.svg#greyscale)}
+.status-icon[status="ACCEPTED"]{background-image:-moz-image-rect(url(chrome://calendar/skin/calendar-event-dialog-attendees.png),0,12,14,0)}
+.status-icon[status="DECLINED"]{background-image:-moz-image-rect(url(chrome://calendar/skin/calendar-event-dialog-attendees.png),0,24,14,12)}
+.status-icon[status="TENTATIVE"]{background-image:-moz-image-rect(url(chrome://calendar/skin/calendar-event-dialog-attendees.png),0,48,14,36)}
+
+.content>table>tbody>tr>td:first-child{width:16px;height:16px}
+.content>table>tbody>tr>td{
+	padding:0;
+	vertical-align:top}
+.description{
+	width:8em;
+	padding:1px;
+	text-align:right;
+	vertical-align:top}
+.content{
+	padding:1px 3px;
+	border-width:1px 2px 0 2px;
+	border-style:solid;
+	border-top-color:#B26F00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+#imipHtml-summary-row>.content{
+	border-top-width:2px;
+	-moz-border-top-colors:#B26F00 #893B00}
+#imipHtml-attendees-row>.content{
+	border-bottom-width:2px;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+.content>p{
+	word-wrap:break-word;
+	white-space:pre-wrap}
+
+@media print{
+#invitation-table{
+	box-shadow:none;
+	border-color:#B26F00}
+}

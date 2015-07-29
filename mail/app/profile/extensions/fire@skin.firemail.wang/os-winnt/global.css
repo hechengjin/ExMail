@@ -1,0 +1,25 @@
+@import url(chrome://global/skin/cutemenu.css);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#titlebar{
+	-moz-binding:url(chrome://global/content/bindings/general.xml#windowdragbox)}
+#navigation-toolbox>#mail-toolbar-menubar2[autohide="false"],
+#navigation-toolbox>#tabs-toolbar{
+	position:relative;
+	-moz-binding:url(chrome://global/content/bindings/toolbar.xml#toolbar-drag)}
+
+@media (-moz-windows-compositor){
+#printPageSetupDialog>tabbox,
+#certmanagertabs[flex]{
+	margin:0!important;
+	padding:0!important;
+	border-radius:0!important;
+	border-width:0!important}
+
+prefwindow[type="child"]>.paneDeckContainer{
+	border-width:0!important}
+
+#aboutDialog #extensionDetailsBox{
+	margin:0!important;
+	border-width:1px 0 0 0!important}
+}

@@ -1,0 +1,157 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+button{
+	margin:2px;
+	padding:1px;
+	outline-width:0!important;
+	border-radius:4px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+toolbar>button,
+toolbar>*>button{
+	border-radius:5px;
+	-moz-border-top-colors:transparent;
+	-moz-border-left-colors:transparent;
+	-moz-border-right-colors:transparent;
+	-moz-border-bottom-colors:transparent;
+	background:none}
+notification>button,
+notification>*>button{
+	margin:1px 2px;
+	padding:0 2px;
+	border-radius:5px}
+
+.button-box{
+	border-width:0!important}
+
+button:focus{
+	box-shadow:0 0 0 1px #B26F00}
+
+.button-text{
+	margin:0 1px;
+	text-align:left;
+	vertical-align:middle}
+button:not([label])>.button-box>.button-text,
+.button-text:not([value]),.button-text[value=""]{
+	display:none}
+
+button[checked="true"]{
+	-moz-border-top-colors:#B26F00;
+	-moz-border-left-colors:#B26F00;
+	-moz-border-right-colors:#893B00 #EED4A2;
+	-moz-border-bottom-colors:#893B00 #EED4A2;
+	background-image:url(chrome://global/skin/backarea.png)}
+
+button:hover:not([disabled="true"]){
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+button[default]:not([disabled="true"]){
+	font-weight:bold}
+
+button[type="menu"][open="true"],
+button:hover:active:not([type="menu"]):not([disabled="true"]){
+	box-shadow:1px 1px 1px #EED4A2;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+button:hover:not([disabled="true"]):not(:focus):not(:active){
+	box-shadow:1px 1px 2px #B26F00}
+
+button[disabled="true"]{
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#B26F00 #B26F00;
+	-moz-border-bottom-colors:#B26F00 #B26F00;
+	background-image:url(chrome://global/skin/hout.png)!important;
+	color:#893B00!important;
+	text-shadow:1px 1px 0 #EED4A2}
+toolbar>button[disabled="true"],
+toolbar>*>button[disabled="true"]{
+	-moz-border-top-colors:transparent!important;
+	-moz-border-left-colors:transparent!important;
+	-moz-border-right-colors:transparent!important;
+	-moz-border-bottom-colors:transparent!important;
+	background:transparent none!important}
+button[disabled="true"]>.button-box>.button-icon{
+	opacity:.7;
+	filter:url(chrome://global/skin/greyscale.svg#greyscale)}
+
+.busy{list-style-image:url(chrome://global/skin/loading.gif)}
+
+#MacAcceptBtn,#ok,#closeButton,#donebutton,
+button:-moz-any([dlgtype="accept"],[dlgtype="finish"],
+[anonid="enable"],[icon="accept"],[label="OK"],button[label="Save"]){
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+#cancel,
+button:-moz-any([label="Close"],[anonid="disable"],[dlgtype="cancel"],[label="Cancel"],[icon="close"]){
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(16px 16px 32px 0)}
+#help,#HelpButton,
+button:-moz-any([dlgtype="help"],[label="More Info"],[icon="help"]){
+	list-style-image:url(chrome://global/skin/global.png)!important;
+	-moz-image-region:rect(32px 16px 48px 0)!important}
+button[icon="apply"],button[label^="Apply"]{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(80px 16px 96px 0)}
+button[type="disclosure"]{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(-1px 12px 11px 0)}
+button[type="disclosure"][open="true"]{
+	-moz-image-region:rect(-1px 25px 11px 13px)}
+.up,#up{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(0 60px 10px 50px)}
+.down,#dn,#down{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(10px 60px 20px 50px)}
+button[label="Next"]:-moz-locale-dir(rtl),
+button[label="Prev"]{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(192px 16px 208px 0)}
+button[label="Prev"]:-moz-locale-dir(rtl),
+button[label="Next"]{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(208px 16px 224px 0)}
+
+button[type="menu-button"]{
+	background:none!important;
+	color:black!important;
+	padding:0!important;
+	border-radius:5px}
+
+.button-menubutton-button{
+	margin:0!important;
+	border-radius:3px 0 0 3px;
+	border-width:0 1px 0 0!important;
+	border-color:#B26F00}
+.button-menubutton-button:hover:active{
+	border-color:#EED4A2!important}
+
+.button-menubutton-dropmarker{
+	border-color:#EED4A2;
+	border-width:0 0 0 1px!important;
+	border-radius:0 3px 3px 0;
+	background-image:url(chrome://global/skin/hout.png)}
+button:not([buttonover="true"]):hover>.button-menubutton-dropmarker{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+button:not([buttonover="true"]):hover:active>.button-menubutton-dropmarker,
+button[open="true"]>.button-menubutton-dropmarker{
+	border-color:#B26F00!important;
+	background-image:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}

@@ -1,0 +1,83 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+splitter{
+	cursor:ew-resize;
+	min-width:6px;
+	-moz-box-pack:center;
+	-moz-box-align:center}
+splitter:hover{
+	background-image:url(chrome://global/skin/hout-hover.png)}
+splitter[state="dragging"],
+splitter:hover:active{
+	background-image:url(chrome://global/skin/hout-active.png)}
+splitter[orient="vertical"]{
+	cursor:ns-resize;
+	min-height:6px}
+
+splitter[state="collapsed"][collapse="before"],
+splitter[state="collapsed"][substate="before"],
+splitter[state="collapsed"][collapse="after"]:-moz-locale-dir(rtl),
+splitter[state="collapsed"][substate="after"]:-moz-locale-dir(rtl){
+	cursor:e-resize}
+
+splitter[state="collapsed"][collapse="after"],
+splitter[state="collapsed"][substate="after"],
+splitter[state="collapsed"][collapse="before"]:-moz-locale-dir(rtl),
+splitter[state="collapsed"][substate="before"]:-moz-locale-dir(rtl){
+	cursor:w-resize}
+
+splitter[orient="vertical"][state="collapsed"][collapse="before"],
+splitter[orient="vertical"][state="collapsed"][substate="before"]{
+	cursor:s-resize}
+
+splitter[orient="vertical"][state="collapsed"][collapse="after"],
+splitter[orient="vertical"][state="collapsed"][substate="after"]{
+	cursor:n-resize}
+
+grippy{
+	border:1px solid transparent;
+	width:6px;
+	height:113px;
+	background:transparent url(chrome://global/skin/grippy-h.png) no-repeat;
+	cursor:pointer}
+grippy:hover{
+	background-image:url(chrome://global/skin/hout-hover.png);
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}
+grippy:hover:active{
+	background-image:url(chrome://global/skin/hout-active.png);
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2}
+
+splitter[collapse="before"]>grippy,
+splitter[collapse="after"][state="collapsed"]>grippy,
+splitter[collapse="after"]>grippy:-moz-locale-dir(rtl),
+splitter[collapse="before"][state="collapsed"]>grippy:-moz-locale-dir(rtl){
+	background-position:-6px center}
+
+splitter[collapse="after"]>grippy,
+splitter[collapse="before"][state="collapsed"]>grippy,
+splitter[collapse="before"]>grippy:-moz-locale-dir(rtl),
+splitter[collapse="after"][state="collapsed"]>grippy:-moz-locale-dir(rtl){
+	background-position:0 center}
+
+splitter[orient="vertical"]>grippy{
+	background:transparent url(chrome://global/skin/grippy-v.png) no-repeat;
+	width:113px;
+	height:6px}
+
+splitter[orient="vertical"][collapse="before"]>grippy,
+splitter[orient="vertical"][state="collapsed"][collapse="after"]>grippy{
+	background-position:center -6px}
+splitter[orient="vertical"][collapse="after"]>grippy,
+splitter[orient="vertical"][state="collapsed"][collapse="before"]>grippy{
+	background-position:center 0}
+
+.toolbar-splitter,
+splitter.chromeclass-toolbar-additional{
+	width:5px;
+	height:12px;
+	margin-left:1px;
+	margin-right:1px;
+	border-radius:8px;
+	box-shadow:inset 1px 1px 1px #B26F00;
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}

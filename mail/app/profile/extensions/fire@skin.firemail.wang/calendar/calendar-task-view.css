@@ -1,0 +1,22 @@
+.task-details-name{
+	text-transform:capitalize;
+	font-weight:bold;
+	text-align:right;
+	min-width:10em}
+.task-details-name:after{content:": "}
+
+#calendar-task-details-attachment,
+.task-details-value{
+	text-align:left}
+
+#calendar-task-tree{min-height:98px}
+
+.task-edit-field[readonly="true"]{color:#893B00}
+#calendar-task-details-grid{margin-bottom:2px}
+#calendar-task-details-grid-right{-moz-margin-start:3em}
+#calendar-task-details-container{overflow:hidden}
+.task-quickadd-box{margin:2px 0 0 0}
+
+#calendar-delete-task-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(272px,16px,288px,0)}

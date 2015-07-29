@@ -1,0 +1,107 @@
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+.important-button{font-weight:bold}
+
+#stop_button,#half-manual-test_button{-moz-box-ordinal-group:1}
+#next_button,#create_button{-moz-box-ordinal-group:2}
+#cancel_button{-moz-box-ordinal-group:3}
+
+.errordescription{-moz-padding-start:3px;padding-top:3px}
+#incoming_protocol{width:60px}
+#outgoing_protocol{width:64px}
+#outgoing_config{width:73px;padding-top:5px;-moz-padding-start:6px}
+
+#config_status_title{
+	font-size:110%;
+	font-weight:bold;
+	text-shadow:1px 1px 1px rgba(238,212,162,.7)}
+
+vbox>.textbox-label{
+	margin-top:10px;
+	font-weight:bold;
+	text-shadow:1px 1px 1px rgba(238,212,162,.7)}
+
+.warningicon{
+	width:16px;
+	height:16px;
+	background:url(chrome://global/skin/information-16.png) no-repeat center}
+
+.insecureLarry{list-style-image:url(chrome://global/skin/icons/sslWarning.png)}
+.secureLarry{list-style-image:url(chrome://messenger/skin/icons/identity.png)}
+
+.icon[state='strong']{background-image:-moz-image-rect(url(chrome://global/skin/widgets.png),80,50,96,35)}
+.icon[state='failed']{background-image:url(chrome://global/skin/icons/error-16.png)}
+.icon[state='probing']{background-image:url(chrome://global/skin/loading.gif)}
+.icon[state='weak']{background-image:-moz-image-rect(url(chrome://global/skin/widgets.png),80,68,96,50)}
+
+#settingsbox{
+	margin:2px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	border-radius:8px;
+	padding:4px}
+
+#stop_button,#edit_button,#next_button,#create_button,#back_button,#go_button,#advanced-setup_button{
+	list-style-image:url(chrome://global/skin/global.png)}
+#stop_button{-moz-image-region:rect(16px 16px 32px 0)}
+#edit_button{-moz-image-region:rect(96px 16px 112px 0)}
+#next_button{-moz-image-region:rect(400px 16px 416px 0)}
+#create_button{-moz-image-region:rect(0 16px 16px 0)}
+#back_button{-moz-image-region:rect(384px 16px 400px 0)}
+#go_button{-moz-image-region:rect(128px 16px 144px 0)}
+#advanced-setup_button{-moz-image-region:rect(96px 16px 112px 0)}
+#half-manual-test_button{-moz-image-region:rect(128px 16px 144px 0)}
+
+.initialDesc{margin-top:2px;color:#893B00}
+.edited_label{width:123px;overflow:auto}
+.protocol_label{width:73px;-moz-padding-start:6px}
+.settingsbox{min-height:200px}
+
+#warningbox{
+	width:650px;
+	height:400px;
+	overflow:auto;
+	background-color:#772222;
+	color:white}
+
+.warning-heading{
+	font-size:160%;
+	font-weight:bold;
+	margin:0;
+	padding:4px 2px}
+
+.warning_settings{
+	color:yellow;
+	font-weight:bold;
+	margin:0;
+	-moz-margin-end:2px}
+
+.larrybox{-moz-padding-end:2em}
+checkbox.acknowledge_checkbox{padding-top:4px}
+.title{font-weight:bold;padding:0 3px}
+.details{font-style:italic;padding:3px}
+.popup-panel{padding:2px;max-width:320px}
+.protocol>label{-moz-padding-start:6px}
+.security{width:10em}
+textbox.port{width:4em}
+
+textbox.username,
+.host{
+	width:12em;
+	margin-bottom:4px!important;
+	margin-top:4px!important}
+ 
+.technical_details{
+	margin:0;
+	padding-left:20px;
+	background:-moz-image-rect(url(chrome://global/skin/widgets.png),0,12,12,0) center no-repeat}
+
+.technical_details[expanded]{
+	background-image:-moz-image-rect(url(chrome://global/skin/widgets.png),0,25,12,13)}
+
+label.autoconfigLabel,
+label.textbox-label{
+	text-align:right}

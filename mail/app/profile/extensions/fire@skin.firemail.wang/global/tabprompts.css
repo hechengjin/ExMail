@@ -1,0 +1,17 @@
+tabmodalprompt{
+	font:message-box;
+	background-color:rgba(0,0,0,.1)}
+
+.mainContainer{
+	padding:8px;
+	border-radius:8px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	box-shadow:3px 3px 6px 3px #893B00;
+	background:white url(chrome://global/skin/hout.png);
+	color:black}
+.buttonContainer{margin-top:4px}
+ 

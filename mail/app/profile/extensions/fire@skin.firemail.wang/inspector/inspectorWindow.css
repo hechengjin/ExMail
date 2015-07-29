@@ -1,0 +1,21 @@
+@import url(chrome://inspector/skin);
+
+#imgURLBarIcon{
+	padding:1px;
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(144px 16px 160px 0)}
+#bxURLBar>toolbarbutton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(80px 16px 96px 0)}
+#btnFind{
+	-moz-image-region:rect(224px 16px 240px 0)!important}
+#btnSelecting{
+	list-style-image:url(chrome://inspector/skin/inspector.png)!important;
+	-moz-image-region:rect(0 16px 16px 0)!important}
+#bxSearch{height:150px}
+
+.viewer-pane-header,#splPanels{
+	border:0}
+#txbMethodCode,#winNodeDefault{
+	padding:0!important;
+	margin:0!important}

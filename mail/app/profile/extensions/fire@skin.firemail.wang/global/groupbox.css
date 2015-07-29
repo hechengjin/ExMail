@@ -1,0 +1,21 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+groupbox{
+	margin:4px;
+	border-radius:8px;
+	border:1px solid;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/hout.png)}
+.groupbox-body{
+	margin:4px}
+caption{
+	margin:2px 0;
+	padding:2px 5px!important;
+	border-radius:8px;
+	border:1px solid;
+	border-color:#EED4A2 #B26F00 #B26F00 #EED4A2;
+	background-image:url(chrome://global/skin/hout.png);
+	font-weight:bold;
+	box-shadow:1px 1px 2px #B26F00}
+.caption-text{padding:0 4px}
+caption.rounded{
+	background-color:transparent!important}

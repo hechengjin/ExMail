@@ -1,0 +1,6 @@
+@import url(chrome://global/skin);
+.value-column{margin-right:30px}
+.title{width:12em}
+#enclosingBox{overflow:auto}
+#enclosingBox>vbox{float:left}
+.nonzero{font-weight:bold}

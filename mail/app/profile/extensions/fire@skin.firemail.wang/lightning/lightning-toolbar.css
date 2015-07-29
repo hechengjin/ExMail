@@ -1,0 +1,65 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#calendar-newevent-button,
+#task-newevent-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar.png);
+	-moz-image-region:rect(0 96px 24px 72px)}
+#calendar-edit-button,
+#task-edit-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar.png);
+	-moz-image-region:rect(0 120px 24px 96px)}
+#calendar-newtask-button,
+#task-newtask-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar.png);
+	-moz-image-region:rect(0 144px 24px 120px)}
+#calendar-goto-today-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar.png);
+	-moz-image-region:rect(0 168px 24px 144px)}
+
+#calendar-synchronize-button,
+#task-synchronize-button{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(96px 24px 120px 0)}
+#calendar-unifinder-button{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(264px 24px 288px 0)}
+#calendar-delete-button,
+#task-delete-button{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(312px 24px 336px 0)}
+#calendar-print-button,
+#task-print-button{
+	list-style-image:url(chrome://global/skin/small.png);
+	-moz-image-region:rect(120px 24px 144px 0)}
+
+toolbar[iconsize="small"]>#calendar-newevent-button,
+toolbar[iconsize="small"]>#task-newevent-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0 64px 16px 48px)}
+toolbar[iconsize="small"]>#calendar-edit-button,
+toolbar[iconsize="small"]>#task-edit-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0 80px 16px 64px)}
+toolbar[iconsize="small"]>#calendar-newtask-button,
+toolbar[iconsize="small"]>#task-newtask-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0 112px 16px 96px)}
+toolbar[iconsize="small"]>#calendar-goto-today-button{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png);
+	-moz-image-region:rect(0 128px 16px 112px)}
+
+toolbar[iconsize="small"]>#calendar-unifinder-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(64px,16px,80px,0)}
+toolbar[iconsize="small"]>#calendar-delete-button,
+toolbar[iconsize="small"]>#task-delete-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(272px 16px 288px 0)}
+toolbar[iconsize="small"]>#calendar-synchronize-button,
+toolbar[iconsize="small"]>#task-synchronize-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(128px 16px 144px 0)}
+toolbar[iconsize="small"]>#calendar-print-button,
+toolbar[iconsize="small"]>#task-print-button{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(304px 16px 320px 0)}

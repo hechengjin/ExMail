@@ -1,0 +1,55 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+colorpicker[type="button"]{
+	-moz-appearance:none!important;
+	outline-color:transparent;
+	width:28px;
+	height:24px;
+	border:3px solid;
+	-moz-border-top-colors:transparent #B26F00 #EED4A2;
+	-moz-border-left-colors:transparent #B26F00 #EED4A2;
+	-moz-border-right-colors:transparent #893B00 #B26F00;
+	-moz-border-bottom-colors:transparent #893B00 #B26F00}
+colorpicker:focus{
+	-moz-border-top-colors:#B26F00 #893B00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #893B00 #EED4A2;
+	-moz-border-right-colors:#EED4A2 #893B00 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #893B00 #B26F00}
+colorpicker:hover{
+	background-image:url(chrome://global/skin/hout-hover.png)}
+colorpicker:hover:active{
+	-moz-border-top-colors:#B26F00 #B26F00 #B26F00;
+	-moz-border-left-colors:#B26F00 #B26F00 #B26F00;
+	-moz-border-right-colors:#EED4A2 #893B00 #EED4A2;
+	-moz-border-bottom-colors:#EED4A2 #893B00 #EED4A2}
+
+.colorpicker-button-colorbox{
+	margin:2px;
+	border:1px solid #B26F00;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00}
+
+.colorpicker-button-menupopup{border-radius:6px}
+
+
+.colorpickertile{
+	width:24px;
+	height:20px;
+	border:1px solid #B26F00}
+.colorpickertile[hover="true"]{
+	border:2px solid;
+	-moz-border-top-colors:#EED4A2 #EED4A2;
+	-moz-border-left-colors:#EED4A2 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00}
+.colorpickertile[selected="true"]{
+	border:3px solid;
+	-moz-border-top-colors:#B26F00 #893B00 white;
+	-moz-border-left-colors:#B26F00 #893B00 white;
+	-moz-border-right-colors:#EED4A2 #EED4A2 white;
+	-moz-border-bottom-colors:#EED4A2 #EED4A2 white}
+.cp-light[selected="true"]{
+	border:3px solid;
+	-moz-border-top-colors:#B26F00 #893B00 black;
+	-moz-border-left-colors:#B26F00 #893B00 black;
+	-moz-border-right-colors:#EED4A2 #EED4A2 black;
+	-moz-border-bottom-colors:#EED4A2 #EED4A2 black}

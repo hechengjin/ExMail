@@ -1,0 +1,181 @@
+@import url(folderSummary.css);
+
+#mozupdate{
+	clear:both;
+	border-radius:9px;
+	border:1px solid #B26F00;
+	left:10px;
+	right:10px;
+	padding:5px}
+
+#settings{text-transform:capitalize}
+
+a{
+	color:darkblue;
+	font-weight:bold}
+a:hover{
+	text-decoration:underline}
+
+.heading_button,
+.link{
+	display:-moz-box;
+	-moz-box-orient:horizontal;
+	-moz-box-align:center;
+	margin:2px;
+	padding:1px;
+	outline-color:transparent;
+	border-radius:5px;
+	-moz-outline-radius:7px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout.png);
+	color:black}
+.heading_button:hover,
+.link:hover{
+	-moz-border-top-colors:#B26F00 #EED4A2;
+	-moz-border-left-colors:#B26F00 #EED4A2;
+	-moz-border-right-colors:#893B00 #B26F00;
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+.heading_button:active,
+.link:active{
+	-moz-border-top-colors:#893B00 #B26F00;
+	-moz-border-left-colors:#893B00 #B26F00;
+	-moz-border-right-colors:#B26F00 #893B00;
+	-moz-border-bottom-colors:#B26F00 #893B00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+.tier{display:-moz-box}
+.chunk{
+	margin:4px;
+	width:200px;
+	display:-moz-box;
+	-moz-box-orient:vertical;
+	-moz-box-flex:1}
+
+.list_heading_wrapper{
+	display:-moz-box;
+	width:100%;
+	-moz-box-flex:0;
+	-moz-box-align:center}
+
+.heading_button_icon{
+	width:16px;
+	height:16px;
+	display:inline-block;
+	vertical-align:baseline;
+	background-repeat:no-repeat;
+	-moz-margin-end:2px}
+
+.heading_button_label{
+	margin:0 1px}
+
+.subject_and_author{
+	display:-moz-box;
+	-moz-box-orient:vertical}
+
+.unread .message_subject{
+	font-weight:bold}
+
+.message_subject,
+.peep_name,
+.peep_email,
+.draft_subject,
+.draft_recipient{
+	padding:1px 2px}
+
+.message_subject:hover,
+.peep_name:hover,
+.draft_subject:hover,
+.space_folder:hover{
+	border-radius:3px;
+	cursor:pointer;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+.peep_name{
+	-moz-box-flex:1}
+
+.peep_email,
+.draft_recipient{
+	-moz-padding-start:4px;
+	color:#893B00}
+
+#space_panel{
+	display:-moz-box;
+	-moz-box-align:center;
+	-moz-box-pack:center}
+
+#space_chart{
+	height:150px;
+	width:150px}
+
+.space_swatch{
+	display:inline-block;
+	width:1em;
+	height:1em;
+	border:1px solid #893B00;
+	border-radius:2px;
+	vertical-align:middle;
+	-moz-margin-end:0.5ch;
+	-moz-box-sizing:border-box}
+
+#stats_list{
+	margin:0}
+
+#timeofday_panel{
+	padding-top:1ex}
+
+#timeofday{
+	width:220px;
+	height:60px;
+	margin:auto}
+
+#timeofday_legend{
+	color:#893B00;
+	text-align:center}
+
+#reply_panel{
+	text-align:center;
+	padding-top:1ex}
+
+#reply_pie{
+	display:inline-block;
+	width:100px;
+	height:100px;
+	vertical-align:middle}
+
+#reply_pie_legend_block{
+	display:inline-block;
+	vertical-align:middle;
+	text-align:-moz-initial}
+
+#reply_pie_percentage{
+	font-size:120%;
+	font-weight:bold;
+	color:#893B00}
+
+#no_stats{
+	-moz-padding-start:16px}
+
+#folder_icon,
+#inbox_icon{background-image:-moz-image-rect(url(chrome://messenger/skin/folders.png),0,32,16,16)}
+#compose_icon{background-image:-moz-image-rect(url(chrome://messenger/skin/primaryToolbar.png),0,32,16,16)}
+#drafts_icon{background-image:-moz-image-rect(url(chrome://messenger/skin/folders.png),0,64,16,48)}
+
+.draft{
+	background:-moz-image-rect(url(chrome://messenger/skin/threadPane2.png),0,64,16,48) no-repeat 2px 2px;
+	-moz-padding-start:18px}
+
+#stats_list,
+#space_chart_legend{
+	border-width:0;
+	background:none}
+#stats_list>li,
+#space_chart_legend>li{
+	border-width:0}

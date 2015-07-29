@@ -1,0 +1,95 @@
+@import url(chrome://global/skin/htmlbutton.css);
+
+html{
+	height:100%;
+	margin:0;
+	font:message-box;
+	background-image:url(chrome://global/skin/gecko.png),url(chrome://global/skin/hout.png);
+	background-repeat:no-repeat,repeat;
+	background-position:right 90%,left top;
+	background-attachment:fixed,fixed;
+	color:black}
+
+@media print{
+html{
+	background:transparent url(chrome://global/skin/gecko.png) no-repeat right bottom!important}
+}
+
+#errorPageContainer{
+	position:relative;
+	min-width:13em;
+	max-width:52em;
+	margin:4em auto;
+	padding:17px;
+	border:3px solid red;
+	border-radius:18px;
+	background:-moz-Field url(chrome://global/skin/icons/warning-large.png) no-repeat scroll left 0;
+	background-origin:content-box;
+	box-shadow:5px 5px 5px #893B00;
+	color:-moz-FieldText}
+body[dir="rtl"] #errorPageContainer{background-position:right 0}
+
+#errorPageContainer:before{
+	position:relative!important;
+	float:left}
+
+h1{
+	margin:0;
+	font-size:150%}
+
+#errorTitle,
+#errorLongContent,
+#errorTryAgain{
+	-moz-margin-start:34px}
+
+#errorShortDesc{
+	border-bottom:1px solid red;
+	margin-bottom:4px;
+	font-size:125%}
+
+#errorLongDesc{font-size:110%}
+p,ul{margin:4px 0}
+ul{-moz-padding-start:16px;list-style:square}
+ul>li,ol>li{margin-bottom:4px}
+
+#errorTryAgain{margin-top:1em}
+#errorContainer{display:none}
+
+:root.blacklist{background:#333}
+:root.blacklist #errorPageContainer{
+	background-color:#722;
+	background-image:url(chrome://global/skin/icons/blacklist_large.png);
+	color:white}
+:root.blacklist #errorTitle,
+:root.blacklist #errorLongContent,
+:root.blacklist #errorTryAgain{-moz-margin-start:70px}
+:root.blacklist a{color:white}
+:root.blacklist #errorTryAgain{display:none}
+
+#securityOverrideDiv{padding-top:10px}
+
+#securityOverrideContent{
+	background-color:InfoBackground;
+	color:InfoText;
+	padding:10px;
+	border-radius:10px}
+
+#ignoreWarningButton{
+	outline-color:transparent;
+	margin:2px!important;
+	position:static!important;
+	top:auto!important;
+	left:auto!important;
+	font-size:inherit!important}
+#ignoreWarningButton:focus{
+	outline:1px solid #B26F00}
+
+#errorPageContainer.certerror{
+	background-image:url(chrome://global/skin/icons/sslWarning.png)}
+
+#errorPageContainer.certerror>#errorTitle,
+#errorPageContainer.certerror>#errorLongContent,
+#errorPageContainer.certerror>#errorTryAgain{-moz-margin-start:37px}
+
+#url-fixer-section{margin-left:24px!important}
+#url-fixer-section>p:first-of-type{font-size:110%!important}

@@ -1,0 +1,19 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+progressmeter{
+	min-width:140px;
+	min-height:13px;
+	margin:2px;
+	border-radius:5px;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00}
+.progress-bar{
+	min-width:0;
+	border-radius:2px;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+progressmeter[mode="undetermined"]{
+	-moz-binding:url(chrome://global/content/bindings/progressmeter.xml#progressmeter-undetermined)}

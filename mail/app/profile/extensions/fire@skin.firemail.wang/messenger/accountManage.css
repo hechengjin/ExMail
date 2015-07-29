@@ -1,0 +1,37 @@
+@import url(chrome://messenger/skin/);
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+dialogheader+grid,
+dialogheader+vbox,
+#am-main-title+hbox{padding:4px}
+label[control="server.prettyName"]{min-width:104px}
+textbox[id="server.prettyName"]{-moz-box-flex:1}
+separator.thin{height:8px!important}
+.specialFolderPickerGrid{-moz-margin-start:20px}
+.pageTitle{font-weight:bold;font-size:110%}
+#identitiesList>listitem:first-child,
+treechildren::-moz-tree-cell-text(isDefaultServer-true){font-weight:bold}
+.signatureBox{font-family:-moz-fixed}
+
+#accounttree,#addAccountButton,#setDefaultButton,#removeButton{
+	margin:0!important}
+
+#addAccountButton{
+	list-style-image:url(chrome://messenger/skin/accounts.png);
+	-moz-image-region:rect(0 24px 24px 0)}
+#accountActionsDropdownSetDefault,
+#setDefaultButton{
+	list-style-image:url(chrome://global/skin/checkbox.png);	
+	-moz-image-region:rect(0,14px,14px,0)}
+#accountActionsDropdownSetDefault>.menu-iconic-left>.menu-iconic-icon{
+	padding:1px}
+#accountActionsDropdownRemove,
+#removeButton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(272px 16px 288px 0)}
+.selectForOfflineUseButton{
+	list-style-image:url(chrome://global/skin/widgets.png);
+	-moz-image-region:rect(64px 38px 80px 0)}
+
+#contentFrame{margin-bottom:24px}
+#accountManager>.dialog-button-box>.dialog-button{margin-top:-24px}

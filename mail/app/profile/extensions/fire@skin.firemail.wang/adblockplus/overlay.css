@@ -1,0 +1,89 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#abp-status{cursor:pointer}
+#abp-toolbar-popup{list-style-image:none}
+menuitem[default=true]{font-weight:bold}
+
+#abp-toolbarbutton,
+#abp-site-info{
+	list-style-image:url(abp-status.png);
+	-moz-image-region:rect(0,24px,24px,0)}
+#abp-toolbarbutton[abpstate=disabled],
+#abp-toolbarbutton[abpstate=whitelisted],
+#abp-site-info[abpaction=enable],
+#abp-site-info[abpaction=enable_site]{
+	-moz-image-region:rect(24px,24px,48px,0)}
+
+.abp-contributebutton-btn{-moz-image-region:auto}
+
+toolbar[iconsize=small] #abp-toolbarbutton,
+#PersonalToolbar #abp-toolbarbutton,
+#header-view-toolbar>#abp-toolbarbutton,
+#abp-status{
+	list-style-image:url(abp-status-16.png);
+	-moz-image-region:rect(0,16px,16px,0)}
+toolbar[iconsize=small] #abp-toolbarbutton[abpstate=disabled],
+#PersonalToolbar #abp-toolbarbutton[abpstate=disabled],
+#header-view-toolbar>#abp-toolbarbutton[abpstate=disabled],
+#abp-status[abpstate=disabled],
+toolbar[iconsize=small] #abp-toolbarbutton[abpstate=whitelisted],
+#PersonalToolbar #abp-toolbarbutton[abpstate=whitelisted],
+#header-view-toolbar>#abp-toolbarbutton[abpstate=whitelisted],
+#abp-status[abpstate=whitelisted]{
+	-moz-image-region:rect(16px,16px,32px,0)}
+
+/*TB*/
+toolbar[mode=full] #abp-toolbarbutton[type=menu]{
+	-moz-binding:url(chrome://global/content/bindings/toolbarbutton.xml#menu-vertical)}
+
+#header-view-toolbar>#abp-toolbarbutton>.toolbarbutton-text{
+	display:none}
+
+#mail-toolbox #abp-toolbarbutton .toolbarbutton-icon{
+	margin-top:5px}
+
+#abp-status-image{
+	margin-left:10px;
+	margin-right:10px}
+
+#abp-site-info .pageaction-image{
+	width:32px;
+	height:32px;
+	padding:4px}
+
+#abp-toolbarbutton>toolbarbutton{
+	-moz-image-region:inherit!important}
+
+#abp-tooltip{
+	max-width:none}
+
+#abp-tooltip label{
+	font-weight:bold;
+	margin-bottom:0}
+
+#abp-tooltip description:not([hidden=true])+label{
+	margin-top:10px}
+
+#abp-bottombar-title{
+	padding-left:4px}
+
+#abp-bottombar-toolbar{
+	display:-moz-box!important;
+	visibility:visible!important}
+
+.abp-contributebutton{
+	margin-top:20px}
+
+.abp-contributebutton-btn{
+	font:-moz-info;
+	margin-left:40px;
+	margin-right:40px}
+
+#abp-bottombar-close,
+.abp-contributebutton-close{
+	-moz-user-focus:normal;
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(177px,31px,191px,17px)}
+#abp-bottombar-close:hover,
+.abp-contributebutton-close:hover{
+	-moz-image-region:rect(225px,31px,239px,17px)}

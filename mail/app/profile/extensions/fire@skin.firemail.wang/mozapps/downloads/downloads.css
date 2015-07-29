@@ -1,0 +1,78 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#downloadView{
+	-moz-appearance:none!important;
+	border:1px solid!important;
+	border-color:#B26F00 #EED4A2 #EED4A2 #B26F00!important;
+	box-shadow:1px 1px 3px #b26f00 inset}
+
+richlistitem:last-child{
+	box-shadow:1px 1px 2px #B26F00}
+
+.blockedIcon{
+	list-style-image:url(chrome://global/skin/alerts.png);
+	-moz-image-region:rect(0 24px 24px 0)}
+
+progressmeter{
+	background-image:url(chrome://global/skin/hout.png)}
+
+.downloadTypeIcon{
+	height:32px;
+	width:32px;
+	-moz-margin-end:2px}
+
+.name{font-weight:bold}
+.dateTime,.status{font:status-bar}
+
+.DMT_miniButton,
+.mini-button{
+	margin:0;
+	padding:0}
+.DMT_miniButton:not(:hover),
+.mini-button:not(:hover){
+	-moz-border-top-colors:transparent;
+	-moz-border-left-colors:transparent;
+	-moz-border-right-colors:transparent;
+	-moz-border-bottom-colors:transparent;
+	background:none}
+
+#menuitem_resume,.resume{
+	list-style-image:url(chrome://global/skin/playbuttons.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+#menuitem_cancel,.cancel{
+	list-style-image:url(chrome://global/skin/playbuttons.png);
+	-moz-image-region:rect(0 32px 16px 16px)}
+#menuitem_pause,.pause{
+	list-style-image:url(chrome://global/skin/playbuttons.png);
+	-moz-image-region:rect(0 48px 16px 32px)}
+#menuitem_retry,.retry{
+	list-style-image:url(chrome://global/skin/playbuttons.png);
+	-moz-image-region:rect(0 64px 16px 48px)}
+.remove{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(224px 32px 240px 16px)}
+#clearListButton,#cleanUpButton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(272px 16px 288px 0)}
+#optionsButton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(96px 16px 112px 0)}
+
+/*AllInOneSidebar*/
+richlistbox:focus>richlistitem[current="true"],
+#downloadView:not([staticHint]) richlistitem[selected="true"][type="download"]{
+	background:url(chrome://global/skin/hout-active.png)!important;
+	color:white!important}
+
+@media (max-width:300px){
+richlistitem[type="download"]{padding:1px}
+.downloadTypeIcon{height:24px;width:24px}
+}
+@media (max-width:200px){
+richlistitem[type="download"]{padding:0}
+.downloadTypeIcon{height:16px;width:16px}
+}
+
+@media (-moz-windows-compositor){
+windowdragbox{-moz-binding:url(chrome://global/content/bindings/general.xml#windowdragbox)}
+}

@@ -1,0 +1,9 @@
+@import url(chrome://messenger/skin/);
+@import url(chrome://messenger/skin/addressbook/addressbook.css);
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#abContactsPanel{background-image:url(chrome://global/skin/hout.png);color:black}
+.thin,#results_box>label{display:none}
+#results_box>#abResultsTree{margin-top:2px!important}
+#addressbookList{margin:2px 0}

@@ -1,0 +1,17 @@
+#calendar-occurrence-prompt{
+	width:20em;
+	height:26ex;
+	min-width:20em;
+	min-height:26ex;
+	-moz-user-focus:ignore}
+
+#occurrence-prompt-header{padding:2px}
+
+#title-label{font-weight:bold}
+
+.occurrence-accept-buttons{
+	margin:4px 18px;
+	list-style-image:url(chrome://calendar/skin/calendar-occurrence-prompt.png)}
+#accept-occurrence-button{-moz-image-region:rect(0 20px 20px 0)}
+#accept-allfollowing-button{-moz-image-region:rect(0 40px 20px 20px)}
+#accept-parent-button{-moz-image-region:rect(0 60px 20px 40px)}

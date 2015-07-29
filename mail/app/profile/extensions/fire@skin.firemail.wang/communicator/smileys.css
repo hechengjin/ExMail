@@ -1,0 +1,34 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+.moz-smiley-s1,.moz-smiley-s2,.moz-smiley-s3,.moz-smiley-s4,
+.moz-smiley-s5,.moz-smiley-s6,.moz-smiley-s7,.moz-smiley-s8,
+.moz-smiley-s9,.moz-smiley-s10,.moz-smiley-s11,.moz-smiley-s12,
+.moz-smiley-s13,.moz-smiley-s14,.moz-smiley-s15,.moz-smiley-s16{
+	-moz-user-select:all;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	margin:0 1px}
+
+:-moz-any(.moz-smiley-s1,.moz-smiley-s2,.moz-smiley-s3,.moz-smiley-s4,
+.moz-smiley-s5,.moz-smiley-s6,.moz-smiley-s7,.moz-smiley-s8,
+.moz-smiley-s9,.moz-smiley-s10,.moz-smiley-s11,.moz-smiley-s12,
+.moz-smiley-s13,.moz-smiley-s14,.moz-smiley-s15,.moz-smiley-s16)>span{
+	display:none}
+
+.moz-smiley-s1{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,16,16,0)}
+.moz-smiley-s2{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,48,16,32)}
+.moz-smiley-s3{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,64,16,48)}
+.moz-smiley-s4{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,32,16,16)}
+.moz-smiley-s5{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,80,16,64)}
+.moz-smiley-s6{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,96,16,80)}
+.moz-smiley-s7{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,112,16,96)}
+.moz-smiley-s8{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,128,16,112)}
+.moz-smiley-s9{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,144,16,128)}
+.moz-smiley-s10{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,160,16,144)}
+.moz-smiley-s11{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,176,16,160)}
+.moz-smiley-s12{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,192,16,176)}
+.moz-smiley-s13{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,208,16,192)}
+.moz-smiley-s14{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,224,16,208)}
+.moz-smiley-s15{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,240,16,224)}
+.moz-smiley-s16{background-image:-moz-image-rect(url(chrome://communicator/skin/smileys.png),0,256,16,240)}

@@ -1,0 +1,132 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#ParagraphSelect{min-width:8em}
+
+.color-button{
+	border:1px solid;
+	-moz-border-top-colors:#B26F00;
+	-moz-border-left-colors:#B26F00;
+	-moz-border-right-colors:#EED4A2;
+	-moz-border-bottom-colors:#EED4A2;
+	padding:0;
+	margin:3px;
+	width:18px!important;
+	height:18px!important}
+.color-button:hover{
+	margin:1px;
+	border:3px solid;
+	-moz-border-top-colors:#EED4A2 #D0A1D1 #B26F00;
+	-moz-border-left-colors:#EED4A2 #D0A1D1 #B26F00;
+	-moz-border-right-colors:#B26F00 #D0A1D1 #EED4A2;
+	-moz-border-bottom-colors:#B26F00 #D0A1D1 #EED4A2}
+.color-button:hover:active{
+	-moz-border-top-colors:#B26F00 #D0A1D1 #B26F00;
+	-moz-border-left-colors:#B26F00 #D0A1D1 #B26F00;
+	-moz-border-right-colors:#EED4A2 #D0A1D1 #EED4A2;
+	-moz-border-bottom-colors:#EED4A2 #D0A1D1 #EED4A2}
+.color-button[disabled="true"]{
+	opacity:.7}
+
+#TextColorButton{-moz-margin-end:24px}
+#TextColorButton:hover{-moz-margin-end:22px}
+#BackgroundColorButton{-moz-margin-start:24px}
+#BackgroundColorButton:hover{-moz-margin-start:22px}
+
+#FormatToolbar>toolbarbutton{list-style-image:url(chrome://editor/skin/editorFormat16.png)}
+#boldButton{-moz-image-region:rect(0 16px 16px 0)}
+#italicButton{-moz-image-region:rect(0 32px 16px 16px)}
+#underlineButton{-moz-image-region:rect(0 48px 16px 32px)}
+#ulButton{-moz-image-region:rect(0 64px 16px 48px)}
+#olButton{-moz-image-region:rect(0 80px 16px 64px)}
+#outdentButton{-moz-image-region:rect(0 96px 16px 80px)}
+#indentButton{-moz-image-region:rect(0 112px 16px 96px)}
+#align-left-button{-moz-image-region:rect(0 144px 16px 128px)}
+#align-center-button{-moz-image-region:rect(0 160px 16px 144px)}
+#align-justify-button{-moz-image-region:rect(0 176px 16px 160px)}
+#align-right-button{-moz-image-region:rect(0 192px 16px 176px)}
+#DecreaseFontSizeButton{-moz-image-region:rect(0 208px 16px 192px)}
+#IncreaseFontSizeButton{-moz-image-region:rect(0 224px 16px 208px)}
+#HighlightColorButton{-moz-image-region:rect(0 272px 16px 256px)}
+#absolutePositionButton{-moz-image-region:rect(0 288px 16px 272px)}
+#increaseZIndexButton{-moz-image-region:rect(0 304px 16px 288px)}
+#decreaseZIndexButton{-moz-image-region:rect(0 320px 16px 304px)}
+#emButton{-moz-image-region:rect(0 320px 16px 336px)}
+#strongButton{-moz-image-region:rect(0 336px 16px 352px)}
+#AlignPopupButton{-moz-image-region:rect(0 128px 16px 112px)}
+#InsertPopupButton{-moz-image-region:rect(0 256px 16px 240px)}
+#smileButtonMenu{-moz-image-region:rect(0 240px 16px 224px)}
+
+#AlignPopup>menuitem{list-style-image:url(chrome://editor/skin/menu.png)}
+#AlignLeftItem{-moz-image-region:rect(0,16px,16px,0)}
+#AlignCenterItem{-moz-image-region:rect(0,32px,16px,16px)}
+#AlignJustifyItem{-moz-image-region:rect(0,48px,16px,32px)}
+#AlignRightItem{-moz-image-region:rect(0,64px,16px,48px)}
+
+#insertLink,#InsertLinkItem{
+	list-style-image:url(chrome://editor/skin/menu.png);
+	-moz-image-region:rect(0,80px,16px,64px)}
+#insertAnchor,#InsertAnchorItem{
+	list-style-image:url(chrome://editor/skin/menu.png);
+	-moz-image-region:rect(0,96px,16px,80px)}
+#insertImage,#InsertImageItem{
+	list-style-image:url(chrome://editor/skin/menu.png);
+	-moz-image-region:rect(0,112px,16px,96px)}
+#insertHline,#InsertHRuleItem{
+	list-style-image:url(chrome://editor/skin/menu.png);
+	-moz-image-region:rect(0,128px,16px,112px)}
+#insertTable,#InsertTableItem{
+	list-style-image:url(chrome://editor/skin/menu.png);
+	-moz-image-region:rect(0,144px,16px,128px)}
+
+#smilyPopup menuitem,.smiley{list-style-image:url(chrome://communicator/skin/smileys.png)}
+#smileySmile,.insert-smile{-moz-image-region:rect(0,16px,16px,0)}
+#smileyTongue,.insert-tongue{-moz-image-region:rect(0,32px,16px,16px)}
+#smileyFrown,.insert-frown{-moz-image-region:rect(0,48px,16px,32px)}
+#smileyWink,.insert-wink{-moz-image-region:rect(0,64px,16px,48px)}
+#smileyLaughing,.insert-laughing{-moz-image-region:rect(0,80px,16px,64px)}
+#smileyEmbarassed,.insert-embarrassed{-moz-image-region:rect(0,96px,16px,80px)}
+#smileyUndecided,.insert-undecided{-moz-image-region:rect(0,112px,16px,96px)}
+#smileySurprise,.insert-surprise{-moz-image-region:rect(0,128px,16px,112px)}
+#smileyKiss,.insert-kiss{-moz-image-region:rect(0,144px,16px,128px)}
+#smileyYell,.insert-yell{-moz-image-region:rect(0,160px,16px,144px)}
+#smileyCool,.insert-cool{-moz-image-region:rect(0,176px,16px,160px)}
+#smileyMoney,.insert-money{-moz-image-region:rect(0,192px,16px,176px)}
+#smileyFoot,.insert-foot{-moz-image-region:rect(0,208px,16px,192px)}
+#smileyInnocent,.insert-innocent{-moz-image-region:rect(0,224px,16px,208px)}
+#smileyCry,.insert-cry{-moz-image-region:rect(0,240px,16px,224px)}
+#smileySealed,.insert-sealed{-moz-image-region:rect(0,256px,16px,240px)}
+
+#FormatToolbar>toolbarbutton>.toolbarbutton-text,
+#InsertPopupButton>.toolbarbutton-menu-dropmarker,
+#smileButtonMenu>.toolbarbutton-menu-dropmarker,
+#AlignPopupButton>.toolbarbutton-menu-dropmarker{
+	display:none}
+
+#menu_styleBold{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 16px 16px 0)}
+#menu_styleItalic{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 32px 16px 16px)}
+#menu_styleUnderline{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 48px 16px 32px)}
+#decreaseIndent{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 96px 16px 80px)}
+#increaseIndent{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 112px 16px 96px)}
+#menu_styleEm{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 336px 16px 320px)}
+#menu_styleStrong{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 352px 16px 336px)}
+#alignMenu{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 128px 16px 112px)}
+#fontColor{
+	list-style-image:url(chrome://editor/skin/editorFormat16.png);
+	-moz-image-region:rect(0 272px 16px 256px)}
+

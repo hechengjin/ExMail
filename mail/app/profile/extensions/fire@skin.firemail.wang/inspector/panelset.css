@@ -1,0 +1,11 @@
+
+.viewer-list,.viewer-menu{
+	list-style-image:url(chrome://inspector/skin/inspector.png);
+	-moz-image-region:rect(0 48px 16px 32px)}
+.viewer-menu{-moz-image-region:rect(0 32px 16px 16px)}
+
+.viewer-pane-header{-moz-box-pack:center}
+
+panel[disabled="true"]>.viewer-pane-box-1,
+.viewer-menu[disabled="true"],
+.viewer-pane-header>toolbargrippy{display:none}

@@ -1,0 +1,124 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#button-enigmail-decrypt,
+[typeid="button-enigmail-decrypt"],
+#button-enigmail-send{
+	list-style-image:url(chrome://enigmail/skin/enigmail-toolbar.png)}
+
+#button-enigmail-decrypt,
+[typeid="button-enigmail-decrypt"]{-moz-image-region:rect(0 24px 24px 0)}
+#button-enigmail-decrypt[disabled],
+[typeid="button-enigmail-decrypt"]{-moz-image-region:rect(24px 24px 48px 0)}
+
+#button-enigmail-send{-moz-image-region:rect(0 48px 24px 24px)}
+#button-enigmail-send[disabled]{-moz-image-region:rect(24px 48px 48px 24px)}
+
+.action-box{width:100px}
+
+#expandedEnigmailBox{
+	background-color:#d8e0e8;
+	color:black}
+
+.enigmailHeaderName{
+	color:#888a85;
+	text-align:right;
+	background-color:transparent;
+	-moz-margin-end:2px}
+
+.enigmailHeaderValue{
+	min-width:50px;
+	white-space:normal;
+	color:WindowText;
+	line-height:1.4em;
+	padding:0!important;
+	margin:0!important;
+	-moz-margin-start:3px!important;
+	border:none!important;
+	background-color:transparent}
+
+.enigmailHeaderSpacer{width:2px}
+
+.enigmailHeaderBoxLabelNoSignature{background-color:#d8e0e8;color:black}
+.enigmailHeaderBoxLabelSignatureOk{background-color:#ccffcc;color:black}
+.enigmailHeaderBoxLabelSignatureVerified{background-color:#ccffff;color:black}
+.enigmailHeaderBoxLabelSignatureNotOk{background-color:#FFD8FE;color:black}
+.enigmailHeaderBoxLabelSignatureUnknown{background-color:#FFFFC9;color:black}
+
+.enigmailLink{
+	text-decoration:underline;
+	color:blue;
+	cursor:pointer}
+
+.enigMsgHdrView-flat-button{
+	min-width:1px!important;
+	margin:0}
+
+#enigmail-status-bar #enigmail-signed-status,
+#enigmail-status-bar #enigmail-encrypted-status{
+	list-style-image:url(chrome://enigmail/skin/enigmail.png);
+	visibility:collapse}
+
+#enigmail-status-bar[signed="ok"] #enigmail-signed-status{
+	-moz-image-region:rect(0 16px 16px 0);
+	visibility:visible}
+
+#enigmail-status-bar[signed="notok"] #enigmail-signed-status{
+	-moz-image-region:rect(0 32px 16px 16px);
+	visibility:visible}
+
+#enigmail-status-bar[signed="unknown"] #enigmail-signed-status{
+	-moz-image-region:rect(0 48px 16px 32px);
+	visibility:visible}
+
+#enigmail-status-bar[signed="inactive"] #enigmail-signed-status{
+	-moz-image-region:rect(0 64px 16px 48px);
+	visibility:visible}
+
+#enigmail-status-bar[encrypted="ok"] #enigmail-encrypted-status{
+	-moz-image-region:rect(16px 16px 32px 0);
+	visibility:visible}
+
+#enigmail-status-bar[encrypted="notok"] #enigmail-encrypted-status{
+	-moz-image-region:rect(16px 32px 32px 16px);
+	visibility:visible}
+
+#enigmail-status-bar[encrypted="inactive"] #enigmail-encrypted-status{
+	-moz-image-region:rect(16px 48px 32px 32px);
+	visibility:visible}
+
+.enigmailPrefsTitle{
+	font-weight:bold;
+	height:25px}
+
+.enigmailStrong,
+treechildren::-moz-tree-cell-text(enigmailSubkeyTitle),
+treechildren::-moz-tree-cell-text(enigmailOwnKey){
+	font-weight:bold}
+
+.enigmailUidInactive,
+treechildren::-moz-tree-cell-text(enigKeyInactive){
+	color:threedshadow;
+	font-style:italic}
+
+treechildren::-moz-tree-column(enigDontEncrypt){
+	background-color:threedface}
+
+.enigmailExpandViewButton,
+.enigmailCollapseViewButton{
+	padding:1px;
+	list-style-image:url(chrome://global/skin/widgets.png);
+	border:1px solid transparent}
+.enigmailExpandViewButton{-moz-image-region:rect(-1px 25px 11px 13px)}
+.enigmailCollapseViewButton{-moz-image-region:rect(-1px 12px 11px 0)}
+
+.enigmailExpandViewButton:hover,
+.enigmailCollapseViewButton:hover{
+	border:1px outset threedface;
+	background-color:#CCCCFF;
+	color:black}
+
+.enigmailExpandViewButton:hover:active,
+.enigmailCollapseViewButton:hover:active{
+	border:1px inset threedface;
+	background-color:Highlight;
+	color:HighlightText}

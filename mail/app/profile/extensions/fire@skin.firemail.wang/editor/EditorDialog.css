@@ -1,0 +1,82 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+.narrow{width:3em}
+
+.color-well{
+	width:20px;
+	height:12px;
+	border:1px,inset #CCCCCC}
+.color-well[default="true"]{
+	border:1px,solid transparent;
+	background-color:inherit}
+.color-button{
+	min-width:0;
+	margin:2px}
+
+#ColorPicker{-moz-user-focus:normal}
+
+#ColorPickerSwatch{
+	border:2px outset #CCCCCC;
+	width:25px;
+	height:20px;
+	margin:0 3px 0 0}
+#ColorPickerSwatch[default="true"]{
+	border:2px solid transparent;
+	background-color:inherit}
+
+#LastPickedColor{
+	width:17px;
+	height:13px;
+	border:1px,inset threedface;
+	margin:1px,2px,2px,4px}
+
+#PreviousButton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(192px,16px,208px,0)}
+#NextButton{
+	list-style-image:url(chrome://global/skin/global.png);
+	-moz-image-region:rect(208px,16px,224px,0)}
+#PreviousButton[type="row"]{-moz-image-region:rect(384px,16px,400px,0)}
+#NextButton[type="row"]{-moz-image-region:rect(400px,16px,416px,0)}
+
+#MisspelledWord{font-weight:bold}
+#ReplaceWordInput{min-width:16em;width:16em}
+.spell-check{min-width:8em}
+
+.align-menu{
+	list-style-image:url(chrome://editor/skin/imageAlign.png);
+	-moz-image-region:rect(0,32px,16px,0)}
+.align-menu>.menu-iconic-left{display:-moz-box!important}
+.align-menu>.menu-iconic-left>.menu-iconic-icon{width:32px!important}
+.align-menu[value="middle"]{-moz-image-region:rect(16px,32px,32px,0)}
+.align-menu[value="bottom"]{-moz-image-region:rect(32px,32px,48px,0)}
+.align-menu[value="left"]{-moz-image-region:rect(48px,32px,64px,0)}
+.align-menu[value="right"]{-moz-image-region:rect(64px,32px,80px,0)}
+
+#preview-image-box{
+	border:0;
+	width:82px;
+	height:52px;
+	margin:3px;
+	overflow:hidden}
+#preview-image-holder{
+	padding:0;
+	margin:0}
+
+#tagLabel{font-weight:bold}
+
+.AttributesTree{min-width:200px;min-height:200px}
+
+#SelectTreeChildren::-moz-tree-cell(SelectSelCol,checked-false){
+	background:-moz-image-rect(url(chrome://global/skin/checkbox.png),14,14,28,0)!important}
+#SelectTreeChildren::-moz-tree-cell(SelectSelCol,checked-true){
+	background:-moz-image-rect(url(chrome://global/skin/checkbox.png),0,14,14,0)!important}
+
+.progressitem[progress="busy"]{
+	list-style-image:url(chrome://global/skin/loading.gif)}
+.progressitem[progress="done"]{
+	list-style-image:url(chrome://global/skin/leds.png);
+	-moz-image-region:rect(0,32px,16px,16px)}
+.progressitem[progress="failed"]{
+	list-style-image:url(chrome://global/skin/leds.png);
+	-moz-image-region:rect(0,16px,16px,0)}

@@ -1,0 +1,73 @@
+
+daypicker-weekday:focus,
+daypicker-monthday:focus{
+	outline:2px solid #B26F00;
+	outline-offset:0;
+	-moz-outline-radius:7px}
+
+daypicker{
+	-moz-binding:url(chrome://calendar/content/calendar-daypicker.xml#daypicker);
+	text-align:center;
+	-moz-box-pack:center;
+	cursor:pointer;
+	-moz-box-flex:1;
+	border:2px solid;
+	-moz-border-top-colors:#B26F00 #893B00;
+	-moz-border-left-colors:#B26F00 #893B00;
+	-moz-border-right-colors:#EED4A2 #B26F00;
+	-moz-border-bottom-colors:#EED4A2 #B26F00;
+	background-image:url(chrome://global/skin/backarea.png);
+	color:black}
+
+.daypicker-row:first-child>daypicker:first-of-type{border-top-left-radius:5px}
+.daypicker-row:first-child>daypicker:last-of-type{border-top-right-radius:5px}
+.daypicker-row:last-child>daypicker:first-of-type{border-bottom-left-radius:5px}
+.daypicker-row:last-child>daypicker:last-of-type{border-bottom-right-radius:5px}
+
+daypicker[mode="daypicker-weekday"]:first-of-type{border-radius:5px 0 0 5px}
+daypicker[mode="daypicker-weekday"]:last-of-type{border-radius:0 5px 5px 0}
+
+daypicker:not(:last-of-type){
+	border-right-width:1px;
+	-moz-border-right-colors:#B26F00}
+daypicker:not(:first-of-type){
+	border-left-width:1px;
+	-moz-border-left-colors:#EED4A2}
+
+.daypicker-row:not(:first-child)>daypicker{
+	border-top-width:1px;
+	-moz-border-top-colors:#EED4A2}
+.daypicker-row:not(:last-child)>daypicker{
+	border-bottom-width:1px;
+	-moz-border-bottom-colors:#B26F00}
+
+daypicker[mode="monthly-days"]{padding:0 1px;width:2em}
+
+daypicker:hover:not([disabled="true"]){
+	-moz-border-right-colors:#893B00 #B26F00; 
+	-moz-border-bottom-colors:#893B00 #B26F00;
+	background-image:url(chrome://global/skin/hout-hover.png);
+	color:black}
+
+daypicker:hover:active:not([disabled="true"]){
+	-moz-border-top-colors:#893B00 #B26F00;
+	-moz-border-left-colors:#893B00 #B26F00;
+	-moz-border-right-colors:#B26F00 #893B00;
+	-moz-border-bottom-colors:#B26F00 #893B00;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
+daypicker[disabled="true"]{
+	cursor:default;
+	background:transparent none!important;
+	color:#893B00!important}
+
+daypicker[checked="true"]{
+	box-shadow: 1px 1px 2px threedface inset, 1px 1px 1px #B26F00 inset;
+	-moz-border-top-colors:#B26F00 #B26F00;
+	-moz-border-left-colors:#B26F00 #B26F00;
+	-moz-border-right-colors:#EED4A2 #EED4A2;
+	-moz-border-bottom-colors:#EED4A2 #EED4A2;
+	background-image:url(chrome://global/skin/hout-active.png);
+	color:white}
+
