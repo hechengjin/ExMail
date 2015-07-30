@@ -70,6 +70,7 @@ function setFrame()
    </hbox>
   <hbox>
         <label style="width:10em" value="操作结果状态"  />  <button id="gclearLog" oncommand="gmainDialog.clearLog();"  label="清空日志"/>
+         <button id="gclearLog" oncommand="gmainDialog.getallfiles();"  label="输出文件名"/>
    </hbox>
   
    
