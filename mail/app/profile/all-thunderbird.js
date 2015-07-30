@@ -110,14 +110,14 @@ pref("app.update.silent", false);
 pref("app.update.staging.enabled", true);
 
 // Update service URL:
-pref("app.update.url", "http://192.168.31.247/update/update.xml");
+pref("app.update.url", "http://www.firemail.wang/production_update/firemail/default/update.xml");
 
 // URL user can browse to manually if for some reason all update installation
 // attempts fail.
-pref("app.update.url.manual", "http://192.168.31.247/forum.php");
+pref("app.update.url.manual", "http://www.firemail.wang/forum.php?mod=forumdisplay&fid=37");
 // A default value for the "More information about this update" link
 // supplied in the "An update is available" page of the update wizard. 
-pref("app.update.url.details", "http://192.168.31.247/pingdao1/");
+pref("app.update.url.details", "http://www.firemail.wang/firemail/version/");
 // User-settable override to app.update.url for testing purposes.
 //pref("app.update.url.override", "");
 
@@ -139,7 +139,7 @@ pref("app.update.service.enabled", true);
 #endif
 
 // Base URL for web-based support pages.
-pref("app.support.baseURL", "http://192.168.31.247/forum.php");
+pref("app.support.baseURL", "http://www.firemail.wang/forum.php?mod=forumdisplay&fid=37");
 
 // Controls enabling of the extension system logging (can reduce performance)
 pref("extensions.logging.enabled", false);
