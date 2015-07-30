@@ -17,11 +17,11 @@ include $(topsrcdir)/config/rules.mk
 # If adding extra extensions here, check that EXTRA_ARGS defined below won't
 # affect them unintentionally.
 EXTENSIONS = \
+  fire@skin.firemail.wang \
   mrc_compose@mr-consultant.net \
   gconversation@xulforum.org \
   mailmerge@example.net \
   copysent2current@ggbs.de \
-  fire@skin.firemail.wang \
   $(NULL)
   
 NO_ZIP_EXTENSIONS = mintrayr@tn123.ath.cx \

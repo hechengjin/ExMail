@@ -1,30 +1,30 @@
-skin	communicator		walnut_tb	communicator/
-skin	global			walnut_tb	global/
-skin	editor			walnut_tb	editor/
-skin	inspector		walnut_tb	inspector/
-skin	home			walnut_tb	home/
-skin	mozapps			walnut_tb	mozapps/
-skin	messenger		walnut_tb	messenger/
-skin	enigmail		walnut_tb	enigmail/
-skin	messenger-newsblog	walnut_tb	messenger-newsblog/
-skin	contactssidebar		walnut_tb	contactssidebar/
-skin	calendar		walnut_tb	calendar/
-skin	lightning		walnut_tb	lightning/
-skin	messagefilterbar	walnut_tb	messagefilterbar/
-skin	os			walnut_tb	os-linux/	os=Linux
-skin	os			walnut_tb	os-darwin/	os=Darwin
-skin	os			walnut_tb	os-winnt/	os=WINNT
-skin	CustomizeHeaderToolbar     walnut_tb	CustomizeHeaderToolbar/
-skin	CustomizeHeaderToolbar-os  walnut_tb	CustomizeHeaderToolbar/os/
-skin	CompactHeader		walnut_tb	CompactHeader/
-skin	CompactHeader-os	walnut_tb	CompactHeader/os/
-skin	calendar-windows	walnut_tb	calendar-windows/
-skin	chat			walnut_tb	chat/
-skin	messenger-messagestyles walnut_tb	messages/
-skin	contacttabs		walnut_tb	contacttabs/
-skin	mailsummaries		walnut_tb	mailsummaries/
-skin	dispmua 		walnut_tb	dispmua/
-skin	adblockplus		walnut_tb	adblockplus/
-skin	mailredirect		walnut_tb	mailredirect/
-skin	mailredirect-os		walnut_tb	mailredirect/
-skin	google_tasks_sync	walnut_tb	google_tasks_sync/
+skin	communicator		classic/1.0	communicator/
+skin	global			classic/1.0	global/
+skin	editor			classic/1.0	editor/
+skin	inspector		classic/1.0	inspector/
+skin	home			classic/1.0	home/
+skin	mozapps			classic/1.0	mozapps/
+skin	messenger		classic/1.0	messenger/
+skin	enigmail		classic/1.0	enigmail/
+skin	messenger-newsblog	classic/1.0	messenger-newsblog/
+skin	contactssidebar		classic/1.0	contactssidebar/
+skin	calendar		classic/1.0	calendar/
+skin	lightning		classic/1.0	lightning/
+skin	messagefilterbar	classic/1.0	messagefilterbar/
+skin	os			classic/1.0	os-linux/	os=Linux
+skin	os			classic/1.0	os-darwin/	os=Darwin
+skin	os			classic/1.0	os-winnt/	os=WINNT
+skin	CustomizeHeaderToolbar     classic/1.0	CustomizeHeaderToolbar/
+skin	CustomizeHeaderToolbar-os  classic/1.0	CustomizeHeaderToolbar/os/
+skin	CompactHeader		classic/1.0	CompactHeader/
+skin	CompactHeader-os	classic/1.0	CompactHeader/os/
+skin	calendar-windows	classic/1.0	calendar-windows/
+skin	chat			classic/1.0	chat/
+skin	messenger-messagestyles classic/1.0	messages/
+skin	contacttabs		classic/1.0	contacttabs/
+skin	mailsummaries		classic/1.0	mailsummaries/
+skin	dispmua 		classic/1.0	dispmua/
+skin	adblockplus		classic/1.0	adblockplus/
+skin	mailredirect		classic/1.0	mailredirect/
+skin	mailredirect-os		classic/1.0	mailredirect/
+skin	google_tasks_sync	classic/1.0	google_tasks_sync/

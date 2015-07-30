@@ -20,7 +20,7 @@ FILES := \
   $(NULL)
 
 libs:: $(FILES)
-	$(INSTALL) $(foreach f,$^,"$f") $(DIST)/bin/extensions/$(CLASSIC_EXTENSION_DIR)
+#	$(INSTALL) $(foreach f,$^,"$f") $(DIST)/bin/extensions/$(CLASSIC_EXTENSION_DIR)
 
 install:: $(FILES)
-	$(SYSINSTALL) $(IFLAGS1) $(foreach f,$^,"$f") $(DESTDIR)$(mozappdir)/extensions/$(CLASSIC_EXTENSION_DIR)
+#	$(SYSINSTALL) $(IFLAGS1) $(foreach f,$^,"$f") $(DESTDIR)$(mozappdir)/extensions/$(CLASSIC_EXTENSION_DIR)
