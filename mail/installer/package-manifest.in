@@ -534,6 +534,14 @@
 @BINPATH@/extensions/{e2fda1a4-762b-4020-b5ad-a41df1933103}/install.rdf
 @BINPATH@/extensions/{e2fda1a4-762b-4020-b5ad-a41df1933103}/timezones.sqlite
 
+@BINPATH@/extensions/calendar-timezones@mozilla.org/chrome/calendar-timezones/skin/addon-icon32.png
+@BINPATH@/extensions/calendar-timezones@mozilla.org/chrome/calendar-timezones-zh-CN/locale/zh-CN/timezones.properties
+@BINPATH@/extensions/calendar-timezones@mozilla.org/defaults/preferences/preferences.js
+@BINPATH@/extensions/calendar-timezones@mozilla.org/chrome.manifest
+@BINPATH@/extensions/calendar-timezones@mozilla.org/install.rdf
+@BINPATH@/extensions/calendar-timezones@mozilla.org/timezones.sqlite
+
+
 
 @BINPATH@/distribution/extensions/mrc_compose@mr-consultant.net.xpi
 @BINPATH@/distribution/extensions/gconversation@xulforum.org.xpi
