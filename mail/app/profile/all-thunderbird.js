@@ -114,7 +114,7 @@ pref("app.update.url", "http://www.firemail.wang/production_update/firemail/defa
 
 // URL user can browse to manually if for some reason all update installation
 // attempts fail.
-pref("app.update.url.manual", "http://www.firemail.wang/forum.php?mod=forumdisplay&fid=37");
+pref("app.update.url.manual", "http://www.firemail.wang/portal.php?mod=view&aid=3");
 // A default value for the "More information about this update" link
 // supplied in the "An update is available" page of the update wizard. 
 pref("app.update.url.details", "http://www.firemail.wang/firemail/version/");
