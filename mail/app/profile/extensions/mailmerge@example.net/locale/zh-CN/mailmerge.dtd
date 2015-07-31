@@ -8,10 +8,10 @@
 <!ENTITY mailmerge.compose.time "时间:">
 <!ENTITY mailmerge.compose.progress "进度:">
 <!ENTITY mailmerge.compose.status "状态:">
-<!ENTITY mailmerge.dialog.mail "Mail">
+<!ENTITY mailmerge.dialog.mail "发送选项">
 <!ENTITY mailmerge.dialog.mail.source "Source:">
-<!ENTITY mailmerge.dialog.mail.delivermode "Deliver Mode:">
-<!ENTITY mailmerge.dialog.mail.format "Format:">
+<!ENTITY mailmerge.dialog.mail.delivermode "发送模式:">
+<!ENTITY mailmerge.dialog.mail.format "格式:">
 <!ENTITY mailmerge.dialog.mail.attachments "Attachments:">
 <!ENTITY mailmerge.dialog.csv "CSV">
 <!ENTITY mailmerge.dialog.csv.file "File:">
@@ -34,3 +34,5 @@
 <!ENTITY mailmerge.overlay.Bulksingle "群发单显">
 <!ENTITY mailmerge.compose.Sending "正在处理邮件">
 <!ENTITY mailmerge.compose.Cancel "取消">
+<!ENTITY mailmerge.overlay.BulksingleSetting "群发单显设置">
+<!ENTITY mailmerge.overlay.BulksingleSending "群发单显发送中...">

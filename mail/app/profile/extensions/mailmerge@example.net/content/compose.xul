@@ -6,7 +6,7 @@
 <dialog
 	id="mailmerge"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	title="Mail Merge"
+	title="&mailmerge.overlay.BulksingleSending;"
 	buttons=","
 	ondialogaccept=""
 	ondialogcancel=""

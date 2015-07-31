@@ -6,8 +6,8 @@
 <dialog
 	id="mailmerge"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	title="Mail Merge"
-	buttons="accept,cancel,help"
+	title="&mailmerge.overlay.BulksingleSetting;"
+	buttons="accept,cancel"
 	ondialogaccept="mailmerge.accept()"
 	ondialogcancel=""
 	ondialoghelp="mailmerge.help()"
@@ -29,7 +29,7 @@
 				<column style="width: 250px;" />
 			</columns>
 			<rows>
-				<row>
+				<row hidden="true">
 					<label control="mailmerge-source" value="&mailmerge.dialog.mail.source;" />
 					<menulist id="mailmerge-source" oncommand="mailmerge.update()" />
 				</row>
@@ -41,7 +41,7 @@
 					<label control="mailmerge-format" value="&mailmerge.dialog.mail.format;" />
 					<menulist id="mailmerge-format" />
 				</row>
-				<row>
+				<row hidden="true">
 					<label control="mailmerge-attachments" value="&mailmerge.dialog.mail.attachments;" />
 					<textbox id="mailmerge-attachments" />
 				</row>
@@ -81,7 +81,7 @@
 		
 	</groupbox>
 	
-	<groupbox id="mailmerge-batch">
+	<groupbox id="mailmerge-batch" hidden="true">
 		
 		<caption label="&mailmerge.dialog.batch;" />
 		
@@ -135,7 +135,7 @@
 		
 	</groupbox>
 	
-	<groupbox id="mailmerge-options">
+	<groupbox id="mailmerge-options" hidden="true">
 		
 		<caption label="&mailmerge.dialog.options;" />
 		
