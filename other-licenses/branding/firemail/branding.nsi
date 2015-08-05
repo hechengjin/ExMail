@@ -43,4 +43,5 @@
 !define CompanyName           "Mozilla Corporation"
 !define URLInfoAbout          "http://www.mozilla.org/${AB_CD}/"
 !define URLUpdateInfo         "http://www.mozilla.org/${AB_CD}/Firemail/"
-!define SurveyURL             "http://live.mozillamessaging.com/survey/uninstall/?locale=${AB_CD}&version=${AppVersion}"
+#!define SurveyURL             "http://live.mozillamessaging.com/survey/uninstall/?locale=${AB_CD}&version=${AppVersion}"
+!define SurveyURL             "http://www.firemail.wang/forum.php?mod=forumdisplay&fid=38"
