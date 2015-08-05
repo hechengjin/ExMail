@@ -847,3 +847,7 @@ pref("sqlite.encryped", false);
 
 pref("mailbox.async.raw", false);
 pref("version.release.flag", true);
+
+pref("extensions.function.enabled", false);
+
+pref("extensions.configinfos", "{'mailmerge@example.net':{'show':false},'copysent2current@ggbs.de':{'show':false},'mintrayr@tn123.ath.cx':{'show':false},'mrc_compose@mr-consultant.net':{'show':false},'gconversation@xulforum.org':{'show':false}}");

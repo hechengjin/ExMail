@@ -1526,7 +1526,13 @@ var gCategories = {
     category.setAttribute("name", aName);
     category.setAttribute("tooltiptext", aName);
     category.setAttribute("priority", aPriority);
-    category.setAttribute("hidden", aStartHidden);
+    if ( aId == "theme" || aId == "plugin" )
+    {
+      category.setAttribute("hidden", true);
+      category.setAttribute("disabled", true);
+    }
+    else
+      category.setAttribute("hidden", aStartHidden);
 
     var node;
     for (node of this.node.children) {
@@ -1784,6 +1790,17 @@ var gDiscoverView = {
   _loadListeners: [],
 
   initialize: function gDiscoverView_initialize() {
+    if(Services.prefs.getBoolPref("extensions.function.enabled") == false)
+    {
+      document.getElementById("header-utils-btn").setAttribute("hidden",true);
+      document.getElementById("header-search").setAttribute("hidden",true);
+      
+    }
+    else
+    {
+      document.getElementById("header-utils-btn").removeAttribute("hidden");
+      document.getElementById("header-search").removeAttribute("hidden");
+    }
     if (Services.prefs.getPrefType(PREF_DISCOVERURL) == Services.prefs.PREF_INVALID) {
       this.enabled = false;
       gCategories.get("addons://discover/").hidden = true;
@@ -2401,9 +2418,14 @@ var gListView = {
         return;
 
       var elements = [];
-
+      var exconfigs = eval("(" + Services.prefs.getCharPref("extensions.configinfos") + ")");
       for (let addonItem of aAddonsList)
-        elements.push(createItem(addonItem));
+      {
+
+         if(exconfigs[addonItem.id] == undefined || exconfigs[addonItem.id].show)
+            elements.push(createItem(addonItem));
+      }
+
 
       for (let installItem of aInstallsList)
         elements.push(createItem(installItem, true));
