@@ -1,0 +1,38 @@
+.label_text_center
+{
+    text-align: center;
+    font-size: 12px;
+}
+.label_text_left
+{
+    text-align:left;
+    font-size: 12px;
+}
+
+.label_mid
+{
+    width:40px;
+}
+
+.label_back
+{
+    width:100px;
+}
+.label_text_right
+{
+    text-align: right;
+    font-size: 12px;
+}
+
+/*---------------------img shots--------------------------------*/
+.label_head_imgshots
+{
+    width:180px;
+}
+
+.text_number_imgshots
+{
+    text-align:right;
+    width: 80px;
+    height: 24px;
+}

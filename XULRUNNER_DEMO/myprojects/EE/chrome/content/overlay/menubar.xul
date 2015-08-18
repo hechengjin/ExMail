@@ -1,0 +1,226 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://EE/locale/main.dtd">
+<!--
+================================================================================
+/**
+* MenuBar
+*
+*/
+================================================================================
+-->
+
+<overlay id="main-menubar_overlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<!--<broadcasterset id="broadCasterSet">
+    <broadcaster id="viewIndex" />
+</broadcasterset>-->
+<commandset id="menuCommands">
+    <command id="cmdPlayFile" oncommand="playFile_cmd()" />
+    <command id="cmdPlayUrl" oncommand="openStream()" />
+    <!--command id="cmdFullScreen" oncommand="player.sendCommand('vo_fullscreen 1')" /-->
+    <command id="cmdFullScreen" oncommand="toggleFullScreen()" />
+    <command id="cmdSwitchAudio" oncommand="switchAudio()" />
+    <command id="cmdAddFolder" oncommand="addFolder(false)" />
+    <command id="cmdAddFolderAll" oncommand="addFolder(true)" />
+	<command id="cmdAddFile" oncommand="openFile()"/>
+    <command id="cmdAddDvd" oncommand="addDvd()"/>
+    <command id="cmd_screenshot" oncommand="takeScreenshot()"/>
+    <command id="cmdRemoveItem" oncommand="plMan.removeFile()" />
+	<command id="cmd_imgshots" oncommand="takeImgShots()" />
+    <command id="cmd_openDownloader" oncommand="openDownloader()" />
+</commandset>
+
+<keyset>
+  <key id="keySwitchAudio" modifiers="shift" key="A" command="cmdSwitchAudio"/>
+  <key id="keyFullScreen" modifiers="control" key="F" command="cmdFullScreen"/>
+  <key id="keyScreenshot" modifiers="control" key="S" command="cmd_screenshot"/>
+  <key id="keyTransRestore" modifiers="shift" key="D" oncommand="$e('transRestore').setAttribute('checked','true');applyPlayerOptions()"/>
+  <key id="keyRot90" modifiers="shift" key="L" oncommand="$e('rotate90').setAttribute('checked','true');applyPlayerOptions()"/>
+  <key id="keyRot270" modifiers="shift" key="R" oncommand="$e('rotate270').setAttribute('checked','true');applyPlayerOptions()"/>
+  <key id="keyRot90Flip" modifiers="shift" key="J" oncommand="$e('rotate90Flip').setAttribute('checked','true');applyPlayerOptions()"/>
+  <key id="keyRot270Flip" modifiers="shift" key="K" oncommand="$e('rotate270Flip').setAttribute('checked','true');applyPlayerOptions()"/>
+  <key id="keyFlip" modifiers="shift" key="F" oncommand="$e('flip').setAttribute('checked','true');applyPlayerOptions()"/>
+  <key id="keyMirror" modifiers="shift" key="M" oncommand="$e('mirror').setAttribute('checked','true');applyPlayerOptions()"/>
+  <key id="keySwitchSub" key="j" oncommand="mp.switchSubtitle()" />
+  <key id="keyDownSub" key="t" oncommand="mp.subPosDown()" />
+  <key id="keyUpSub" key="r" oncommand="mp.subPosUp()" />
+  <key id="keyAdvanceSub" key="z" oncommand="mp.advanceSub()" />
+  <key id="keyDelaySub" key="x" oncommand="mp.delaySub()" />
+  <key id="keyAdvanceAo" key="9" oncommand="mp.advanceAudio()" />
+  <key id="keyDelayAo" key="0" oncommand="mp.delayAudio()" />
+  <key id="keyContrastU" key="1" oncommand="mp.increaseContrast()"/>
+  <key id="keyContrastD" key="2" oncommand="mp.decreaseContrast()"/>
+  <key id="keyBrightU" key="3" oncommand="mp.increaseBright()"/>
+  <key id="keyBrightD" key="4" oncommand="mp.decreaseBright()"/>
+  <key id="keyHueU" key="5" oncommand="mp.increaseHue()"/>
+  <key id="keyHueD" key="6" oncommand="mp.decreaseHue()"/>
+  <key id="keySaturationU" key="7" oncommand="mp.increaseSaturation()"/>
+  <key id="keySaturationD" key="8" oncommand="mp.decreaseSaturation()"/>
+  <key id="keySpeedUp" modifiers="control" key="+" oncommand="mp.speedUp()"/>
+  <key id="keySpeedDown" modifiers="control" key="-" oncommand="mp.speedDown()"/>
+  <key id="keySwitchOsd" key="o" oncommand="mp.switchOsd()"/>
+  <key id="keyShortcutMsg" key="m" oncommand=""/>
+  <key keycode="VK_ESCAPE" command="cmdFullScreen"/>
+  <key id="keyWindowTop" modifiers="shift" key="t" oncommand="setWindowTopByKey()"/>
+  <key id="keyPlayFile" keycode="VK_INSERT" command="cmdPlayFile"/>
+  <key id="keyPlayUrl" modifiers="control" key="o" command="cmdPlayUrl"/>
+  <key id="keyAddFolder" modifiers="shift" keycode="VK_INSERT" command="cmdAddFolder"/>
+  <key id="keyAddFolderAll" modifiers="control" keycode="VK_INSERT" command="cmdAddFolderAll"/>
+  <key id="keyRemoveItem" keycode="VK_DELETE" command="cmdRemoveItem"/>
+  <key id="keyExit" key="q" modifiers="control" oncommand = "closeWindow()"/>
+  <key id="keyRefresh" keycode="VK_F5" oncommand = "browserRefresh()"/>
+</keyset>
+
+<menubar id="mainMenuBar">
+	<!-- File -->
+	<menu id="open-menu" label="&menu.files;" accesskey="f">
+        <menupopup id="open-popup">
+            <menuitem label="&menu.openFile;" key="keyPlayFile" command="cmdPlayFile"/>
+            <menuitem label="&menu.openUrl;" key="keyPlayUrl" command="cmdPlayUrl"/>
+			<menuitem label="&listManager.load;" oncommand="loadPlayList()"/>
+            <menuseparator/>
+            <menuitem label="&menu.addFolder;" key="keyAddFolder" command="cmdAddFolder"/>
+            <menuitem label="&menu.addFolderSub;" key="keyAddFolderAll" command="cmdAddFolderAll"/>
+            <menuseparator/>
+            <menuitem label="&menu.openDisc;" command="cmdAddDvd"/>
+            <menuseparator/>
+            <menuitem label="&menu.exit;" key="keyExit" oncommand="window.close()"/>
+        </menupopup>
+	</menu>
+        <menu id="control-menu" label="&menu.controls;" accesskey="C">
+            <menupopup>
+                <menuitem accesskey="f" label="&menu.fullScreen;" key="keyFullScreen" command="cmdFullScreen"/>
+                <menuitem accesskey="s" label="&menu.screenshot;" key="keyScreenshot" command="cmd_screenshot"/>
+                <menuitem accesskey="t" id = "windowTop" label="&menu.windowTop;" key="keyWindowTop" type="checkbox" oncommand="setWindowTop()"/>
+                <menuseparator/>
+                <!--menu label="Web Navigation">
+                <menupopup id="webnav-popup">
+                    <menuitem label="Refresh" key="keyRefresh"/>
+		    <menuitem label="Go Back" key="" oncommand="webGoBack()"/>
+		    <menuitem label="Go Forward" key="" oncommand="webGoNext()"/>
+		</menupopup>
+		</menu>
+		
+		<menuseparator/-->
+                
+                <menu label="&menu.osdMsg;">
+                <menupopup id="osdMsg-popup">
+                    <menuitem label="&menu.switchOsd;" key="keySwitchOsd" oncommand="mp.switchOsd()"/>
+                    <!--<menuitem label="&menu.shortcutTips;" key="keyShortcutMsg" oncommand="displayShortcut()"/>-->
+                </menupopup>
+                </menu>
+                
+                <menu label="&menu.subtitle;">
+                <menupopup id="transform-popup">
+                    <menuitem label="&menu.switchSub;" key="keySwitchSub" oncommand="mp.switchSubtitle()"/>
+                    <menuitem label="&menu.upSub;" key="keyUpSub" oncommand="mp.subPosUp()"/>
+                    <menuitem label="&menu.downSub;" key="keyDownSub" oncommand="mp.subPosDown()"/>
+                    <menuitem label="&menu.enlargeSub;" key="keyEnlargeSub" oncommand="mp.increaseSubFont()"/>
+                    <menuitem label="&menu.reduceSub;" key="keyReduceSub" oncommand="mp.decreaseSubFont()"/>
+                    <menuitem label="&menu.delaySub;" key="keyDelaySub" oncommand="mp.delaySub()"/>
+                    <menuitem label="&menu.advanceSub;" key="keyAdvanceSub" oncommand="mp.advanceSub()"/>
+                    <menuitem label="&menu.refreshSub;" oncommand="resetSubSync()"/>
+                    <menuitem label="&menu.loadSubFont;" oncommand="loadSubFont()"/>
+                    <menuitem label="&menu.loadSubFile;" oncommand="loadSubFile()"/>
+                </menupopup>
+                </menu>
+                
+                <menu label="&menu.audioSet;">
+                <menupopup id="audioSet-popup">
+                    <menuitem label="&menu.switchAudio;" key="keySwitchAudio" command="switchAudio()"/>
+                    <menuitem label="&menu.delayAo;" key="keyDelayAo" oncommand="mp.delayAudio()"/>
+                    <menuitem label="&menu.advanceAo;" key="keyAdvanceAo" oncommand="mp.advanceAudio()"/>
+                    <menuitem label="&menu.refreshAo;" oncommand="resetAoSync()"/>
+                </menupopup>
+                </menu>
+                
+                <menu label="&menu.playSpeed;">
+                <menupopup id="playSpeed-popup">
+                    <menuitem label="&menu.speed1x;" oncommand="mp.setSpeed(1)"/>
+                    <menuitem label="&menu.speed2x;" oncommand="mp.setSpeed(2)"/>
+                    <menuitem label="&menu.speedUp;" key="keySpeedUp" oncommand="mp.speedUp()"/>
+                    <menuitem label="&menu.speedDown;" key="keySpeedDown" oncommand="mp.speedDown()"/>
+                </menupopup>
+                </menu>
+                
+                <menu label="&menu.transform;">
+                <menupopup id="transform-popup">
+                    <menuitem id="transRestore" type="radio" label="&menu.transRestore;" key="keyTransRestore" checked="true" oncommand="applyPlayerOptions()"/>
+                    <menuitem id="rotate90" type="radio" label="&menu.rotate90;" key="keyRot90" oncommand="applyPlayerOptions()"/>
+                    <menuitem id="rotate270" type="radio" label="&menu.rotate270;" key="keyRot270" oncommand="applyPlayerOptions()"/>
+                    <menuitem id="rotate90Flip" type="radio" label="&menu.rotate90Flip;" key="keyRot90Flip" oncommand="applyPlayerOptions()"/>
+                    <menuitem id="rotate270Flip" type="radio" label="&menu.rotate270Flip;" key="keyRot270Flip" oncommand="applyPlayerOptions()"/>
+                    <menuitem id="mirror" type="radio" label="&menu.mirror;" key="keyMirror" oncommand="applyPlayerOptions()"/>
+                    <menuitem id="flip" type="radio" label="&menu.flip;" key="keyFlip" oncommand="applyPlayerOptions()"/> 
+                </menupopup>
+                </menu>
+            </menupopup>
+        </menu>
+	<!-- Transcode -->
+	<menu id="transcode-menu" label="&menu.transcode;" > <!--disabled="true"-->
+	    <menupopup id="transcode-popup">
+		<menuitem label="&menu.transcode.start;" oncommand="encodeStart()"/>
+		<menuitem label="&menu.transcode.stop;" oncommand="encodeStop()"/>
+		<menuitem label="&menu.transcode.pause;" oncommand="encodePause()"/>
+		<menuitem label="&menu.transcode.setOutputFolder;" oncommand="encodeChooseOutputDir()"/>
+		<menuitem label="&menu.transcode.preview;" oncommand="preview()"/>
+		<menuitem label="&menu.transcode.previewDual;" oncommand="previewDual()"/>
+	    </menupopup>
+	</menu>
+	<!-- Options -->
+	<menu id="options-menu" label="&menu.options;" accesskey="O">
+        <menupopup id="options-popup">
+            <menu label="&menu.language;" accesskey="L">
+                <menupopup id="lang-popup">
+                    <menuitem type="radio" label="&menu.current;" persist="checked" checked="true"/>
+                    <menuseparator/>
+                    <menuitem id="en-US" type="radio" label="&menu.english;" persist="checked" oncommand="setLang('en-US')"/>
+                    <menuitem id="zh-CN" type="radio" label="&menu.zhCN;" persist="checked" oncommand="setLang('zh-CN')"/>
+                    <menuitem id="cs-CZ" type="radio" label="&menu.czech;" persist="checked" oncommand="setLang('cs-CZ')"/>
+                    <menuitem id="de-DE" type="radio" label="&menu.german;" persist="checked" oncommand="setLang('de-DE')"/>
+                    <menuitem id="sk-SK" type="radio" label="&menu.slovak;" persist="checked" oncommand="setLang('sk-SK')"/>
+                    <menuitem id="ja-JP" type="radio" label="&menu.japanese;" persist="checked" oncommand="setLang('ja-JP')"/>
+                </menupopup>
+            </menu>
+            <menu label="&menu.videoSize;" accesskey="O">
+                <menupopup id="zoom-popup">
+                    <menuitem type="radio" id="keepwindow" label="&menu.fitWindow;" persist="checked" checked="true" oncommand="zoomVideo()"/>
+                    <menuitem type="radio" id="keepvideo" label="&menu.fitVideo;" persist="checked" oncommand="zoomVideo()"/>
+                    <menuitem type="radio" id="keep25" label="25%" persist="checked" oncommand="zoomVideo()"/>
+                    <menuitem type="radio" id="keep50" label="50%" persist="checked" oncommand="zoomVideo()"/>
+                    <menuitem type="radio" id="keep100" label="100%" persist="checked" oncommand="zoomVideo()"/>
+                    <menuitem type="radio" id="keep150" label="150%" persist="checked" oncommand="zoomVideo()"/>
+                    <menuitem type="radio" id="keep200" label="200%" persist="checked" oncommand="zoomVideo()"/>
+                </menupopup>
+            </menu>
+            <menu label="&menu.setSkin;" accesskey="S" disabled="true">
+                <menupopup id="skin-popup"/>
+            </menu>
+            <menu label="&menu.tipsSetting;" accesskey="T" >
+                <menupopup id="tipSet-popup">
+                    <menuitem type="checkbox" id="tipScreenshot" label="&menu.tipScreenshot;" checked="true" persist="checked"/>
+                    <menuitem type="checkbox" id="tipSetLang" label="&menu.tipSetLang;" checked="true" persist="checked"/>
+                </menupopup>
+            </menu>
+            <menuseparator/>
+            <menuitem id="keepAspect" type="checkbox" persist="checked" label="&menu.keepAspect;" checked="true"/>
+            <menuitem id="menuDetached" persist="checked" label="&menu.detached;" type="checkbox"/>
+	    <menuseparator/>
+	    <menuitem label="&menu.extension.builder;" oncommand="browseNavigate('http://www.mcex.org/extbuilder')"/>
+            <menuseparator/>
+            <!--<menuitem id="menu-show-ml" type="checkbox" label="&menu.mediaLib;" oncommand="toggleMediaLib()" persist="checked"/>-->
+	    <menuitem label="&menu.downloader;" command="cmd_openDownloader"/>
+        </menupopup>
+	</menu>
+	<!-- Help -->
+	<menu id="help-menu" label="&menu.help;" accesskey="H">
+		<menupopup id="help-popup">
+		<menuitem label="&menu.visitWebsite;" accesskey="V" oncommand="mp.shellExecute('http://xulplayer.sourceforge.net');"/>
+		<menuitem label="&menu.visitCNWebsite;" accesskey="i" oncommand="mp.shellExecute('http://www.xulplayer.com');"/>
+		<menuitem label="&menu.about;" accesskey="A" 
+		oncommand="window.open('about.xul','About','chrome, titlebar, centerscreen, modal, resizable=no');"/>
+		</menupopup>
+	</menu>
+</menubar>
+
+</overlay>

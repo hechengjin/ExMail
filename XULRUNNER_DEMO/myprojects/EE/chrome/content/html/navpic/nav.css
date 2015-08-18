@@ -1,0 +1,91 @@
+html {
+    overflow: hidden;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #000;
+    width: 100%;
+    height: 100%;
+}
+#imageFlow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    background: #000;
+}
+
+#imageFlow .loading {
+    position: absolute;
+    cursor: pointer;
+    left: 46%;
+    top: 30%;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+#imageFlow .diapo {
+    position: absolute;
+    left: -1000px;
+    cursor: pointer;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+#imageFlow .link {
+    border: dotted #fff 1px;
+    margin-left: -1px;
+    margin-bottom: -1px;
+}
+#imageFlow .bank {
+    visibility: hidden;
+}
+#imageFlow .top {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background: #181818;
+}
+#imageFlow .text {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    bottom: 16%;
+    text-align: center;
+    color: #FFF;
+    font-family: verdana, arial, Helvetica, sans-serif;
+    z-index: 1000;
+}
+#imageFlow .title {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+#imageFlow .legend {
+    font-size: 0.8em;
+}
+#imageFlow .scrollbar {
+    position: absolute;
+    left: 10%;
+    bottom: 10%;
+    width: 80%;
+    height: 16px;
+    z-index: 1000;
+}
+#imageFlow .track {
+    position: absolute;
+    left: 1%;
+    width: 98%;
+    height: 16px;
+    opacity: 0.3;
+}
+#imageFlow .arrow-left {
+    position: absolute;
+}
+#imageFlow .arrow-right {
+    position: absolute;
+    right: 0px;
+}
+#imageFlow .bar {
+    position: absolute;
+    height: 16px;
+    left: 25px;
+}

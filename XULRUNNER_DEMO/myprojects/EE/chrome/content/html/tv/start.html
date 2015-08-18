@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+<!--
+.STYLE1 {
+color: #FFFFFF;
+font-size:48px;
+font-family:Verdana, Geneva, sans-serif;
+}
+.STYLE2 {
+color: #FFFFFF;
+font-size:16;
+font-family:Verdana, Geneva, sans-serif;
+}
+-->
+</style>
+<link href="nav.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="chrome://xulplayer/content/js/defines.js"></script>
+<script language="JavaScript" type="text/javascript" src="nav.js"></script>
+</head>
+
+<body bgcolor="#000000">
+    
+<table cellspacing="0" cellpadding="0" height="65%" width="100%"><tr><td valign="middle" align="center">
+<img src="chrome://xulplayer/skin/images/logo.png"/>
+<p class="title STYLE1">影音客媒体中心</p>
+</td>
+</tr></table>
+<div id="imageFlowQuene">
+    <div class="bank">
+        <a rel="img/video.png" title="视频" href="javascript:window.parent.setTVMode(TV_FULL, CONTENT_VIDEO)">您的电影和视屏</a>
+        <a rel="img/audio.png" title="音频" href="javascript:window.parent.setTVMode(TV_FULL, CONTENT_AUDIO)">您的歌曲</a>
+        <a rel="img/picture.png" title="图片" href="javascript:window.parent.setTVMode(TV_FULL, CONTENT_IMAGE)">您的图片、照片</a>
+        <a rel="img/device.png" title="设备" href="javascript:window.parent.setTVMode(TV_FULL)">外界设备</a>
+        <a rel="img/net.png" title="下载" href="javascript:window.parent.setTVMode(TV_FULL)">在线下载</a>
+    </div>
+    <div class="text">
+        <div class="title">加载</div>
+        <div class="legend">请等待</div>
+    </div>   
+</div>
+</body>
+</html>

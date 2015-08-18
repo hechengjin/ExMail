@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://EE/locale/main.dtd">
+<overlay id="playlist_overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <popupset>
+    <menupopup id="menuAddToPl">
+      <menuitem label="&playlist.add;" command="cmdAddFile" />
+      <menuitem label="&menu.addFolder;" command="cmdAddFolder" />
+      <menuitem label="&menu.addFolderSub;" command="cmdAddFolderAll" />
+    </menupopup>
+    <menupopup id="menuRemovePlItem">
+      <menuitem label="&playlist.remove;" command="cmdRemoveItem" />
+      <menuitem label="&playlist.clear;" oncommand="plMan.clearCurList()" />
+    </menupopup>
+    <menupopup id="menuPlMode">
+      <menuitem label="&playlist.shuffle;" id="plModeShuffle" type="checkbox" checked="false" persist="checked" oncommand="plMan.enableRandom()" />
+      <menuitem label="&playlist.repeat;" id="plModeRepeat" type="checkbox" checked="false" persist="checked" oncommand="plMan.enableRepeat()" />
+    </menupopup>
+    
+    <menupopup id="menuListManager">
+      <menuitem label="&listManager.add;" oncommand="newPlayList()" />
+      <menuitem label="&listManager.load;" oncommand="loadPlayList()" />
+      <menuitem label="&listManager.rename;" oncommand="renamePlayList()" />
+      <menuitem label="&playlist.remove;" oncommand="plMan.removeList()" />
+      <menuitem label="&playlist.clear;" oncommand="plMan.clear()" />
+    </menupopup>
+    
+    <menupopup id="menuPlayList">
+      <menuitem label="&playlist.add;" command="cmdAddFile" />
+      <menuitem label="&menu.addFolder;" command="cmdAddFolder" />
+      <menuitem label="&menu.addFolderSub;" command="cmdAddFolderAll" />
+      <menuseparator/>
+      <menuitem label="&playlist.remove;" command="cmdRemoveItem" />
+      <menuitem label="&playlist.clear;" oncommand="plMan.clearCurList()" />
+    </menupopup>
+  </popupset>
+ 
+  <hbox id="tabPlaylist" flex="1">
+    <vbox id="listManagerBox" flex="1" class="skin_plate">
+      <listbox id="listManager" flex="1" onclick="plMan.changeList()" context="menuListManager">
+        <listhead>
+          <listheader label="&listManager.title;" />
+        </listhead>
+        <listcols>
+          <listcol flex="1" />
+        </listcols>
+      </listbox>
+      <toolbar id="listManager_toolbar" class="skin_plate">
+        
+      </toolbar>
+    </vbox>
+    <splitter id="playList-split" state="open" collapse="before" resizebefore="closest" resizeafter="closest">
+      <grippy />
+    </splitter>
+    
+    <vbox id="playlistBox" flex="10" class="skin_plate">
+      <listbox id="playlist" flex="1" ondblclick="plMan.changeListSelIndex();startPlay()" context="menuPlayList">
+        <listhead>
+          <listheader id="title" label="&playlist.title;" />
+          <listheader id="filesize" label="&playlist.filesize;" />
+          <listheader id="filetype" label="&playlist.filetype;" />
+          <listheader id="filename" label="&playlist.filename;" />
+        </listhead>
+        <listcols>
+          <listcol flex="1" />
+          <listcol />
+          <listcol />
+          <listcol flex="2" />
+        </listcols>
+      </listbox>
+      <hbox>
+      <spacer flex="1"/>
+      <toolbar id="playlist_toolbar" class="skin_plate">
+        <spacer width="4"/>
+        <image id="btnAddToPl" class="playlist_button" menu="menuAddToPl"/>
+        <image id="btnRemovePlItem" class="playlist_button" menu="menuRemovePlItem"/>
+        <image id="btnPlMode" class="playlist_button" menu="menuPlMode"/>
+      </toolbar>
+      <spacer flex="1"/>
+      </hbox>
+    </vbox>
+  </hbox>
+</overlay>

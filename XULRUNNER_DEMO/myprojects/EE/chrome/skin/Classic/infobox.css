@@ -1,0 +1,90 @@
+/*----------------------------Process Style-----------------------------*/
+.progressbar
+{
+    background-repeat:repeat-x;
+    /*position: fixed;*/
+    top:  18%;
+    left: 0px;
+    width: 0px;
+    height: 30px;
+}
+
+.progressbar_font
+{
+    background:transparent;
+    position: fixed;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#procbar_background
+{
+    background-image: url("chrome://xulplayer/skin/images/progress_bg.png");
+    width: 200px;
+}
+
+#procbar_front
+{
+    background-image: url("chrome://xulplayer/skin/images/progress_front.png");
+}
+
+.label_text_center
+{
+    text-align: center;
+    font-size: 12px;
+}
+.label_text_left
+{
+    text-align:left;
+    font-size: 12px;
+}
+
+.label_head
+{
+    width:80px;
+}
+
+.label_mid
+{
+    width:40px;
+}
+
+.label_back
+{
+    width:100px;
+}
+.label_text_right
+{
+    text-align: right;
+    font-size: 12px;
+}
+
+.ib_button
+{
+    display: block;
+    width: 20px;
+    height: 25px;
+}
+
+#mainPanel{	
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  min-width: 0px;
+  min-height: 0px;
+  border-width: 0px;
+  font-size: 12px;
+  background-color: #E0E0E0;
+  font-family:Tahoma;
+  color: black;
+}
+
+#info_box {
+border-color: #800000;
+border-width: 0px;
+margin: 0px;
+padding: 0px;
+border: 0px;
+}

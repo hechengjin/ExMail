@@ -4,7 +4,7 @@
 <window title="mailtools"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-         onload="gmainDialog.onLoad()"
+         onload="gmainDialog.onLoad()" 
 		width="900px"
 		height="600px">
 <script type="application/x-javascript"   src="main.js" />

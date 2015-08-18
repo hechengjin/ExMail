@@ -1,0 +1,445 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+	
+toolbox {
+	border-width: 0px;
+}
+
+#tools {
+	-moz-appearance: none !important;
+	border-width: 0px;
+	height: 54px;
+	padding: 0;
+	margin: 0;
+}
+#tools toolbarbutton {
+	list-style-image: url(tools.png);
+	-moz-box-orient: vertical !important;
+	-moz-box-align: center !important;
+	border: 0;
+	margin-top: 3px;
+	margin-bottom: 2px;
+	text-align: center;
+	min-width: 50px;
+}
+
+#tools .toolbarbutton-icon {
+	margin: 0 !important;
+}
+
+#tools .toolbarbutton-text {
+	margin: 0;
+	padding: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+	text-align: center;
+}
+
+#tools spacer {
+	min-width: 5px;
+}
+#tools spacer.visible {
+	background: url(toolbarspacer.png) no-repeat 50% 11px;
+	min-width: 13px;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+#tooladd {
+	-moz-image-region: rect(0px,52px,26px,26px);
+	margin-left: 1ex;
+}
+#tooladd:hover, #tooladd:active {
+	-moz-image-region: rect(0px,26px,26px,0px);
+}
+#tooladd[disabled="true"] {
+	-moz-image-region: rect(0px,78px,26px,52px);    
+}
+
+
+#toolcancel {
+	-moz-image-region: rect(26px,52px,52px,26px);
+}
+#toolcancel:hover, #toolcancel:active {
+	-moz-image-region: rect(26px,26px,52px,0px);
+}
+#toolcancel[disabled="true"] {
+	-moz-image-region: rect(26px,78px,52px,52px);    
+}
+
+#toolplay {
+	-moz-image-region: rect(52px,52px,78px,26px);
+}
+#toolplay:hover, #toolplay:active {
+	-moz-image-region: rect(52px,26px,78px,0px);
+}
+#toolplay[disabled="true"] {
+	-moz-image-region: rect(52px,78px,78px,52px);    
+}
+
+
+#toolpause {
+	-moz-image-region: rect(78px,52px,104px,26px);
+}
+#toolpause:hover, #toolpause:active {
+	-moz-image-region: rect(78px,26px,104px,0px);
+}
+#toolpause[disabled="true"] {
+	-moz-image-region: rect(78px,78px,104px,52px);    
+}
+
+#toolmovetop {
+	-moz-image-region: rect(104px,52px,130px,26px);
+}
+#toolmovetop:hover, #toolmovetop:active {
+	-moz-image-region: rect(104px,26px,130px,0px);
+}
+#toolmovetop[disabled="true"] {
+	-moz-image-region: rect(104px,78px,130px,52px);    
+}
+
+#toolmoveup {
+	-moz-image-region: rect(130px,52px,156px,26px);
+}
+#toolmoveup:hover, #toolmoveup:active {
+	-moz-image-region: rect(130px,26px,156px,0px);
+}
+#toolmoveup[disabled="true"] {
+	-moz-image-region: rect(130px,78px,156px,52px);    
+}
+
+#toolmovedown {
+	-moz-image-region: rect(156px,52px,182px,26px);
+}
+#toolmovedown:hover, #toolmovedown:active {
+	-moz-image-region: rect(156px,26px,182px,0px);
+}
+#toolmovedown[disabled="true"] {
+	-moz-image-region: rect(156px,78px,182px,52px);    
+}
+
+#toolmovebottom {
+	-moz-image-region: rect(182px,52px,208px,26px);
+}
+#toolmovebottom:hover, #toolmovebottom:active {
+	-moz-image-region: rect(182px,26px,208px,0px);
+}
+#toolmovebottom[disabled="true"] {
+	-moz-image-region: rect(182px,78px,208px,52px);    
+}
+
+#tooltip{
+	width: 500px;
+	padding: 5pt;
+}
+#infoIcon {
+	margin: 1.6ex;
+	width: 32px !important;
+	height: 32px !important;
+	-moz-box-flex: 0 !important;
+}
+#tooltip grid {
+	-moz-box-flex: 1;
+}
+#infoGrid label {
+	margin-bottom: 0;
+	font-weight: bold;
+}
+#infoGrid label[crop] {
+	font-weight: normal;
+	max-width: 300px;	
+}
+#canvasGrid label[id] {
+	font-weight: bold;
+}
+#infoPercent {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-weight: bold;
+	background: transparent !important;
+}
+stack > #infoPercent {
+	padding-top: 7px;
+	height: 40px;
+}
+#chunkAlt {
+	height: 32px;
+	margin-top: 1ex;
+	margin-bottom: 1ex;
+}	
+#chunkAlt > #infoPercent {
+	margin-top: auto;
+	margin-bottom: auto;
+	padding-top: 6px;
+	min-width: 4.2ex;
+}
+#infoDest {
+	font-weight: bold !important;
+	font-size: 105%;
+}
+
+#downloads[offline]  {
+	color: gray !important;
+}
+
+#loadingbox {
+  opacity: 0.6;
+  background-color: -moz-Field;
+}
+
+#loading {
+  -moz-appearance: none;
+  -moz-user-focus: ignore;
+  border: none !important;
+  min-width: 0;
+  background-color: transparent;
+  color: -moz-fieldText;
+
+	font-size: large;
+	font-weight: bold;
+}
+
+#loading label {
+	padding-left: 2ex;
+}
+
+treechildren::-moz-tree-progressmeter {
+	margin-left: 0;
+}
+treechildren::-moz-tree-progressmeter(completed) {
+  color: #008F00 !important;
+}
+
+treechildren::-moz-tree-progressmeter(paused) {
+  color: #FFCC00 !important;
+}
+treechildren::-moz-tree-progressmeter(paused, pausedAutoretrying) {
+	color: #849FFF !important;
+}
+treechildren::-moz-tree-progressmeter(canceled) {
+  color: #B12801 !important;
+}
+
+treechildren::-moz-tree-progressmeter(queued) {
+  color: #BFDEFF !important;
+}
+
+treechildren::-moz-tree-progressmeter(inprogress) {
+  color: #AAE061 !important;
+}
+
+treechildren::-moz-tree-image(iconic) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(16px,96px,32px,80px);	
+}
+treechildren::-moz-tree-image(iconic,progress) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(16px,96px,32px,80px);	
+	padding-right: 0.2ex !important;
+}
+treechildren::-moz-tree-image(iconic,canceled) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(0px,112px,16px,96px);
+}
+treechildren::-moz-tree-image(iconic,paused) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(0px,96px,16px,80px);
+}
+treechildren::-moz-tree-image(iconic,paused,pausedAutoretrying) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(32px,128px,48px,112px);
+}
+treechildren::-moz-tree-image(iconic,inprogress) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(0px,80px,16px,64px);
+}
+treechildren::-moz-tree-image(iconic,completed) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(32px,32px,48px,16px);
+}
+treechildren::-moz-tree-image(iconic,completed,verified) {
+	list-style-image: url(menu.png);
+	-moz-image-region: rect(32px,144px,48px,128px);
+}
+
+
+
+textbox.plain {
+	background-color: transparent !important;
+}
+
+/* :: menu :: */
+
+/* menu elements */
+#popup .menu-iconic-icon {
+	display: list-item;
+	list-style-image: url(menu.png);
+}
+
+#misc .menu-iconic-icon {
+	-moz-image-region: rect(32px,112px,48px,96px);
+}
+#misc[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(48px,112px,64px,96px);
+}
+
+/* menuitem element (row 1) */
+#info .menu-iconic-icon {
+	-moz-image-region: rect(0px,16px,16px,0px);
+}
+#info[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,16px,32px,0px);
+}
+
+#launch .menu-iconic-icon {
+	-moz-image-region: rect(0px,32px,16px,16px);
+}
+#launch[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,32px,32px,16px);
+}
+
+#delete .menu-iconic-icon {
+	-moz-image-region: rect(0px,48px,16px,32px);
+}
+#delete[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,48px,32px,32px);
+}
+
+#folder .menu-iconic-icon {
+	-moz-image-region: rect(0px,64px,16px,48px);
+}
+#folder[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,64px,32px,48px);
+}
+
+#play .menu-iconic-icon {
+	-moz-image-region: rect(0px,80px,16px,64px);
+}
+#play[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,80px,32px,64px);
+}
+
+#pause .menu-iconic-icon {
+	-moz-image-region: rect(0px,96px,16px,80px);
+}
+#pause[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,96px,32px,80px);
+}
+
+#cancel .menu-iconic-icon {
+	-moz-image-region: rect(0px,112px,16px,96px);
+}
+#cancel[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,112px,32px,96px);
+}
+
+#import .menu-iconic-icon {
+	-moz-image-region: rect(0px,128px,16px,112px);
+}
+#import[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,128px,32px,112px);
+}
+
+#export .menu-iconic-icon {
+	-moz-image-region: rect(0px,144px,16px,128px);
+}
+#export[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,144px,32px,128px);
+}
+
+#force .menu-iconic-icon {
+	-moz-image-region: rect(0px,160px,16px,144px);
+}
+#force[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(16px,160px,32px,144px);
+}
+
+/* menuitem element (row 2) */
+#remove .menu-iconic-icon {
+	-moz-image-region: rect(32px,16px,48px,0px);
+}
+#remove[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(48px,16px,64px,0px);
+}
+
+#removeCompleted .menu-iconic-icon {
+	-moz-image-region: rect(32px,32px,48px,16px);
+}
+#removeCompleted[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(48px,32px,64px,16px);
+}
+
+#removegone .menu-iconic-icon {
+	-moz-image-region: rect(32px,48px,48px,32px);
+}
+#removegone[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(48px,48px,64px,32px);
+}
+
+/*
+#doc .menu-iconic-icon {
+	-moz-image-region: rect(32px,64px,48px,48px);
+}
+#doc[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(48px,64px,64px,48px);
+}*/
+
+#addchunk .menu-iconic-icon {
+	-moz-image-region: rect(32px,80px,48px,64px);
+}
+#addchunk[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(48px,80px,64px,64px);
+}
+
+#removechunk .menu-iconic-icon {
+	-moz-image-region: rect(32px,96px,48px,80px);
+}
+#removechunk[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(48px,96px,64px,80px);
+}
+
+/* menuitem element (row 3) */
+#movetop .menu-iconic-icon {
+	-moz-image-region: rect(64px,16px,80px,0px);
+}
+#movetop[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(80px,16px,96px,0px);
+}
+
+#moveup .menu-iconic-icon {
+	-moz-image-region: rect(64px,32px,80px,16px);
+}
+#moveup[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(80px,32px,96px,16px);
+}
+
+#movedown .menu-iconic-icon {
+	-moz-image-region: rect(64px,48px,80px,32px);
+}
+#movedown[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(80px,48px,96px,32px);
+}
+
+#movebottom .menu-iconic-icon {
+	-moz-image-region: rect(64px,64px,80px,48px);
+}
+#movebottom[disabled="true"] .menu-iconic-icon {
+	-moz-image-region: rect(80px,64px,96px,48px);
+}
+
+/* menuitem common */
+#selectall .menu-iconic-icon {
+	list-style-image: url(selectall.png);
+	-moz-image-region: rect(0px,16px,16px,0px);
+}
+#selectinv .menu-iconic-icon {
+	list-style-image: url(selectinv.png);
+	-moz-image-region: rect(0px,16px,16px,0px);
+}
+#prefs .menu-iconic-icon {
+	list-style-image: url(prefs.png);
+	-moz-image-region: rect(0px,16px,16px,0px);
+}

@@ -1,0 +1,19 @@
+#about{
+  /*-moz-background-clip: padding;*/
+}
+#mainPanel{	
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  min-width: 0px;
+  min-height: 0px;
+  border-width: 0px;
+  font-size: 12px;
+  background-color:black;
+  font-family:Tahoma;
+  color:white;
+}
+#playerName {
+font-size:48px;
+font-family:Impact;
+}

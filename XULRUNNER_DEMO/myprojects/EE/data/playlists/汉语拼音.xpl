@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" ?><queue> <item><node key="overall.file" value="E:\github\Firemail\ExMail\XULRUNNER_DEMO\myprojects\EE\Resource\汉语拼音\ai.swf" sysflag="0"/><node key="tags.title" value="ai" sysflag="0"/><node key="overall.size" value="302.7 KB" sysflag="0"/><node key="overall.type" value="SWF" sysflag="0"/></item></queue>

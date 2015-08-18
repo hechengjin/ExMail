@@ -1,0 +1,66 @@
+#tv_tool_bars
+{
+  min-height:0px;
+  height:0px;
+  overflow:hidden;
+}
+
+#tv_tool_play_info
+{
+  background-color: rgb(0,0,0);
+}
+
+#tv_tool_converter_info
+{
+  background-color: rgb(0,0,0);
+}
+
+#tv_cov_progress
+{
+  height: 30px;
+}
+
+#tv_cov_title
+{
+  font-size: 30px;
+}
+
+.tv_tool_font
+{
+    font-size: large;
+    color: rgb(200,200,250);
+}
+
+.pl_info_play
+{
+  background-image: url(decktool/play.png);
+  width: 128px;
+  height:128px;
+  background-repeat: no-repeat;
+}
+
+#pl_info_progress_front
+{
+  position:absolute;
+  background-image: url(decktool/pro_front.png);
+  /* background-repeat: repeat-x;
+ background-color: #00ff00;*/
+  width:0px;
+  height:16px;
+}
+
+#pl_info_progress_bg
+{
+  background-image: url(decktool/pro_sb.png);
+  /*background-repeat:repeat-x;*/
+  width:600px;
+  height:16px;
+}
+
+#pl_info_progress_btn
+{
+  background-image: url(decktool/pro_btn.png);
+  background-repeat: no-repeat;
+  width:40px;
+  height:40px;
+}

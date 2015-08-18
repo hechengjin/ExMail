@@ -1,0 +1,89 @@
+
+.toolbutton-browser {
+  min-height: 24px;
+  max-height:30px;
+  list-style-image: url("chrome://xulplayer/skin/images/browser-toolbar.png");
+  margin-right: 8px;
+}
+
+#browser_toolbar {
+  min-height: 24px;
+  max-height:30px;
+}
+
+/* back button */
+
+#btnBack {
+  -moz-image-region: rect(0px 24px 24px 0px); 
+}
+#btnBack:not([disabled="true"]):hover,
+#btnBack[buttonover="true"] {
+  -moz-image-region: rect(24px 24px 48px 0px);
+}
+#btnBack[disabled="true"] {
+  -moz-image-region: rect(48px 24px 72px 0px);
+}
+#btnBack:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(96px 24px 120px 0px);
+}
+
+/* forward button */
+
+#btnPrev {
+  -moz-image-region: rect(0px 48px 24px 24px);
+}
+#btnPrev:not([disabled="true"]):hover,
+#btnPrev[buttonover="true"] {
+  -moz-image-region: rect(24px 48px 48px 24px);
+}
+#btnPrev[disabled="true"] {
+  -moz-image-region: rect(48px 48px 72px 24px);
+}
+#btnPrev:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(96px 48px 120px 24px);
+}
+
+/* stop button */
+
+#btnStop {
+  -moz-image-region: rect(0px 72px 24px 48px);
+}
+#btnStop:not([disabled="true"]):hover {
+  -moz-image-region: rect(24px 72px 48px 48px);
+}
+#btnStop[disabled="true"] {
+  -moz-image-region: rect(48px 72px 72px 48px);
+}
+#btnStop:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(96px 72px 120px 48px);
+}
+
+/* reload button */
+
+#btnFresh {
+  -moz-image-region: rect(0px 96px 24px 72px);
+}
+#btnFresh:not([disabled="true"]):hover {
+  -moz-image-region: rect(24px 96px 48px 72px);
+}
+#btnFresh[disabled="true"] {
+  -moz-image-region: rect(48px 96px 72px 72px);
+}
+#btnFresh:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(96px 96px 120px 72px);
+}
+
+/* home button */
+
+#btnHome {
+  -moz-image-region: rect(0px 120px 24px 96px);
+}
+#btnHome:not([disabled="true"]):hover {
+  -moz-image-region: rect(24px 120px 48px 96px);
+}
+#btnHome[disabled="true"] {
+  -moz-image-region: rect(48px 120px 72px 96px);
+}
+#btnHome:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(96px 120px 120px 96px);
+}

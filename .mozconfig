@@ -1,4 +1,4 @@
-mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj_Firemail_rel
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj_Firemail
 ac_add_options --enable-application=mail
 ac_add_options --enable-calendar
 ac_add_options --with-l10n-base=$topsrcdir/mail/locales
@@ -6,4 +6,3 @@ ac_add_options --enable-ui-locale=zh-CN
 ac_add_options --enable-official-branding
 ac_add_options --disable-tests
 ac_add_options --disable-verify-mar
-ac_add_options --enable-jemalloc

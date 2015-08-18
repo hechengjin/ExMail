@@ -1,0 +1,522 @@
+/*----------------------------Global Style-----------------------------*/
+
+
+.skin_plate{
+	-moz-appearance: none; margin: 0px 0px 0px 0px !important; border: 0px;
+    background:none;
+	/*padding: 0px;*/
+}
+
+.mainwindow{
+	border-color: #808080;
+	background-color:#ECECEC;
+	font-family:Tahoma;
+	font-size:12px;
+}
+
+.spacer {
+width: 10px;
+height: 10px;
+}
+resizer {
+background-color:transparent;
+border-color:black;
+}
+
+caption {
+background-color:transparent;
+}
+
+/*----------------------------Button Style-----------------------------*/
+.button-control{
+max-width:36px;
+max-height:36px;
+width:36px;
+height:36px;
+margin-left:2px;
+margin-right:2px;
+-moz-appearance: none;
+}
+
+#add_dvd {
+	list-style-image:url("images/add_dvd.png");
+}
+#add_vcd {
+	list-style-image:url("images/add_vcd.png");
+}
+#add_svcd {
+	list-style-image:url("images/add_svcd.png");
+}
+#add_cd {
+	list-style-image:url("images/add_cd.png");
+}
+#encode_start {
+	list-style-image:url("images/encode_start.png");
+}
+#encode_start[command="cmdEncodeStop"] {
+	list-style-image:url("images/encode_stop.png");
+}
+#encode_pause {
+	list-style-image:url("images/encode_pause.png");
+}
+#encode_output_dir {
+	list-style-image:url("images/encode_output_folder.png");
+}
+
+#encode_preview {
+	list-style-image:url("images/preview.png");
+	-moz-image-region: rect(22px 43px 44px 0px);
+}
+#encode_preview:not([disabled="true"]){
+	-moz-image-region: rect(0px 43px 22px 0px); 
+}
+#encode_preview [disabled="true"]{
+	-moz-image-region: rect(0px 43px 22px 0px); 
+}
+
+#encode_preview_dual {
+	list-style-image:url("images/preview-dual.png");
+	-moz-image-region: rect(22px 43px 44px 0px);
+}
+#encode_preview_dual:not([disabled="true"]){
+	-moz-image-region: rect(0px 43px 22px 0px); 
+}
+#encode_preview_dual [disabled="true"]{
+	-moz-image-region: rect(0px 43px 22px 0px); 
+}
+
+#encode_transmit {
+	list-style-image:url("images/encode_transmit.png");
+}
+#remove {
+	list-style-image:url("images/remove.png");
+}
+#start {
+	list-style-image:url("images/start.png");
+}
+
+/*play control buttons*/
+#play_icon {
+  list-style-image:url("images/play_pause_btn.png");
+  -moz-image-region: rect(0px 32px 32px 0px);
+  cursor: pointer;
+}
+
+/* button play */
+#play_icon:not([disabled="true"]):hover,
+#play_icon[buttonover="true"] {
+  -moz-image-region: rect(0px 64px 32px 32px);
+}
+#play_icon:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(0px 96px 32px 64px);
+}
+#play_icon[disabled="true"] {
+  -moz-image-region: rect(0px 128px 32px 96px);
+}
+
+#play_icon[command="cmdPause"]{
+	-moz-image-region: rect(32px 32px 64px 0px);
+}
+#play_icon[command="cmdPause"]:not([disabled="true"]):hover,
+#play_icon[command="cmdPause"][buttonover="true"] {
+  -moz-image-region: rect(32px 64px 64px 32px);
+}
+#play_icon[command="cmdPause"]:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(32px 96px 64px 64px);
+}
+#play_icon[disabled="true"][command="cmdPause"] {
+  -moz-image-region: rect(32px 128px 64px 96px);
+}
+
+#previous_icon,#next_icon,#stop_icon,#add_file,#btn_screenshot,#btn-fs,#btn_imgshots, #dualMode {
+	list-style-image:url("images/prev_next_stop_btn.png");
+	cursor: pointer;
+}
+
+/* button previous */
+#previous_icon {
+  -moz-image-region: rect(0px 24px 24px 0px); 
+}
+#previous_icon:not([disabled="true"]):hover,
+#previous_icon[buttonover="true"] {
+  -moz-image-region: rect(0px 48px 24px 24px);
+}
+#previous_icon:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(0px 72px 24px 48px);
+}
+#previous_icon[disabled="true"] {
+  -moz-image-region: rect(0px 96px 24px 72px);
+}
+
+/* button next */
+#next_icon {
+  -moz-image-region: rect(24px 24px 48px 0px); 
+}
+#next_icon:not([disabled="true"]):hover,
+#next_icon[buttonover="true"] {
+  -moz-image-region: rect(24px 48px 48px 24px);
+}
+#next_icon:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(24px 72px 48px 48px);
+}
+#next_icon[disabled="true"] {
+  -moz-image-region: rect(24px 96px 48px 72px);
+}
+
+/* button stop */
+#stop_icon {
+  -moz-image-region: rect(48px 24px 72px 0px); 
+}
+#stop_icon:not([disabled="true"]):hover,
+#stop_icon[buttonover="true"] {
+  -moz-image-region: rect(48px 48px 72px 24px);
+}
+#stop_icon:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(48px 72px 72px 48px);
+}
+#stop_icon[disabled="true"] {
+  -moz-image-region: rect(48px 96px 72px 72px);
+}
+
+/* button add */
+#add_file {
+  -moz-image-region: rect(72px 24px 96px 0px); 
+}
+#add_file:not([disabled="true"]):hover,
+#add_file[buttonover="true"] {
+  -moz-image-region: rect(72px 48px 96px 24px);
+}
+#add_file:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(72px 72px 96px 48px);
+}
+#add_file[disabled="true"] {
+  -moz-image-region: rect(72px 96px 96px 72px);
+}
+
+/* button full screen */
+#btn-fs {
+  -moz-image-region: rect(96px 24px 120px 0px); 
+}
+#btn-fs:not([disabled="true"]):hover,
+#btn-fs[buttonover="true"] {
+  -moz-image-region: rect(96px 48px 120px 24px);
+}
+#btn-fs:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(96px 72px 120px 48px);
+}
+#btn-fs[disabled="true"] {
+  -moz-image-region: rect(96px 96px 120px 72px);
+}
+
+/* button screenshot */
+#btn_screenshot {
+  -moz-image-region: rect(120px 24px 144px 0px); 
+}
+#btn_screenshot:not([disabled="true"]):hover,
+#btn_screenshot[buttonover="true"] {
+  -moz-image-region: rect(120px 48px 144px 24px);
+}
+#btn_screenshot:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(120px 72px 144px 48px);
+}
+#btn_screenshot[disabled="true"] {
+  -moz-image-region: rect(120px 96px 144px 72px);
+}
+
+/* button make thumbnail */
+#btn_imgshots {
+  -moz-image-region: rect(144px 24px 168px 0px); 
+}
+#btn_imgshots:not([disabled="true"]):hover,
+#btn_imgshots[buttonover="true"] {
+  -moz-image-region: rect(144px 48px 168px 24px);
+}
+#btn_imgshots:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(144px 72px 168px 48px);
+}
+#btn_imgshots[disabled="true"] {
+  -moz-image-region: rect(144px 96px 168px 72px);
+}
+
+/* button toggle dual video */
+#dualMode {
+  -moz-image-region: rect(168px 24px 192px 0px); 
+}
+#dualMode:not([disabled="true"]):hover,
+#dualMode[buttonover="true"] {
+  -moz-image-region: rect(168px 48px 192px 24px);
+}
+#dualMode:not([disabled="true"]):hover:active {
+  -moz-image-region: rect(168px 72px 192px 48px);
+}
+#dualMode[disabled="true"] {
+  -moz-image-region: rect(168px 96px 192px 72px);
+}
+
+#vol_icon{list-style-image:url("images/volume.png");}
+
+/*----------------------------Tittle bar Style-----------------------------*/
+#resizer-topleft {
+    border:0px; cursor: nw-resize;
+    background-image: url("images/tl_resizer_bg.png");
+    background-repeat: no-repeat;
+}
+
+#windowIcon {
+    list-style-image:url("images/windowIcon.png");
+    margin-left: 4px; width:18px; height:18px;
+}
+#titlebar {
+	    -moz-border-radius-topleft:5px;
+		-moz-border-radius-topright:5px;
+        background: url("images/titlebar_strech_bg.png") repeat-x 0px 0px;
+        border: 0px;
+        height: 24px;
+		min-height: 24px;
+		max-height: 24px;
+}
+
+#titlebar-buttons-view {
+    list-style-image:url("images/view_mode.png");
+}
+#titlebar-buttons-view:hover {
+    list-style-image:url("images/view_mode_active.png");
+}
+#titlebar-buttons-minimize {
+    list-style-image:url("images/min.png");
+}
+
+#titlebar-buttons-minimize:hover {   
+    list-style-image:url("images/min_active.png");
+}
+
+#titlebar-buttons-maximize{
+    list-style-image:url("images/max.png");
+}
+#titlebar-buttons-maximize:hover {   
+        list-style-image:url("images/max_active.png");
+}
+#titlebar-buttons-close { 
+        list-style-image:url("images/close.png");
+}
+#titlebar-buttons-close:hover {    
+        list-style-image:url("images/close_active.png");
+}
+
+/*----------------------------Menu Style-----------------------------*/
+#open-menu, #control-menu, #options-menu, #help-menu,#transcode-menu,#mainMenuBar{
+    background:none;
+    -moz-appearance: none; color:#333;margin: 0px !important;
+    border:0px;
+    font-size: 12px !important;
+}
+#open-menu:hover, #control-menu:hover, #options-menu:hover,#help-menu:hover,#transcode-menu:hover{
+    background-image:url("images/menu_active_bg.png");
+}
+
+menupopup{
+    border-width: 1px;
+    padding: 0px;
+}
+
+/*-----------------------Toolbar style---------------------------------*/
+/*#navToolbar {
+	min-height:30px;
+	max-height:30px;
+}*/
+
+#encode_progress {
+	max-height: 30px;
+	height: 20px;
+}
+/*-----------------------Body Style (Including lyric, video window)-------------------------*/
+
+listitem[selected="true"] {
+background-color: #316AC5;
+color: white;
+}
+
+.lyric listitem{
+background-color: #000000;
+color: green;
+text-align: center;
+overflow: visible;
+}
+#lyric {
+ background-color: #000000;
+}
+#textList {
+	overflow: -moz-scrollbars-none;
+	-moz-user-focus: ignore;
+	font-size:16px;
+}
+.lyric listitem[selected = "true"] {
+color: #00FF00;
+overflow: -moz-scrollbars-none;
+}
+
+#media-lib-list {
+font-size:12px;
+}
+
+#playlist {
+font-size:12px;
+}
+
+/*-----------------------Tabbed Panel(Options, Effects, File list, etc)-------------------------*/
+#panelSplit {min-height: 1px;}
+#mainTab {
+    background-color:#E0E0E0;
+}
+
+#mainTab tab {
+	margin-top:2px;
+	height:24px;
+}
+
+#frame {		/*browser tab*/
+	overflow: hidden;
+}
+
+#displayBox {
+	background-color:#E0E0E0;
+	min-height:150px;
+	max-height:1200px;
+}
+
+
+.playlist_button{			/*playlist button*/
+	list-style-image: url("images/playlist-toolbar.png");
+}
+
+#btnAddToPl { -moz-image-region: rect(42px 30px 63px 0px); }
+#btnAddToPl:hover{ -moz-image-region: rect(0px 30px 21px 0px); }
+
+#btnRemovePlItem { -moz-image-region: rect(42px 60px 63px 30px); }
+#btnRemovePlItem:hover{ -moz-image-region: rect(0px 60px 21px 30px); }
+
+#btnPlMode { -moz-image-region: rect(42px 90px 63px 60px); }
+#btnPlMode:hover{ -moz-image-region: rect(0px 90px 21px 60px); }
+
+/*-----------------------Bottom Bar(Including Play-toolbar, status bar)-------------------------*/
+
+#bottomBar{
+	background-image:url("images/play_toolbar_strech_bg.png");
+	background-repeat: repeat-x;
+}
+#timebar, #volscale, #viewSlider {		/*scale style*/
+	height: 20px;
+	padding: 0px;
+}
+
+#statusBar{
+    background: none;
+	font-family : cursive;
+    font-size: 11px;
+	color: #333333;
+}
+
+
+#resizer-bottomright {
+    border:1px; cursor: se-resize;
+    /*background-image: url("images/br_resizer_bg.png");*/
+    background-repeat:no-repeat;
+}
+
+/*-------------------------------- Make round corner -----------------------------*/
+.top_left_round {-moz-border-radius-topleft:5px;}
+.top_right_round {-moz-border-radius-topright:5px;}
+.bottom_left_round {-moz-border-radius-bottomleft:5px;}
+.bottom_right_round {-moz-border-radius-bottomright:5px;}
+.round_all {-moz-border-radius:5px;}
+
+/*----------------------------------- Misc -------------------------------------*/
+#outputicon {
+    list-style-image:url("images/output.png");
+}
+
+#mediaInfoText {
+    font-family:monospace;
+}
+
+#mcexBox {
+}
+
+#mainTab .tabpanel {
+    min-height: 400px;
+}
+/*----------------------------------- Media Library -----------------------------*/
+/* Tree element*/
+treechildren::-moz-tree-row(hover) {
+    border: 1px solid #11AA11;
+}
+#mediaList > treechildren::-moz-tree-row {
+    height: 98px;
+}
+
+#mediaManager > treechildren::-moz-tree-row {
+    height: 80px;
+}
+
+#mediaList> treechildren,
+#mediaManager > treechildren{
+   background-color: #000;
+}
+
+.tree_colum {
+    color: #f0f0ff;
+    background-image:url("deckTool/sb-cool.png");
+    background-repeat : repeat-x;
+    font-family: fantasy;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+#mediaList> treechildren::-moz-tree-row(even) ,
+#mediaManager > treechildren::-moz-tree-row(even) {
+    background-color: #000 !important;
+    border: none;
+}
+
+#mediaList> treechildren::-moz-tree-cell-text(selected),
+#mediaManager > treechildren::-moz-tree-cell-text(selected)  {
+    color: #EECC22;
+}
+
+#mediaList> treechildren::-moz-tree-row(selected) ,
+#mediaManager > treechildren::-moz-tree-row(selected) {
+    background-color: #555 !important;
+    border: none;
+}
+
+#mediaList, #mediaManager {
+    color:#08EEEE;
+    font-size: 22px;
+	overflow: hidden;
+}
+
+/*----------------------------------- Converter Options -----------------------------*/
+.OptionsTabs
+{
+    background-color: #e0e0e0;
+}
+
+.pic_menum_label
+{
+    min-width:100px;
+}
+
+.pic_menum_list
+{
+    min-width:135px;
+}
+
+.pic_group_box
+{
+    min-width:270px;
+}
+
+.time_radio_label
+{
+    min-width:80px;
+}

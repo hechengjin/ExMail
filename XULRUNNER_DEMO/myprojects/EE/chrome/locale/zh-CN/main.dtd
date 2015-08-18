@@ -1,0 +1,332 @@
+<!ENTITY EE.title   "启蒙教育">
+<!ENTITY player.playlist   "列表">
+<!ENTITY player.mediainfo "媒体信息">
+<!ENTITY player.properties "属性">
+<!ENTITY player.options   "选项">
+<!ENTITY player.effects "效果">
+<!ENTITY menu.convertOptions "高级转码参数设置">
+<!ENTITY playlist.add "添加文件">
+<!ENTITY playlist.remove "移除">
+<!ENTITY playlist.clear "清空">
+<!ENTITY menu.addFolder "添加文件夹">
+<!ENTITY menu.addFolderSub "添加文件夹和子文件夹">
+<!ENTITY playlist.shuffle "随机">
+<!ENTITY playlist.repeat "重复">
+<!ENTITY listManager.add "新建">
+<!ENTITY listManager.rename "重命名">
+<!ENTITY listManager.title "列表管理">
+<!ENTITY listManager.load "载入播放列表...">
+<!ENTITY playlist.filesize "文件大小">
+<!ENTITY playlist.filetype "文件类型">
+<!ENTITY playlist.filename "文件路径">
+<!ENTITY playlist.title "标题">
+
+<!ENTITY player.title   "影音客播放器">
+<!ENTITY player.version   "版本">
+<!ENTITY player.copyright "影音客播放器是一个根据MPL协议发行的基于XUL的桌面媒体播放器。">
+<!ENTITY player.btOK   "是">
+<!ENTITY player.btNO   "否">
+
+<!ENTITY player.btSTART   "开始">
+
+<!ENTITY player.listTrack   "轨道">
+<!ENTITY player.listChapter   "章节">
+<!ENTITY player.listAudioChannel   "声道">
+<!ENTITY player.listSubtitle   "字幕">
+
+<!ENTITY player.stereo   "双声道">
+<!ENTITY player.mono   "单声道">
+<!ENTITY player.leftChannel   "左声道">
+<!ENTITY player.rightChannel   "右声道">
+
+<!ENTITY player.tabDevices   "设备">
+<!ENTITY player.tabAdvanced   "高级">
+<!ENTITY player.tabOutput   "输出">
+<!ENTITY player.tabEffects   "效果">
+<!ENTITY player.tabSplit   "分割">
+
+<!ENTITY player.sendMPCommand   "向MPlayer发送命令">
+<!ENTITY player.getResult   "读取结果">
+<!ENTITY player.videoOut   "视频输出">
+<!ENTITY player.audioOut   "音频输出">
+<!ENTITY player.outputChannels   "输出声道">
+<!ENTITY player.noAccel   "禁用加速">
+<!ENTITY player.options   "选项">
+<!ENTITY player.default   "默认">
+<!ENTITY player.none   "无">
+<!ENTITY player.extraCmdLine   "附加命令行参数">
+<!ENTITY player.layout "布局">
+<!ENTITY player.fullView "默认">
+<!ENTITY player.compactView "紧凑">
+<!ENTITY player.simpleView "精简">
+<!ENTITY player.tvView "电视">
+<!ENTITY player.mediaCenterView "媒体中心">
+<!ENTITY player.deviceView "转码">
+<!ENTITY player.priority "进程优先级">
+<!ENTITY player.idle "空闲">
+<!ENTITY player.belowNormal "较低">
+<!ENTITY player.normal "常规">
+<!ENTITY player.aboveNormal "较高">
+<!ENTITY player.high "高">
+
+<!ENTITY converter.parameter "参数">
+<!ENTITY converter.value "值">
+<!ENTITY converter.profile "码流规格">
+<!ENTITY converter.level "码流级别">
+<!ENTITY converter.resolution "分辨率">
+<!ENTITY converter.framerate "帧率">
+<!ENTITY converter.quality "质量">
+<!ENTITY converter.samplerate "采样率">
+<!ENTITY converter.container "容器格式">
+<!ENTITY converter.format "格式">
+<!ENTITY converter.picture "画面">
+<!ENTITY converter.cropping "画面剪裁">
+<!ENTITY converter.device "设备">
+<!ENTITY converter.videoPath "视频路径">
+<!ENTITY converter.audioPath "音频路径">
+<!ENTITY converter.imagePath "照片路径">
+
+<!ENTITY menu.files "文件">
+<!ENTITY menu.openUrl   "打开URL...">
+<!ENTITY menu.openFile   "播放文件...">
+<!ENTITY menu.openDisc   "打开光碟...">
+<!ENTITY menu.addFolder "添加文件夹">
+<!ENTITY menu.addFolderSub "添加文件夹和子文件夹">
+<!ENTITY menu.fullScreen   "切换至全屏">
+<!ENTITY menu.windowTop   "总在最前面">
+<!ENTITY menu.openDVD   "打开DVD">
+<!ENTITY menu.openVCD   "打开VCD">
+<!ENTITY menu.openCD   "打开CD">
+<!ENTITY menu.exit "退出">
+<!ENTITY menu.options "选项">
+<!ENTITY menu.controls "控制">
+<!ENTITY menu.detached "独立的视频窗口">
+<!ENTITY menu.keepWindow "">
+<!ENTITY menu.videoSize "视频大小">
+<!ENTITY menu.fitWindow "适应窗口">
+<!ENTITY menu.fitVideo "窗口适应视频">
+
+<!ENTITY menu.audioSet "音频">
+<!ENTITY menu.switchAudio "切换声道">
+<!ENTITY menu.delayAo "延迟音频 0.1S">
+<!ENTITY menu.advanceAo "延迟音频 -0.1S">
+<!ENTITY menu.refreshAo "重新同步音频...">
+<!ENTITY menu.osdMsg "屏幕信息">
+<!ENTITY menu.switchOsd "切换信息显示级别">
+<!ENTITY menu.shortcutTips "显示快捷键信息">
+<!ENTITY menu.subtitle "字幕">
+<!ENTITY menu.switchSub "切换字幕">
+<!ENTITY menu.upSub "上移字幕">
+<!ENTITY menu.downSub "下移字幕">
+<!ENTITY menu.reduceSub "放大字幕">
+<!ENTITY menu.enlargeSub "缩小字幕">
+<!ENTITY menu.delaySub "延迟字幕 0.1秒">
+<!ENTITY menu.advanceSub "延迟字幕 -0.1秒">
+<!ENTITY menu.refreshSub "重新同步字幕...">
+<!ENTITY menu.loadSubFont "载入字幕字体...">
+<!ENTITY menu.loadSubFile "载入字幕文件...">
+<!ENTITY menu.playSpeed "播放速度">
+<!ENTITY menu.speed1x "1倍速">
+<!ENTITY menu.speed2x "2倍速">
+<!ENTITY menu.speedUp "加速">
+<!ENTITY menu.speedDown "减速">
+<!ENTITY menu.transform "视频变换">
+<!ENTITY menu.transRestore "原始画面">
+<!ENTITY menu.rotate90 "逆时针转90">
+<!ENTITY menu.rotate270 "顺时针转90">
+<!ENTITY menu.rotate90Flip "逆时针转90并翻转">
+<!ENTITY menu.rotate270Flip "顺时针转90并翻转">
+<!ENTITY menu.mirror "镜像">
+<!ENTITY menu.flip "上下翻转">
+<!ENTITY menu.keepAspect "保持宽高比">
+<!ENTITY menu.tipsSetting "提示信息设置">
+<!ENTITY menu.tipScreenshot "截屏后提示">
+<!ENTITY menu.tipSetLang "设置语言提示">
+<!ENTITY menu.help "帮助">
+<!ENTITY menu.visitWebsite "访问网站">
+<!ENTITY menu.visitCNWebsite "访问中文网站">
+<!ENTITY menu.about "关于">
+<!ENTITY menu.selFile "选取磁盘文件">
+<!ENTITY menu.selItem "选取播放列表选中项">
+<!ENTITY menu.selectedFiles "已选取的文件">
+<!ENTITY menu.screenshot "抓图">
+<!ENTITY menu.imgshots "批量视屏截图">
+<!ENTITY menu.language "界面语言">
+<!ENTITY menu.current "当前">
+<!ENTITY menu.english "英语">
+<!ENTITY menu.zhCN "简体中文">
+<!ENTITY menu.zhTW "繁体中文">
+<!ENTITY menu.korean "韩语">
+<!ENTITY menu.slovak "斯洛伐克语">
+<!ENTITY menu.german "德语">
+<!ENTITY menu.czech "捷克语">
+<!ENTITY menu.japanese "日语">
+<!ENTITY menu.setSkin "更换皮肤">
+<!ENTITY menu.mediaLib "媒体库">
+<!ENTITY menu.convertOptions "高级转码参数设置">
+
+<!ENTITY menu.transcode "转码">
+<!ENTITY menu.transcode.start "开始转码">
+<!ENTITY menu.transcode.stop "停止转码">
+<!ENTITY menu.transcode.pause "暂停转码">
+<!ENTITY menu.transcode.setOutputFolder "设置目标文件夹">
+<!ENTITY menu.transcode.transmit "传输至设备">
+<!ENTITY menu.transcode.preview "预览转码文件">
+<!ENTITY menu.transcode.previewDual "对比原始及转码文件">
+
+<!ENTITY menu.extension.builder "扩展生成器">
+
+<!ENTITY menu.downloader "下载">
+
+<!ENTITY common.OK      "确定">
+<!ENTITY common.cancel      "取消">
+<!ENTITY common.apply      "应用">
+
+<!ENTITY player.playlist "列表">
+<!ENTITY player.effects "效果">
+<!ENTITY player.properties "属性">
+<!ENTITY player.mediainfo "媒体信息">
+<!ENTITY player.projector "投影拼屏">
+<!ENTITY player.audio "音频">
+<!ENTITY player.video "视频">
+<!ENTITY player.codec "编码器">
+<!ENTITY player.bitrate "码率">
+<!ENTITY player.width "宽度">
+<!ENTITY player.height "高度">
+<!ENTITY player.fps "帧率">
+<!ENTITY player.aspect "宽高比">
+<!ENTITY player.srate "采样率">
+<!ENTITY player.channels "声道数">
+<!ENTITY player.forward "前进">
+<!ENTITY player.rewind "后退">
+<!ENTITY player.next "下一文件">
+<!ENTITY player.previous "上一文件">
+<!ENTITY player.stop "停止">
+<!ENTITY player.pause "暂停">
+<!ENTITY player.play "播放">
+<!ENTITY player.url "网址">
+<!ENTITY player.browser "浏览器">
+<!ENTITY player.dualMode "双视频">
+<!ENTITY player.player "播放器">
+<!ENTITY player.crossFading "混音">
+<!ENTITY player.pickFile "选取文件">
+<!ENTITY player.fixedOffset "固定时间偏移">
+<!ENTITY player.reset "复位">
+<!ENTITY player.resolution "分辨率">
+
+<!ENTITY player.dual.synchronise "同步">
+<!ENTITY player.dual.syncPlay1 "同步到播放器1">
+<!ENTITY player.dual.syncPlay2 "同步到播放器2">
+<!ENTITY player.dual.syncToPos "同步到...">
+<!ENTITY player.dual.syncReplay "重新同步播放">
+
+<!ENTITY playlist.play "播放">
+<!ENTITY playlist.add "添加文件">
+<!ENTITY playlist.remove "移除">
+<!ENTITY playlist.clear "清空">
+<!ENTITY playlist.title "标题">
+<!ENTITY playlist.filesize "文件大小">
+<!ENTITY playlist.filetype "文件类型">
+<!ENTITY playlist.filename "文件路径">
+<!ENTITY playlist.shuffle "随机">
+<!ENTITY playlist.repeat "重复">
+
+<!ENTITY listManager.add "新建">
+<!ENTITY listManager.rename "重命名">
+<!ENTITY listManager.title "列表管理">
+<!ENTITY listManager.load "载入播放列表...">
+
+<!ENTITY effects.colorAdjust "色彩校正">
+<!ENTITY effects.brightness "亮度">
+<!ENTITY effects.contrast "对比度">
+<!ENTITY effects.saturation "色度">
+<!ENTITY effects.gamma "伽玛校正">
+<!ENTITY effects.red "红">
+<!ENTITY effects.green "绿">
+<!ENTITY effects.blue "蓝">
+<!ENTITY effects.postProc "画面后处理">
+<!ENTITY effects.autoLevel "增强层次感">
+<!ENTITY effects.deblocking "去方格噪声">
+<!ENTITY effects.deringing "去圆形噪声">
+<!ENTITY effects.horizontal "横向">
+<!ENTITY effects.vertical "纵向">
+<!ENTITY effects.disabled "禁用">
+<!ENTITY effects.enabled "启用">
+<!ENTITY effects.denoising "去噪声">
+<!ENTITY effects.deinterlacing "反交错">
+<!ENTITY effects.linearBlend "线性混合">
+<!ENTITY effects.linearInterp "线性内插">
+<!ENTITY effects.cubicInterp "立方体内插">
+<!ENTITY effects.median "中位数">
+<!ENTITY effects.firLowpass "纵向FIR低通滤波">
+<!ENTITY effects.aspect "宽高比">
+<!ENTITY effects.autoDetect "自动侦测">
+<!ENTITY effects.normal "常规">
+<!ENTITY effects.full "完全">
+
+<!ENTITY projector.fuseWidth "融合区宽度">
+<!ENTITY projector.rollWidth "渐变区宽度">
+<!ENTITY projector.fuseArg1 "融合区参数1">
+<!ENTITY projector.fuseArg2 "融合区参数2">
+<!ENTITY projector.fusePos "融合位置">
+<!ENTITY projector.geometry "几何拉伸">
+<!ENTITY projector.topCurve "上边弧度">
+<!ENTITY projector.bottomCurve "下边弧度">
+<!ENTITY projector.window "窗口定位">
+<!ENTITY projector.screen "屏幕">
+
+<!ENTITY lyricList.title "歌词秀">
+
+<!ENTITY medialib.searchMedia "搜索媒体文件">
+<!ENTITY medialib.importMedia "导入媒体文件">
+<!ENTITY medialib.nowPlaying "正在播放">
+<!ENTITY medialib.videoFiles "视频">
+<!ENTITY medialib.audioFiles "音频">
+<!ENTITY medialib.imageFiles "照片">
+<!ENTITY medialib.showDownload "显示下载进度">
+
+<!ENTITY mediaList.title "标题">
+<!ENTITY mediaList.duration "时长">
+<!ENTITY mediaList.size "文件大小">
+<!ENTITY mediaList.genre "流派">
+<!ENTITY mediaList.artist "歌手">
+<!ENTITY mediaList.album "专辑">
+<!ENTITY mediaList.location "文件位置">
+<!ENTITY mediaList.transcoded "已转码">
+<!ENTITY mediaList.thumbnail "缩略图">
+
+<!ENTITY mediaList.rate "评价">
+<!ENTITY mediaList.addTo "添加到">
+<!ENTITY mediaList.homeVideo "家庭视频">
+<!ENTITY mediaList.movie "电影">
+<!ENTITY mediaList.episode "剧集">
+
+<!ENTITY fileView.icon "图标">
+
+<!ENTITY trancode.start "开始转码">
+<!ENTITY trancode.pause "暂停转码">
+<!ENTITY trancode.stop "结束转码">
+
+<!ENTITY tips.browser.goHome "首页">
+<!ENTITY tips.browser.goBack "后退">
+<!ENTITY tips.browser.goPrev "前进">
+<!ENTITY tips.browser.stop "停止">
+<!ENTITY tips.browser.refresh "刷新">
+
+<!ENTITY tools.srcfile.name "源文件">
+<!ENTITY tools.outputdir.name "输出目录">
+<!ENTITY tools.pictures.number "输出图片数量">
+<!ENTITY tools.outputimg.size "输出图片大小 （单位：像素）">
+<!ENTITY tools.outputimg.width "输出图片宽度">
+<!ENTITY tools.outputimg.height "输出图片高度">
+<!ENTITY tools.aspect.keep "保持比率">
+<!ENTITY tools.outputdir.browse "浏览">
+<!ENTITY tools.outputdir.default "默认路径">
+<!ENTITY tools.browse.info "选择并设定文件夹">
+<!ENTITY tools.btn.start "开始生成">
+<!ENTITY tools.btn.close "退出">
+<!ENTITY tools.imgshots.title "批量生成视屏图片">
+
+<!ENTITY window.box.close "关闭">
+<!ENTITY tvtool.cov.status "转换状态">
+<!ENTITY tvtool.cov.remaintime "剩余时间">
