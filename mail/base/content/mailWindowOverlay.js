@@ -3823,6 +3823,26 @@ function OnMsgParsed(aUrl)
         img.setAttribute("overflowing", "true");
     }
   }
+
+    // 有的邮件内容将body的margin置为了0，影响读信美观，这里处理一下
+    var bodyStyle = doc.defaultView.getComputedStyle(doc.body);
+    if (bodyStyle) {
+        if (bodyStyle.marginTop == "0px") {
+            doc.body.style.marginTop = "8px";
+        }
+
+        if (bodyStyle.marginRight == "0px") {
+            doc.body.style.marginRight = "8px";
+        }
+
+        if (bodyStyle.marginBottom == "0px") {
+            doc.body.style.marginBottom = "8px";
+        }
+
+        if (bodyStyle.marginLeft == "0px") {
+            doc.body.style.marginLeft = "8px";
+        }
+    }
 }
 
 function OnMsgLoaded(aUrl)
