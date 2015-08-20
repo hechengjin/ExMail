@@ -207,6 +207,9 @@ function UpdateMailPaneConfig(aMsgWindowInitialized) {
     document.getElementById("messagepane").destroy();
     desiredParent.appendChild(messagePaneSplitter);
     desiredParent.appendChild(messagePaneBoxWrapper);
+    if (msgWindow) {
+      msgWindow.statusFeedback = msgWindow.statusFeedback;
+    }
     hdrToolbox.palette  = cloneToolboxPalette;
     hdrToolbox.toolbarset = cloneToolbarset;
     hdrToolbar = document.getElementById("header-view-toolbar");
