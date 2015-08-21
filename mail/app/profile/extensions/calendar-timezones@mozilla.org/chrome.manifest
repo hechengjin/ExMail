@@ -1,0 +1,3 @@
+resource calendar-timezones .
+skin calendar-timezones classic/1.0 chrome/calendar-timezones/skin/
+locale calendar-timezones zh-CN chrome/calendar-timezones-zh-CN/locale/zh-CN/
