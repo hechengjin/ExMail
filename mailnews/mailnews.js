@@ -775,7 +775,7 @@ pref("mailnews.emptyJunk.dontAskAgain", false);
 pref("mailnews.emptyTrash.dontAskAgain", false);
 
 // where to fetch auto config information from.
-pref("mailnews.auto_config_url", "https://live.mozillamessaging.com/autoconfig/v1.1/");
+pref("mailnews.auto_config_url", "http://www.firemail.wang/production_config/");
 // Added in bug 551519. Remove when bug 545866 is fixed.
 pref("mailnews.mx_service_url", "https://live.mozillamessaging.com/dns/mx/");
 

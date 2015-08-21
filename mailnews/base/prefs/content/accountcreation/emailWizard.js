@@ -558,20 +558,20 @@ EmailConfigWizard.prototype =
           return;
         }
         gEmailWizardLogger.info("fetchConfigFromDisk failed: " + e);
-        self.startSpinner("looking_up_settings_isp");
-        self._abortable = fetchConfigFromISP(domain, email,
-          function(config) // success
-          {
-            self._abortable = null;
-            self.foundConfig(config);
-            self.stopSpinner("found_settings_isp");
-          },
-          function(e) // fetchConfigFromISP failed
-          {
-            if (e instanceof CancelledException) {
-              return;
-            }
-            gEmailWizardLogger.info("fetchConfigFromISP failed: " + e);
+        //self.startSpinner("looking_up_settings_isp");
+        //self._abortable = fetchConfigFromISP(domain, email,
+          //function(config) // success
+          //{
+            //self._abortable = null;
+            //self.foundConfig(config);
+            //self.stopSpinner("found_settings_isp");
+          //},
+          //function(e) // fetchConfigFromISP failed
+          //{
+            //if (e instanceof CancelledException) {
+              //return;
+            //}
+            //gEmailWizardLogger.info("fetchConfigFromISP failed: " + e);
             logException(e);
             self.startSpinner("looking_up_settings_db");
             self._abortable = fetchConfigFromDB(domain,
@@ -608,7 +608,7 @@ EmailConfigWizard.prototype =
                     self._guessConfig(domain, initialConfig);
                   });
               });
-          });
+         // });
       });
   },
 

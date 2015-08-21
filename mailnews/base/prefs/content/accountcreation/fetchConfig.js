@@ -126,6 +126,7 @@ function fetchConfigFromDB(domain, successCallback, errorCallback)
   let fetch = new FetchHTTP(url, null, false,
                             function(result)
                             {
+                              //gEmailWizardLogger.info("result "+result);
                               successCallback(readFromXML(result));
                             },
                             errorCallback);

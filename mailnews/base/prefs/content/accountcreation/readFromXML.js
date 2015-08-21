@@ -20,8 +20,12 @@
 function readFromXML(clientConfigXML)
 {
   var exception;
-  if (typeof(clientConfigXML) != "xml" ||
-      !("emailProvider" in clientConfigXML))
+  //gEmailWizardLogger.info("readFromXML typeof(clientConfigXML):" + typeof(clientConfigXML) );  "string"
+  if(typeof(clientConfigXML) != "xml" )
+  {
+     clientConfigXML = new XML(clientConfigXML);
+  }
+  if (typeof(clientConfigXML) != "xml" ||!("emailProvider" in clientConfigXML))
   {
     dump("client config xml = " + clientConfigXML + "\n");
     var stringBundle = getStringBundle(
