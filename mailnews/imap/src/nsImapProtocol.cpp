@@ -8331,7 +8331,7 @@ bool nsImapProtocol::TryToLogon()
       }
 
       bool lastReportingErrors = GetServerStateParser().GetReportingErrors();
-      GetServerStateParser().SetReportingErrors(false); // turn off errors - we'll put up our own.
+      GetServerStateParser().SetReportingErrors(true); //false // turn off errors - we'll put up our own.
 
       rv = AuthLogin(userName.get(), password, m_currentAuthMethod);
 
