@@ -426,7 +426,7 @@ function OnLoadMessenger()
 
 function hideMenus() {
   var releaseflag = gPrefBranch.getBoolPref("version.release.flag");
-  //document.getElementById("addonsManager").hidden = releaseflag;
+  document.getElementById("addonsManager").hidden = releaseflag;
   document.getElementById("appmenu_addons").hidden = releaseflag;
 
   //wizard
