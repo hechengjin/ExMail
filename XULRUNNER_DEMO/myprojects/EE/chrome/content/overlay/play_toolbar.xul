@@ -56,36 +56,36 @@
 		<key key="-" oncommand="mp.decreaseVolume()"/>
 	</keyset>
 	
-	<vbox id="play-toolbar" class="toolbar skin_plate">
+	<vbox id="play-toolbar" class="toolbar skin_plate" >
 		<hbox class="toolbar skin_plate">
 			
 			<!--<progressmeter id="timebar" mode="determined" value="0" onmouseup="seekToClickPos(event)" disabled="true"/>-->
 			<!--<toolbarseparator />-->
 			<titlebar flex="1"/>
-			<toolbarbutton id="add_file" command="openFile" tooltiptext="&menu.openFile;" class="skin_plate"/>
+			<toolbarbutton id="add_file" command="openFile" tooltiptext="&menu.openFile;" class="skin_plate" hidden="true"/>
 			<toolbarbutton id="btn-fs" command="cmdFullScreen" tooltiptext="&menu.fullScreen;" class="skin_plate"/>
-			<toolbarbutton id="btn_screenshot" command="cmd_screenshot" tooltiptext="&menu.screenshot;" disabled="true" class="skin_plate"/>
-			<toolbarbutton id="btn_imgshots" command="cmd_imgshots" tooltiptext="&menu.imgshots;" class="skin_plate"/>
-			<toolbarbutton id="dualMode" type="checkbox" oncommand="toggleDualMode()" tooltiptext="&player.dualMode;" class="skin_plate"/>
+			<toolbarbutton id="btn_screenshot" command="cmd_screenshot" tooltiptext="&menu.screenshot;" disabled="true" class="skin_plate" hidden="true"/>
+			<toolbarbutton id="btn_imgshots" command="cmd_imgshots" tooltiptext="&menu.imgshots;" class="skin_plate" hidden="true"/>
+			<toolbarbutton id="dualMode" type="checkbox" oncommand="toggleDualMode()" tooltiptext="&player.dualMode;" class="skin_plate" hidden="true"/>
 			<titlebar flex="1"/>
 			
-			<toolbarbutton id="previous_icon" command="cmdPrev" tooltiptext="&player.previous;" class="skin_plate"/>
-			<toolbarbutton id="play_icon" command="cmdPlay" tooltiptext="&player.play;" class="skin_plate"/>
+			<toolbarbutton id="previous_icon" command="cmdPrev" tooltiptext="&player.previous;" class="skin_plate"  hidden="true"/>
+			<toolbarbutton id="play_icon" command="cmdPlay" tooltiptext="&player.play;" class="skin_plate"  hidden="true"/>
 			<!--<toolbarbutton id="fr_icon" command="cmdRewind" disabled="true" tooltiptext="&player.rewind;"/>
 			<toolbarbutton id="ff_icon" command="cmdForward" disabled="true" tooltiptext="&player.forward;"/>-->
-			<toolbarbutton id="next_icon" command="cmdNext" tooltiptext="&player.next;" class="skin_plate"/>
-			<toolbarbutton id="stop_icon" command="cmdStop" disabled="true" tooltiptext="&player.stop;" class="skin_plate"/>
+			<toolbarbutton id="next_icon" command="cmdNext" tooltiptext="&player.next;" class="skin_plate"  hidden="true"/>
+			<toolbarbutton id="stop_icon" command="cmdStop" disabled="true" tooltiptext="&player.stop;" class="skin_plate"  hidden="true"/>
 		
 			<!--<checkbox id="dualMode" label="&player.dualMode;" oncommand="toggleDualMode()"/>-->
 			<titlebar flex="2"/>
-			<hbox align="center" class="toolbar skin_plate">
+			<hbox align="center" class="toolbar skin_plate" hidden="true">
 				<image id="vol_icon"/>
 				<scale id="volscale" min="0" max="65535" width="70" onchange="mp.setVolume(value)"/>
 			</hbox>
 			<titlebar flex="1"/>
 		</hbox>
 		
-		<hbox class="toolbar skin_plate">
+		<hbox class="toolbar skin_plate" hidden="true">
 			<titlebar id="statusBar" flex="1">
 				<statusbarpanel id="state" width="120" label="Idle" class="skin_plate" />
 				<statusbarpanel id="stats" flex="1" class="skin_plate" />

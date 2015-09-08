@@ -21,9 +21,9 @@
 <!ENTITY playlist.filename "文件路径">
 <!ENTITY playlist.title "标题">
 
-<!ENTITY player.title   "影音客播放器">
+<!ENTITY player.title   "启蒙教育">
 <!ENTITY player.version   "版本">
-<!ENTITY player.copyright "影音客播放器是一个根据MPL协议发行的基于XUL的桌面媒体播放器。">
+<!ENTITY player.copyright "启蒙教育是一个根据MPL协议发行的基于XUL的桌面媒体播放软件。">
 <!ENTITY player.btOK   "是">
 <!ENTITY player.btNO   "否">
 

@@ -7,6 +7,7 @@ if (typeof(Ci) == "undefined")
   var Ci = Components.interfaces;
 
 //Components.utils.import("resource://gre/modules/ctypes.jsm");
+Components.utils.import("chrome://EE/content/mintrayr/modules/platlog.jsm");
   
 var fs = false;
 var curViewMode;
@@ -180,9 +181,9 @@ function setViewMode(mode)
 			homeURL = getLocalString("homeURL");
 			if (!homeURL) homeURL = "http://xulplayer.sourceforge.net/start";
 			if (winMaxed) toggleMaximize();
-			if(!mp.isPlaying()) {
-				loadPage(homeURL);
-			}
+			//if(!mp.isPlaying()) {
+			//	loadPage(homeURL);
+			//}
 		}
 	}
 
@@ -281,6 +282,21 @@ function setWindowTopByKey()
 
 function focusMethod()
 {
+	//platlog.dumpMsg("focusMethod ---start");
+	try
+	{
+		$e('windowIcon').focus();
+		if(fs){
+            noEventTime = 0;
+            $e("bottomBar").hidden = false;
+        }
+	}
+	catch(e)
+	{
+		platlog.dumpMsg(e);
+	}
+	/*
+	
     if(curViewMode == VIEW_CENTER) return;
 	if(focusFromPlugin){
 		focusFromPlugin = false;
@@ -290,6 +306,7 @@ function focusMethod()
             $e("bottomBar").hidden = false;
         }
     }
+    */
 }
 
 function onResize()

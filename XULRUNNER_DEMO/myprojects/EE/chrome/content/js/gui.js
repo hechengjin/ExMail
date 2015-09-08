@@ -118,7 +118,7 @@ function init()
 	// initialize Drag & Drop Event
 	//initDragDropEvent();
 	//initSkinMenuItems();
-	//window.addEventListener("focus", focusMethod, true);
+	window.addEventListener("focus", focusMethod, true);
 	// initialize player
 /*
 	mp.initialize();

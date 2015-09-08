@@ -28,6 +28,12 @@
 <script src="js/domhelper.js" type="application/x-javascript" /> 
 <script src="js/playlist.js" type="application/x-javascript" /> 
 <script src="js/dragdrop.js" type="application/x-javascript" /> 
+<script src="js/litebrowser.js" type="application/x-javascript" /> 
+
+<stringbundleset id="stringBundleSet">
+    <stringbundle id="localStrings" src="chrome://EE/locale/ee.properties" />
+    <stringbundle id="downloaderStrings" src="chrome://EE/locale/downloader.properties"/>
+  </stringbundleset>
 
 <commandset id="playerCommand">
     <commandset id="menuCommands" />
@@ -95,18 +101,18 @@
         </titlebar>
         <!-- WINDOW BUTTONS -->
         <hbox align="center" class="top_right_round">
-          <!--
+          
           <image id="titlebar-buttons-view" onclick="$e('optViewMode').hidden = !$e('optViewMode').hidden" />
           <label onclick="previousSibling.onclick()">&player.layout;</label>
           <radiogroup id="optViewMode" orient="horizontal" persist="value hidden" oncommand="setViewMode()">
           <radio label="&player.fullView;" value="1"/>
-          <radio label="&player.deviceView;" value="2"/>
+          <radio label="&player.deviceView;" value="2"  hidden="true"/>
           <radio label="&player.compactView;" value="3"/>
-          <radio label="&player.simpleView;" value="4"/>
-          <radio label="&player.tvView;" value="5"/>
-          <radio id="optMediaCenterMode" label="&player.mediaCenterView;" value="6"/>
+          <radio label="&player.simpleView;" value="4" />
+          <radio label="&player.tvView;" value="5" hidden="true"/>
+          <radio id="optMediaCenterMode" label="&player.mediaCenterView;" value="6" hidden="true"/>
           </radiogroup>
-        -->
+        
           <spacer width="1" />
           <image id="titlebar-buttons-minimize" onclick="gMinTrayR.minimize();" />
           <spacer width="1" />
@@ -161,13 +167,13 @@
             <radiogroup id="dualVideoOptions" class="skin_plate" orient="horizontal" hidden="true"> <!--- 混音 那一行 -->
             </radiogroup>
             <splitter id="panelSplit" />
-            <tabbox id="mainTab" persist="selectedIndex">
+            <tabbox id="mainTab" persist="selectedIndex" selectedIndex="0">
               <tabs>
                 <tab id="tabBtnPlayList" label="&player.playlist;" />
-                <tab label="&player.mediainfo;" onclick="showMediaInfo()" />
-                <tab label="&player.properties;" />
-                <tab id="tabBtnOptions" label="&player.options;" />
-                <tab label="&player.effects;" />
+                <tab label="&player.mediainfo;" onclick="showMediaInfo()" hidden="true" />
+                <tab label="&player.properties;" hidden="true"  />
+                <tab id="tabBtnOptions" label="&player.options;"  hidden="true" />
+                <tab label="&player.effects;" hidden="true"  />
                 <tab label ="&menu.convertOptions;" hidden="true"/>
                 <!--<tab id="tabButtonMediaLib" label="&menu.mediaLib;"/>-->
               </tabs>

@@ -75,24 +75,24 @@
 	<!-- File -->
 	<menu id="open-menu" label="&menu.files;" accesskey="f">
         <menupopup id="open-popup">
-            <menuitem label="&menu.openFile;" key="keyPlayFile" command="cmdPlayFile"/>
-            <menuitem label="&menu.openUrl;" key="keyPlayUrl" command="cmdPlayUrl"/>
-			<menuitem label="&listManager.load;" oncommand="loadPlayList()"/>
-            <menuseparator/>
-            <menuitem label="&menu.addFolder;" key="keyAddFolder" command="cmdAddFolder"/>
-            <menuitem label="&menu.addFolderSub;" key="keyAddFolderAll" command="cmdAddFolderAll"/>
-            <menuseparator/>
-            <menuitem label="&menu.openDisc;" command="cmdAddDvd"/>
-            <menuseparator/>
+            <menuitem label="&menu.openFile;" key="keyPlayFile" command="cmdPlayFile" hidden="true"/>
+            <menuitem label="&menu.openUrl;" key="keyPlayUrl" command="cmdPlayUrl" hidden="true"/>
+			      <menuitem label="&listManager.load;" oncommand="loadPlayList()" hidden="true"/>
+            <menuseparator  hidden="true"/>
+            <menuitem label="&menu.addFolder;" key="keyAddFolder" command="cmdAddFolder"  hidden="true"/>
+            <menuitem label="&menu.addFolderSub;" key="keyAddFolderAll" command="cmdAddFolderAll" hidden="true"/>
+            <menuseparator hidden="true"/>
+            <menuitem label="&menu.openDisc;" command="cmdAddDvd" hidden="true"/>
+            <menuseparator hidden="true"/>
             <menuitem label="&menu.exit;" key="keyExit" oncommand="window.close()"/>
         </menupopup>
 	</menu>
-        <menu id="control-menu" label="&menu.controls;" accesskey="C">
+        <menu id="control-menu" label="&menu.controls;" accesskey="C" >
             <menupopup>
                 <menuitem accesskey="f" label="&menu.fullScreen;" key="keyFullScreen" command="cmdFullScreen"/>
-                <menuitem accesskey="s" label="&menu.screenshot;" key="keyScreenshot" command="cmd_screenshot"/>
-                <menuitem accesskey="t" id = "windowTop" label="&menu.windowTop;" key="keyWindowTop" type="checkbox" oncommand="setWindowTop()"/>
-                <menuseparator/>
+                <menuitem accesskey="s" label="&menu.screenshot;" key="keyScreenshot" command="cmd_screenshot"  hidden="true"/>
+                <menuitem accesskey="t" id = "windowTop" label="&menu.windowTop;" key="keyWindowTop" type="checkbox" oncommand="setWindowTop()" hidden="true"/>
+                <menuseparator hidden="true"/>
                 <!--menu label="Web Navigation">
                 <menupopup id="webnav-popup">
                     <menuitem label="Refresh" key="keyRefresh"/>
@@ -103,14 +103,14 @@
 		
 		<menuseparator/-->
                 
-                <menu label="&menu.osdMsg;">
+                <menu label="&menu.osdMsg;" hidden="true">
                 <menupopup id="osdMsg-popup">
                     <menuitem label="&menu.switchOsd;" key="keySwitchOsd" oncommand="mp.switchOsd()"/>
                     <!--<menuitem label="&menu.shortcutTips;" key="keyShortcutMsg" oncommand="displayShortcut()"/>-->
                 </menupopup>
                 </menu>
                 
-                <menu label="&menu.subtitle;">
+                <menu label="&menu.subtitle;" hidden="true">
                 <menupopup id="transform-popup">
                     <menuitem label="&menu.switchSub;" key="keySwitchSub" oncommand="mp.switchSubtitle()"/>
                     <menuitem label="&menu.upSub;" key="keyUpSub" oncommand="mp.subPosUp()"/>
@@ -125,7 +125,7 @@
                 </menupopup>
                 </menu>
                 
-                <menu label="&menu.audioSet;">
+                <menu label="&menu.audioSet;" hidden="true">
                 <menupopup id="audioSet-popup">
                     <menuitem label="&menu.switchAudio;" key="keySwitchAudio" command="switchAudio()"/>
                     <menuitem label="&menu.delayAo;" key="keyDelayAo" oncommand="mp.delayAudio()"/>
@@ -134,7 +134,7 @@
                 </menupopup>
                 </menu>
                 
-                <menu label="&menu.playSpeed;">
+                <menu label="&menu.playSpeed;" hidden="true">
                 <menupopup id="playSpeed-popup">
                     <menuitem label="&menu.speed1x;" oncommand="mp.setSpeed(1)"/>
                     <menuitem label="&menu.speed2x;" oncommand="mp.setSpeed(2)"/>
@@ -143,7 +143,7 @@
                 </menupopup>
                 </menu>
                 
-                <menu label="&menu.transform;">
+                <menu label="&menu.transform;" hidden="true">
                 <menupopup id="transform-popup">
                     <menuitem id="transRestore" type="radio" label="&menu.transRestore;" key="keyTransRestore" checked="true" oncommand="applyPlayerOptions()"/>
                     <menuitem id="rotate90" type="radio" label="&menu.rotate90;" key="keyRot90" oncommand="applyPlayerOptions()"/>
@@ -157,7 +157,7 @@
             </menupopup>
         </menu>
 	<!-- Transcode -->
-	<menu id="transcode-menu" label="&menu.transcode;" > <!--disabled="true"-->
+	<menu id="transcode-menu" label="&menu.transcode;"  hidden="true"> <!--disabled="true"-->
 	    <menupopup id="transcode-popup">
 		<menuitem label="&menu.transcode.start;" oncommand="encodeStart()"/>
 		<menuitem label="&menu.transcode.stop;" oncommand="encodeStop()"/>
@@ -168,7 +168,7 @@
 	    </menupopup>
 	</menu>
 	<!-- Options -->
-	<menu id="options-menu" label="&menu.options;" accesskey="O">
+	<menu id="options-menu" label="&menu.options;" accesskey="O" hidden="true">
         <menupopup id="options-popup">
             <menu label="&menu.language;" accesskey="L">
                 <menupopup id="lang-popup">
@@ -215,8 +215,8 @@
 	<!-- Help -->
 	<menu id="help-menu" label="&menu.help;" accesskey="H">
 		<menupopup id="help-popup">
-		<menuitem label="&menu.visitWebsite;" accesskey="V" oncommand="mp.shellExecute('http://xulplayer.sourceforge.net');"/>
-		<menuitem label="&menu.visitCNWebsite;" accesskey="i" oncommand="mp.shellExecute('http://www.xulplayer.com');"/>
+		<menuitem label="&menu.visitWebsite;" accesskey="V" oncommand="openSupportURL()"/>
+		<menuitem label="&menu.visitCNWebsite;" accesskey="i" oncommand="mp.shellExecute('http://www.xulplayer.com');" hidden="true"/>
 		<menuitem label="&menu.about;" accesskey="A" 
 		oncommand="window.open('about.xul','About','chrome, titlebar, centerscreen, modal, resizable=no');"/>
 		</menupopup>

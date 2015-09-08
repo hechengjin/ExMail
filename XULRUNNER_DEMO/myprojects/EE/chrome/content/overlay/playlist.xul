@@ -36,7 +36,7 @@
  
   <hbox id="tabPlaylist" flex="1">
     <vbox id="listManagerBox" flex="1" class="skin_plate">
-      <listbox id="listManager" flex="1" onclick="plMan.changeList()" context="menuListManager">
+      <listbox id="listManager" flex="1" onclick="plMan.changeList()" context="menuListManager1111">
         <listhead>
           <listheader label="&listManager.title;" />
         </listhead>
@@ -44,7 +44,7 @@
           <listcol flex="1" />
         </listcols>
       </listbox>
-      <toolbar id="listManager_toolbar" class="skin_plate">
+      <toolbar id="listManager_toolbar" class="skin_plate" hidden="true">
         
       </toolbar>
     </vbox>
@@ -53,7 +53,7 @@
     </splitter>
     
     <vbox id="playlistBox" flex="10" class="skin_plate">
-      <listbox id="playlist" flex="1" ondblclick="plMan.changeListSelIndex();startPlay()" context="menuPlayList">
+      <listbox id="playlist" flex="1" ondblclick="plMan.changeListSelIndex();startPlay()" context="menuPlayList111">
         <listhead>
           <listheader id="title" label="&playlist.title;" />
           <listheader id="filesize" label="&playlist.filesize;" />
@@ -69,7 +69,7 @@
       </listbox>
       <hbox>
       <spacer flex="1"/>
-      <toolbar id="playlist_toolbar" class="skin_plate">
+      <toolbar id="playlist_toolbar" class="skin_plate" hidden="true">
         <spacer width="4"/>
         <image id="btnAddToPl" class="playlist_button" menu="menuAddToPl"/>
         <image id="btnRemovePlItem" class="playlist_button" menu="menuRemovePlItem"/>

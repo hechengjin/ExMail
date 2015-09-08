@@ -1,5 +1,7 @@
 ﻿Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("resource://gre/modules/FileUtils.jsm");
+Components.utils.import("resource://gre/modules/AddonManager.jsm");
+
 var addlogListener = {
   observe: function(subject, topic, data) {
     if (topic == "addlog") {
@@ -130,6 +132,60 @@ var gmainDialog = {
     if (results)
       results.value = this.greslutsloginfos;
   },
+
+  openExtensionManager: function ()
+  {
+    /* 
+     const EMTYPE = "Extension:Manager";
+     var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                        .getService(Components.interfaces.nsIWindowMediator);
+     var theEM = wm.getMostRecentWindow(EMTYPE);
+     if (theEM) {
+         theEM.focus();
+         return;
+     }
+
+     const EMURL = "chrome://mozapps/content/extensions/extensions.xul";
+     const EMFEATURES = "chrome,menubar,extra-chrome,toolbar,dialog=no,resizable";
+     window.openDialog(EMURL, "", EMFEATURES);
+     */
+
+     const nsIFilePicker = Ci.nsIFilePicker;
+        var fp = Cc["@mozilla.org/filepicker;1"]
+                   .createInstance(nsIFilePicker);
+        fp.init(window,"select ex", nsIFilePicker.modeOpenMultiple);
+        try {
+          fp.appendFilter(gStrings.ext.GetStringFromName("附件组件"),
+                          "*.xpi;*.jar");
+          fp.appendFilters(nsIFilePicker.filterAll);
+        } catch (e) { }
+
+        if (fp.show() != nsIFilePicker.returnOK)
+          return;
+
+        var files = fp.files;
+        var installs = [];
+
+        function buildNextInstall() {
+          if (!files.hasMoreElements()) {
+            if (installs.length > 0) {
+              // Display the normal install confirmation for the installs
+              AddonManager.installAddonsFromWebpage("application/x-xpinstall",
+                                                    window, null, installs);
+            }
+            return;
+          }
+
+          var file = files.getNext();
+          AddonManager.getInstallForFile(file, function cmd_installFromFile_getInstallForFile(aInstall) {
+            installs.push(aInstall);
+            buildNextInstall();
+          });
+        }
+
+        buildNextInstall();
+  },
+
  };
 
 
