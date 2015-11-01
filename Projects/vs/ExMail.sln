@@ -1,14 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "Firemail", "..\..\obj_Firemail\mozilla\dist\bin\Firemail.exe", "{73FA672B-2DC6-452D-B81C-EE294257D88B}"
 	ProjectSection(DebuggerProjectSystem) = preProject
 		PortSupplier = 00000000-0000-0000-0000-000000000000
-		Executable = E:\github\Firemail\ExMail\obj_Firemail\mozilla\dist\bin\Firemail.exe
+		Executable = ..\..\obj_Firemail\mozilla\dist\bin\Firemail.exe
 		RemoteMachine = RICHINFO-4A7225
-		StartingDirectory = E:\github\Firemail\ExMail\obj_Firemail\mozilla\dist\bin
-		Environment = 默认值
+		StartingDirectory = ..\..\obj_Firemail\mozilla\dist\bin
+		Environment = Default
 		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		UseLegacyDebugEngines = No
 		LaunchSQLEngine = No
 		AttachLaunchAction = No
 	EndProjectSection
@@ -83,6 +86,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{168082D2-357
 		..\..\mailnews\imap\src\nsIMAPNamespace.h = ..\..\mailnews\imap\src\nsIMAPNamespace.h
 		..\..\mailnews\imap\src\nsImapOfflineSync.cpp = ..\..\mailnews\imap\src\nsImapOfflineSync.cpp
 		..\..\mailnews\imap\src\nsImapOfflineSync.h = ..\..\mailnews\imap\src\nsImapOfflineSync.h
+		..\..\mailnews\imap\src\nsImapProtocol.cpp = ..\..\mailnews\imap\src\nsImapProtocol.cpp
 		..\..\mailnews\imap\src\nsImapProtocol.h = ..\..\mailnews\imap\src\nsImapProtocol.h
 		..\..\mailnews\imap\src\nsImapSearchResults.cpp = ..\..\mailnews\imap\src\nsImapSearchResults.cpp
 		..\..\mailnews\imap\src\nsImapSearchResults.h = ..\..\mailnews\imap\src\nsImapSearchResults.h
@@ -270,19 +274,19 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2A7BE594-F591-4672-B664-E97DF3D64F05} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
-		{B3AB45C6-898C-4DBB-97A6-B12C042DC08D} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
-		{A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
 		{A926617E-762A-4B8D-94B2-7382DF5CE25B} = {2A7BE594-F591-4672-B664-E97DF3D64F05}
-		{7B04FECD-F1A2-4009-AC20-1F05863B4A3F} = {A926617E-762A-4B8D-94B2-7382DF5CE25B}
+		{B3AB45C6-898C-4DBB-97A6-B12C042DC08D} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
 		{2A587BC8-1843-471E-B03B-2D193CC2A47E} = {B3AB45C6-898C-4DBB-97A6-B12C042DC08D}
 		{689CD3A9-8157-4D0F-A3FA-A66282853601} = {2A587BC8-1843-471E-B03B-2D193CC2A47E}
+		{A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9} = {DBD076CC-D9CA-4B3B-8CDD-CD1ABCFCA118}
 		{E48CFA03-047A-4124-877C-C15F29AD9880} = {A5BCF6F6-323E-4DAD-9D68-938BC7D44DF9}
 		{E9FED215-5A02-40C2-94A0-E8729613F1B0} = {E48CFA03-047A-4124-877C-C15F29AD9880}
 		{50EFCC3B-AD28-45DF-8E02-4B629E28A923} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
-		{607D94C2-C32C-445A-BE67-E549E774D837} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
-		{C225CB09-7583-4633-B9EB-316E3CF9A30B} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
 		{168082D2-357A-401F-9A93-2D0E88119F05} = {50EFCC3B-AD28-45DF-8E02-4B629E28A923}
+		{7B04FECD-F1A2-4009-AC20-1F05863B4A3F} = {A926617E-762A-4B8D-94B2-7382DF5CE25B}
+		{607D94C2-C32C-445A-BE67-E549E774D837} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
 		{1DBD8E0D-3471-4B4E-97EF-0E1F06CC025F} = {607D94C2-C32C-445A-BE67-E549E774D837}
+		{C225CB09-7583-4633-B9EB-316E3CF9A30B} = {9C57B2F7-CD0F-4F0D-B419-CDEC93C39144}
 		{ACC76543-7265-4C25-976F-A82D0088D8CF} = {C225CB09-7583-4633-B9EB-316E3CF9A30B}
 	EndGlobalSection
 EndGlobal
