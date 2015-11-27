@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay
+[
+	<!ENTITY % searchGeneralDTD SYSTEM "chrome://messenger/locale/searchGeneral/searchGeneral.dtd"> %searchGeneralDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd"> %messengerDTD;
+]>
+
+<?xml-stylesheet href="chrome://lightning/skin/lightning.css" type="text/css"?>
+
+<?xul-overlay href="chrome://lightning/content/lightning-toolbar1.xul"?>
+<?xul-overlay href="chrome://lightning/content/lightning-menus1.xul"?>
+
+<overlay id="searchGeneralSidebarOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<stringbundleset id="stringbundleset">
+    <stringbundle id="bundle_searchGeneral" src="chrome://messenger/locale/searchGeneral/searchGeneral.properties"/>
+  </stringbundleset>
+				 
+<script type="application/javascript" src="chrome://messenger/content/searchGeneral/searchGeneral-overlay-sidebar.js"/>
+
+  <window id="messengerWindow">
+		<commandset id="searchGeneral_commands">
+      <command id="new_searchGeneral_tab"
+               oncommand="document.getElementById('tabmail').openTab('searchGeneral', { title: document.getElementById('searchGeneral-tab-button').getAttribute('title') })"/>
+    </commandset>
+		
+		<keyset id="searchGeneral-keys">
+      <key id="openSearchGeneralKey"
+           key="&sg.keys.event.showSearchGeneral.key;"
+           modifiers="accel, shift"
+           observes="new_searchGeneral_tab"/>
+    </keyset>
+
+		
+  </window>
+
+  <toolbar id="tabbar-toolbar">
+    <toolbarbutton id="searchGeneral-tab-button"
+                   class="toolbarbutton-1"
+                   title="&sg.toolbar.search.label;"
+                   tooltiptext="&sg.toolbar.search.label.tooltip;"
+                   command="new_searchGeneral_tab"/>
+  </toolbar>
+
+  <tabpanels id="tabpanelcontainer">
+    <vbox id="searchGeneralTabPanel">
+			<label>  searchGeneral </label>
+		</vbox>
+  </tabpanels>
+
+  <hbox id="tabmail-container">
+	
+  </hbox>
+
+  <statusbar id="status-bar">
+    
+  </statusbar>
+</overlay>

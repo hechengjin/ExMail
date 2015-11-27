@@ -95,6 +95,12 @@
 .tabmail-tab[type="contentTab"][label="Google Agenda"]{
 	list-style-image:url(chrome://messenger/skin/googleagenda.png);
 	-moz-image-region:auto}
+	
+#searchGeneral-tab-button,
+.icon-holder[type="searchGeneral"],
+.tabmail-tab[type="searchGeneral"]{
+	list-style-image:url(chrome://calendar/skin/calendartoolbar16.png)!important;
+	-moz-image-region:rect(0 80px 16px 64px)!important}
 
 #tabmail-buttons>toolbarbutton,
 #tabbar-buttons>toolbarbutton,
