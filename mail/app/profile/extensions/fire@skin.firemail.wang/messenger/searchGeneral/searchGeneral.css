@@ -1,0 +1,183 @@
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/**************** 搜索框 ****************/
+
+#advSearchBox {
+    -moz-binding: url(chrome://global/content/bindings/textbox.xml#advSearchBox);
+}
+
+.searchBox {
+    -moz-appearance: none;
+    border: 1px solid #d0d5d8;
+    background-color: #fff;
+    height: 26px;
+    margin: 0px;
+    padding: 0 0 0 6px;
+}
+
+.magnifierIcon {
+    width: 15px;
+    height: 16px;
+    list-style-image: url(magnifier.png);
+    -moz-image-region: rect(0 15px 16px 0);
+    margin-right: 4px;
+    cursor: default;
+}
+
+.searchBox:hover .magnifierIcon {
+    -moz-image-region: rect(0 30px 16px 15px);
+}
+
+.placeholder {
+    color: #ccc;
+    margin: 0 2px;
+    cursor: text;
+}
+
+.searchBox:hover .placeholder {
+    color: #a9a9a9;
+}
+
+html|*.inputElt {
+    -moz-box-flex: 1;
+    border: none;
+    background-color: transparent;
+    color: #333;
+    font-size: 12px;
+}
+
+.clearIcon {
+    list-style-image: url(clear.png);
+    -moz-image-region: rect(0, 15px, 15px, 0);
+    width: 15px;
+    height: 15px;
+    margin: 0 4px;
+    cursor: default;
+}
+
+.clearIcon:hover {
+    -moz-image-region: rect(0 30px 15px 15px);
+}
+
+.expandedBox {
+    background-color: #f0f4f6;
+}
+
+.expandedBox:hover {
+    background-color: #eaeef0;
+}
+.expandedBox:active {
+    background-color: #e0e4e6;
+}
+
+.expandedIcon {
+    list-style-image: url(expandArrow.png);
+    -moz-image-region: rect(0, 9px, 9px, 0);
+    width: 9px;
+    height: 9px;
+}
+
+.expandedIcon:hover {
+    -moz-image-region: rect(0, 18px, 9px, 9px);
+}
+
+.expandedIcon:active {
+    -moz-image-region: rect(0, 27px, 9px, 18px);
+}
+
+.expandedIcon[expanded="true"] {
+    -moz-image-region: rect(0, 36px, 9px, 27px);
+}
+
+.expandedIcon[expanded="true"]:hover {
+    -moz-image-region: rect(0, 45px, 9px, 36px);
+}
+
+.expandedIcon[expanded="true"]:active {
+    -moz-image-region: rect(0, 54px, 9px, 45px);
+}
+
+.inputArea {
+    overflow: hidden;
+    cursor: text;
+}
+
+.blockLabel {
+    color: white;
+    background-color: #00c6cd;
+    font-size: 12px;
+    -moz-user-focus: normal;
+    padding: 4px;
+    margin: 0 2px;
+}
+
+.blockLabel:hover {
+    background-color: #00b8bf;
+}
+
+.blockLabel[selected="true"] {
+    background-color: #00adb3;
+}
+
+/**************** 弹出框 ****************/
+
+.advSearchPopup {
+    -moz-appearance: none;
+    border: solid 1px #c7d6e0;
+    
+    padding: 3px 0;
+    margin-left: 25px;
+    width: 265px;
+}
+
+.fieldName {
+    text-align: right;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.inputText {
+    width: 180px;
+}
+
+.popupItem {
+    height: 24px;
+    color: #615f60;
+    padding: 6px 0 6px 13px;
+}
+
+.popupItem[selected="true"] {
+    background-color: #e5ebee;
+    color: #333;
+}
+
+#advSearchContainer {
+    background-color: #fff;
+    padding: 4px 15px;
+    border-bottom: 1px solid #e5ebee;
+}
+
+#advSearchLocationBox {
+    background-color: -moz-Dialog;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 0 10px;
+}
+
+#advSearchConditions row {
+    margin: 3px 0;
+}
+
+#advSearchButtonBox {
+    padding-bottom: 4px;
+}
+
+.textRightAlign {
+    text-align: right;
+    margin-right: -3px !important;
+}
+
+#advSearchToLabel {
+    margin-right: 5px !important;
+}

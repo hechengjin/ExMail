@@ -1,0 +1,508 @@
+
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+#htmlThreadList {
+    cursor: default;
+    background-color: white;
+    height: 100%;
+}
+
+html|td {
+    padding: 0px;
+    margin: 0px;
+}
+
+#htmlThreadListBox {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#htmlThreadListBody {
+    table-layout: fixed;
+}
+
+#htmlThreadListBody html|td {
+    /*border-bottom: 1px solid #dbe7ef;*/
+}
+
+#htmlThreadListBody td, #htmlThreadListBody td div {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 宽表头 */
+#htmlThreadListWideCols {
+    overflow: hidden;
+}
+
+/* 宽表头每列 */
+#htmlThreadListWideCols > html|div {
+    float: left;
+    overflow: hidden;
+    height: 23px;
+    line-height: 23px;
+    color: #333333;
+}
+
+/* 宽表头列之间分隔 */
+.htmlListColSplitter {
+    margin: 0px;
+    padding: 0px;
+    width: 1px;
+    height: 23px;
+    background-color: transparent;
+}
+
+/* 窄表头 */
+#htmlThreadListNarrowCols {
+    float: left;
+    overflow: hidden;
+    height: 23px;
+    line-height: 23px;
+    background-color: white;
+    padding-left: 4px;
+    color: #333333;
+}
+
+#htmlThreadListNarrowCols html|div {
+    float: left;
+}
+
+#narrowSortAsc {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -16px -118px;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin: 7px 4px;
+}
+
+#narrowSortDesc {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -2px -94px;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin: 7px 4px;
+}
+
+/* 分类行 */
+.htmlClassified {
+    padding: 0px;
+    height: 20px;
+    background-color: #f1f1f1;
+}
+
+.htmlClassified html|td {
+    /*height: 20px;
+    line-height: 20px;*/
+}
+
+.showMore {
+    color: #3399eb;
+}
+
+.showMore:hover {
+    color: #1a80cd;
+}
+
+.showMore:active {
+    color: #1276C1;
+}
+
+.classifiedExpanded {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -1px -107px;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin: 5px 0 5px 6px;
+}
+
+.classifiedCollapsed {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -26px -107px;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin: 5px 0 5px 6px;
+}
+
+.classifiedText {
+    float: left;
+    margin-top: 3px;
+    padding-left: 8px;
+    color: #333333;
+    width: calc(100% - 35px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* 分类行 结束 */
+
+#statusColImg {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -38px -23px;
+
+    width: 8px;
+    height: 8px;
+    margin: 8px 0 0 7px;
+    float: left;
+}
+
+#statusColImg[sort="desc"] {
+    background-position: -21px -23px;
+}
+
+#flaggedColImg {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -36px -4px;
+    width: 12px;
+    height: 12px;
+    margin: 6px 0 0 5px;
+    float: left;
+}
+
+#flaggedColImg[sort="asc"] {
+    background-position: -19px -4px;
+}
+
+#attachColImg {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -36px -39px;
+    width: 11px;
+    height: 10px;
+    margin: 7px 0 0 5px;
+    float: left;
+}
+
+#attachColImg[sort="asc"] {
+    background-position: -19px -39px;
+}
+
+#senderRecipientSortAsc, #subjectSortAsc, #timeSortAsc, #sizeSortAsc {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -16px -118px;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin: 7px 4px;
+}
+
+#senderRecipientSortDesc, #subjectSortDesc, #timeSortDesc, #sizeSortDesc {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -2px -94px;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin: 7px 4px;
+}
+
+
+#senderRecipientColText, #subjectColText, #timeColText, #sizeColText {
+    padding-left: 5px;
+    float: left;
+}
+
+.itemElt html|td {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.itemElt[wideMode="true"] {
+    height: 28px;
+}
+
+.itemElt[wideMode="false"] {
+    height: 66px;
+}
+
+.htmlMsgUnread {
+    font-weight: bold;
+}
+
+.htmlItemSelected,
+.htmlItemSelected html|div {
+    background-color: #0a75c8;
+    color: white;
+}
+
+.narrowUpLine {
+    padding-top: 14px;
+    height: 19px;
+}
+
+.narrowDownLine {
+    padding-top: 2px;
+    height: 31px;
+}
+
+#htmlFirstRow, #htmlFirstRow html|td {
+    height: 0px;
+    padding: 0px;
+    border: none;
+}
+
+
+
+/****************************************************************/
+
+.statusCell[wideMode="true"] {
+    padding-left: 2px;
+}
+
+.statusCell[wideMode="false"] {
+    float: left;
+    padding-left: 6px;
+}
+
+.statusCell[status="normal"] html|div {
+    background-image: none;
+    background-position: -1px -17px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.itemElt:hover .statusCell[status="normal"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+}
+
+.htmlItemSelected .statusCell[status="normal"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+}
+
+.statusCell[status="unread"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -18px -17px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="replied"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -2px -54px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="forwarded"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -2px -147px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="repliedAndForward"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -16px -133px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="timing"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -20px -250px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="sensitive"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -20px -210px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="allBack"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -1px -290px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="partBack"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -20px -270px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.statusCell[status="allNotBack"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -0px -270px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.flaggedCell[wideMode="true"] {
+    padding-left: 4px;
+}
+
+.flaggedCell[wideMode="false"] {
+    float: left;
+    padding: 5px 0 0 6px;
+}
+
+.flaggedCell[flagged="true"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -18px -3px;
+    width: 14px;
+    height: 14px;
+    float: left;
+}
+
+.flaggedCell[flagged="false"] html|div {
+    background-image: none;
+    background-position: -1px -3px;
+    width: 14px;
+    height: 14px;
+    float: left;
+}
+
+.itemElt:hover .flaggedCell[flagged="false"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+}
+
+.htmlItemSelected .flaggedCell[flagged="false"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+}
+
+.attachCell[wideMode="true"] {
+    padding-left: 4px;
+}
+
+.attachCell[wideMode="false"] {
+    float: left;
+    width: 15px;
+}
+
+.attachCell[attach="true"] html|div {
+    background-image: url("chrome://messenger/skin/advancedSearch/threadpane.png");
+    background-position: -18px -37px;
+    width: 14px;
+    height: 14px;
+    float: left;
+}
+
+.htmlItemSelected .attachCell[attach="true"] html|div {
+    background-position: -1px -37px;
+}
+
+.itemElt:hover .attachCell[attach="true"] html|div {
+    background-position: -1px -37px;
+}
+
+.attachCell[attach="false"] html|div {
+
+}
+
+.senderRecipientCell,
+.senderRecipientCell .highlight-keyword {
+    color: #333333;
+}
+
+.senderRecipientCell[wideMode="true"] {
+    font-size: 12px;
+}
+
+.senderRecipientCell[wideMode="false"] {
+    float: left;
+    max-width: calc(100% - 126px);
+    font-size: 14px;
+}
+
+.senderRecipientCell html|div {
+    padding: 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.subjectCell[wideMode="true"] {
+
+}
+
+.subjectCell[wideMode="false"] {
+    float: left;
+    width: calc(100% - 39px);
+    padding: 0 0 0 14px;
+}
+
+.subjectElt {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #666666;
+    height: 25px;
+    line-height: 25px;
+}
+
+.subjectElt .highlight-keyword {
+    color: #666666;
+}
+
+.tagsWrapper {
+    float: left;
+    overflow: hidden;
+    font-weight: normal;
+    max-width: 50%;
+    height: 25px;
+    line-height: 25px;
+}
+
+.tagElt {
+    display: inline;
+    margin: 0px 1px;
+    padding: 4px 4px;
+    color: white;
+}
+
+.timeCell {
+    color: #666666;
+}
+
+.timeCell[wideMode="true"] {
+
+}
+
+.timeCell[wideMode="false"] {
+    float: right;
+    width: 85px;
+    text-align: right;
+}
+
+.timeCell html|div {
+    padding: 0 8px;
+    text-overflow: ellipsis;
+}
+
+.sizeCell {
+    color: #666666;
+}
+
+.sizeCell[wideMode="true"] {
+}
+
+.sizeCell[wideMode="false"] {
+}
+
+.sizeCell html|div {
+    padding: 0 8px;
+    text-overflow: ellipsis;
+}
+
+
+.itemElt:hover:not(.htmlItemSelected) {
+    background-color: #3298e7;
+}
+
+.itemElt:hover:not(.htmlItemSelected) html|div {
+    color: #fff;
+}

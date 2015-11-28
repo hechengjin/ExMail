@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+
+<bindings id="abstractMonthBindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <binding id="abstract-month">
+        <implementation>
+            <field name="mWeekStart">0</field>
+            <field name="mDate">null</field>
+            <field name="mSelectedDay">null</field>
+            <field name="mValue">null</field>
+            <field name="mBusyDayMap">new Object()</field>
+            <field name="mCellMap">new Object()</field>
+            <field name="mCellArray">new Array()</field>
+
+            <constructor><![CDATA[
+            ]]></constructor>
+
+            <destructor><![CDATA[
+            ]]></destructor>
+
+            <method name="_build">
+                <parameter name="dayType"/>
+                <body><![CDATA[
+                    this.mCellArray = [];
+
+                    for (var i = 0; i < 7; i++) {
+                        var dayHead = calXbl.createElt("label");
+                        dayHead.setAttribute("flex", "1");
+                        dayHead.className = "dayHeader";
+                        calXbl.getElt(this, "dayHeader").appendChild(dayHead);
+                    }
+
+                    for (var row = 0; row < 6; row++) {
+                        var rowBox = calXbl.createElt("hbox");
+                        rowBox.setAttribute("flex", "1");
+                        rowBox.setAttribute("equalsize", "always");
+                        for (var col = 0; col < 7; col++) {
+                            var day = calXbl.createElt(dayType);
+                            day.setAttribute("flex", "1");
+                            day.className = "dayCell";
+                            rowBox.appendChild(day);
+
+                            this.mCellArray.push(day);
+                        }
+
+                        calXbl.getElt(this, "dayBody").appendChild(rowBox);
+                    }
+
+                ]]></body>
+            </method>
+
+            <property name="date" onget="return new Date(this.mDate);">
+                <setter><![CDATA[
+                    // 同一天，不处理
+                    if (calXbl.calHelper.sameDay(this.mDate, val)) {
+                        return;
+                    }
+
+                    var oldDate = this.mDate;
+                    if (oldDate) {
+                        var oldCell = this.dateToCell(oldDate);
+                        if (oldCell) {
+                            oldCell.removeAttribute("selected");
+                        }
+                    }
+
+                    this.mDate = val;
+                    if (!calXbl.calHelper.sameMonth(oldDate, this.mDate)) {
+                        this.updateMonth();
+                    }
+
+                    var newCell = this.dateToCell(this.mDate);
+                    if (newCell) {
+                        newCell.setAttribute("selected", "true");
+                    }
+
+                    calXbl.fireEvent(this, "dateChanged", val);
+
+                    if (!calXbl.calHelper.sameMonth(oldDate, this.mDate)) {
+                        calXbl.fireEvent(this, "monthChanged");
+                    }
+
+                ]]></setter>
+            </property>
+
+            <method name="updateMonth">
+                <body><![CDATA[
+                    // 星期头，显示“星期一”或是“一”
+                    var dayHeaderPrefix = "shortDay";
+                    if (this.getAttribute("fulldayheader") == "true") {
+                        dayHeaderPrefix = "fullDay";
+                    }
+
+                    var dayHeader = calXbl.getElt(this, "dayHeader");
+                    for (var i = 0; i < dayHeader.childNodes.length; i++) {
+                        var day = dayHeader.childNodes[i];
+                        var dayIndex = (this.mWeekStart + i) % 7;
+                        day.setAttribute("value", calXbl.calHelper.getString(dayHeaderPrefix + dayIndex));
+                    }
+
+                    // 清空，重填
+                    this.mCellMap = {};
+                    var today = new Date();
+
+                    var firstDate = new Date(this.mDate);
+                    firstDate.setDate(1);
+                    var firstWeekday = (7 + firstDate.getDay() - this.mWeekStart) % 7;
+                    firstDate.setDate(firstDate.getDate() - firstWeekday);
+
+                    // 填写日期单元格
+                    var count = 0;
+                    var dayBody = calXbl.getElt(this, "dayBody");
+                    for (var i = 0; i < dayBody.childNodes.length; i++) {
+                        var row = dayBody.childNodes[i];
+                        for (var c = 0; c < 7; c++) {
+                            var date = new Date(firstDate);
+                            date.setDate(date.getDate() + count);
+
+                            var cell = row.childNodes[c];
+                            cell.monthParent = this;
+                            cell.date = date;
+
+                            this._mapDateCell(date, cell);
+
+                            // 不属于当前月份
+                            if (!calXbl.calHelper.sameMonth(date, this.mDate)) {
+                                cell.setAttribute("othermonth", "true");
+                            } else {
+                                cell.removeAttribute("othermonth");
+                            }
+
+                            // 所有日期设置为未选择
+                            cell.removeAttribute("selected");
+
+                            // 标识有日程的日期
+                            if (this.dayIsBusy(date)) {
+                                cell.setAttribute("busy", "true");
+                            } else {
+                                cell.removeAttribute("busy");
+                            }
+
+                            // 标记今天
+                            if (calXbl.calHelper.sameDay(date, today)) {
+                                cell.setAttribute("today", "true");
+                            } else {
+                                cell.removeAttribute("today");
+                            }
+
+                            count++;
+                        }
+                    }
+                ]]></body>
+            </method>
+
+            <method name="_mapDateCell">
+                <parameter name="date"/>
+                <parameter name="cell"/>
+                <body><![CDATA[
+                    var ymd = calXbl.calHelper.formatYmd(date);
+                    this.mCellMap[ymd] = cell;
+                ]]></body>
+            </method>
+
+            <method name="dateToCell">
+                <parameter name="date"/>
+                <body><![CDATA[
+                    var ymd = calXbl.calHelper.formatYmd(date);
+                    return this.ymdToCell(ymd);
+                ]]></body>
+            </method>
+
+            <method name="ymdToCell">
+                <parameter name="ymd"/>
+                <body><![CDATA[
+                    return this.mCellMap[ymd];
+                ]]></body>
+            </method>
+
+            <method name="getCellByIndex">
+                <parameter name="index"/>
+                <body><![CDATA[
+                    if (index < 0 || index > 41) {
+                        return null;
+                    }
+
+                    return this.mCellArray[index];
+                ]]></body>
+            </method>
+
+            <method name="prevMonth">
+                <body><![CDATA[
+                    this.date = calXbl.calHelper.moveMonth(this.date, -1);
+                ]]></body>
+            </method>
+
+            <method name="nextMonth">
+                <body><![CDATA[
+                    this.date = calXbl.calHelper.moveMonth(this.date, 1);
+                ]]></body>
+            </method>
+
+            <method name="addBusyDay">
+                <parameter name="date"/>
+                <body><![CDATA[
+                    var ymd = calXbl.calHelper.formatYmd(date);
+                    this.mBusyDayMap[ymd] = "";
+
+                    var dayCell = this.mCellMap[ymd];
+                    if (dayCell) {
+                        dayCell.setAttribute("busy", "true");
+                    }
+                ]]></body>
+            </method>
+
+            <method name="removeBusyDay">
+                <parameter name="date"/>
+                <body><![CDATA[
+                    var ymd = calXbl.calHelper.formatYmd(date);
+                    delete this.mBusyDayMap[ymd];
+
+                    var dayCell = this.mCellMap[ymd];
+                    if (dayCell) {
+                        dayCell.removeAttribute("busy");
+                    }
+                ]]></body>
+            </method>
+
+            <method name="clearBusyDays">
+                <body><![CDATA[
+                    for (var ymd in this.mBusyDayMap) {
+                        var dayCell = this.mCellMap[ymd];
+                        if (dayCell) {
+                            dayCell.removeAttribute("busy");
+                        }
+                    }
+
+                    this.mBusyDayMap = {};
+                ]]></body>
+            </method>
+
+            <method name="dayIsBusy">
+                <parameter name="date"/>
+                <body><![CDATA[
+                    var ymd = calXbl.calHelper.formatYmd(date);
+                    return (this.mBusyDayMap[ymd] != undefined);
+                ]]></body>
+            </method>
+
+            <method name="getGridFirstDate">
+                <body><![CDATA[
+                    return new Date(this.mCellArray[0].date);
+                ]]></body>
+            </method>
+
+            <method name="getGridLastDate">
+                <body><![CDATA[
+                        return new Date(this.mCellArray[this.mCellArray.length-1].date);
+                ]]></body>
+            </method>
+
+        </implementation>
+
+        <handlers>
+            <handler event="dateChanged"><![CDATA[
+            ]]></handler>
+        </handlers>
+
+
+    </binding>
+
+</bindings>
+

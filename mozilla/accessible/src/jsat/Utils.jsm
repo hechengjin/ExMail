@@ -10,7 +10,7 @@ const Ci = Components.interfaces;
 
 Cu.import('resource://gre/modules/Services.jsm');
 
-var EXPORTED_SYMBOLS = ['Utils', 'Logger'];
+var EXPORTED_SYMBOLS = ['Utils', 'Logger', 'HighlightUtil'];
 
 var Utils = {
   _buildAppMap: {
@@ -289,5 +289,129 @@ var Logger = {
              '(' + this.statesToString(aAccessible) + ')');
     for (var i=0; i < aAccessible.childCount; i++)
       this._dumpTreeInternal(aLogLevel, aAccessible.getChildAt(i), aIndent + 1);
+    }
+};
+
+var HighlightUtil = {
+    _doc: null,
+    _sourceText: "",
+    _keys: [],
+    _caseSensitive: false,
+    _blocks: [],
+    _matchMarkArray: [],
+
+    highlight: function(elt, keys, caseSensitive) {
+        this._doc = elt.ownerDocument;
+        this._sourceText = elt.textContent;
+        this._keys = new Array().concat(keys);
+        this._caseSensitive = !!caseSensitive;  // 若为undefined的可转换为false
+
+        this._mark();
+        this._combine();
+
+        elt.innerHTML = this._processBlocks();
+    },
+
+    // 取得关键字在源字符串中匹配到的起始下标
+    _getMatchPos: function(matchStr) {
+        var posArray = [];
+        var start = 0;
+
+        var source = this._sourceText;
+        var match = matchStr;
+        if (!this._caseSensitive) {     // 不区分大小写
+            source = source.toLowerCase();
+            match = match.toLowerCase();
+        }
+
+        while (true) {
+            var index = source.indexOf(match, start);
+            if (index == -1) {
+                break;
+            } else {
+                posArray.push(index);
+                start = index + match.length;
+            }
+        }
+
+        return posArray;
+    },
+
+    // 以字符为单位，标记源字符串中哪些字符应被高亮
+    _mark: function() {
+        this._matchMarkArray = [];
+        for (var i = 0; i < this._sourceText.length; i++) {
+            this._matchMarkArray.push(false);
+        }
+
+        for (var i = 0; i < this._keys.length; i++) {
+            var key = this._keys[i];
+            var posArray = this._getMatchPos(key);
+            for (var p = 0; p < posArray.length; p++) {
+                for (var c = 0; c < key.length; c++) {
+                    this._matchMarkArray[posArray[p] + c] = true;
+                }
+            }
+        }
+    },
+
+    // 将字符合并为若干个块，每个块就是一个全被高亮或全不被高亮的字符串
+    _combine: function() {
+        if (this._matchMarkArray.length == 0) {
+            return;
+        }
+
+        this._blocks = [];
+
+        var start = 0;
+        var len = 0;
+        var lastMark = this._matchMarkArray[0];
+
+        for (var i = 0; i < this._matchMarkArray.length; i++) {
+            var mark = this._matchMarkArray[i];
+            if (mark == lastMark) {
+                len++;
+            } else {
+                var block = [start, len, lastMark];
+                this._blocks.push(block);
+
+                start = i;
+                len = 1;
+                lastMark = mark;
+            }
+        }
+
+        var lastBlock = [start, len, lastMark];
+        this._blocks.push(lastBlock);
+    },
+
+    // 将应被高亮的字符串块转换为高亮HTML文本
+    _processBlocks: function() {
+        var htmlStr = "";
+        for (var i = 0; i < this._blocks.length; i++) {
+            var block = this._blocks[i];
+            var start = block[0];
+            var end = block[0] + block[1];
+            var highlight = block[2];
+            var sourceText = new String(this._sourceText);
+
+            var textBlock = sourceText.slice(start, end);
+
+            if (highlight) {
+                htmlStr += "<span xmlns='http://www.w3.org/1999/xhtml' class='highlight-keyword'>" +
+                    this._textToHtml(textBlock) + "</span>";
+            } else {
+                htmlStr += this._textToHtml(textBlock);
+            }
+        }
+
+        return htmlStr;
+    },
+
+    _textToHtml: function(text) {
+        var textNode = this._doc.createTextNode(text);
+        var tmpElt = this._doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
+        tmpElt.appendChild(textNode);
+        return tmpElt.innerHTML;
     }
 };

@@ -42,9 +42,11 @@
   -->
 <window id="messengerWindow"
         xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&titledefault.label;@PRE_RELEASE_SUFFIX@"
-        titlemodifier="&titledefault.label;@PRE_RELEASE_SUFFIX@"
+				xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="&titledefault.label;"
+        titlemodifier="&titledefault.label;"
         titlemenuseparator="&titleSeparator.label;"
         onload="OnLoadMessenger()"
         onunload="OnUnloadMessenger()"

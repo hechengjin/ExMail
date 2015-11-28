@@ -1,0 +1,8 @@
+
+cutemonth {
+    -moz-binding: url("chrome://messenger/skin/searchGeneral/cutemonth.xml#cutemonth");
+}
+
+datepopup {
+    -moz-binding: url("chrome://messenger/skin/searchGeneral/general.xml#datepopup");
+}

@@ -1,0 +1,149 @@
+
+.cuteMonth {
+    background-color: #fafcfc;
+}
+
+/*** 月份导航 ***/
+
+.monthHeader {
+    height: 21px;
+    background-color: #f5f5f5;
+}
+
+.flatButton {
+    -moz-appearance: none;
+    background-color: transparent;
+    color: #333;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flatButton:hover,
+.flatButton:hover {
+    background-color: #e8e8e8;
+}
+
+.flatButton:active,
+.flatButton:active {
+    background-color: #ddd;
+}
+
+.monthPrev, .monthNext {
+    list-style-image: url(chrome://messenger/skin/searchGeneral/arrows.png);
+    min-width: 1px;
+    width: 21px;
+    height: 21px;
+    -moz-appearance: none;
+    border: none;
+    margin: 0;
+    background-color: transparent;
+    -moz-box-pack: center;
+}
+
+.monthPrev {
+    -moz-image-region: rect(0 21px 21px 0);
+}
+
+.monthNext {
+    -moz-image-region: rect(0 42px 21px 21px);
+}
+
+.yearMonthLabel {
+    text-align: center;
+    padding-top: 2px;
+}
+
+.yearList, .monthList {
+    -moz-appearance: none;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
+
+.yearList dropmarker,
+.monthList dropmarker {
+    display: none;
+}
+
+.todayButton {
+    -moz-appearance: none;
+}
+
+/***  ***/
+
+.dayHeader {
+    text-align: center;
+    /*max-width: 22px;
+    max-height: 22px;
+    width: 22px;*/
+    height: 22px;
+    margin: 0 !important;
+    padding-top: 3px;
+    color: #666;
+}
+
+.dayCell {
+    text-align: center;
+    /*max-width: 22px;
+    max-height: 22px;
+    width: 22px;*/
+    height: 22px;
+    color: #333;
+}
+
+.dayCell .dayCellSquare {
+    width: 22px;
+    height: 22px;
+    max-width: 22px;
+    max-height: 22px;
+}
+
+.dayCell:hover .dayCellSquare {
+    background-image: url(chrome://messenger/skin/searchGeneral/cutemonth-day.png);
+    background-position: -22px 0;
+}
+
+.dayCell .dayCellLabel {
+    margin: 0 !important;
+    text-align: center;
+}
+
+.dayCell[othermonth="true"] {
+    color: #c2c2c2;
+}
+
+.dayCell[busy="true"] .dayCellSquare {
+    background-image: url(chrome://messenger/skin/searchGeneral/cutemonth-day.png);
+    background-position: -66px 0;
+}
+
+.dayCell:hover[busy="true"] .dayCellSquare {
+    background-image: url(chrome://messenger/skin/searchGeneral/cutemonth-day.png);
+    background-position: -110px 0;
+}
+
+.dayCell[selected="true"] .dayCellSquare {
+    background-image: url(chrome://messenger/skin/searchGeneral/cutemonth-day.png);
+    background-position: -44px 0;
+}
+
+.dayCell[selected="true"][busy="true"] .dayCellSquare {
+    background-image: url(chrome://messenger/skin/searchGeneral/cutemonth-day.png);
+    background-position: -132px 0;
+}
+
+.dayCell[today="true"] .dayCellSquare {
+    background-image: url(chrome://messenger/skin/searchGeneral/cutemonth-day.png);
+    background-position: 0 0;
+    color: #fff;
+}
+
+.dayCell[today="true"][busy="true"] .dayCellSquare {
+    background-image: url(chrome://messenger/skin/searchGeneral/cutemonth-day.png);
+    background-position: -88px 0;
+    
+}
+
+
+

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+
+<bindings id="generalBindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <!-- 日期选择控件 -->
+    <binding id="datepopup">
+        <resources>
+            <stylesheet src="chrome://messenger/skin/searchGeneral/datepopup.css"/>
+        </resources>
+
+        <content>
+            <xul:vbox flex="1">
+                <xul:textbox anonid="textbox" readonly="true" class="textbox" xbl:inherits="width,height,value"/>
+                <xul:popupset>
+                    <xul:panel anonid="panel" class="panel" noautofocus="true">
+                        <xul:cutemonth anonid="cuteMonth" selectable="true" flex="1"/>
+                    </xul:panel>
+                </xul:popupset>
+            </xul:vbox>
+        </content>
+
+        <implementation>
+            <field name="mDate">null</field>
+
+            <constructor><![CDATA[
+                var textbox = calXbl.getElt(this, "textbox");
+                var panel = calXbl.getElt(this, "panel");
+                var cuteMonth = calXbl.getElt(this, "cuteMonth");
+
+                var me = this;
+
+                textbox.addEventListener("mousedown", function() {
+                    panel.openPopup(this, "after_start");
+                });
+
+                textbox.addEventListener("keydown", function(keyEvent) {
+                    if (me.getAttribute("clearable") == "true") {
+                        if (keyEvent.keyCode == keyEvent.DOM_VK_DELETE ||
+                            keyEvent.keyCode == keyEvent.DOM_VK_BACK_SPACE) {
+                            me.value = "";
+                        }
+                    }
+                });
+
+                panel.addEventListener("popupshowing", function() {
+                    if (!me.mDate) {
+                        me.date = new Date();
+                    }
+                });
+
+                panel.addEventListener("popupshown", function(event) {
+                    // cutemonth里有menulist，也会有popupshown冒泡上来，因此这里只处理自己的事件
+                    if (event.target == this) {
+                        cuteMonth.date = me.date;
+                    }
+                });
+
+                cuteMonth.addEventListener("dateSelected", function() {
+                    me.date = cuteMonth.date;
+                    me.update();
+                    panel.hidePopup();
+                });
+            ]]></constructor>
+
+            <property name="value" onget="return this.getAttribute('value')">
+                <setter><![CDATA[
+                    if (!val) {
+                        val = "";
+                    }
+
+                    this.setAttribute("value", val);
+
+                    var format = this.getAttribute("format");
+                    if (!format) {
+                        format = "yyyy-MM-dd";
+                    }
+
+                    format = format.replace(/d+/, "(\\d+)")     // 务必先替换d字符串!
+                                   .replace(/y+/, "(\\d+)")
+                                   .replace(/M+/, "(\\d+)");
+
+                    var reg = val.match(new RegExp(format));
+                    if (reg) {
+                        var date = new Date();
+                        date.setFullYear(reg[1]);
+                        date.setMonth(reg[2] - 1);
+                        date.setDate(reg[3]);
+                        this.mDate = new Date(date);
+                    }
+                ]]></setter>
+            </property>
+
+            <property name="date" onget="return new Date(this.mDate);">
+                <setter><![CDATA[
+                    var oldDate = new Date(this.mDate);
+                    this.mDate = val;
+                    this.update();
+
+                    if (!calXbl.calHelper.sameDay(oldDate, this.mDate)) {
+                        var dateChangedFunc = new Function(this.getAttribute("ondatechanged"));
+                        dateChangedFunc.call(this, this);
+
+                        calXbl.fireEvent(this, "dateChanged");
+                    }
+                ]]></setter>
+            </property>
+
+            <method name="update">
+                <body><![CDATA[
+                    var format = this.getAttribute("format");
+                    if (!format) {
+                        format = "yyyy-MM-dd";
+                    }
+
+                    var ymd = calXbl.calHelper.formatDate(this.date, format);
+                    this.setAttribute("value", ymd);
+                ]]></body>
+            </method>
+        </implementation>
+    </binding>
+
+</bindings>
+

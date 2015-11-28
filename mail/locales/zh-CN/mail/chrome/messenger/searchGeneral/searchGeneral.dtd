@@ -6,3 +6,34 @@
 <!ENTITY sg.toolbar.search.label      "通用搜索">
 <!ENTITY sg.toolbar.search.label.tooltip  "切换到通用搜索选项卡">
 <!ENTITY sg.keys.event.showSearchGeneral.key "G">
+
+<!ENTITY advSearch.colon          "：">
+
+<!ENTITY advSearch.subject        "主题">
+<!ENTITY advSearch.sender         "发件人">
+<!ENTITY advSearch.recipient      "收件人">
+<!ENTITY advSearch.fullText       "全文">
+<!ENTITY advSearch.attachments    "附件">
+<!ENTITY advSearch.unlimited      "不限">
+<!ENTITY advSearch.hasAttachments "有附件">
+<!ENTITY advSearch.noAttachment   "无附件">
+<!ENTITY advSearch.label          "标签">
+<!ENTITY advSearch.hasLabels      "有标签">
+<!ENTITY advSearch.noLabel        "无标签">
+<!ENTITY advSearch.timeRange      "时间范围">
+<!ENTITY advSearch.inOneDay       "今天">
+<!ENTITY advSearch.inThreeDays    "三天内">
+<!ENTITY advSearch.inOneWeek      "一周内">
+<!ENTITY advSearch.inOneMonth     "一月内">
+<!ENTITY advSearch.inSixMonths    "六月内">
+<!ENTITY advSearch.inOneYear      "一年内">
+<!ENTITY advSearch.custom         "自定义">
+<!ENTITY advSearch.timeRangePrompt "时间段">
+<!ENTITY advSearch.timeTo         "至">
+<!ENTITY advSearch.search         "搜索">
+<!ENTITY advSearch.placeholder    "搜索邮件">
+
+<!ENTITY advSearch.curFolder      "当前邮件夹">
+<!ENTITY advSearch.curAccount     "当前邮箱">
+<!ENTITY advSearch.allAccounts    "所有邮箱">
+

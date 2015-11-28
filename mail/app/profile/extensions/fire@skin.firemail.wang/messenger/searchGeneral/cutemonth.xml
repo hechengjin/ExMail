@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<bindings id="cuteMonthBindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xbl="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <binding id="cutemonth" extends="chrome://messenger/skin/searchGeneral/abstract-month.xml#abstract-month">
+        <resources>
+            <stylesheet src="chrome://messenger/skin/searchGeneral/cutemonth.css"/>
+        </resources>
+
+        <content class="cuteMonth">
+            <xul:vbox flex="1">
+                <xul:hbox class="monthHeader">
+                    <xul:button class="monthPrev flatButton" oncommand="document.getBindingParent(this).prevMonth();"/>
+                    <xul:hbox flex="1" align="center">
+                        <xul:label anonid="yearMonthLabel" class="yearMonthLabel" flex="1"/>
+                        <xul:hbox anonid="yearMonthNav">
+                            <xul:menulist anonid="yearList" class="yearList flatButton" width="50" sizetopopup="none"/>
+                            <xul:menulist anonid="monthList" class="monthList flatButton" width="50" sizetopopup="none"/>
+                            <xul:button anonid="todayButton" class="flatButton"/>
+                        </xul:hbox>
+                    </xul:hbox>
+                    <xul:button class="monthNext flatButton" oncommand="document.getBindingParent(this).nextMonth();"/>
+                </xul:hbox>
+
+                <xul:hbox anonid="dayHeader"/>
+                <xul:vbox anonid="dayBody"/>
+            </xul:vbox>
+        </content>
+
+        <implementation>
+            <constructor><![CDATA[
+                this._initYearMonthNav();
+                this._build("cutemonth-day");
+
+                if (this.getAttribute("selectable") == "true") {
+                    calXbl.getElt(this, "yearMonthLabel").hidden = true;
+                    calXbl.getElt(this, "yearMonthNav").hidden = false;
+                } else {
+                    calXbl.getElt(this, "yearMonthLabel").hidden = false;
+                    calXbl.getElt(this, "yearMonthNav").hidden = true;
+                }
+            ]]></constructor>
+
+            <destructor><![CDATA[
+            ]]></destructor>
+
+            <method name="_initYearMonthNav">
+                <body><![CDATA[
+                    var yearList = calXbl.getElt(this, "yearList");
+                    var yearPopup = calXbl.createElt("menupopup");
+                    yearPopup.setAttribute("width", "80");
+                    yearPopup.setAttribute("maxheight", "200");
+                    yearList.appendChild(yearPopup);
+                    for (var i = 1970; i <= 2100; i++) {
+                        var yearItem = calXbl.createElt("menuitem");
+                        yearItem.setAttribute("value", i);
+                        yearItem.setAttribute("label", i + calXbl.calHelper.getString("year"));
+                        yearPopup.appendChild(yearItem);
+                    }
+
+                    var monthList = calXbl.getElt(this, "monthList");
+                    var monthPopup = calXbl.createElt("menupopup");
+                    monthPopup.setAttribute("width", "80");
+                    monthPopup.setAttribute("maxheight", "200");
+                    monthList.appendChild(monthPopup);
+                    for (var i = 0; i < 12; i++) {
+                        var monthItem = calXbl.createElt("menuitem");
+                        monthItem.setAttribute("value", i);
+                        monthItem.setAttribute("label", (i + 1) + calXbl.calHelper.getString("month"));
+                        monthPopup.appendChild(monthItem);
+                    }
+
+                    var me = this;
+                    yearList.addEventListener("command", function(event) {
+                        var date = me.date;
+                        date.setFullYear(parseInt(yearList.value, 10));
+                        me.date = date;
+                    });
+
+                    monthList.addEventListener("command", function(event) {
+                        var date = me.date;
+                        date.setMonth(parseInt(monthList.value, 10));
+                        me.date = date;
+                    });
+
+                    calXbl.getElt(this, "todayButton").setAttribute("label", calXbl.calHelper.getString("today"));
+                    calXbl.getElt(this, "todayButton").addEventListener("command", function(event) {
+                        me.date = new Date();
+                    });
+
+                ]]></body>
+            </method>
+
+        </implementation>
+
+        <handlers>
+            <handler event="dateChanged"><![CDATA[
+                calXbl.getElt(this, "yearMonthLabel").value =
+                    this.date.getFullYear() +
+                    calXbl.calHelper.getString("year") +
+                    (this.date.getMonth() + 1) +
+                    calXbl.calHelper.getString("month");
+                calXbl.getElt(this, "yearList").value = this.mDate.getFullYear();
+                calXbl.getElt(this, "monthList").value = this.mDate.getMonth();
+            ]]></handler>
+        </handlers>
+    </binding>
+
+    <binding id="cutemonth-day">
+        <content>
+            <xul:hbox pack="center" flex="1">
+                <xul:vbox class="dayCellSquare" pack="center" flex="1">
+                    <xul:label xbl:inherits="value" class="dayCellLabel"/>
+                </xul:vbox>
+            </xul:hbox>
+        </content>
+
+        <implementation>
+            <field name="mDate">new Date()</field>
+
+            <property name="date" onget="return new Date(this.mDate);">
+                <setter><![CDATA[
+                    this.mDate = val;
+                    this.setAttribute("value", this.mDate.getDate());
+                ]]></setter>
+            </property>
+        </implementation>
+
+        <handlers>
+            <handler event="click" button="0"><![CDATA[
+                this.monthParent.date = this.date;
+                calXbl.fireEvent(this.monthParent, "dateSelected");
+            ]]></handler>
+        </handlers>
+    </binding>
+
+</bindings>
+

@@ -7,20 +7,26 @@
 ]>
 
 <?xml-stylesheet href="chrome://lightning/skin/lightning.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/searchGeneral/searchGeneral.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/searchGeneral/bindings.css" type="text/css"?>
+<?xul-overlay href="chrome://messenger/content/searchGeneral/advancedSearchOverlay.xul"?>
 
-<?xul-overlay href="chrome://lightning/content/lightning-toolbar1.xul"?>
-<?xul-overlay href="chrome://lightning/content/lightning-menus1.xul"?>
 
 <overlay id="searchGeneralSidebarOverlay"
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+				 xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				 xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 	<stringbundleset id="stringbundleset">
     <stringbundle id="bundle_searchGeneral" src="chrome://messenger/locale/searchGeneral/searchGeneral.properties"/>
   </stringbundleset>
 				 
 <script type="application/javascript" src="chrome://messenger/content/searchGeneral/searchGeneral-overlay-sidebar.js"/>
+<script type="application/javascript" src="chrome://messenger/content/searchGeneral/unitFunctions.js"/>
+<script type="application/javascript" src="chrome://messenger/content/searchGeneral/htmlThreadList.js"/>
+<script type="application/javascript" src="chrome://messenger/content/searchGeneral/calXbl.js"/>
 
-  <window id="messengerWindow">
+  <window id="messengerWindow" >
 		<commandset id="searchGeneral_commands">
       <command id="new_searchGeneral_tab"
                oncommand="document.getElementById('tabmail').openTab('searchGeneral', { title: document.getElementById('searchGeneral-tab-button').getAttribute('title') })"/>
@@ -46,7 +52,92 @@
 
   <tabpanels id="tabpanelcontainer">
     <vbox id="searchGeneralTabPanel">
-			<label>  searchGeneral </label>
+			<box orient="vertical" id="messagesBox" flex="1">
+				<hbox id="advSearchContainer"/>
+				<hbox id="advSearchLocationBox" />
+				<hbox id="threadPaneBox" flex="1">
+					<vbox id="threadContentArea" flex="1" persist="width" width="240" height="294">
+						<vbox hidden="true" id="htmlThreadList" flex="1" minwidth="220" >
+							<menupopup id="narrowColsPopup" >
+								 <menuitem type="checkbox" id="narrowPopupTime" />
+								 <menuitem type="checkbox" id="narrowPopupSenderRecipent" />
+								 <menuitem type="checkbox" id="narrowPopupSize" />
+								 <menuitem type="checkbox" id="narrowPopupSubject" />
+								 <menuitem type="checkbox" id="narrowPopupUnread" />
+								 <menuitem type="checkbox" id="narrowPopupAttached" />
+								 <menuitem type="checkbox" id="narrowPopupFlagged" />
+								 <menuseparator/>
+								 <menuitem type="checkbox" id="narrowPopupAsc" />
+								 <menuitem type="checkbox" id="narrowPopupDesc" />
+							</menupopup>
+							<html:div id="htmlThreadListNarrowCols" hidden="true">
+								 <html:div id="narrowSortTitle"></html:div>
+								 <html:div id="narrowSortType"></html:div>
+								 <html:div id="narrowSortAsc"></html:div>
+								 <html:div id="narrowSortDesc"></html:div>
+							</html:div>
+
+							<box style="overflow-x: hidden;">
+								 <html:div id="htmlThreadListWideCols" hidden="true">
+										 <html:div id="htmlStatusCol" class="htmlListCol">
+												 <html:div id="statusColImg"></html:div>
+										 </html:div>
+
+										 <html:div class="htmlListColSplitter"></html:div>
+
+										 <html:div id="htmlFlaggedCol" class="htmlListCol">
+												 <html:div id="flaggedColImg"></html:div>
+										 </html:div>
+
+										 <html:div class="htmlListColSplitter"></html:div>
+
+										 <html:div id="htmlAttachCol" class="htmlListCol">
+												 <html:div id="attachColImg"></html:div>
+										 </html:div>
+
+										 <html:div class="htmlListColSplitter"></html:div>
+
+										 <html:div id="htmlSenderRecipientCol" class="htmlListCol">
+												 <html:div id="senderRecipientColText"></html:div>
+												 <html:div id="senderRecipientSortAsc"></html:div>
+												 <html:div id="senderRecipientSortDesc"></html:div>
+										 </html:div>
+
+										 <html:div class="htmlListColSplitter"></html:div>
+
+										 <html:div id="htmlSubjectCol" class="htmlListCol">
+												 <html:div id="subjectColText"></html:div>
+												 <html:div id="subjectSortAsc"></html:div>
+												 <html:div id="subjectSortDesc"></html:div>
+										 </html:div>
+
+										 <html:div class="htmlListColSplitter"></html:div>
+
+										 <html:div id="htmlTimeCol" class="htmlListCol">
+												 <html:div id="timeColText"></html:div>
+												 <html:div id="timeSortAsc"></html:div>
+												 <html:div id="timeSortDesc"></html:div>
+										 </html:div>
+
+										 <html:div class="htmlListColSplitter"></html:div>
+
+										 <html:div id="htmlSizeCol" class="htmlListCol">
+												 <html:div id="sizeColText"></html:div>
+												 <html:div id="sizeSortAsc"></html:div>
+												 <html:div id="sizeSortDesc"></html:div>
+										 </html:div>
+								 </html:div>
+							</box>
+
+							<box id="htmlThreadListBox"  flex="1" context="mailContext">
+								 <html:table id="htmlThreadListBody" cellspacing="0px">
+								 </html:table>
+							</box>
+						</vbox>      <!-- end of htmlThreadList  -->
+						<hugelistbox id="messageList" hidden="true"/>
+					</vbox>
+				</hbox>
+		  </box>
 		</vbox>
   </tabpanels>
 
