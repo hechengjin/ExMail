@@ -21,6 +21,25 @@ NS_IMETHODIMP nsImapFlagAndUidState::GetNumberOfMessages(int32_t *result)
   *result = fUids.Length();
   return NS_OK;
 }
+NS_IMETHODIMP nsImapFlagAndUidState::GetIndexOfUids(uint32_t uid, int32_t *zeroBasedIndex)
+{
+	PR_CEnterMonitor(this);
+	int32_t index = -1;
+  
+  for (uint32_t i = 0; i < fUids.Length(); i++)
+  {
+    if (fUids[i] == uid )
+		{
+			index = i;
+			break;
+		}
+  }
+  PR_CExitMonitor(this);
+  
+  *zeroBasedIndex = index;
+  
+  return NS_OK;
+}
 
 NS_IMETHODIMP nsImapFlagAndUidState::GetUidOfMessage(int32_t zeroBasedIndex, uint32_t *aResult)
 {

@@ -40,7 +40,8 @@ interface nsIImapFlagAndUidState : nsISupports
    * @param aFlags - flags to OR with current flags.
    */
   void orSupportedUserFlags(in unsigned short aFlags);
-
+	
+	void getIndexOfUids(in unsigned long uid, out long zeroBasedIndex);
   void getUidOfMessage(in long zeroBasedIndex, out unsigned long result);
   void getMessageFlags(in long zeroBasedIndex, out unsigned short result);
   void setMessageFlags(in long zeroBasedIndex, in unsigned short flags);

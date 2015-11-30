@@ -4253,6 +4253,23 @@ void nsImapMailFolder::FindKeysToDelete(const nsTArray<nsMsgKey> &existingKeys,
     }
     return;
   }
+	uint32_t total = existingKeys.Length();
+	int32_t uuidIndex = -1;
+  for (uint32_t keyIndex = 0; keyIndex < total; keyIndex++)
+  {
+		flagState->GetIndexOfUids(existingKeys[keyIndex], &uuidIndex);
+		if( -1 == uuidIndex )
+		{
+			keysToDelete.AppendElement(existingKeys[keyIndex]);
+			continue;
+		}
+		flagState->GetMessageFlags(uuidIndex, &flags);
+		if( (flags & kImapMsgDeletedFlag) && !showDeletedMessages)
+		{
+			keysToDelete.AppendElement(existingKeys[keyIndex]);
+		}
+	}
+	/*
   // otherwise, we have a complete set of uid's and flags, so we delete
   // anything thats in existingKeys but not in the flag state, as well
   // as messages with the deleted flag set.
@@ -4283,6 +4300,7 @@ void nsImapMailFolder::FindKeysToDelete(const nsTArray<nsMsgKey> &existingKeys,
     if (existingKeys[keyIndex] == uidOfMessage)
       onlineIndex++;
   }
+	*/
 }
 
 void nsImapMailFolder::FindKeysToAdd(const nsTArray<nsMsgKey> &existingKeys, nsTArray<nsMsgKey> &keysToFetch, uint32_t &numNewUnread, nsIImapFlagAndUidState *flagState)
