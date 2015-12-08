@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://messenger/content/datetime/minimonth.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/searchGeneral/htmlThreadList.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://messenger/locale/searchGeneral/searchGeneral.dtd">
+
+<overlay id="advancedSearchOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/javascript" src="chrome://messenger/content/searchGeneral/advancedSearch.js"/>
+
+    <hbox id="advSearchContainer">
+        <grid id="advSearchConditions" flex="1">
+            <columns>
+                <column/>
+                <column flex="10"/>
+                <column width="80"/>
+                <column flex="10"/>
+                <column width="80"/>
+                <column flex="10"/>
+                <column width="80"/>
+                <column flex="10"/>
+            </columns>
+            <rows>
+                <row align="center">
+                    <label class="textRightAlign" value="&advSearch.subject;&advSearch.colon;"/>
+                    <textbox id="advSearchSubject"/>
+                    <label class="textRightAlign" value="&advSearch.sender;&advSearch.colon;"/>
+                    <textbox id="advSearchSender"/>
+                    <label class="textRightAlign" value="&advSearch.recipient;&advSearch.colon;"/>
+                    <textbox id="advSearchRecipient"/>
+                    <label class="textRightAlign" value="&advSearch.fullText;&advSearch.colon;"/>
+                    <textbox id="advSearchFullText"/>
+                </row>
+                <row align="center">
+                    <label class="textRightAlign" value="&advSearch.attachments;&advSearch.colon;"/>
+                    <hbox>
+                        <menulist id="advSearchAttachmentType"
+                                  oncommand="advSearch.onAttachmentTypeChanged(this);">
+                            <menupopup>
+                                <menuitem label="&advSearch.unlimited;"/>
+                                <menuitem label="&advSearch.hasAttachments;"/>
+                                <menuitem label="&advSearch.noAttachment;"/>
+                            </menupopup>
+                        </menulist>
+                        <textbox id="advSearchAttachmentsNames" flex="1" width="20" disabled="true"/>
+                    </hbox>
+                    <label class="textRightAlign" value="&advSearch.label;" hidden="true"/>
+                    <menulist id="advSearchLabel" hidden="true">
+                        <menupopup>
+                            <menuitem label="&advSearch.unlimited;"/>
+                            <menuitem label="&advSearch.hasAttachments;"/>
+                            <menuitem label="&advSearch.noAttachment;"/>
+                        </menupopup>
+                    </menulist>
+                    <label class="textRightAlign" value="&advSearch.timeRange;&advSearch.colon;"/>
+                    <menulist id="advSearchTimeRange"
+                              oncommand="advSearch.onTimeRangeChanged(this);">
+                        <menupopup>
+                            <menuitem label="&advSearch.unlimited;"     value="unlimited"/>
+                            <menuitem label="&advSearch.inOneDay;"      value="1"/>
+                            <menuitem label="&advSearch.inThreeDays;"   value="3"/>
+                            <menuitem label="&advSearch.inOneWeek;"     value="7"/>
+                            <menuitem label="&advSearch.inOneMonth;"    value="30"/>
+                            <menuitem label="&advSearch.inSixMonths;"   value="180"/>
+                            <menuitem label="&advSearch.inOneYear;"     value="365"/>
+                           <!-- <menuitem label="&advSearch.custom;"        value="custom"/> -->
+                        </menupopup>
+                    </menulist>
+                    <label class="textRightAlign" id="advSearchTimePrompt" value="&advSearch.timeRangePrompt;&advSearch.colon;"
+                           hidden="true"/>
+                    <datepopup id="advSearchTimeFrom" readonly="true" hidden="true"
+                               ondatechanged="advSearch.onFromDateChanged(this);"/>
+                    <label class="textRightAlign" id="advSearchToLabel" value="&advSearch.timeTo;" hidden="true"/>
+                    <datepopup id="advSearchTimeTo" readonly="true" hidden="true"
+                               ondatechanged="advSearch.onToDateChanged(this);"/>
+
+                </row>
+            </rows>
+        </grid>
+        <vbox id="advSearchButtonBox">
+            <spacer flex="1"/>
+            <button id="advSearchButton" label="&advSearch.search;" class="strongButton"
+                    oncommand="advSearch.startSearch();"/>
+        </vbox>
+    </hbox>
+
+    <!-- 结果位置下拉列表 -->
+    <hbox id="advSearchLocationBox" align="center" height="34" hidden="true">
+        <menulist id="advSearchLocList" flex="1" oncommand="advSearch.onLocationChanged(this);">
+            <menupopup>
+                <menuitem label="&advSearch.curFolder;"/>
+                <menuitem label="&advSearch.curAccount;"/>
+                <menuitem label="&advSearch.allAccounts;"/>
+            </menupopup>
+        </menulist>
+    </hbox>
+
+</overlay>
+
+
