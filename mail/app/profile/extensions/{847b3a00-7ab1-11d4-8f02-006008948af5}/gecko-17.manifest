@@ -1,0 +1,5 @@
+binary-component platform/Darwin_x86_64-gcc3/gecko-17/libenigmime-x86_64-gcc3.dylib ABI=Darwin_x86_64-gcc3 platformversion<=17.*
+binary-component platform/Darwin_x86-gcc3/gecko-17/libenigmime-x86-gcc3.dylib ABI=Darwin_x86-gcc3 platformversion<=17.*
+binary-component platform/Linux_x86-gcc3/gecko-17/libenigmime-x86-gcc3.so ABI=Linux_x86-gcc3 platformversion<=17.*
+binary-component platform/Linux_x86_64-gcc3/gecko-17/libenigmime-x86_64-gcc3.so ABI=Linux_x86_64-gcc3 platformversion<=17.*
+binary-component platform/WINNT_x86-msvc/gecko-17/enigmime-x86-msvc.dll ABI=WINNT_x86-msvc platformversion<=17.*

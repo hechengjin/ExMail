@@ -25,6 +25,7 @@ EXTENSIONS = \
   $(NULL)
   
 NO_ZIP_EXTENSIONS = mintrayr@tn123.ath.cx \
+	{847b3a00-7ab1-11d4-8f02-006008948af5} \
   {e2fda1a4-762b-4020-b5ad-a41df1933103} \
   calendar-timezones@mozilla.org \
   $(NULL)
