@@ -90,7 +90,7 @@
             &community.start2;<label class="text-link" onclick="openURL('http://www.mozilla.org/');" oncommand="openUILink(this.getAttribute('href'), event);">&community.mozillaLink;</label>&community.middle2;<label class="text-link" onclick="openAboutTab('about:credits');">&community.creditsLink;</label>&community.end2;
           </description>
           <description class="text-blurb" id="contributeDesc">
-            &contribute.start;<label class="text-link" onclick="openURL('http://www.mozilla.org/contribute/');">&contribute.getInvolvedLink;</label>&contribute.end;
+            &contribute.start;<label class="text-link" onclick="openURL('http://www.firemail.wang/forum.php?gid=1');">&contribute.getInvolvedLink;</label>&contribute.end;
           </description>
        </vbox>
      </vbox>
@@ -99,7 +99,7 @@
       <hbox pack="center">
         <label class="text-link bottom-link" onclick="openAboutTab('about:license');">&bottomLinks.license;</label>
         <label class="text-link bottom-link" onclick="openAboutTab('about:rights');">&bottomLinks.rights;</label>
-        <label class="text-link bottom-link" onclick="openURL('https://www.mozilla.org/en-US/thunderbird/legal/privacy/');">&bottomLinks.privacy;</label>
+        <label class="text-link bottom-link" onclick="openURL('http://www.firemail.wang/firemail/version/');">&bottomLinks.updateLink;</label>
       </hbox>
       <description id="trademark">
         <label class="trademark-label">&trademarkInfo.part1;</label>

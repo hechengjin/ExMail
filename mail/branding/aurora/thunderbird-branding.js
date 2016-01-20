@@ -4,7 +4,7 @@
 
 // Default start page
 //pref("mailnews.start_page.url","https://live.mozillamessaging.com/%APP%/start?locale=%LOCALE%&version=%VERSION%&os=%OS%&buildid=%APPBUILDID%");
-pref("mailnews.start_page.url","http://www.firemail.wang/portal.php?mod=view&aid=1");
+pref("mailnews.start_page.url","http://www.firemail.wang/face/");
 
 // start page override to load after an update
 //pref("mailnews.start_page.override_url","https://live.mozillamessaging.com/%APP%/whatsnew?locale=%LOCALE%&version=%VERSION%&os=%OS%&buildid=%APPBUILDID%");
