@@ -50,61 +50,11 @@ DEFINES += \
 	-DMOZILLA_VERSION=${MOZILLA_VERSION} \
 	$(NULL)
 
-# path config
-SIGNTOOL = ../../../../shelltools/tools/cmd-sign/signtool.exe
-COREPATH = ../../../installer-stage/core
-PFXPATH = ../../../../shelltools/SecurityCertificate/firemail.pfx
-PASSWORD = Firemail
-TIMESTAMP = http://localhost
-SETUPPATH = ../../../mail/installer/windows/instgen
-uninstallPATH = ../../../installer-stage/core/uninstall
-	
 include $(topsrcdir)/config/config.mk
 
 installer::
 	$(MAKE) -C .. installer-stage
-	
-# sign the exe and dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/Firemail.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/crashreporter.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/plugin-container.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/WSEnable.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/updater.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/maintenanceservice.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/AccessibleMarshal.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/D3DCompiler_43.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/d3dx9_43.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/freebl3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/gkmedias.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/libEGL.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/libGLESv2.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/MapiProxy.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/mozalloc.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/mozglue.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/mozjs.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/mozMapi32.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/mozsqlite3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nsldap32v60.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nsldappr32v60.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nsldif32v60.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nspr4.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nss3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nssckbi.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nssdbm3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/nssutil3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/plc4.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/plds4.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/smime3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/softokn3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/ssl3.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/xul.dll
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(COREPATH)/xpcom.dll
 	$(MAKE) $(CONFIG_DIR)/setup.exe
-	
-# sign the setup.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(SETUPPATH)/setup.exe
-# sign the helper.exe
-	$(SIGNTOOL) sign //f $(PFXPATH) //p $(PASSWORD) $(uninstallPATH)/helper.exe
 
 # For building the uninstaller during the application build so it can be
 # included for mar file generation.
