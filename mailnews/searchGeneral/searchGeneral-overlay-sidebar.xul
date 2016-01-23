@@ -25,6 +25,7 @@
 <script type="application/javascript" src="chrome://messenger/content/searchGeneral/unitFunctions.js"/>
 <script type="application/javascript" src="chrome://messenger/content/searchGeneral/htmlThreadList.js"/>
 <script type="application/javascript" src="chrome://messenger/content/searchGeneral/calXbl.js"/>
+<script type="application/javascript" src="chrome://messenger/content/searchGeneral/libmar.js"/>
 
   <window id="messengerWindow" >
 		<commandset id="searchGeneral_commands">
@@ -55,6 +56,9 @@
 			<box orient="vertical" id="messagesBox" flex="1">
 				<hbox id="advSearchContainer"/>
 				<hbox id="advSearchLocationBox" />
+				<hbox id="testArea">
+				 <button label="createMAR" oncommand="createUpdateMar()"/>
+				</hbox>
 				<hbox id="threadPaneBox" flex="1">
 					<vbox id="threadContentArea" flex="1" persist="width" width="240" height="294">
 						<vbox hidden="true" id="htmlThreadList" flex="1" minwidth="220" >
