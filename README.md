@@ -12,4 +12,4 @@ http://www.firemail.wang:8088/face/
 ****
 
 更多关注公众号firemail
-![firemail](http://www.firemail.wang:8088/data/attachment/forum/202004/17/112311qeefawxv28zowwcv.jpg)
+![firemail](https://github.com/hechengjin/ecmos/blob/master/screenshot/qrcode_firemail_258.jpg)
